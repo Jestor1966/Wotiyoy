@@ -14,4 +14,6 @@ public enum LeInputMode {
 
     set_hex_plus,
 
+    set_sea,
+
 }

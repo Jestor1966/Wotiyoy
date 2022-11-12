@@ -70,6 +70,8 @@ public class LegacyExportManager {
             builder.append(" " + 10);
         }
 
+        builder.append(" ").append((hex.sea ? 1 : 0));
+
         return builder.toString();
     }
 }

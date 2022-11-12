@@ -19,6 +19,7 @@ public class EditorProvinceData implements ReusableYio, EncodeableYio{
     public String name,leader;
     public int startingMoney;
     public int id;
+    public float[] aiPara;
     public ArrayList<Hex> hexList;
     public PointYio geometricalCenter;
 
@@ -26,6 +27,7 @@ public class EditorProvinceData implements ReusableYio, EncodeableYio{
     public EditorProvinceData() {
         hexList = new ArrayList<>();
         geometricalCenter = new PointYio();
+        aiPara=new float[3];
     }
 
 
@@ -36,6 +38,9 @@ public class EditorProvinceData implements ReusableYio, EncodeableYio{
         startingMoney = 10;
         hexList.clear();
         id = -1;
+        aiPara[0]=1f;
+        aiPara[1]=1f;
+        aiPara[2]=1f;
     }
 
 
@@ -49,6 +54,9 @@ public class EditorProvinceData implements ReusableYio, EncodeableYio{
 
     public void fillWithDefaultData() {
         startingMoney = 10;
+        aiPara[0]=1f;
+        aiPara[1]=1f;
+        aiPara[2]=1f;
         generateRandomName();
         generateRandomLeader();
     }
@@ -108,6 +116,9 @@ public class EditorProvinceData implements ReusableYio, EncodeableYio{
         province.setName(name);
         province.setLeader(leader);
         province.money = startingMoney;
+        province.aiPara[0] = aiPara[0];
+        province.aiPara[1] = aiPara[1];
+        province.aiPara[2] = aiPara[2];
     }
 
 
@@ -169,7 +180,7 @@ public class EditorProvinceData implements ReusableYio, EncodeableYio{
     @Override
     public String encode() {
         Hex firstHex = hexList.get(0);
-        return firstHex.index1 + "@" + firstHex.index2 + "@" + id + "@" + name + "@" + startingMoney + "@" +leader;
+        return firstHex.index1 + "@" + firstHex.index2 + "@" + id + "@" + name + "@" + startingMoney + "@" +leader +"@" + aiPara[0] + "@" +aiPara[1] + "@" + aiPara[2] + "@";
     }
 
 
@@ -187,19 +198,29 @@ public class EditorProvinceData implements ReusableYio, EncodeableYio{
     @Override
     public void decode(String source) {
         String[] split = source.split("@");
-        id = Integer.valueOf(split[2]);
-        if (split.length<6) {
-            generateRandomLeader();
-            if(split.length<4){
-                generateRandomName();
+        id = Integer.parseInt(split[2]);
+        if (split.length<9) {
+            aiPara[0]=1f;
+            aiPara[1]=1f;
+            aiPara[2]=1f;
+            if (split.length<6) {
+                generateRandomLeader();
+                if(split.length<4){
+                    generateRandomName();
+                }
+                return;
             }
-            return;
+        }else{
+            aiPara[0] = Float.parseFloat(split[6]);
+            aiPara[1] = Float.parseFloat(split[7]);
+            aiPara[2] = Float.parseFloat(split[8]);
         }
         name = split[3];
+        startingMoney = Integer.parseInt(split[4]);
         leader = split[5];
-        if (split.length > 4) {
-            startingMoney = Integer.valueOf(split[4]);
-        }
+
+
+
 
         if (containsInvalidSymbols()) {
             generateRandomName();

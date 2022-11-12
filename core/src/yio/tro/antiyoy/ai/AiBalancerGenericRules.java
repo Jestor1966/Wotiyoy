@@ -28,11 +28,13 @@ public class AiBalancerGenericRules extends AiExpertGenericRules implements Comp
     @Override
     public void makeMove() {
         moveUnits();
-
+        //System.out.println("moveUnits() complele");
         spendMoneyAndMergeUnits();
-
+        //System.out.println("spendMoneyAndMergeUnits(); complele");
         checkToKillRedundantUnits();
+        //System.out.println("checkToKillRedundantUnits() complele");
         moveAfkUnits();
+        //System.out.println("moveAfkUnits(); complele");
     }
 
 
@@ -63,7 +65,11 @@ public class AiBalancerGenericRules extends AiExpertGenericRules implements Comp
             Unit unitWithMaxStrengh = findUnitWithMaxStrenghExceptKnight(province);
             if (unitWithMaxStrengh == null) break;
             if (!canProvinceBuildUnit(province, 1)) break;
-            buildUnit(province, unitWithMaxStrengh.currentHex, 1);
+            if(!unitWithMaxStrengh.currentHex.isSea()){
+                buildUnit(province, unitWithMaxStrengh.currentHex, 1);
+            }else{
+                return;
+            }
         }
     }
 
@@ -75,6 +81,7 @@ public class AiBalancerGenericRules extends AiExpertGenericRules implements Comp
         int srcArmyStrength = getArmyStrength(srcProvince);
         updateNearbyProvinces(srcProvince);
         for (Province province : nearbyProvinces) {
+            if(province.getFreeLandNum()<=4) continue;
             if (province == srcProvince) continue;
             int armyStrength = getArmyStrength(province);
             if (srcArmyStrength < armyStrength / 2) return false;
@@ -106,6 +113,7 @@ public class AiBalancerGenericRules extends AiExpertGenericRules implements Comp
 
     @Override
     void decideAboutUnit(Unit unit, ArrayList<Hex> moveZone, Province province) {
+        System.out.println("PPP");
         if (!unit.isReadyToMove()) {
             System.out.println("AiBalancerGenericRules.decideAboutUnit: received unit that is not ready to move");
             return;
@@ -123,8 +131,7 @@ public class AiBalancerGenericRules extends AiExpertGenericRules implements Comp
         if (attackableHexes.size() > 0) { // attack something
             tryToAttackSomething(unit, province, attackableHexes);
         } else { // nothing to attack
-
-            if(Math.random()>=0.3){
+            if(true){
                 if (unit.currentHex.isInPerimeter()) {
                     pushUnitToBetterDefense(unit, province);
                 }
@@ -155,7 +162,7 @@ public class AiBalancerGenericRules extends AiExpertGenericRules implements Comp
             if (!adjHex.active) continue;
             if (!adjHex.sameFraction(unit.currentHex)) continue;
             if (!adjHex.isFree()) continue;
-
+            if (adjHex.isDefendedByMountain()) continue;
             if (predictDefenseGainWithUnit(adjHex, unit) < 3) continue;
 
             gameController.moveUnit(unit, adjHex, province);
@@ -168,6 +175,9 @@ public class AiBalancerGenericRules extends AiExpertGenericRules implements Comp
         int defenseGain = 0;
 
         defenseGain -= hex.getDefenseNumber();
+        if(hex.getDefenseNumber() >= 10){
+            return 5;
+        }
         defenseGain += unit.strength;
 
         for (int i = 0; i < 6; i++) {
@@ -266,32 +276,26 @@ public class AiBalancerGenericRules extends AiExpertGenericRules implements Comp
         tryToBuildUnitsOnPalms(province);
         tryToReinforceUnits(province);
 
+
         //System.out.println("---------------");
-        for (int i = 1; i <= 8; i++) {
+        for (int i = 1; i <= 6; i++) {
             if(i==7){
                 continue;
             }
-            if(Math.random()>=0.6){
+
+            if(Math.random()>=0.6&& i==2){
                 i=5;
             }
 
-            if(i==3 || i==4){
-                if(province.hexList.size()>=40){
-                    if(Math.random()>0.95){
-                        i+=5;
-                    }
-                }
-                else if(Math.random()>0.995){
-                    i+=5;
-                }
+            if(Math.random()>=0.8 && i==3){
+                i=8;
             }
 
-            if (!province.canAiAffordUnit(i, 5)) {
-                break;
-            }
             while (canProvinceBuildUnit(province, i)) {
-                if (!tryToAttackWithStrength(province, i)) {
-                    break;
+                if (!tryToAttackWithStrength(province,i)) {
+                    if (!tryToBuiltUnitInsideProvince(province, i)) {
+                        break;
+                    }
                 }
                 //System.out.println("If you in the loop try to get out.  "+i);
             }
@@ -307,6 +311,7 @@ public class AiBalancerGenericRules extends AiExpertGenericRules implements Comp
     private void tryToReinforceUnits(Province province) {
         for (Hex hex : province.hexList) {
             if (!hex.containsUnit()) continue;
+            if (hex.isSea()) continue;
             Unit unit = hex.unit;
             if (unitHasToBeReinforced(unit) && province.canAiAffordUnit(unit.strength)) {
                 buildUnit(province, hex, 1);

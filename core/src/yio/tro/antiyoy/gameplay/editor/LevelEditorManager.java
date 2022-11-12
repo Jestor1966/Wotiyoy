@@ -28,7 +28,7 @@ public class LevelEditorManager {
     public GameController gameController;
     private final EditorAutomationManager editorAutomationManager;
     private int inputFraction, inputObject;
-    private boolean randomizeFraction, filteredByOnlyLand;
+    private boolean randomizeFraction, filteredByOnlyLand, filterByOnlyFraction, filterByOnlySea;
     private LeInputMode leInputMode;
     private int scrX, scrY;
     private long lastTimeTouched;
@@ -38,13 +38,19 @@ public class LevelEditorManager {
     public EditorProvinceManager editorProvinceManager;
     public EditorRelationsManager editorRelationsManager;
     public EditorCoalitionsManager coalitionsManager;
-    public boolean setHexPlus;
+    public boolean setHexPlus,setSea,devideProvince;
 
 
     public LevelEditorManager(GameController gameController) {
         this.gameController = gameController;
+
         filteredByOnlyLand = false;
+        filterByOnlySea = false;
+        filterByOnlyFraction = false;
         setHexPlus = false;
+        setSea = false;
+
+        devideProvince = false;
         tempList = new ArrayList<>();
         gameSaver = new GameSaver(gameController);
         detectorProvince = new DetectorProvince();
@@ -77,12 +83,18 @@ public class LevelEditorManager {
                 inputModeDeletePlusActions(focusedHex);
                 break;
             case set_hex_plus:
-                if(setHexPlus=false){
+                if(setHexPlus==false){
                     setHexPlus=true;
                 }else{
                     setHexPlus=false;
                 }
-
+                break;
+            case set_sea:
+                if(setSea==false){
+                    setSea=true;
+                }else{
+                    setSea=false;
+                }
                 break;
         }
     }
@@ -150,11 +162,6 @@ public class LevelEditorManager {
             checkToTurnIntoFarm(focusedHex);
             gameController.addAnimHex(focusedHex);
         }
-        else if (inputObject == 13) { // revolt
-            addSolidObject(focusedHex, lastObject);
-            checkToTurnIntoFarm(focusedHex);
-            gameController.addAnimHex(focusedHex);
-        }
 
         else { // units
             tryToAddUnitToFocusedHex(focusedHex, unitStrength);
@@ -165,6 +172,10 @@ public class LevelEditorManager {
     private void addSolidObject(Hex focusedHex, int lastObject) {
         if (!canAddObjectToHex(focusedHex)) return;
 
+        if(lastObject == Obj.FARM){
+            gameController.addSolidObject(focusedHex, Obj.FARM);
+            return;
+        }
         if (lastObject == Obj.TOWER && inputObject == Obj.TOWER) {
             gameController.addSolidObject(focusedHex, Obj.STRONG_TOWER);
             return;
@@ -183,10 +194,6 @@ public class LevelEditorManager {
         }
         if (lastObject == Obj.REVOLT) {
             gameController.addSolidObject(focusedHex, Obj.REVOLT);
-            return;
-        }
-        if (lastObject == Obj.RIVER) {
-            gameController.addSolidObject(focusedHex, Obj.RIVER);
             return;
         }
 
@@ -211,6 +218,9 @@ public class LevelEditorManager {
                 case Obj.FORT:
                     return true;
             }
+        }
+        if(hex.sea){
+            return false;
         }
 
         return true;
@@ -389,6 +399,7 @@ public class LevelEditorManager {
         if (!hex.active) return;
         gameController.cleanOutHex(hex);
         hex.active = false;
+        hex.sea=false;
         ListIterator activeIterator = gameController.fieldManager.activeHexes.listIterator();
         while (activeIterator.hasNext()) {
             Hex tHex = (Hex) activeIterator.next();
@@ -421,9 +432,6 @@ public class LevelEditorManager {
             resetInputMode();
         }
 
-
-
-
     }
 
 
@@ -436,15 +444,36 @@ public class LevelEditorManager {
         gameController.addAnimHex(hex);
     }
 
+    private void activateHexAsSea(Hex hex, int fraction) {
+        if (hex.active) return;
+        hex.active = true;
+        hex.sea = true;
+        hex.setFraction(fraction);
+        ListIterator activeIterator = gameController.fieldManager.activeHexes.listIterator();
+        activeIterator.add(hex);
+        gameController.addAnimHex(hex);
+    }
+
 
     private void inputModeHexActions(Hex focusedHex) {
         Hex temp;
 
         if (focusedHex.active) {
-            applySetHex(focusedHex);
+            if(filterByOnlySea) return;
+            if(setSea){
+                applySetHexAsSea(focusedHex);
+            }else{
+                applySetHex(focusedHex);
+            }
         } else {
             if (filteredByOnlyLand) return;
-            activateHex(focusedHex, inputFraction);
+
+            if(setSea){
+                activateHexAsSea(focusedHex, inputFraction);
+            }else{
+                activateHex(focusedHex, inputFraction);
+            }
+
         }
         //System.out.println(setHexPlus);
         if(setHexPlus){
@@ -452,10 +481,21 @@ public class LevelEditorManager {
                 temp=focusedHex.getAdjacentHex(i);
                 if(temp!=focusedHex){
                     if (temp.active && !temp.isNullHex()) {
-                        applySetHex(temp);
+                        if(filterByOnlySea) return;
+
+                        if(setSea){
+                            applySetHexAsSea(temp);
+                        }else{
+                            applySetHex(temp);
+                        }
                     } else {
                         if (filteredByOnlyLand) return;
-                        activateHex(temp, inputFraction);
+
+                        if(setSea){
+                            activateHexAsSea(temp, inputFraction);
+                        }else{
+                            activateHex(temp, inputFraction);
+                        }
                     }
                 }else{
                     continue;
@@ -469,6 +509,16 @@ public class LevelEditorManager {
         if (focusedHex.fraction == inputFraction) return;
         int objectInside = focusedHex.objectInside;
         gameController.fieldManager.setHexFraction(focusedHex, inputFraction);
+        if (inputFraction != GameRules.NEUTRAL_FRACTION) {
+            gameController.fieldManager.addSolidObject(focusedHex, objectInside);
+        }
+    }
+
+    private void applySetHexAsSea(Hex focusedHex) {
+        if (focusedHex.fraction == inputFraction) return;
+        int objectInside = focusedHex.objectInside;
+        gameController.fieldManager.setHexFraction(focusedHex, inputFraction);
+        focusedHex.sea=true;
         if (inputFraction != GameRules.NEUTRAL_FRACTION) {
             gameController.fieldManager.addSolidObject(focusedHex, objectInside);
         }
@@ -657,13 +707,28 @@ public class LevelEditorManager {
 
 
     public void switchFilterOnlyLand() {
-        setFilteredByOnlyLand(!filteredByOnlyLand);
+        if(!filteredByOnlyLand && !filterByOnlySea){
+            setFilteredByOnlySea(false);
+            setFilteredByOnlyLand(true);
+        }
+        else if(filteredByOnlyLand){
+            setFilteredByOnlySea(true);
+            setFilteredByOnlyLand(false);
+        }
+        else if(filterByOnlySea){
+            setFilteredByOnlySea(false);
+            setFilteredByOnlyLand(false);
+        }
+
+        updateFilterOnlyLandButton();
     }
 
 
     private void updateTextOnFilterOnlyLandButton(ButtonYio filterButton) {
         if (filteredByOnlyLand) {
             filterButton.setTextLine(getLangManager().getString("filter_only_land"));
+        }else if(filterByOnlySea){
+            filterButton.setTextLine(getLangManager().getString("filter_only_sea"));
         } else {
             filterButton.setTextLine(getLangManager().getString("filter_no"));
         }
@@ -732,7 +797,9 @@ public class LevelEditorManager {
 
     public void setFilteredByOnlyLand(boolean filteredByOnlyLand) {
         this.filteredByOnlyLand = filteredByOnlyLand;
+    }
 
-        updateFilterOnlyLandButton();
+    public void setFilteredByOnlySea(boolean filterByOnlySea) {
+        this.filterByOnlySea = filterByOnlySea;
     }
 }

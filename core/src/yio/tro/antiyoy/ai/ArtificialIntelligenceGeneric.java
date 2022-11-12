@@ -39,7 +39,6 @@ public abstract class ArtificialIntelligenceGeneric extends ArtificialIntelligen
 
     protected boolean isOkToBuildNewFarm(Province srcProvince) {
         if (srcProvince.money > 1.2 * srcProvince.getCurrentFarmPrice()) return true;
-
         if (findHexThatNeedsTower(srcProvince) != null) return false;
 
         return true;
@@ -91,6 +90,7 @@ public abstract class ArtificialIntelligenceGeneric extends ArtificialIntelligen
 
     protected boolean isHexGoodForFarm(Hex hex) {
         if (!hex.isFree()) return false;
+        if (hex.isSea()) return false;
         if (!hex.hasThisSupportiveObjectNearby(Obj.TOWN) && !hex.hasThisSupportiveObjectNearby(Obj.FARM) && !hex.hasThisSupportiveObjectNearby(Obj.CITY)) return false;
         return true;
     }

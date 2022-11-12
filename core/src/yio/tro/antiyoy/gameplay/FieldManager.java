@@ -359,9 +359,13 @@ public class FieldManager implements EncodeableYio {
     public void transformGraves() {
         for (Hex hex : activeHexes) {
             if (gameController.isCurrentTurn(hex.fraction) && hex.objectInside == Obj.GRAVE) {
-                spawnTree(hex);
-                hex.blockToTreeFromExpanding = true;
-                hex.blockToRevoltFromExpanding = true;
+                if(hex.isSea()){
+                    cleanOutHex(hex);
+                }else{
+                    cleanOutHex(hex);
+                    //hex.blockToTreeFromExpanding = true;
+                    //hex.blockToRevoltFromExpanding = true;
+                }
             }
         }
     }
@@ -402,7 +406,11 @@ public class FieldManager implements EncodeableYio {
 
         for (Province province : provinces) {
             if (province.hasCapital()) continue;
-            province.placeCapitalInRandomPlace(gameController.predictableRandom);
+            if(GameRules.captainAsCityRules){
+                province.placeCapitalInRandomCity(gameController.predictableRandom);
+            }else{
+                province.placeCapitalInRandomPlace(gameController.predictableRandom);
+            }
         }
     }
 
@@ -1052,10 +1060,24 @@ public class FieldManager implements EncodeableYio {
 
     public void controlAll(Province province){
         for(Hex hex:province.hexList){
-            hex.fraction= gameController.turn;
+            hex.fraction=gameController.turn;
+            hex.changingFraction = true;
+            hex.animFactor.setValues(0, 0);
+            hex.animFactor.appear(1, 1);
+
+            gameController.replayManager.onHexChangedFractionWithoutProvince(hex);
+
+            if (!gameController.isPlayerTurn()) {
+                forceAnimEndInHex(hex);
+            }
+            if(hex.hasUnit()){
+                hex.unit.setReadyToMove(false);
+                gameController.replayManager.onUnitBuilt(province,hex,hex.unit.strength);
+            }
         }
-        gameController.fieldManager.removeProvince(province);
-        gameController.fieldManager.addProvince(province);
+        //gameController.fieldManager.removeProvince(province);
+        province.setHexList(province.hexList);
+
     }
 
     public void cleanOutHex(Hex hex) {
@@ -1104,7 +1126,7 @@ public class FieldManager implements EncodeableYio {
                             if(temp2.index1<0 || temp2.index2<0){
                                 continue;
                             }
-                            if(temp2.active && temp2.hasUnit() && !(temp2.fraction==hex.fraction) && diplomacyManager.isWar(hex, temp2) && gameController.canUnitAttackHex(1,hex.fraction,temp) && Math.random()>=0.6){
+                            if(temp2.active && temp2.hasUnit() && !(temp2.fraction==hex.fraction) && diplomacyManager.isWar(hex, temp2) && gameController.canUnitAttackHex(2,hex.fraction,temp) && gameController.predictableRandom.nextInt(10)>=4){
                                 cleanOutHex(temp2);
                                 addSolidObject(temp2,Obj.GRAVE);
                                 attacked=true;
@@ -1112,7 +1134,7 @@ public class FieldManager implements EncodeableYio {
                             }
                         }
 
-                        if(temp.active && temp.hasUnit() && !(temp.fraction==hex.fraction) && diplomacyManager.isWar(hex, temp)&& Math.random()>=0.2){
+                        if(temp.active && temp.hasUnit() && !(temp.fraction==hex.fraction) && diplomacyManager.isWar(hex, temp) && gameController.canUnitAttackHex(2,hex.fraction,temp) && gameController.predictableRandom.nextInt(10)>=2){
                             cleanOutHex(temp);
                             addSolidObject(temp,Obj.GRAVE);
                             attacked=true;
@@ -1205,10 +1227,18 @@ public class FieldManager implements EncodeableYio {
                             if(temp2.index1<0 || temp2.index2<0){
                                 continue;
                             }
-                            if(temp2.active && temp2.hasUnit() && !(temp2.fraction==hex.fraction) && diplomacyManager.isWar(hex, temp2)&& gameController.canUnitAttackHex(4,hex.fraction,temp2)&& Math.random()>=0.3){
+                            if(temp2.active && temp2.hasUnit() && !(temp2.fraction==hex.fraction) && diplomacyManager.isWar(hex, temp2)&& gameController.canUnitAttackHex(4,hex.fraction,temp2)&& gameController.predictableRandom.nextInt(10)>=3){
                                 cleanOutHex(temp2);
                                 addSolidObject(temp2,Obj.GRAVE);
                                 attacked+=1;
+                                break;
+                            }
+                            if(temp2.active && temp2.containsNormalTower() && !(temp2.fraction==hex.fraction) && diplomacyManager.isWar(hex, temp2)&& gameController.predictableRandom.nextInt(10)>=3){
+                                cleanOutHex(temp2);
+                                break;
+                            }
+                            if(temp2.active && temp2.objectInside==Obj.FARM && !(temp2.fraction==hex.fraction) && diplomacyManager.isWar(hex, temp2)&& gameController.predictableRandom.nextInt(10)>=6){
+                                cleanOutHex(temp2);
                                 break;
                             }
                             for (int b = 0; b < 6; b++) {
@@ -1219,7 +1249,7 @@ public class FieldManager implements EncodeableYio {
                                 if(temp3.index1<0 || temp3.index2<0){
                                     continue;
                                 }
-                                if(temp3.active && temp3.hasUnit() && !(temp3.fraction==hex.fraction) && diplomacyManager.isWar(hex, temp3)&& gameController.canUnitAttackHex(4,hex.fraction,temp3)&& Math.random()>=0.5){
+                                if(temp3.active && temp3.hasUnit() && !(temp3.fraction==hex.fraction) && diplomacyManager.isWar(hex, temp3)&& gameController.canUnitAttackHex(4,hex.fraction,temp3)&& gameController.predictableRandom.nextInt(10)>=5){
                                     cleanOutHex(temp3);
                                     addSolidObject(temp3,Obj.GRAVE);
                                     attacked+=1;
@@ -1227,7 +1257,12 @@ public class FieldManager implements EncodeableYio {
                                 }
                             }
                         }
-                        if(temp.active && temp.hasUnit() && !(temp.fraction==hex.fraction) && diplomacyManager.isWar(hex, temp)&& gameController.canUnitAttackHex(4,hex.fraction,temp) && Math.random()>=0.5){
+                        if(temp.active && temp.containsSiege() && !(temp.fraction==hex.fraction) && diplomacyManager.isWar(hex, temp)&& gameController.predictableRandom.nextInt(10)>=4){
+                            temp.setFraction(hex.fraction);
+                            temp.changingFraction = true;
+                            break;
+                        }
+                        if(temp.active && temp.hasUnit() && !(temp.fraction==hex.fraction) && diplomacyManager.isWar(hex, temp)&& gameController.canUnitAttackHex(4,hex.fraction,temp) && gameController.predictableRandom.nextInt(10)>=5){
                             cleanOutHex(temp);
                             addSolidObject(temp,Obj.GRAVE);
                             attacked+=1;
@@ -1259,7 +1294,6 @@ public class FieldManager implements EncodeableYio {
         }
 
     public void destroyBuildingsOnHex(Hex hex) {
-        Hex neighbour;
         boolean hadHouse = (hex.objectInside == Obj.TOWN);
         boolean hadHill = (hex.objectInside == Obj.HILL);
         if (hex.containsBuilding() && hex.containsSiege()) {
@@ -1274,6 +1308,8 @@ public class FieldManager implements EncodeableYio {
             if(GameRules.captainAsCityRules){
                 siege(hex);
                 addSolidObject(hex,Obj.CITY);
+                gameController.replayManager.onHexChangedFractionWithoutProvince(hex);
+                gameController.replayManager.onCityBuilt(hex);
             }else{
                 spawnTree(hex);
             }
@@ -1284,7 +1320,6 @@ public class FieldManager implements EncodeableYio {
     public boolean buildUnit(Province province, Hex hex, int strength) {
         int moneyFix=0;
         if (province == null || hex == null) return false;
-
         // check for unmergeable situation
         if (isUnmergeableSituationDetected(province, hex, strength)) return false;
 
@@ -1396,7 +1431,6 @@ public class FieldManager implements EncodeableYio {
 
     public boolean buildStrongTower(Province province, Hex hex) {
         if (province == null) return false;
-
         if (province.hasMoneyForStrongTower()) {
             gameController.takeSnapshot();
             gameController.replayManager.onTowerBuilt(hex, true);
@@ -1416,7 +1450,6 @@ public class FieldManager implements EncodeableYio {
 
     public boolean buildFarm(Province province, Hex hex) {
         if (province == null) return false;
-
         if (!hex.hasThisSupportiveObjectNearby(Obj.TOWN) && !hex.hasThisSupportiveObjectNearby(Obj.FARM) && !hex.hasThisSupportiveObjectNearby(Obj.CITY)) {
             return false;
         }
@@ -1440,6 +1473,7 @@ public class FieldManager implements EncodeableYio {
 
     public boolean buildTree(Province province, Hex hex) {
         if (province == null) return false;
+        if (hex.sea) return false;
         if (province.hasMoneyForTree()) {
             gameController.takeSnapshot();
             spawnTree(hex);
@@ -1680,10 +1714,14 @@ public class FieldManager implements EncodeableYio {
                 Province province = new Province(gameController, tempList);
                 province.money = 0;
                 if (!province.hasCapital()) {
-                    province.placeCapitalInRandomPlace(gameController.getPredictableRandom());
-                    gameController.namingManager.checkForCapitalRelocate(previousObject, hex, province);
+                    if(GameRules.captainAsCityRules) {
+                        province.placeCapitalInRandomCity(gameController.getPredictableRandom());
+                        gameController.namingManager.checkForCapitalRelocate(previousObject, hex, province);
+                    }else{
+                        province.placeCapitalInRandomPlace(gameController.getPredictableRandom());
+                        gameController.namingManager.checkForCapitalRelocate(previousObject, hex, province);
+                    }
                 }
-
                 addProvince(province);
                 provincesAdded.add(province);
             } else {
@@ -1824,7 +1862,7 @@ public class FieldManager implements EncodeableYio {
 
         if(unit.strength>=6 && unit.strength != 10){
             if(unit.strength==8){
-                moveFix=2;
+                moveFix=3;
             }
             else if(unit.strength==9){
                 moveFix=3;
@@ -1832,6 +1870,9 @@ public class FieldManager implements EncodeableYio {
             else{
                 moveFix=-1;
             }
+        }
+        if(unit.currentHex.isSea()){
+            moveFix=moveFix+2;
         }
         moveResult=GameRules.UNIT_MOVE_LIMIT+moveFix;
 

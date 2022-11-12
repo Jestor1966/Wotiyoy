@@ -14,6 +14,5 @@ public class Obj {
     public static final int FORT = 10;
     public static final int CITY = 11;
     public static final int REVOLT = 12;
-    public static final int RIVER = 13;
 
 }

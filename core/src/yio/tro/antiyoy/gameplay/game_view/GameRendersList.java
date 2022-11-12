@@ -10,6 +10,7 @@ public class GameRendersList {
 
     public RenderFogOfWar renderFogOfWar;
     public RenderCityNames renderCityNames;
+    public RenderProvinceNames renderProvinceNames;
     public RenderMoveZone renderMoveZone;
     public RenderBackgroundCache renderBackgroundCache;
     public RenderSelectionShadows renderSelectionShadows;
@@ -44,6 +45,7 @@ public class GameRendersList {
     public void create() {
         renderFogOfWar = new RenderFogOfWar(this);
         renderCityNames = new RenderCityNames(this);
+        renderProvinceNames = new RenderProvinceNames(this);
         renderMoveZone = new RenderMoveZone(this);
         renderBackgroundCache = new RenderBackgroundCache(this);
         renderSelectionShadows = new RenderSelectionShadows(this);

@@ -14,6 +14,7 @@ public class Fonts {
     public static BitmapFont buttonFont;
     public static BitmapFont gameFont;
     public static BitmapFont microFont;
+    public static BitmapFont mapFont;
     public static BitmapFont smallerMenuFont;
     public static int FONT_SIZE;
 
@@ -25,41 +26,59 @@ public class Fonts {
         FileHandle fontFile = loadFontFile();
         FreeTypeFontGenerator generator = new FreeTypeFontGenerator(fontFile);
         FreeTypeFontGenerator.FreeTypeFontParameter parameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
-        FONT_SIZE = (int) (0.041 * Gdx.graphics.getHeight());
 
-        parameter.size = (int) (0.85f * FONT_SIZE);
+        if(LanguagesManager.getInstance().getLanguage().equals("cn_CN")){
+            FONT_SIZE = 21;
+        }else {
+            FONT_SIZE = (int) (0.024 * Gdx.graphics.getHeight());
+        }
+
+
         parameter.characters = getAllCharacters();
+        //System.out.println(parameter.characters);
+
+        parameter.size = (int) (0.8f * FONT_SIZE);
         parameter.flip = true;
         buttonFont = generator.generateFont(parameter);
+        buttonFont.setColor(Color.BLACK);
 
-        parameter.size = FONT_SIZE;
+        parameter.size = (int) (0.8f * FONT_SIZE);
         parameter.flip = false;
         gameFont = generator.generateFont(parameter);
         gameFont.setColor(Color.WHITE);
 
-        parameter.size = (int) (0.5 * FONT_SIZE);
+        parameter.size = (int) (0.8f * FONT_SIZE);
         parameter.flip = false;
         microFont = generator.generateFont(parameter);
         microFont.setColor(Color.WHITE);
 
-        parameter.size = (int) (0.8 * FONT_SIZE);
+        parameter.size = (int) (0.8f * FONT_SIZE);
         parameter.flip = false;
         smallerMenuFont = generator.generateFont(parameter);
         smallerMenuFont.setColor(Color.BLACK);
 
+        parameter.size = (int) (0.8f * FONT_SIZE);
+        parameter.flip = false;
+        parameter.borderWidth = (int) (0.01f * FONT_SIZE);
+        parameter.borderColor = Color.BLACK;
+        mapFont = generator.generateFont(parameter);
+        mapFont.setColor(Color.WHITE);
+
         generator.dispose();
 
-        initFontChinese();
+        //initFontChinese();
 
         YioGdxGame.say("time to generate fonts: " + (System.currentTimeMillis() - time1));
     }
 
 
     private static FileHandle loadFontFile() {
+        /*
         if (LanguagesManager.getInstance().getLanguage().equals("el_GR")) {
             System.out.println("Greek font loaded");
             return Gdx.files.internal("font_greek.ttf");
-        }
+        }*/
+
         //if (LanguagesManager.getInstance().getLanguage().equals("cn_CN")) {
        //     System.out.println("Chinese font loaded");
        //     return Gdx.files.internal("font_cn.ttf");

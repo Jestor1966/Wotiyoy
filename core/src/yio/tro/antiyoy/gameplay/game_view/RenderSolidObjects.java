@@ -57,7 +57,11 @@ public class RenderSolidObjects extends GameRender{
     private TextureRegion getSolidObjectTexture(Hex hex, int quality) {
         switch (hex.objectInside) {
             case Obj.GRAVE:
-                return gameView.texturesManager.graveTexture.getTexture(quality);
+                if(hex.isSea()){
+                    return gameView.texturesManager.graveSeaTexture.getTexture(quality);
+                }else{
+                    return gameView.texturesManager.graveTexture.getTexture(quality);
+                }
             case Obj.TOWN:
                 if (GameRules.slayRules) {
                     return gameView.texturesManager.houseTexture.getTexture(quality);
@@ -74,7 +78,7 @@ public class RenderSolidObjects extends GameRender{
             case Obj.STRONG_TOWER:
                 return gameView.texturesManager.strongTowerTexture.getTexture(quality);
             case Obj.MOUNTAIN:
-                return gameView.texturesManager.mountainTexture.getTexture(quality);
+                return gameView.texturesManager.mountainTexture[hex.visualDiversityIndex3].getTexture(quality);
             case Obj.HILL:
                 return gameView.texturesManager.hillTexture.getTexture(quality);
             case Obj.FORT:
@@ -82,7 +86,7 @@ public class RenderSolidObjects extends GameRender{
             case Obj.REVOLT:
                 return gameView.texturesManager.revoltTexture.getTexture(quality);
             case Obj.CITY:
-                return gameView.texturesManager.cityTexture.getTexture(quality);
+                return gameView.texturesManager.cityTexture[hex.visualDiversityIndex2].getTexture(quality);
             default:
                 return gameView.texturesManager.selectionPixel;
         }

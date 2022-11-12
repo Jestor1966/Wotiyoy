@@ -22,12 +22,21 @@ public class GameTexturesManager {
             hexLightYellow,hexPrussiaBlue,hexBrown, hexSea,
             hexBlueGreen,hexDeepBlue,hexDeepRed,hexGold,hexTea,
             hexPaper,hexOld,hexBamboo,hexByzantine,hexPink,hexMing,hexGrayGreen,
-            hexColor1, hexColor2, hexColor3;
+            hexColor1, hexColor2, hexColor3, hexColor4, hexColor5, hexColor6;
+
+    TextureRegion hexGreenSea, hexRedSea, hexBlueSea, hexYellowSea, hexCyanSea ,
+            hexAlgaeSea, hexLavenderSea, hexOrchidSea, hexPurpleSea, hexRoseSea, hexWhiskeySea,
+            hexWhiteSea, hexDarkblueSea, hexWhiteblueSea,
+            hexLightYellowSea,hexPrussiaBlueSea,hexBrownSea, hexSeaSea,
+            hexBlueGreenSea,hexDeepBlueSea,hexDeepRedSea,hexGoldSea,hexTeaSea,
+            hexPaperSea,hexOldSea,hexBambooSea,hexByzantineSea,hexPinkSea,hexMingSea,hexGrayGreenSea,
+            hexColor1Sea, hexColor2Sea, hexColor3Sea,hexColor4Sea, hexColor5Sea, hexColor6Sea;
+
     public TextureRegion blackPixel, grayPixel, selectionPixel, shadowHexTexture, gradientShadow, transCircle1, transCircle2, selUnitShadow;
     TextureRegion sideShadow, responseAnimHexTexture, selectionBorder, defenseIcon;
     public Storage3xTexture manTextures[], palmTexture[], houseTexture,towerTexture, graveTexture, pineTexture[];
-    public Storage3xTexture castleTexture, strongTowerTexture, mountainTexture, hillTexture, fortTexture, cityTexture, revoltTexture, riverTexture, farmTexture[];
-    TextureRegion hexColor4, hexColor5, hexColor6;
+    public Storage3xTexture manSeaTextures[],graveSeaTexture;
+    public Storage3xTexture castleTexture, strongTowerTexture, mountainTexture[], hillTexture, fortTexture, cityTexture[], revoltTexture, farmTexture[];
     public AtlasLoader atlasLoader;
 
 
@@ -101,6 +110,49 @@ public class GameTexturesManager {
         hexColor5 = skinManager.loadHexTexture("color5");
         hexColor6 = skinManager.loadHexTexture("color6");
 
+        loadSeaHexTextures();
+    }
+
+    private void loadSeaHexTextures() {
+        SkinManager skinManager = getSkinManager();
+        hexGreenSea = skinManager.loadSeaHexTexture("green");
+        hexRedSea = skinManager.loadSeaHexTexture("red");
+        hexBlueSea = skinManager.loadSeaHexTexture("blue");
+        hexCyanSea = skinManager.loadSeaHexTexture("cyan");
+        hexYellowSea = skinManager.loadSeaHexTexture("yellow");
+        hexAlgaeSea = skinManager.loadSeaHexTexture("algae");
+        hexLavenderSea = skinManager.loadSeaHexTexture("lavender");
+        hexOrchidSea = skinManager.loadSeaHexTexture("orchid");
+        hexPurpleSea= skinManager.loadSeaHexTexture("purple");
+        hexRoseSea = skinManager.loadSeaHexTexture("rose");
+        hexWhiskeySea = skinManager.loadSeaHexTexture("whiskey");
+        hexWhiteSea = skinManager.loadSeaHexTexture("white");
+        hexDarkblueSea = skinManager.loadSeaHexTexture("darkblue");
+        hexWhiteblueSea = skinManager.loadSeaHexTexture("whiteblue");
+        hexSeaSea = skinManager.loadSeaHexTexture("sea");
+        hexPrussiaBlueSea = skinManager.loadSeaHexTexture("prussia_blue");
+        hexLightYellowSea = skinManager.loadSeaHexTexture("light_yellow");
+        hexBrownSea = skinManager.loadSeaHexTexture("brown");
+        hexBlueGreenSea = skinManager.loadSeaHexTexture("bluegreen");
+        hexDeepBlueSea = skinManager.loadSeaHexTexture("deepblue");
+        hexDeepRedSea = skinManager.loadSeaHexTexture("deepred");
+        hexGoldSea = skinManager.loadSeaHexTexture("gold");
+        hexTeaSea = skinManager.loadSeaHexTexture("tea");
+        hexPaperSea = skinManager.loadSeaHexTexture("paper");
+        hexOldSea = skinManager.loadSeaHexTexture("old");
+        hexBambooSea = skinManager.loadSeaHexTexture("bamboo");
+        hexByzantineSea = skinManager.loadSeaHexTexture("byzantine");
+        hexPinkSea = skinManager.loadSeaHexTexture("pink");
+        hexMingSea = skinManager.loadSeaHexTexture("ming");
+        hexGrayGreenSea = skinManager.loadSeaHexTexture("gray_green");
+
+        hexColor1Sea = skinManager.loadSeaHexTexture("color1");
+        hexColor2Sea = skinManager.loadSeaHexTexture("color2");
+        hexColor3Sea = skinManager.loadSeaHexTexture("color3");
+        hexColor4Sea = skinManager.loadSeaHexTexture("color4");
+        hexColor5Sea = skinManager.loadSeaHexTexture("color5");
+        hexColor6Sea = skinManager.loadSeaHexTexture("color6");
+
     }
 
 
@@ -111,10 +163,19 @@ public class GameTexturesManager {
         for (int i = 0; i < 9; i++) {
             manTextures[i] = new Storage3xTexture(atlasLoader, "man" + i + ".png");
         }
+
+        manSeaTextures = new Storage3xTexture[9];
+        for (int i = 0; i < 9; i++) {
+            manSeaTextures[i] = new Storage3xTexture(atlasLoader, "man" + i + "_sea.png");
+        }
+
         graveTexture = new Storage3xTexture(atlasLoader, "grave.png");
+        graveSeaTexture = new Storage3xTexture(atlasLoader, "grave_sea.png");
         houseTexture = new Storage3xTexture(atlasLoader, "house.png");
         palmTexture = new Storage3xTexture[3];
         pineTexture = new Storage3xTexture[3];
+        cityTexture = new Storage3xTexture[3];
+        mountainTexture = new Storage3xTexture[2];
         palmTexture[0] = new Storage3xTexture(atlasLoader, "palm.png");
         palmTexture[1] = new Storage3xTexture(atlasLoader, "palm2.png");
         palmTexture[2] = new Storage3xTexture(atlasLoader, "palm3.png");
@@ -131,12 +192,14 @@ public class GameTexturesManager {
         farmTexture[4] = new Storage3xTexture(atlasLoader, "farm5.png");
         farmTexture[5] = new Storage3xTexture(atlasLoader, "farm6.png");
         strongTowerTexture = new Storage3xTexture(atlasLoader, "strong_tower.png");
-        mountainTexture = new Storage3xTexture(atlasLoader, "mountain.png");
+        mountainTexture[0] = new Storage3xTexture(atlasLoader, "mountain.png");
+        mountainTexture[1] = new Storage3xTexture(atlasLoader, "mountain2.png");
         hillTexture = new Storage3xTexture(atlasLoader, "hill.png");
         fortTexture = new Storage3xTexture(atlasLoader, "fort.png");
-        cityTexture = new Storage3xTexture(atlasLoader, "city.png");
+        cityTexture[0] = new Storage3xTexture(atlasLoader, "city.png");
+        cityTexture[1] = new Storage3xTexture(atlasLoader, "city2.png");
+        cityTexture[2] = new Storage3xTexture(atlasLoader, "city3.png");
         revoltTexture = new Storage3xTexture(atlasLoader, "revolt.png");
-        riverTexture= new Storage3xTexture(atlasLoader, "river.png");
     }
 
 
@@ -257,13 +320,91 @@ public class GameTexturesManager {
             case 31:
                 return hexBamboo;
             case 32:
-                return hexPink;
-            case 33:
                 return hexByzantine;
+            case 33:
+                return hexPink;
             case 34:
                 return hexMing;
             case 35:
                 return hexGrayGreen;
+        }
+    }
+
+    public TextureRegion getSeaHexTexture(int color) {
+        switch (color) {
+            default:
+            case 0:
+                return hexGreenSea;
+            case 1:
+                return hexRedSea;
+            case 2:
+                return hexBlueSea;
+            case 3:
+                return hexCyanSea;
+            case 4:
+                return hexYellowSea;
+            case 5:
+                return hexColor1Sea;
+            case 6:
+                return hexColor2Sea;
+            case 7:
+                return hexColor3Sea;
+            case 8:
+                return hexColor4Sea;
+            case 9:
+                return hexColor5Sea;
+            case 10:
+                return hexColor6Sea;
+            case 11:
+                return hexAlgaeSea;
+            case 12:
+                return hexLavenderSea;
+            case 13:
+                return hexOrchidSea;
+            case 14:
+                return hexPurpleSea;
+            case 15:
+                return hexRoseSea;
+            case 16:
+                return hexWhiskeySea;
+            case 17:
+                return hexWhiteSea;
+            case 18:
+                return hexDarkblueSea;
+            case 19:
+                return hexWhiteblueSea;
+            case 20:
+                return hexSeaSea;
+            case 21:
+                return hexLightYellowSea;
+            case 22:
+                return hexPrussiaBlueSea;
+            case 23:
+                return hexBrownSea;
+            case 24:
+                return hexBlueGreenSea;
+            case 25:
+                return hexDeepBlueSea;
+            case 26:
+                return hexDeepRedSea;
+            case 27:
+                return hexGoldSea;
+            case 28:
+                return hexTeaSea;
+            case 29:
+                return hexPaperSea;
+            case 30:
+                return hexOldSea;
+            case 31:
+                return hexBambooSea;
+            case 32:
+                return hexByzantineSea;
+            case 33:
+                return hexPinkSea;
+            case 34:
+                return hexMingSea;
+            case 35:
+                return hexGrayGreenSea;
         }
     }
 
@@ -272,6 +413,9 @@ public class GameTexturesManager {
         return getHexTexture(getGameController().getColorByFraction(fraction));
     }
 
+    public TextureRegion getSeaHexTextureByFraction(int fraction) {
+        return getSeaHexTexture(getGameController().getColorByFraction(fraction));
+    }
 
     private SkinManager getSkinManager() {
         return gameView.getSkinManager();
@@ -280,9 +424,18 @@ public class GameTexturesManager {
 
     TextureRegion getUnitTexture(Unit unit) {
         if (!getGameController().isPlayerTurn() && unit.moveFactor.get() < 1 && unit.moveFactor.get() > 0.1) {
-            return manTextures[unit.strength - 1].getLowest();
+            if(unit.currentHex.sea){
+                return manSeaTextures[unit.strength - 1].getLowest();
+            }else{
+                return manTextures[unit.strength - 1].getLowest();
+            }
         }
-        return manTextures[unit.strength - 1].getTexture(gameView.currentZoomQuality);
+        if(unit.currentHex.sea){
+            return manSeaTextures[unit.strength - 1].getTexture(gameView.currentZoomQuality);
+        }else{
+            return manTextures[unit.strength - 1].getTexture(gameView.currentZoomQuality);
+        }
+
     }
 
 

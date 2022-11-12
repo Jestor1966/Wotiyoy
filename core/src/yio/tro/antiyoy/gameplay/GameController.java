@@ -702,6 +702,38 @@ public class GameController {
         this.playersNumber = playersNumber;
     }
 
+    public int getRealUnitStrength(Unit unit){
+        int result = unit.strength;
+        if(unit.strength==5) {
+            result=1;
+        }else if(unit.strength==6) {
+            result=2;
+        }else if(unit.strength==7) {
+            result=1;
+        }else if(unit.strength==8) {
+            result=2;
+        }else if(unit.strength==9) {
+            result=4;
+        }
+        return result;
+    }
+
+    public int getRealUnitStrength(int unitStrength){
+        int result = unitStrength;
+        if(unitStrength==5) {
+            result=1;
+        }else if(unitStrength==6) {
+            result=2;
+        }else if(unitStrength==7) {
+            result=1;
+        }else if(unitStrength==8) {
+            result=3;
+        }else if(unitStrength==9) {
+            result=4;
+        }
+        return result;
+    }
+
 
     public void initTutorial() {
         SettingsManager.fastConstructionEnabled = false;
@@ -996,6 +1028,7 @@ public class GameController {
             if (!GameRules.replayMode) return;
         }
 
+
         replayManager.onUnitMoved(unit.currentHex, target);
         if (isMovementPeaceful(unit, target)) {
             moveUnitPeacefully(unit, target);
@@ -1039,18 +1072,16 @@ public class GameController {
                 for(int i=0;i<6;i++){
                     hexTemp=destination.getAdjacentHex(i);
                     if(hexTemp.containsUnit()){
-                        if(hexTemp.fraction!=turn || fieldManager.diplomacyManager.isWar(hexTemp, destination)){
-                            if(hexTemp.unit.strength==1 || hexTemp.unit.strength==5 || hexTemp.unit.strength==7){
+                        if(hexTemp.fraction!=turn && fieldManager.diplomacyManager.isWar(hexTemp, destination)){
+                            if(hexTemp.unit.strength==1 || hexTemp.unit.strength==2 || hexTemp.unit.strength==5 || hexTemp.unit.strength==6){
                                 fieldManager.cleanOutHex(hexTemp);
                                 fieldManager.addSolidObject(hexTemp,Obj.GRAVE);
-                            }
-                            else if(hexTemp.unit.strength==2 || hexTemp.unit.strength==3 || hexTemp.unit.strength==4){
-                                hexTemp.unit.strength=hexTemp.unit.strength-1;
                             }
                         }
                     }
                 }
             }
+
         }
     }
 

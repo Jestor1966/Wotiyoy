@@ -38,7 +38,7 @@ public class SceneEvent extends AbstractModalScene {
 
     public void showEvent(String titleKey, String eventKey) {
         create();
-        dialog.setEvent(getString(titleKey), eventKey);
+        dialog.setEvent(getString(titleKey), eventKey,true);
         forceElementToTop(dialog);
     }
 

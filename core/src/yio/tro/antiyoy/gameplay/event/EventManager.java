@@ -4,6 +4,7 @@ import yio.tro.antiyoy.gameplay.GameController;
 import yio.tro.antiyoy.gameplay.data_storage.DecodeManager;
 import yio.tro.antiyoy.gameplay.data_storage.EncodeableYio;
 import yio.tro.antiyoy.gameplay.messages.PreparedMessage;
+import yio.tro.antiyoy.gameplay.rules.GameRules;
 import yio.tro.antiyoy.menu.scenes.Scenes;
 import yio.tro.antiyoy.stuff.RepeatYio;
 
@@ -49,25 +50,27 @@ public class EventManager implements EncodeableYio{
         //PreparedEvent preparedEvent = event.get(0);
         //event.remove(0);
         //System.out.println(event);
-        for(PreparedEvent preparedEvent : event){
-            if(gameController.matchStatistics.turnsMade==preparedEvent.turns){
-                if(preparedEvent.type==1){
-                    Scenes.sceneDipMessage.showMessage(preparedEvent.getTitle(), preparedEvent.value);
-                    remove = preparedEvent.isLoop;
-                    break;
-                }else if(preparedEvent.type==2){
+        if(GameRules.eventEnabled){
+            for(PreparedEvent preparedEvent : event){
+                if(gameController.matchStatistics.turnsMade==preparedEvent.turns){
+                    if(preparedEvent.type==1){
+                        Scenes.sceneDipMessage.showEvent(preparedEvent.getTitle(), preparedEvent.value, true);
+                        remove = preparedEvent.isLoop;
+                        break;
+                    }else if(preparedEvent.type==2){
 
-                }else if(preparedEvent.type==3){
+                    }else if(preparedEvent.type==3){
 
+                    }
                 }
+                i++;
             }
-            i++;
-        }
 
-        if(!remove){
-            event.remove(i);
-        }else{
-            //event.get(event.size()).setTurns(event.get(i).turns+1);
+            if(!remove){
+                event.remove(i);
+            }else{
+                //event.get(event.size()).setTurns(event.get(i).turns+1);
+            }
         }
     }
 

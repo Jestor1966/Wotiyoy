@@ -122,7 +122,7 @@ public class NamingManager implements SavableYio{
         renamedHexes.remove(previousHex);
         renamedLeaderHexes.remove(previousHex);
         setHexName(province.getCapital(), name);
-        setLeaderName(province.getCapital(),name);
+        setLeaderName(province.getCapital(),leader);
     }
 
 

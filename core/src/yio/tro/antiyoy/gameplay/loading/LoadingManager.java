@@ -356,7 +356,6 @@ public class LoadingManager {
 
     private void beginCreation() {
         if (!DebugFlags.testMode) {
-            System.out.println();
             System.out.println("Loading level...");
         }
 

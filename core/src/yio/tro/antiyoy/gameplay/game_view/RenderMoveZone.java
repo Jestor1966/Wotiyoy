@@ -140,18 +140,33 @@ public class RenderMoveZone extends GameRender {
 
             if (gameController.isPlayerTurn(hex.fraction) && hex.animFactor.get() < 1 && hex.animFactor.getDy() > 0) {
                 if (hex.animFactor.get() < 1) {
-                    currentHexLastTexture = texturesManager.getHexTextureByFraction(hex.previousFraction);
+                    if(hex.sea){
+                        currentHexLastTexture = texturesManager.getSeaHexTextureByFraction(hex.previousFraction);
+                    }else{
+                        currentHexLastTexture = texturesManager.getHexTextureByFraction(hex.previousFraction);
+                    }
+
                     batchMovable.setColor(c.r, c.g, c.b, 1f - hex.animFactor.get());
                     batchMovable.draw(currentHexLastTexture, pos.x - hvSize, pos.y - hvSize, 2 * hvSize, 2 * hvSize);
                 }
-                currentHexTexture = texturesManager.getHexTextureByFraction(hex.fraction);
+                if(hex.sea){
+                    currentHexTexture = texturesManager.getSeaHexTexture(hex.fraction);
+                }else{
+                    currentHexTexture = texturesManager.getHexTextureByFraction(hex.fraction);
+                }
+
                 batchMovable.setColor(c.r, c.g, c.b, hex.animFactor.get());
                 batchMovable.draw(currentHexTexture, pos.x - hvSize, pos.y - hvSize, 2 * hvSize, 2 * hvSize);
                 continue;
             }
 
             batchMovable.setColor(c.r, c.g, c.b, 1);
-            currentHexTexture = texturesManager.getHexTextureByFraction(hex.fraction);
+            if(hex.sea){
+                currentHexTexture = texturesManager.getSeaHexTextureByFraction(hex.fraction);
+            }else{
+                currentHexTexture = texturesManager.getHexTextureByFraction(hex.fraction);
+            }
+
             batchMovable.draw(currentHexTexture, pos.x - hvSize, pos.y - hvSize, 2 * hvSize, 2 * hvSize);
         }
     }

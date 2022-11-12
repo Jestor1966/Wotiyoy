@@ -81,9 +81,9 @@ public class RenderFireworksElement extends MenuRender {
             case 7: return getGameView().texturesManager.pineTexture[0].getLowest();
             case 8: return getGameView().texturesManager.towerTexture.getLowest();
             case 9: return getGameView().texturesManager.fortTexture.getLowest();
-            case 10: return getGameView().texturesManager.mountainTexture.getLowest();
+            case 10: return getGameView().texturesManager.mountainTexture[0].getLowest();
             case 11: return getGameView().texturesManager.hillTexture.getLowest();
-            case 12: return getGameView().texturesManager.cityTexture.getLowest();
+            case 12: return getGameView().texturesManager.cityTexture[0].getLowest();
         }
     }
 

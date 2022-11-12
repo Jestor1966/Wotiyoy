@@ -45,16 +45,16 @@ public class AiFactory {
         switch (difficulty) {
             default:
             case Difficulty.EASY:
-                aiList.add(getEasyAi(fraction));
+                aiList.add(getMasterAi(fraction));
                 break;
             case Difficulty.NORMAL:
-                aiList.add(getNormalAi(fraction));
+                aiList.add(getMasterAi(fraction));
                 break;
             case Difficulty.HARD:
-                aiList.add(getHardAi(fraction));
+                aiList.add(getMasterAi(fraction));
                 break;
             case Difficulty.EXPERT:
-                aiList.add(getExpertAi(fraction));
+                aiList.add(getMasterAi(fraction));
                 break;
             case Difficulty.BALANCER:
                 aiList.add(getBalancerAi(fraction));
@@ -67,52 +67,32 @@ public class AiFactory {
 
 
     private AbstractAi getMasterAi(int fraction) {
-        if (GameRules.slayRules) {
-            return new AiExpertSlayRules(gameController, fraction);
-        }
-
         return new AiMaster(gameController, fraction);
     }
 
 
     private ArtificialIntelligence getBalancerAi(int fraction) {
-        if (GameRules.slayRules) {
-            return new AiBalancerSlayRules(gameController, fraction);
-        }
-
         return new AiBalancerGenericRules(gameController, fraction);
     }
 
 
     private ArtificialIntelligence getExpertAi(int fraction) {
-        if (GameRules.slayRules) {
-            return new AiExpertSlayRules(gameController, fraction);
-        }
-
-        return new AiExpertGenericRules(gameController, fraction);
+        return new AiBalancerGenericRules(gameController, fraction);
     }
 
 
     private ArtificialIntelligence getHardAi(int fraction) {
-        if (GameRules.slayRules) {
-            return new AiHardSlayRules(gameController, fraction);
-        }
-
-        return new AiHardGenericRules(gameController, fraction);
+        return new AiBalancerGenericRules(gameController, fraction);
     }
 
 
     private ArtificialIntelligence getNormalAi(int fraction) {
-        if (GameRules.slayRules) {
-            return new AiNormalSlayRules(gameController, fraction);
-        }
-
-        return new AiNormalGenericRules(gameController, fraction);
+        return new AiBalancerGenericRules(gameController, fraction);
     }
 
 
     private ArtificialIntelligence getEasyAi(int fraction) {
-        return new AiEasy(gameController, fraction);
+        return new AiBalancerGenericRules(gameController, fraction);
     }
 
 }

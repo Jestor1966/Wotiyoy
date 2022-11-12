@@ -62,6 +62,24 @@ public class SkinManager {
         }
     }
 
+    public TextureRegion loadSeaHexTexture(String name) {
+        switch (skinType) {
+            default:
+            case original:
+                return GraphicsYio.loadTextureRegion("hex_" + name + "_sea.png", false);
+            case points:
+                return GraphicsYio.loadTextureRegion("skins/points/points_hex_" + name + "_sea.png", false);
+            case grid:
+                return GraphicsYio.loadTextureRegion("skins/grid/hex_" + name + "_sea.png", false);
+            //case jannes_peters:
+            //return GraphicsYio.loadTextureRegion("skins/jannes/hex_" + name + ".png", false);
+            // case katuri:
+            //return GraphicsYio.loadTextureRegion("skins/katuri/hex_" + name + ".png", false);
+            // case aww2:
+            //return GraphicsYio.loadTextureRegion("skins/aww2/hex_" + name + ".png", false);
+        }
+    }
+
 
     public String getExclamationMarkPath() {
         switch (skinType) {

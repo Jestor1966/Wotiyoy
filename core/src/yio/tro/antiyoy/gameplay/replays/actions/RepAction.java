@@ -25,6 +25,7 @@ public abstract class RepAction {
     public static final int FORT_SPAWNED = 13;
     public static final int CITY_SPAWNED_ = 14;
     public static final int REVOLT_SPAWNED = 15;
+    public static final int HEX_CHANGED_FRACTION_WITHOUT_PROVINCE = 16;
 
     public int type;
 

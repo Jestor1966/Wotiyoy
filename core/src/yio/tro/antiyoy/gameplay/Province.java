@@ -18,6 +18,8 @@ public class Province {
     private GameController gameController;
     public String name,leader;
     public float nameWidth,leaderWidth;
+
+    public float[] aiPara;
     PointYio tempPoint;
 
 
@@ -25,18 +27,30 @@ public class Province {
         this.gameController = gameController;
         this.hexList = new ArrayList<>(hexList);
         tempList = new ArrayList<>();
+        aiPara = new float[3];
+        aiPara[0]=1f;
+        aiPara[1]=1f;
+        aiPara[2]=1f;
         money = DEFAULT_MONEY;
         tempPoint = new PointYio();
     }
 
 
+
+
     void placeCapitalInRandomPlace(Random random) {
         if (GameRules.replayMode) return;
+
+        if(isAllSea()){
+            gameController.fieldManager.controlAll(this);
+            return;
+        }
 
         if(GameRules.captainAsCityRules){
             Hex randomPlace = getCityHex(random);
             if (randomPlace == null) {
                 gameController.fieldManager.controlAll(this);
+                return;
             }else{
                 gameController.cleanOutHex(randomPlace);
                 gameController.addSolidObject(randomPlace, Obj.TOWN);
@@ -55,6 +69,10 @@ public class Province {
             if (randomPlace == null) {
                 randomPlace = getRandomHex(random);
             }
+            if(randomPlace == null){
+                gameController.fieldManager.controlAll(this);
+                return;
+            }
 
             gameController.cleanOutHex(randomPlace);
             gameController.addSolidObject(randomPlace, Obj.TOWN);
@@ -66,6 +84,32 @@ public class Province {
             randomPlace.animFactor.appear(1, 2);
         }
 
+        updateName();
+        updateLeader();
+    }
+
+    void placeCapitalInRandomCity(Random random) {
+        if (GameRules.replayMode) return;
+
+        if(isAllSea()){
+            gameController.fieldManager.controlAll(this);
+            return;
+        }
+
+            Hex randomPlace = getCityHex(random);
+            if (randomPlace == null) {
+                gameController.fieldManager.controlAll(this);
+                return;
+            }else{
+                gameController.cleanOutHex(randomPlace);
+                gameController.addSolidObject(randomPlace, Obj.TOWN);
+                gameController.replayManager.onCitySpawned(randomPlace);
+                gameController.addAnimHex(randomPlace);
+                gameController.updateCacheOnceAfterSomeTime();
+                randomPlace.previousFraction = randomPlace.fraction;
+                randomPlace.animFactor.setValues(0, 0);
+                randomPlace.animFactor.appear(1, 2);
+            }
         updateName();
         updateLeader();
     }
@@ -115,7 +159,13 @@ public class Province {
 
 
     public Hex getRandomHex(Random random) {
-        return hexList.get(random.nextInt(hexList.size()));
+        tempList.clear();
+        for (Hex hex : hexList) {
+            if (hex.isSea()) continue;
+            tempList.add(hex);
+        }
+        if (tempList.size() == 0) return null;
+        return tempList.get(random.nextInt(tempList.size()));
     }
 
 
@@ -123,6 +173,7 @@ public class Province {
         tempList.clear();
         for (Hex hex : hexList) {
             if (hex.containsTower()) continue;
+            if (hex.isSea()) continue;
             tempList.add(hex);
         }
         if (tempList.size() == 0) return null;
@@ -137,15 +188,36 @@ public class Province {
         return copy;
     }
 
+    public ArrayList<Hex> getFarms() {
+        tempList.clear();
+        for (Hex hex : hexList) {
+            if(hex.objectInside==Obj.FARM){
+                tempList.add(hex);
+            }
+        }
+        return tempList;
+    }
+
 
     private Hex getFreeHex(Random random) {
         tempList.clear();
         for (Hex hex : hexList) {
             if (!hex.isFree()) continue;
+            if(hex.isSea()) continue;
             tempList.add(hex);
         }
         if (tempList.size() == 0) return null;
         return tempList.get(random.nextInt(tempList.size()));
+    }
+
+    public int getFreeLandNum() {
+        int i=0;
+        for (Hex hex : hexList) {
+            if (!hex.isFree()) continue;
+            if(hex.isSea()) continue;
+            i++;
+        }
+        return i;
     }
 
     private Hex getCityHex(Random random) {
@@ -156,6 +228,13 @@ public class Province {
         }
         if (tempList.size() == 0) return null;
         return tempList.get(random.nextInt(tempList.size()));
+    }
+
+    private boolean isAllSea() {
+        for (Hex hex : hexList) {
+            if (!hex.isSea()) return false;
+        }
+        return true;
     }
 
 
@@ -265,8 +344,14 @@ public class Province {
 
     private void clearFromHouses() {
         for (Hex hex : hexList)
-            if (hex.objectInside == Obj.TOWN)
+            if (hex.objectInside == Obj.TOWN){
                 gameController.cleanOutHex(hex);
+                if(GameRules.captainAsCityRules){
+                    hex.setObjectInside(Obj.CITY);
+                }
+            }
+
+
     }
 
 
@@ -327,6 +412,14 @@ public class Province {
                     break;
                 }
             }
+        }
+        return result;
+    }
+
+    public int getSeaHexesNum(){
+        int result=0;
+        for (Hex hex:hexList){
+            if(hex.isSea()) result++;
         }
         return result;
     }

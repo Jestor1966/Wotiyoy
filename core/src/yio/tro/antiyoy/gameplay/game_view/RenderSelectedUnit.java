@@ -34,13 +34,24 @@ public class RenderSelectedUnit extends GameRender{
                 1.6f * hexViewSize + 4 * ar
         );
 
-        batchMovable.draw(
-                gameView.texturesManager.manTextures[gameController.selectionManager.selectedUnit.strength - 1].getNormal(),
-                pos.x - 0.7f * hexViewSize - ar,
-                pos.y - 0.6f * hexViewSize - ar,
-                1.4f * hexViewSize + 2 * ar,
-                1.6f * hexViewSize + 2 * ar
-        );
+        if(gameController.selectionManager.selectedUnit.currentHex.sea){
+            batchMovable.draw(
+                    gameView.texturesManager.manSeaTextures[gameController.selectionManager.selectedUnit.strength - 1].getNormal(),
+                    pos.x - 0.7f * hexViewSize - ar,
+                    pos.y - 0.6f * hexViewSize - ar,
+                    1.4f * hexViewSize + 2 * ar,
+                    1.6f * hexViewSize + 2 * ar
+            );
+        }else{
+            batchMovable.draw(
+                    gameView.texturesManager.manTextures[gameController.selectionManager.selectedUnit.strength - 1].getNormal(),
+                    pos.x - 0.7f * hexViewSize - ar,
+                    pos.y - 0.6f * hexViewSize - ar,
+                    1.4f * hexViewSize + 2 * ar,
+                    1.6f * hexViewSize + 2 * ar
+            );
+        }
+
     }
 
 

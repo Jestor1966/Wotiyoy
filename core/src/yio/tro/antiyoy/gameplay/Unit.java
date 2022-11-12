@@ -61,18 +61,6 @@ public class Unit implements EncodeableYio{
         targetHex.unit = this;
 //      YioGdxGame.say("anim hexes: " + gameController.animHexes.size() + "        selected hexes: " + gameController.selectedHexes.size());
 //      this was wonderful bug. Hexes were added to list several times which caused method move() to be called to many times
-        Hex temp;
-        if(this.strength==6){
-            for(int i=0;i<6;i++){
-                temp=this.currentHex.getAdjacentHex(i);
-                if(temp.active &&!(temp.fraction==currentHex.fraction) && gameController.fieldManager.diplomacyManager.isWar(currentHex, temp)){
-                    if(temp.objectInside==Obj.FORT || temp.objectInside==Obj.CITY){
-                        gameController.fieldManager.setHexFraction(temp, currentHex.fraction);
-                        break;
-                    }
-                }
-            }
-        }
         return true;
     }
 

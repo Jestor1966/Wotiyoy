@@ -4,7 +4,7 @@ public class GameRules {
 
     public static final int MAX_FRACTIONS_QUANTITY = 36;
     public static final int NEUTRAL_FRACTION = 7;
-    public static final int UNIT_MOVE_LIMIT = 2;
+    public static final int UNIT_MOVE_LIMIT = 3;
 
     public static final int PRICE_UNIT = 10;
     public static final int PRICE_TOWER = 15;
@@ -99,7 +99,8 @@ public class GameRules {
 
 
     public static void setSlayRules(boolean slay_rules) {
-        GameRules.slayRules = slay_rules;
+        //GameRules.slayRules = slay_rules;
+        GameRules.slayRules = false;
     }
 
 
@@ -123,6 +124,6 @@ public class GameRules {
     }
 
     public static void setCaptainAsCityRules(boolean captainAsCityRules) {
-        GameRules.diplomaticRelationsLocked = captainAsCityRules;
+        GameRules.captainAsCityRules = captainAsCityRules;
     }
 }

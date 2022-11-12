@@ -1,248 +1,25 @@
 yio/tro/antiyoy/menu/editor_elements/add_relation/AerType.java
  yio.tro.antiyoy.menu.editor_elements.add_relation.AerType
-yio/tro/antiyoy/gameplay/ClickDetector.java
- yio.tro.antiyoy.gameplay.ClickDetector
-yio/tro/antiyoy/gameplay/GlobalStatistics.java
- yio.tro.antiyoy.gameplay.GlobalStatistics
-yio/tro/antiyoy/menu/customizable_list/IncomeType.java
- yio.tro.antiyoy.menu.customizable_list.IncomeType
-yio/tro/antiyoy/stuff/LanguagesManager.java
- yio.tro.antiyoy.stuff.LanguagesManager
-yio/tro/antiyoy/YioTextInputListener.java
- yio.tro.antiyoy.YioTextInputListener
-yio/tro/antiyoy/PlatformType.java
- yio.tro.antiyoy.PlatformType
-yio/tro/antiyoy/menu/slider/SliderParentElement.java
- yio.tro.antiyoy.menu.slider.SliderParentElement
-yio/tro/antiyoy/menu/fireworks_element/FeParticle.java
- yio.tro.antiyoy.menu.fireworks_element.FeParticle
-yio/tro/antiyoy/stuff/VisualTextContainer.java
- yio.tro.antiyoy.stuff.VisualTextContainer
- yio.tro.antiyoy.stuff.VisualTextContainer$1
-yio/tro/antiyoy/factor_yio/MoveBehaviorSpringy.java
- yio.tro.antiyoy.factor_yio.MoveBehaviorSpringy
-yio/tro/antiyoy/gameplay/editor/Coalition.java
- yio.tro.antiyoy.gameplay.editor.Coalition
-yio/tro/antiyoy/gameplay/data_storage/EncodeableYio.java
- yio.tro.antiyoy.gameplay.data_storage.EncodeableYio
-yio/tro/antiyoy/gameplay/game_view/CacheItem.java
- yio.tro.antiyoy.gameplay.game_view.CacheItem
-yio/tro/antiyoy/factor_yio/MoveBehavior.java
- yio.tro.antiyoy.factor_yio.MoveBehavior
-yio/tro/antiyoy/gameplay/skins/SkinManager.java
- yio.tro.antiyoy.gameplay.skins.SkinManager
- yio.tro.antiyoy.gameplay.skins.SkinManager$1
-yio/tro/antiyoy/gameplay/SavableYio.java
- yio.tro.antiyoy.gameplay.SavableYio
-yio/tro/antiyoy/OnKeyReactions.java
- yio.tro.antiyoy.OnKeyReactions
-yio/tro/antiyoy/menu/diplomatic_dialogs/AcActionType.java
- yio.tro.antiyoy.menu.diplomatic_dialogs.AcActionType
-yio/tro/antiyoy/ai/master/PossibleSpending.java
- yio.tro.antiyoy.ai.master.PossibleSpending
-yio/tro/antiyoy/gameplay/diplomacy/exchange/ExchangeTypeListener.java
- yio.tro.antiyoy.gameplay.diplomacy.exchange.ExchangeTypeListener
-yio/tro/antiyoy/stuff/Fonts.java
- yio.tro.antiyoy.stuff.Fonts
-yio/tro/antiyoy/menu/diplomatic_exchange/CavsMode.java
- yio.tro.antiyoy.menu.diplomatic_exchange.CavsMode
-yio/tro/antiyoy/stuff/Yio.java
- yio.tro.antiyoy.stuff.Yio
-yio/tro/antiyoy/factor_yio/MoveBehaviorSimple.java
- yio.tro.antiyoy.factor_yio.MoveBehaviorSimple
-yio/tro/antiyoy/ai/master/MaType.java
- yio.tro.antiyoy.ai.master.MaType
-yio/tro/antiyoy/menu/fast_construction/FcpItem.java
- yio.tro.antiyoy.menu.fast_construction.FcpItem
-yio/tro/antiyoy/menu/context_list_menu/LiEditable.java
- yio.tro.antiyoy.menu.context_list_menu.LiEditable
-yio/tro/antiyoy/gameplay/web/server.java
- yio.tro.antiyoy.gameplay.web.server
-yio/tro/antiyoy/gameplay/AnalyzeBalanceResults.java
- yio.tro.antiyoy.gameplay.AnalyzeBalanceResults
-yio/tro/antiyoy/menu/UiChildrenHolder.java
- yio.tro.antiyoy.menu.UiChildrenHolder
-yio/tro/antiyoy/menu/Animation.java
- yio.tro.antiyoy.menu.Animation
-yio/tro/antiyoy/Storage3xTexture.java
- yio.tro.antiyoy.Storage3xTexture
-yio/tro/antiyoy/stuff/tabs_engine/TabsEngineYio.java
- yio.tro.antiyoy.stuff.tabs_engine.TabsEngineYio
- yio.tro.antiyoy.stuff.tabs_engine.TabsEngineYio$1
-yio/tro/antiyoy/ai/master/MasterAction.java
- yio.tro.antiyoy.ai.master.MasterAction
-yio/tro/antiyoy/gameplay/user_levels/UserLevelsManager.java
- yio.tro.antiyoy.gameplay.user_levels.UserLevelsManager
-yio/tro/antiyoy/gameplay/editor/EditorRelationsManager.java
- yio.tro.antiyoy.gameplay.editor.EditorRelationsManager
-yio/tro/antiyoy/gameplay/name_generator/CustomCityNamesManager.java
- yio.tro.antiyoy.gameplay.name_generator.CustomCityNamesManager
-yio/tro/antiyoy/SoundManagerYio.java
- yio.tro.antiyoy.SoundManagerYio
-yio/tro/antiyoy/factor_yio/MoveBehaviorApproach.java
- yio.tro.antiyoy.factor_yio.MoveBehaviorApproach
-yio/tro/antiyoy/menu/diplomacy_element/DipActionType.java
- yio.tro.antiyoy.menu.diplomacy_element.DipActionType
-yio/tro/antiyoy/menu/diplomatic_exchange/ExUiActionType.java
- yio.tro.antiyoy.menu.diplomatic_exchange.ExUiActionType
-yio/tro/antiyoy/gameplay/editor/LeInputMode.java
- yio.tro.antiyoy.gameplay.editor.LeInputMode
-yio/tro/antiyoy/menu/income_view/MveBehavior.java
- yio.tro.antiyoy.menu.income_view.MveBehavior
-yio/tro/antiyoy/menu/SingleMessages.java
- yio.tro.antiyoy.menu.SingleMessages
-yio/tro/antiyoy/stuff/RenderableTextYio.java
- yio.tro.antiyoy.stuff.RenderableTextYio
-yio/tro/antiyoy/stuff/StoreLinksYio.java
- yio.tro.antiyoy.stuff.StoreLinksYio
- yio.tro.antiyoy.stuff.StoreLinksYio$1
-yio/tro/antiyoy/gameplay/Obj.java
- yio.tro.antiyoy.gameplay.Obj
-yio/tro/antiyoy/stuff/PointYio.java
- yio.tro.antiyoy.stuff.PointYio
-yio/tro/antiyoy/menu/scenes/editor/IGoalChoiceListener.java
- yio.tro.antiyoy.menu.scenes.editor.IGoalChoiceListener
-yio/tro/antiyoy/gameplay/campaign/CampaignProgressManager.java
- yio.tro.antiyoy.gameplay.campaign.CampaignProgressManager
-yio/tro/antiyoy/OneTimeInfo.java
- yio.tro.antiyoy.OneTimeInfo
-yio/tro/antiyoy/gameplay/SelectionTipType.java
- yio.tro.antiyoy.gameplay.SelectionTipType
-yio/tro/antiyoy/stuff/FakeFbYio.java
- yio.tro.antiyoy.stuff.FakeFbYio
-yio/tro/antiyoy/ai/master/PsType.java
- yio.tro.antiyoy.ai.master.PsType
-yio/tro/antiyoy/gameplay/skins/SkinType.java
- yio.tro.antiyoy.gameplay.skins.SkinType
-yio/tro/antiyoy/gameplay/DebugFlags.java
- yio.tro.antiyoy.gameplay.DebugFlags
-yio/tro/antiyoy/gameplay/diplomacy/exchange/ExchangeType.java
- yio.tro.antiyoy.gameplay.diplomacy.exchange.ExchangeType
-yio/tro/antiyoy/stuff/CircleYio.java
- yio.tro.antiyoy.stuff.CircleYio
-yio/tro/antiyoy/factor_yio/MoveBehaviorLighty.java
- yio.tro.antiyoy.factor_yio.MoveBehaviorLighty
-yio/tro/antiyoy/ai/Difficulty.java
- yio.tro.antiyoy.ai.Difficulty
-yio/tro/antiyoy/gameplay/diplomacy/DiplomaticRelation.java
- yio.tro.antiyoy.gameplay.diplomacy.DiplomaticRelation
-yio/tro/antiyoy/stuff/Masking.java
- yio.tro.antiyoy.stuff.Masking
-yio/tro/antiyoy/menu/ICheckButtonListener.java
- yio.tro.antiyoy.menu.ICheckButtonListener
-yio/tro/antiyoy/stuff/scroll_engine/ScrollEngineYio.java
- yio.tro.antiyoy.stuff.scroll_engine.ScrollEngineYio
-yio/tro/antiyoy/MusicManager.java
- yio.tro.antiyoy.MusicManager
-yio/tro/antiyoy/menu/fast_construction/FcpActionType.java
- yio.tro.antiyoy.menu.fast_construction.FcpActionType
-yio/tro/antiyoy/factor_yio/MoveBehaviorMaterial.java
- yio.tro.antiyoy.factor_yio.MoveBehaviorMaterial
-yio/tro/antiyoy/gameplay/editor/EditorCoalitionsManager.java
- yio.tro.antiyoy.gameplay.editor.EditorCoalitionsManager
-yio/tro/antiyoy/menu/editor_elements/edit_land/EleActionType.java
- yio.tro.antiyoy.menu.editor_elements.edit_land.EleActionType
-yio/tro/antiyoy/stuff/GraphicsYio.java
- yio.tro.antiyoy.stuff.GraphicsYio
-yio/tro/antiyoy/stuff/LanguageChooseItem.java
- yio.tro.antiyoy.stuff.LanguageChooseItem
-yio/tro/antiyoy/gameplay/editor/EditorRelation.java
- yio.tro.antiyoy.gameplay.editor.EditorRelation
-yio/tro/antiyoy/LegacyMasking.java
- yio.tro.antiyoy.LegacyMasking
-yio/tro/antiyoy/stuff/tabs_engine/TeMagnet.java
- yio.tro.antiyoy.stuff.tabs_engine.TeMagnet
-yio/tro/antiyoy/stuff/SelectionEngineYio.java
- yio.tro.antiyoy.stuff.SelectionEngineYio
-yio/tro/antiyoy/menu/fireworks_element/FeSequence.java
- yio.tro.antiyoy.menu.fireworks_element.FeSequence
-yio/tro/antiyoy/stuff/RectangleYio.java
- yio.tro.antiyoy.stuff.RectangleYio
-yio/tro/antiyoy/gameplay/name_generator/NameGenerator.java
- yio.tro.antiyoy.gameplay.name_generator.NameGenerator
-yio/tro/antiyoy/menu/ios/IcmgType.java
- yio.tro.antiyoy.menu.ios.IcmgType
-yio/tro/antiyoy/factor_yio/MoveBehaviorPlayful.java
- yio.tro.antiyoy.factor_yio.MoveBehaviorPlayful
-yio/tro/antiyoy/gameplay/RefuseStatistics.java
- yio.tro.antiyoy.gameplay.RefuseStatistics
-yio/tro/antiyoy/stuff/FrameBufferYio.java
- yio.tro.antiyoy.stuff.FrameBufferYio
-yio/tro/antiyoy/stuff/TimeMeasureYio.java
- yio.tro.antiyoy.stuff.TimeMeasureYio
-yio/tro/antiyoy/stuff/object_pool/ReusableYio.java
- yio.tro.antiyoy.stuff.object_pool.ReusableYio
-yio/tro/antiyoy/menu/save_slot_selector/SaveSlotInfo.java
- yio.tro.antiyoy.menu.save_slot_selector.SaveSlotInfo
-yio/tro/antiyoy/stuff/scroll_engine/SegmentYio.java
- yio.tro.antiyoy.stuff.scroll_engine.SegmentYio
-yio/tro/antiyoy/stuff/LongTapDetector.java
- yio.tro.antiyoy.stuff.LongTapDetector
-yio/tro/antiyoy/stuff/AtlasLoader.java
- yio.tro.antiyoy.stuff.AtlasLoader
-yio/tro/antiyoy/CustomLanguageLoader.java
- yio.tro.antiyoy.CustomLanguageLoader
-yio/tro/antiyoy/Splat.java
- yio.tro.antiyoy.Splat
-yio/tro/antiyoy/gameplay/LevelSize.java
- yio.tro.antiyoy.gameplay.LevelSize
-yio/tro/antiyoy/gameplay/loading/LoadingType.java
- yio.tro.antiyoy.gameplay.loading.LoadingType
-yio/tro/antiyoy/gameplay/MatchStatistics.java
- yio.tro.antiyoy.gameplay.MatchStatistics
-yio/tro/antiyoy/stuff/RepeatYio.java
- yio.tro.antiyoy.stuff.RepeatYio
-yio/tro/antiyoy/menu/keyboard/AbstractKbReaction.java
- yio.tro.antiyoy.menu.keyboard.AbstractKbReaction
-yio/tro/antiyoy/Bubble.java
- yio.tro.antiyoy.Bubble
-yio/tro/antiyoy/menu/editor_elements/color_picker/IColorChoiceListener.java
- yio.tro.antiyoy.menu.editor_elements.color_picker.IColorChoiceListener
-yio/tro/antiyoy/gameplay/diplomacy/DipMessageType.java
- yio.tro.antiyoy.gameplay.diplomacy.DipMessageType
-yio/tro/antiyoy/SettingsManager.java
- yio.tro.antiyoy.SettingsManager
-yio/tro/antiyoy/gameplay/rules/GameRules.java
- yio.tro.antiyoy.gameplay.rules.GameRules
-yio/tro/antiyoy/menu/MenuViewYio.java
- yio.tro.antiyoy.menu.MenuViewYio
-yio/tro/antiyoy/factor_yio/FactorYio.java
- yio.tro.antiyoy.factor_yio.FactorYio
-yio/tro/antiyoy/stuff/object_pool/ObjectPoolYio.java
- yio.tro.antiyoy.stuff.object_pool.ObjectPoolYio
-yio/tro/antiyoy/KeyboardManager.java
- yio.tro.antiyoy.KeyboardManager
-yio/tro/antiyoy/gameplay/event/EventType.java
- yio.tro.antiyoy.gameplay.event.EventType
-yio/tro/antiyoy/stuff/DateYio.java
- yio.tro.antiyoy.stuff.DateYio
-yio/tro/antiyoy/gameplay/GoalType.java
- yio.tro.antiyoy.gameplay.GoalType
-yio/tro/antiyoy/SplatController.java
- yio.tro.antiyoy.SplatController
 yio/tro/antiyoy/gameplay/user_levels/UlevBunker2.java
  yio.tro.antiyoy.gameplay.user_levels.UlevBunker2
 yio/tro/antiyoy/menu/behaviors/RbCloseTutorialTip.java
  yio.tro.antiyoy.menu.behaviors.RbCloseTutorialTip
-yio/tro/antiyoy/ai/master/AiMaster.java
- yio.tro.antiyoy.ai.master.AiMaster
- yio.tro.antiyoy.ai.master.AiMaster$1
- yio.tro.antiyoy.ai.master.AiMaster$2
- yio.tro.antiyoy.ai.master.AiMaster$3
- yio.tro.antiyoy.ai.master.AiMaster$4
- yio.tro.antiyoy.ai.master.AiMaster$5
- yio.tro.antiyoy.ai.master.AiMaster$6
- yio.tro.antiyoy.ai.master.AiMaster$7
+yio/tro/antiyoy/ai/AiExpertSlayRules.java
+ yio.tro.antiyoy.ai.AiExpertSlayRules
 yio/tro/antiyoy/menu/render/RenderSimpleDipEntityItem.java
  yio.tro.antiyoy.menu.render.RenderSimpleDipEntityItem
 yio/tro/antiyoy/gameplay/touch_mode/TmEditor.java
  yio.tro.antiyoy.gameplay.touch_mode.TmEditor
 yio/tro/antiyoy/gameplay/user_levels/UlevNeverQuit.java
  yio.tro.antiyoy.gameplay.user_levels.UlevNeverQuit
+yio/tro/antiyoy/menu/slider/SliderParentElement.java
+ yio.tro.antiyoy.menu.slider.SliderParentElement
 yio/tro/antiyoy/gameplay/game_view/RenderHexLines.java
  yio.tro.antiyoy.gameplay.game_view.RenderHexLines
 yio/tro/antiyoy/menu/behaviors/help/RbArticleTowers.java
  yio.tro.antiyoy.menu.behaviors.help.RbArticleTowers
+yio/tro/antiyoy/factor_yio/MoveBehaviorSpringy.java
+ yio.tro.antiyoy.factor_yio.MoveBehaviorSpringy
 yio/tro/antiyoy/gameplay/game_view/RenderSelectedUnit.java
  yio.tro.antiyoy.gameplay.game_view.RenderSelectedUnit
 yio/tro/antiyoy/menu/behaviors/menu_creation/RbSettingsMenu.java
@@ -255,8 +32,8 @@ yio/tro/antiyoy/menu/RenderEndTurnButtonElement.java
  yio.tro.antiyoy.menu.RenderEndTurnButtonElement
 yio/tro/antiyoy/menu/render/RenderMoneyViewElement.java
  yio.tro.antiyoy.menu.render.RenderMoneyViewElement
-yio/tro/antiyoy/ai/ArtificialIntelligenceGeneric.java
- yio.tro.antiyoy.ai.ArtificialIntelligenceGeneric
+yio/tro/antiyoy/gameplay/user_levels/UlevAntiyoy696.java
+ yio.tro.antiyoy.gameplay.user_levels.UlevAntiyoy696
 yio/tro/antiyoy/menu/diplomatic_exchange/AbstractExchangeArgumentView.java
  yio.tro.antiyoy.menu.diplomatic_exchange.AbstractExchangeArgumentView
 yio/tro/antiyoy/menu/behaviors/menu_creation/RbSaveMoreSkirmishOptions.java
@@ -281,8 +58,12 @@ yio/tro/antiyoy/gameplay/user_levels/UlevSaveByzantine.java
 yio/tro/antiyoy/menu/editor_elements/add_relation/AddEditorRelationElement.java
  yio.tro.antiyoy.menu.editor_elements.add_relation.AddEditorRelationElement
  yio.tro.antiyoy.menu.editor_elements.add_relation.AddEditorRelationElement$1
+yio/tro/antiyoy/menu/fast_construction/FcpItem.java
+ yio.tro.antiyoy.menu.fast_construction.FcpItem
 yio/tro/antiyoy/menu/scenes/gameplay/SceneDiplomaticLog.java
  yio.tro.antiyoy.menu.scenes.gameplay.SceneDiplomaticLog
+yio/tro/antiyoy/gameplay/web/server.java
+ yio.tro.antiyoy.gameplay.web.server
 yio/tro/antiyoy/menu/ExceptionViewElement.java
  yio.tro.antiyoy.menu.ExceptionViewElement
 yio/tro/antiyoy/menu/scenes/gameplay/choose_entity/IDipEntityReceiver.java
@@ -310,16 +91,22 @@ yio/tro/antiyoy/gameplay/user_levels/UlevReikEpsilon.java
  yio.tro.antiyoy.gameplay.user_levels.UlevReikEpsilon
 yio/tro/antiyoy/menu/render/RenderSaveSlotSelector.java
  yio.tro.antiyoy.menu.render.RenderSaveSlotSelector
+yio/tro/antiyoy/menu/diplomatic_exchange/ExUiActionType.java
+ yio.tro.antiyoy.menu.diplomatic_exchange.ExUiActionType
 yio/tro/antiyoy/gameplay/user_levels/UlevRelax.java
  yio.tro.antiyoy.gameplay.user_levels.UlevRelax
 yio/tro/antiyoy/gameplay/game_view/RenderFogOfWar.java
  yio.tro.antiyoy.gameplay.game_view.RenderFogOfWar
 yio/tro/antiyoy/menu/TurnStartDialog.java
  yio.tro.antiyoy.menu.TurnStartDialog
+yio/tro/antiyoy/stuff/RenderableTextYio.java
+ yio.tro.antiyoy.stuff.RenderableTextYio
 yio/tro/antiyoy/menu/scenes/SceneTestScreen.java
  yio.tro.antiyoy.menu.scenes.SceneTestScreen
 yio/tro/antiyoy/menu/MenuControllerYio.java
  yio.tro.antiyoy.menu.MenuControllerYio
+yio/tro/antiyoy/stuff/PointYio.java
+ yio.tro.antiyoy.stuff.PointYio
 yio/tro/antiyoy/menu/diplomatic_exchange/QuickExchangeTutorialElement.java
  yio.tro.antiyoy.menu.diplomatic_exchange.QuickExchangeTutorialElement
 yio/tro/antiyoy/gameplay/user_levels/UlevAntarctica.java
@@ -332,8 +119,8 @@ yio/tro/antiyoy/menu/render/RenderScrollListItem.java
  yio.tro.antiyoy.menu.render.RenderScrollListItem
 yio/tro/antiyoy/gameplay/user_levels/UlevWarToEndAllWars.java
  yio.tro.antiyoy.gameplay.user_levels.UlevWarToEndAllWars
-yio/tro/antiyoy/ai/AiNormalSlayRules.java
- yio.tro.antiyoy.ai.AiNormalSlayRules
+yio/tro/antiyoy/menu/ButtonRenderer.java
+ yio.tro.antiyoy.menu.ButtonRenderer
 yio/tro/antiyoy/gameplay/user_levels/UlevWarOfStrategy.java
  yio.tro.antiyoy.gameplay.user_levels.UlevWarOfStrategy
 yio/tro/antiyoy/gameplay/user_levels/UlevGuynneDaSteve.java
@@ -345,6 +132,12 @@ yio/tro/antiyoy/gameplay/highlight/HighlightManager.java
  yio.tro.antiyoy.gameplay.highlight.HighlightManager$1
 yio/tro/antiyoy/gameplay/user_levels/UlevBlockmanPro.java
  yio.tro.antiyoy.gameplay.user_levels.UlevBlockmanPro
+yio/tro/antiyoy/gameplay/diplomacy/DiplomaticRelation.java
+ yio.tro.antiyoy.gameplay.diplomacy.DiplomaticRelation
+yio/tro/antiyoy/stuff/Masking.java
+ yio.tro.antiyoy.stuff.Masking
+yio/tro/antiyoy/menu/ICheckButtonListener.java
+ yio.tro.antiyoy.menu.ICheckButtonListener
 yio/tro/antiyoy/menu/scenes/gameplay/SceneAgreeToSellHexes.java
  yio.tro.antiyoy.menu.scenes.gameplay.SceneAgreeToSellHexes
 yio/tro/antiyoy/gameplay/editor/EditorAutomationManager.java
@@ -353,10 +146,16 @@ yio/tro/antiyoy/menu/speed_panel/SpItem.java
  yio.tro.antiyoy.menu.speed_panel.SpItem
 yio/tro/antiyoy/menu/diplomacy_element/DeItem.java
  yio.tro.antiyoy.menu.diplomacy_element.DeItem
+yio/tro/antiyoy/gameplay/editor/EditorCoalitionsManager.java
+ yio.tro.antiyoy.gameplay.editor.EditorCoalitionsManager
 yio/tro/antiyoy/gameplay/game_view/GameTexturesManager.java
  yio.tro.antiyoy.gameplay.game_view.GameTexturesManager
+yio/tro/antiyoy/stuff/GraphicsYio.java
+ yio.tro.antiyoy.stuff.GraphicsYio
 yio/tro/antiyoy/menu/behaviors/menu_creation/RbConfirmReset.java
  yio.tro.antiyoy.menu.behaviors.menu_creation.RbConfirmReset
+yio/tro/antiyoy/gameplay/editor/EditorRelation.java
+ yio.tro.antiyoy.gameplay.editor.EditorRelation
 yio/tro/antiyoy/ai/AbstractAi.java
  yio.tro.antiyoy.ai.AbstractAi
 yio/tro/antiyoy/gameplay/user_levels/UlevForestKing.java
@@ -396,6 +195,8 @@ yio/tro/antiyoy/gameplay/campaign/LevelPack10.java
  yio.tro.antiyoy.gameplay.campaign.LevelPack10
 yio/tro/antiyoy/menu/behaviors/RbResumeGame.java
  yio.tro.antiyoy.menu.behaviors.RbResumeGame
+yio/tro/antiyoy/Splat.java
+ yio.tro.antiyoy.Splat
 yio/tro/antiyoy/gameplay/user_levels/UlevLiechtensteinCivilWar.java
  yio.tro.antiyoy.gameplay.user_levels.UlevLiechtensteinCivilWar
 yio/tro/antiyoy/gameplay/user_levels/UlevSurroundMap.java
@@ -450,12 +251,17 @@ yio/tro/antiyoy/menu/fast_construction/FastConstructionPanel.java
  yio.tro.antiyoy.menu.fast_construction.FastConstructionPanel$2
 yio/tro/antiyoy/gameplay/user_levels/UlevGekokujo.java
  yio.tro.antiyoy.gameplay.user_levels.UlevGekokujo
+yio/tro/antiyoy/stuff/VisualTextContainer.java
+ yio.tro.antiyoy.stuff.VisualTextContainer
+ yio.tro.antiyoy.stuff.VisualTextContainer$1
 yio/tro/antiyoy/gameplay/user_levels/UlevWaaaaaay.java
  yio.tro.antiyoy.gameplay.user_levels.UlevWaaaaaay
 yio/tro/antiyoy/gameplay/user_levels/UlevTurkishTerritoryWars.java
  yio.tro.antiyoy.gameplay.user_levels.UlevTurkishTerritoryWars
 yio/tro/antiyoy/gameplay/game_view/RenderUnits.java
  yio.tro.antiyoy.gameplay.game_view.RenderUnits
+yio/tro/antiyoy/factor_yio/MoveBehavior.java
+ yio.tro.antiyoy.factor_yio.MoveBehavior
 yio/tro/antiyoy/menu/RenderExceptionViewElement.java
  yio.tro.antiyoy.menu.RenderExceptionViewElement
 yio/tro/antiyoy/gameplay/user_levels/UlevMirage212.java
@@ -496,6 +302,8 @@ yio/tro/antiyoy/gameplay/user_levels/UlevMedievalContinent.java
  yio.tro.antiyoy.gameplay.user_levels.UlevMedievalContinent
 yio/tro/antiyoy/menu/render/RenderColorPickerElement.java
  yio.tro.antiyoy.menu.render.RenderColorPickerElement
+yio/tro/antiyoy/ai/aiRepair/AiNewRules.java
+ yio.tro.antiyoy.ai.aiRepair.AiNewRules
 yio/tro/antiyoy/gameplay/user_levels/UlevMedievalJapan.java
  yio.tro.antiyoy.gameplay.user_levels.UlevMedievalJapan
 yio/tro/antiyoy/gameplay/user_levels/UlevManInTheMiddle.java
@@ -504,6 +312,8 @@ yio/tro/antiyoy/menu/behaviors/editor/RbShowEditorParams.java
  yio.tro.antiyoy.menu.behaviors.editor.RbShowEditorParams
 yio/tro/antiyoy/gameplay/user_levels/UlevInsideOut.java
  yio.tro.antiyoy.gameplay.user_levels.UlevInsideOut
+yio/tro/antiyoy/gameplay/name_generator/CustomCityNamesManager.java
+ yio.tro.antiyoy.gameplay.name_generator.CustomCityNamesManager
 yio/tro/antiyoy/menu/CheckButtonYio.java
  yio.tro.antiyoy.menu.CheckButtonYio
 yio/tro/antiyoy/gameplay/user_levels/UlevEmuWar.java
@@ -528,6 +338,8 @@ yio/tro/antiyoy/gameplay/user_levels/UlevThisIsWar.java
  yio.tro.antiyoy.gameplay.user_levels.UlevThisIsWar
 yio/tro/antiyoy/menu/render/RenderNothing.java
  yio.tro.antiyoy.menu.render.RenderNothing
+yio/tro/antiyoy/gameplay/SelectionTipType.java
+ yio.tro.antiyoy.gameplay.SelectionTipType
 yio/tro/antiyoy/menu/customizable_list/RelationListItem.java
  yio.tro.antiyoy.menu.customizable_list.RelationListItem
 yio/tro/antiyoy/gameplay/user_levels/UlevZeraXenonArena.java
@@ -549,16 +361,24 @@ yio/tro/antiyoy/menu/behaviors/gameplay/RbUndo.java
 yio/tro/antiyoy/menu/scenes/SceneMatchStatistics.java
  yio.tro.antiyoy.menu.scenes.SceneMatchStatistics
  yio.tro.antiyoy.menu.scenes.SceneMatchStatistics$1
+yio/tro/antiyoy/factor_yio/MoveBehaviorMaterial.java
+ yio.tro.antiyoy.factor_yio.MoveBehaviorMaterial
 yio/tro/antiyoy/gameplay/user_levels/UlevMaskOfSymmetry.java
  yio.tro.antiyoy.gameplay.user_levels.UlevMaskOfSymmetry
 yio/tro/antiyoy/gameplay/user_levels/UlevMuertos.java
  yio.tro.antiyoy.gameplay.user_levels.UlevMuertos
+yio/tro/antiyoy/LegacyMasking.java
+ yio.tro.antiyoy.LegacyMasking
+yio/tro/antiyoy/stuff/SelectionEngineYio.java
+ yio.tro.antiyoy.stuff.SelectionEngineYio
 yio/tro/antiyoy/gameplay/user_levels/UlevRiseOfCivilizations.java
  yio.tro.antiyoy.gameplay.user_levels.UlevRiseOfCivilizations
 yio/tro/antiyoy/gameplay/user_levels/UlevSnowflake.java
  yio.tro.antiyoy.gameplay.user_levels.UlevSnowflake
-yio/tro/antiyoy/gameplay/diplomacy/DiplomaticEntity.java
- yio.tro.antiyoy.gameplay.diplomacy.DiplomaticEntity
+yio/tro/antiyoy/ai/AiExpertGenericRules.java
+ yio.tro.antiyoy.ai.AiExpertGenericRules
+yio/tro/antiyoy/menu/ios/IcmgType.java
+ yio.tro.antiyoy.menu.ios.IcmgType
 yio/tro/antiyoy/menu/context_list_menu/ContextListMenuElement.java
  yio.tro.antiyoy.menu.context_list_menu.ContextListMenuElement
  yio.tro.antiyoy.menu.context_list_menu.ContextListMenuElement$1
@@ -603,12 +423,15 @@ yio/tro/antiyoy/gameplay/user_levels/UlevPlayLikePro.java
 yio/tro/antiyoy/menu/scenes/editor/SceneEditorProvincePanel.java
  yio.tro.antiyoy.menu.scenes.editor.SceneEditorProvincePanel
  yio.tro.antiyoy.menu.scenes.editor.SceneEditorProvincePanel$1
+ yio.tro.antiyoy.menu.scenes.editor.SceneEditorProvincePanel$10
  yio.tro.antiyoy.menu.scenes.editor.SceneEditorProvincePanel$2
  yio.tro.antiyoy.menu.scenes.editor.SceneEditorProvincePanel$3
  yio.tro.antiyoy.menu.scenes.editor.SceneEditorProvincePanel$4
  yio.tro.antiyoy.menu.scenes.editor.SceneEditorProvincePanel$5
  yio.tro.antiyoy.menu.scenes.editor.SceneEditorProvincePanel$6
  yio.tro.antiyoy.menu.scenes.editor.SceneEditorProvincePanel$7
+ yio.tro.antiyoy.menu.scenes.editor.SceneEditorProvincePanel$8
+ yio.tro.antiyoy.menu.scenes.editor.SceneEditorProvincePanel$9
 yio/tro/antiyoy/gameplay/MoveZoneManager.java
  yio.tro.antiyoy.gameplay.MoveZoneManager
 yio/tro/antiyoy/gameplay/replays/actions/RaUnitBuilt.java
@@ -625,17 +448,18 @@ yio/tro/antiyoy/gameplay/highlight/HighlightItem.java
  yio.tro.antiyoy.gameplay.highlight.HighlightItem
 yio/tro/antiyoy/gameplay/game_view/RenderSelectionShadows.java
  yio.tro.antiyoy.gameplay.game_view.RenderSelectionShadows
-yio/tro/antiyoy/ai/AiBalancerGenericRules.java
- yio.tro.antiyoy.ai.AiBalancerGenericRules
+yio/tro/antiyoy/gameplay/user_levels/UlevForeverGreen.java
+ yio.tro.antiyoy.gameplay.user_levels.UlevForeverGreen
 yio/tro/antiyoy/gameplay/campaign/LevelPack9.java
  yio.tro.antiyoy.gameplay.campaign.LevelPack9
+yio/tro/antiyoy/factor_yio/MoveBehaviorSimple.java
+ yio.tro.antiyoy.factor_yio.MoveBehaviorSimple
 yio/tro/antiyoy/gameplay/user_levels/UlevKingdomsPt2.java
  yio.tro.antiyoy.gameplay.user_levels.UlevKingdomsPt2
 yio/tro/antiyoy/menu/render/RenderEditGoalElement.java
  yio.tro.antiyoy.menu.render.RenderEditGoalElement
-yio/tro/antiyoy/ai/AiRestoredBalancerGeneric.java
- yio.tro.antiyoy.ai.AiRestoredBalancerGeneric
- yio.tro.antiyoy.ai.AiRestoredBalancerGeneric$1
+yio/tro/antiyoy/gameplay/editor/Coalition.java
+ yio.tro.antiyoy.gameplay.editor.Coalition
 yio/tro/antiyoy/gameplay/MoveZoneDetection.java
  yio.tro.antiyoy.gameplay.MoveZoneDetection
 yio/tro/antiyoy/menu/behaviors/help/RbArticleTrees.java
@@ -665,8 +489,9 @@ yio/tro/antiyoy/menu/scenes/SceneContextListMenu.java
  yio.tro.antiyoy.menu.scenes.SceneContextListMenu
 yio/tro/antiyoy/gameplay/campaign/LevelPack18.java
  yio.tro.antiyoy.gameplay.campaign.LevelPack18
-yio/tro/antiyoy/ai/AiExpertSlayRules.java
- yio.tro.antiyoy.ai.AiExpertSlayRules
+yio/tro/antiyoy/menu/scenes/gameplay/choose_entity/SceneChooseDiplomaticEntity.java
+ yio.tro.antiyoy.menu.scenes.gameplay.choose_entity.SceneChooseDiplomaticEntity
+ yio.tro.antiyoy.menu.scenes.gameplay.choose_entity.SceneChooseDiplomaticEntity$1
 yio/tro/antiyoy/gameplay/fog_of_war/LightUpAlgorithm.java
  yio.tro.antiyoy.gameplay.fog_of_war.LightUpAlgorithm
 yio/tro/antiyoy/menu/behaviors/menu_creation/RbReplaysMenu.java
@@ -692,6 +517,8 @@ yio/tro/antiyoy/menu/scenes/gameplay/SceneQuickExchangeTutorial.java
 yio/tro/antiyoy/gameplay/event/EventManager.java
  yio.tro.antiyoy.gameplay.event.EventManager
  yio.tro.antiyoy.gameplay.event.EventManager$1
+yio/tro/antiyoy/gameplay/diplomacy/exchange/ExchangeType.java
+ yio.tro.antiyoy.gameplay.diplomacy.exchange.ExchangeType
 yio/tro/antiyoy/gameplay/user_levels/UlevGates.java
  yio.tro.antiyoy.gameplay.user_levels.UlevGates
 yio/tro/antiyoy/gameplay/user_levels/UlevSevenEmpires.java
@@ -717,6 +544,8 @@ yio/tro/antiyoy/gameplay/user_levels/UlevDa1.java
  yio.tro.antiyoy.gameplay.user_levels.UlevDa1
 yio/tro/antiyoy/gameplay/user_levels/UlevThirdBalkanWar.java
  yio.tro.antiyoy.gameplay.user_levels.UlevThirdBalkanWar
+yio/tro/antiyoy/stuff/object_pool/ReusableYio.java
+ yio.tro.antiyoy.stuff.object_pool.ReusableYio
 yio/tro/antiyoy/menu/behaviors/menu_creation/RbMoreSkirmishOptions.java
  yio.tro.antiyoy.menu.behaviors.menu_creation.RbMoreSkirmishOptions
 yio/tro/antiyoy/menu/keyboard/KbButton.java
@@ -795,6 +624,10 @@ yio/tro/antiyoy/gameplay/user_levels/UlevHungerGames2021.java
  yio.tro.antiyoy.gameplay.user_levels.UlevHungerGames2021
 yio/tro/antiyoy/menu/behaviors/editor/RbEditorExpandProvinces.java
  yio.tro.antiyoy.menu.behaviors.editor.RbEditorExpandProvinces
+yio/tro/antiyoy/ai/master/MasterAction.java
+ yio.tro.antiyoy.ai.master.MasterAction
+yio/tro/antiyoy/SoundManagerYio.java
+ yio.tro.antiyoy.SoundManagerYio
 yio/tro/antiyoy/gameplay/replays/actions/RepAction.java
  yio.tro.antiyoy.gameplay.replays.actions.RepAction
 yio/tro/antiyoy/menu/RenderDownsidePanelElement.java
@@ -813,6 +646,8 @@ yio/tro/antiyoy/gameplay/DebugActionsManager.java
  yio.tro.antiyoy.gameplay.DebugActionsManager$1
 yio/tro/antiyoy/gameplay/user_levels/UlevOleg11.java
  yio.tro.antiyoy.gameplay.user_levels.UlevOleg11
+yio/tro/antiyoy/ai/Difficulty.java
+ yio.tro.antiyoy.ai.Difficulty
 yio/tro/antiyoy/menu/diplomatic_dialogs/DipMessageDialog.java
  yio.tro.antiyoy.menu.diplomatic_dialogs.DipMessageDialog
 yio/tro/antiyoy/menu/behaviors/menu_creation/RbAboutGame.java
@@ -848,6 +683,8 @@ yio/tro/antiyoy/gameplay/user_levels/UlevMidratianEmpire.java
  yio.tro.antiyoy.gameplay.user_levels.UlevMidratianEmpire
 yio/tro/antiyoy/menu/behaviors/editor/RbEditorHideConfirmRandomize.java
  yio.tro.antiyoy.menu.behaviors.editor.RbEditorHideConfirmRandomize
+yio/tro/antiyoy/SettingsManager.java
+ yio.tro.antiyoy.SettingsManager
 yio/tro/antiyoy/menu/diplomatic_dialogs/StopWarDialog.java
  yio.tro.antiyoy.menu.diplomatic_dialogs.StopWarDialog
 yio/tro/antiyoy/gameplay/user_levels/UlevMini1v1.java
@@ -912,12 +749,25 @@ yio/tro/antiyoy/menu/scenes/SceneTakeControl.java
  yio.tro.antiyoy.menu.scenes.SceneTakeControl$2
 yio/tro/antiyoy/gameplay/user_levels/UlevManWithFunnyBrow.java
  yio.tro.antiyoy.gameplay.user_levels.UlevManWithFunnyBrow
-yio/tro/antiyoy/menu/diplomatic_dialogs/AbstractDiplomaticDialog.java
- yio.tro.antiyoy.menu.diplomatic_dialogs.AbstractDiplomaticDialog
- yio.tro.antiyoy.menu.diplomatic_dialogs.AbstractDiplomaticDialog$1
- yio.tro.antiyoy.menu.diplomatic_dialogs.AbstractDiplomaticDialog$2
+yio/tro/antiyoy/menu/scenes/editor/SceneEditorEventEditor.java
+ yio.tro.antiyoy.menu.scenes.editor.SceneEditorEventEditor
+ yio.tro.antiyoy.menu.scenes.editor.SceneEditorEventEditor$1
+ yio.tro.antiyoy.menu.scenes.editor.SceneEditorEventEditor$10
+ yio.tro.antiyoy.menu.scenes.editor.SceneEditorEventEditor$11
+ yio.tro.antiyoy.menu.scenes.editor.SceneEditorEventEditor$12
+ yio.tro.antiyoy.menu.scenes.editor.SceneEditorEventEditor$13
+ yio.tro.antiyoy.menu.scenes.editor.SceneEditorEventEditor$2
+ yio.tro.antiyoy.menu.scenes.editor.SceneEditorEventEditor$3
+ yio.tro.antiyoy.menu.scenes.editor.SceneEditorEventEditor$4
+ yio.tro.antiyoy.menu.scenes.editor.SceneEditorEventEditor$5
+ yio.tro.antiyoy.menu.scenes.editor.SceneEditorEventEditor$6
+ yio.tro.antiyoy.menu.scenes.editor.SceneEditorEventEditor$7
+ yio.tro.antiyoy.menu.scenes.editor.SceneEditorEventEditor$8
+ yio.tro.antiyoy.menu.scenes.editor.SceneEditorEventEditor$9
 yio/tro/antiyoy/menu/render/RenderQuickExchangeTutorialElement.java
  yio.tro.antiyoy.menu.render.RenderQuickExchangeTutorialElement
+yio/tro/antiyoy/MusicManager.java
+ yio.tro.antiyoy.MusicManager
 yio/tro/antiyoy/menu/render/MenuRender.java
  yio.tro.antiyoy.menu.render.MenuRender
 yio/tro/antiyoy/gameplay/user_levels/UlevIvanKo.java
@@ -938,6 +788,8 @@ yio/tro/antiyoy/gameplay/game_view/RenderTextHintItems.java
  yio.tro.antiyoy.gameplay.game_view.RenderTextHintItems
 yio/tro/antiyoy/menu/diplomatic_dialogs/AcButton.java
  yio.tro.antiyoy.menu.diplomatic_dialogs.AcButton
+yio/tro/antiyoy/gameplay/LevelSize.java
+ yio.tro.antiyoy.gameplay.LevelSize
 yio/tro/antiyoy/gameplay/replays/actions/RaUnitMoved.java
  yio.tro.antiyoy.gameplay.replays.actions.RaUnitMoved
 yio/tro/antiyoy/menu/render/RenderSingleListItem.java
@@ -950,18 +802,24 @@ yio/tro/antiyoy/gameplay/user_levels/UlevPlatz4.java
  yio.tro.antiyoy.gameplay.user_levels.UlevPlatz4
 yio/tro/antiyoy/gameplay/user_levels/UlevTheGapInUniverse.java
  yio.tro.antiyoy.gameplay.user_levels.UlevTheGapInUniverse
+yio/tro/antiyoy/stuff/object_pool/ObjectPoolYio.java
+ yio.tro.antiyoy.stuff.object_pool.ObjectPoolYio
 yio/tro/antiyoy/gameplay/NamingManager.java
  yio.tro.antiyoy.gameplay.NamingManager
 yio/tro/antiyoy/menu/scenes/gameplay/SceneStopWarDialog.java
  yio.tro.antiyoy.menu.scenes.gameplay.SceneStopWarDialog
 yio/tro/antiyoy/YioGdxGame.java
  yio.tro.antiyoy.YioGdxGame
+yio/tro/antiyoy/YioTextInputListener.java
+ yio.tro.antiyoy.YioTextInputListener
 yio/tro/antiyoy/menu/diplomatic_exchange/AvWarDeclaration.java
  yio.tro.antiyoy.menu.diplomatic_exchange.AvWarDeclaration
 yio/tro/antiyoy/menu/diplomatic_dialogs/AcLabel.java
  yio.tro.antiyoy.menu.diplomatic_dialogs.AcLabel
 yio/tro/antiyoy/menu/color_picking/ColorHolderElement.java
  yio.tro.antiyoy.menu.color_picking.ColorHolderElement
+yio/tro/antiyoy/gameplay/ClickDetector.java
+ yio.tro.antiyoy.gameplay.ClickDetector
 yio/tro/antiyoy/gameplay/user_levels/UlevDoubleThreat.java
  yio.tro.antiyoy.gameplay.user_levels.UlevDoubleThreat
 yio/tro/antiyoy/gameplay/user_levels/UlevBetween2Fire.java
@@ -992,6 +850,8 @@ yio/tro/antiyoy/gameplay/user_levels/UlevHexahedron.java
  yio.tro.antiyoy.gameplay.user_levels.UlevHexahedron
 yio/tro/antiyoy/menu/scenes/SceneMoreCampaignOptions.java
  yio.tro.antiyoy.menu.scenes.SceneMoreCampaignOptions
+yio/tro/antiyoy/gameplay/skins/SkinType.java
+ yio.tro.antiyoy.gameplay.skins.SkinType
 yio/tro/antiyoy/menu/scenes/SceneTestResults.java
  yio.tro.antiyoy.menu.scenes.SceneTestResults
  yio.tro.antiyoy.menu.scenes.SceneTestResults$1
@@ -1043,10 +903,12 @@ yio/tro/antiyoy/gameplay/SnapshotManager.java
  yio.tro.antiyoy.gameplay.SnapshotManager
 yio/tro/antiyoy/gameplay/user_levels/UlevWales9thCentury.java
  yio.tro.antiyoy.gameplay.user_levels.UlevWales9thCentury
-yio/tro/antiyoy/ai/AiFactory.java
- yio.tro.antiyoy.ai.AiFactory
+yio/tro/antiyoy/menu/diplomatic_dialogs/EventDialog.java
+ yio.tro.antiyoy.menu.diplomatic_dialogs.EventDialog
 yio/tro/antiyoy/gameplay/user_levels/UlevBattleOfTheBridges2.java
  yio.tro.antiyoy.gameplay.user_levels.UlevBattleOfTheBridges2
+yio/tro/antiyoy/stuff/Yio.java
+ yio.tro.antiyoy.stuff.Yio
 yio/tro/antiyoy/gameplay/user_levels/UlevEleventhTimesTheCharm.java
  yio.tro.antiyoy.gameplay.user_levels.UlevEleventhTimesTheCharm
 yio/tro/antiyoy/gameplay/data_storage/EncodeManager.java
@@ -1061,12 +923,17 @@ yio/tro/antiyoy/gameplay/user_levels/UlevStopTheRevolution.java
  yio.tro.antiyoy.gameplay.user_levels.UlevStopTheRevolution
 yio/tro/antiyoy/gameplay/user_levels/UlevAssymetry.java
  yio.tro.antiyoy.gameplay.user_levels.UlevAssymetry
+yio/tro/antiyoy/gameplay/editor/LeInputMode.java
+ yio.tro.antiyoy.gameplay.editor.LeInputMode
 yio/tro/antiyoy/gameplay/replays/actions/RaUnitDiedFromStarvation.java
  yio.tro.antiyoy.gameplay.replays.actions.RaUnitDiedFromStarvation
 yio/tro/antiyoy/gameplay/campaign/LevelPack17.java
  yio.tro.antiyoy.gameplay.campaign.LevelPack17
-yio/tro/antiyoy/gameplay/user_levels/UlevBreakUpOfYugoslavia.java
- yio.tro.antiyoy.gameplay.user_levels.UlevBreakUpOfYugoslavia
+yio/tro/antiyoy/menu/scenes/editor/SceneEditorEvent.java
+ yio.tro.antiyoy.menu.scenes.editor.SceneEditorEvent
+ yio.tro.antiyoy.menu.scenes.editor.SceneEditorEvent$1
+ yio.tro.antiyoy.menu.scenes.editor.SceneEditorEvent$2
+ yio.tro.antiyoy.menu.scenes.editor.SceneEditorEvent$3
 yio/tro/antiyoy/gameplay/user_levels/UlevPabnot.java
  yio.tro.antiyoy.gameplay.user_levels.UlevPabnot
 yio/tro/antiyoy/menu/diplomatic_exchange/AvDotations.java
@@ -1078,6 +945,8 @@ yio/tro/antiyoy/gameplay/user_levels/UlevHunterVsGatherer.java
 yio/tro/antiyoy/menu/scenes/SceneLanguages.java
  yio.tro.antiyoy.menu.scenes.SceneLanguages
  yio.tro.antiyoy.menu.scenes.SceneLanguages$1
+yio/tro/antiyoy/stuff/TimeMeasureYio.java
+ yio.tro.antiyoy.stuff.TimeMeasureYio
 yio/tro/antiyoy/gameplay/fog_of_war/FogPoint.java
  yio.tro.antiyoy.gameplay.fog_of_war.FogPoint
 yio/tro/antiyoy/gameplay/user_levels/UlevHardBunker3.java
@@ -1086,10 +955,14 @@ yio/tro/antiyoy/menu/scenes/SceneSecretScreen.java
  yio.tro.antiyoy.menu.scenes.SceneSecretScreen
  yio.tro.antiyoy.menu.scenes.SceneSecretScreen$1
  yio.tro.antiyoy.menu.scenes.SceneSecretScreen$2
+yio/tro/antiyoy/CustomLanguageLoader.java
+ yio.tro.antiyoy.CustomLanguageLoader
 yio/tro/antiyoy/gameplay/user_levels/UlevLightAndDarkness.java
  yio.tro.antiyoy.gameplay.user_levels.UlevLightAndDarkness
 yio/tro/antiyoy/gameplay/user_levels/UlevTest.java
  yio.tro.antiyoy.gameplay.user_levels.UlevTest
+yio/tro/antiyoy/menu/MenuViewYio.java
+ yio.tro.antiyoy.menu.MenuViewYio
 yio/tro/antiyoy/menu/AbstractRectangularUiElement.java
  yio.tro.antiyoy.menu.AbstractRectangularUiElement
  yio.tro.antiyoy.menu.AbstractRectangularUiElement$1
@@ -1101,12 +974,14 @@ yio/tro/antiyoy/gameplay/diplomacy/DiplomaticContract.java
  yio.tro.antiyoy.gameplay.diplomacy.DiplomaticContract
 yio/tro/antiyoy/gameplay/user_levels/UlevTarget.java
  yio.tro.antiyoy.gameplay.user_levels.UlevTarget
+yio/tro/antiyoy/gameplay/game_view/CacheItem.java
+ yio.tro.antiyoy.gameplay.game_view.CacheItem
 yio/tro/antiyoy/gameplay/user_levels/UlevIceCreamMeltdown.java
  yio.tro.antiyoy.gameplay.user_levels.UlevIceCreamMeltdown
 yio/tro/antiyoy/menu/behaviors/RbTutorialGeneric.java
  yio.tro.antiyoy.menu.behaviors.RbTutorialGeneric
-yio/tro/antiyoy/ai/AiBalancerSlayRules.java
- yio.tro.antiyoy.ai.AiBalancerSlayRules
+yio/tro/antiyoy/gameplay/user_levels/UlevHansJurgen.java
+ yio.tro.antiyoy.gameplay.user_levels.UlevHansJurgen
 yio/tro/antiyoy/menu/diplomatic_dialogs/AgreeToSellHexesDialog.java
  yio.tro.antiyoy.menu.diplomatic_dialogs.AgreeToSellHexesDialog
 yio/tro/antiyoy/menu/slider/SliderYio.java
@@ -1120,6 +995,9 @@ yio/tro/antiyoy/menu/scenes/gameplay/SceneFastConstructionPanel.java
  yio.tro.antiyoy.menu.scenes.gameplay.SceneFastConstructionPanel
 yio/tro/antiyoy/gameplay/user_levels/UlevDota.java
  yio.tro.antiyoy.gameplay.user_levels.UlevDota
+yio/tro/antiyoy/stuff/StoreLinksYio.java
+ yio.tro.antiyoy.stuff.StoreLinksYio
+ yio.tro.antiyoy.stuff.StoreLinksYio$1
 yio/tro/antiyoy/gameplay/HexActionPerformer.java
  yio.tro.antiyoy.gameplay.HexActionPerformer
 yio/tro/antiyoy/gameplay/user_levels/UlevTurkey1919.java
@@ -1147,6 +1025,8 @@ yio/tro/antiyoy/menu/behaviors/editor/RbHideObjectPanel.java
  yio.tro.antiyoy.menu.behaviors.editor.RbHideObjectPanel
 yio/tro/antiyoy/gameplay/user_levels/UlevUnity.java
  yio.tro.antiyoy.gameplay.user_levels.UlevUnity
+yio/tro/antiyoy/factor_yio/FactorYio.java
+ yio.tro.antiyoy.factor_yio.FactorYio
 yio/tro/antiyoy/menu/SpecialActionController.java
  yio.tro.antiyoy.menu.SpecialActionController
 yio/tro/antiyoy/gameplay/user_levels/UlevGreaterRomaniaRegions.java
@@ -1167,6 +1047,8 @@ yio/tro/antiyoy/menu/diplomatic_exchange/ExchangeProfitView.java
  yio.tro.antiyoy.menu.diplomatic_exchange.ExchangeProfitView$1
 yio/tro/antiyoy/gameplay/user_levels/UlevPlatz13.java
  yio.tro.antiyoy.gameplay.user_levels.UlevPlatz13
+yio/tro/antiyoy/gameplay/AnalyzeBalanceResults.java
+ yio.tro.antiyoy.gameplay.AnalyzeBalanceResults
 yio/tro/antiyoy/gameplay/replays/actions/RaCityBuilt.java
  yio.tro.antiyoy.gameplay.replays.actions.RaCityBuilt
 yio/tro/antiyoy/gameplay/user_levels/UlevItaly1494.java
@@ -1183,25 +1065,29 @@ yio/tro/antiyoy/gameplay/user_levels/UlevJustinSullivan.java
  yio.tro.antiyoy.gameplay.user_levels.UlevJustinSullivan
 yio/tro/antiyoy/gameplay/user_levels/UlevAmplob.java
  yio.tro.antiyoy.gameplay.user_levels.UlevAmplob
+yio/tro/antiyoy/factor_yio/MoveBehaviorPlayful.java
+ yio.tro.antiyoy.factor_yio.MoveBehaviorPlayful
 yio/tro/antiyoy/menu/scenes/gameplay/SceneDipMessage.java
  yio.tro.antiyoy.menu.scenes.gameplay.SceneDipMessage
 yio/tro/antiyoy/gameplay/user_levels/UlevMonomonkey.java
  yio.tro.antiyoy.gameplay.user_levels.UlevMonomonkey
 yio/tro/antiyoy/gameplay/user_levels/UlevUssrRepublic.java
  yio.tro.antiyoy.gameplay.user_levels.UlevUssrRepublic
+yio/tro/antiyoy/stuff/RepeatYio.java
+ yio.tro.antiyoy.stuff.RepeatYio
 yio/tro/antiyoy/gameplay/user_levels/UlevPurpleWiggles.java
  yio.tro.antiyoy.gameplay.user_levels.UlevPurpleWiggles
 yio/tro/antiyoy/menu/render/RenderCheckButton.java
  yio.tro.antiyoy.menu.render.RenderCheckButton
 yio/tro/antiyoy/menu/NotificationElement.java
  yio.tro.antiyoy.menu.NotificationElement
+yio/tro/antiyoy/gameplay/skins/SkinManager.java
+ yio.tro.antiyoy.gameplay.skins.SkinManager
+ yio.tro.antiyoy.gameplay.skins.SkinManager$1
 yio/tro/antiyoy/menu/scenes/gameplay/SceneConfirmEndTurn.java
  yio.tro.antiyoy.menu.scenes.gameplay.SceneConfirmEndTurn
 yio/tro/antiyoy/gameplay/campaign/LevelPack8.java
  yio.tro.antiyoy.gameplay.campaign.LevelPack8
-yio/tro/antiyoy/ai/AiRestoredBalancerSlay.java
- yio.tro.antiyoy.ai.AiRestoredBalancerSlay
- yio.tro.antiyoy.ai.AiRestoredBalancerSlay$1
 yio/tro/antiyoy/gameplay/user_levels/UlevRussianRevolution1917.java
  yio.tro.antiyoy.gameplay.user_levels.UlevRussianRevolution1917
 yio/tro/antiyoy/menu/scenes/gameplay/SceneAiOnlyOverlay.java
@@ -1234,6 +1120,8 @@ yio/tro/antiyoy/menu/scenes/editor/SceneEditorPauseMenu.java
  yio.tro.antiyoy.menu.scenes.editor.SceneEditorPauseMenu$3
 yio/tro/antiyoy/menu/behaviors/editor/RbEditorShowConfirmRandomize.java
  yio.tro.antiyoy.menu.behaviors.editor.RbEditorShowConfirmRandomize
+yio/tro/antiyoy/Storage3xTexture.java
+ yio.tro.antiyoy.Storage3xTexture
 yio/tro/antiyoy/gameplay/user_levels/UlevFromCenter.java
  yio.tro.antiyoy.gameplay.user_levels.UlevFromCenter
 yio/tro/antiyoy/menu/behaviors/menu_creation/RbExitToCampaign.java
@@ -1280,6 +1168,9 @@ yio/tro/antiyoy/gameplay/diplomacy/DiplomacyManager.java
  yio.tro.antiyoy.gameplay.diplomacy.DiplomacyManager$3
  yio.tro.antiyoy.gameplay.diplomacy.DiplomacyManager$4
  yio.tro.antiyoy.gameplay.diplomacy.DiplomacyManager$5
+yio/tro/antiyoy/stuff/tabs_engine/TabsEngineYio.java
+ yio.tro.antiyoy.stuff.tabs_engine.TabsEngineYio
+ yio.tro.antiyoy.stuff.tabs_engine.TabsEngineYio$1
 yio/tro/antiyoy/gameplay/user_levels/UlevCoastalCrescent.java
  yio.tro.antiyoy.gameplay.user_levels.UlevCoastalCrescent
 yio/tro/antiyoy/gameplay/diplomacy/DiplomaticAI.java
@@ -1323,6 +1214,8 @@ yio/tro/antiyoy/gameplay/editor/LevelEditorManager.java
  yio.tro.antiyoy.gameplay.editor.LevelEditorManager$1
 yio/tro/antiyoy/menu/diplomatic_dialogs/ReceiveAttackPropositionDialog.java
  yio.tro.antiyoy.menu.diplomatic_dialogs.ReceiveAttackPropositionDialog
+yio/tro/antiyoy/stuff/RectangleYio.java
+ yio.tro.antiyoy.stuff.RectangleYio
 yio/tro/antiyoy/menu/behaviors/menu_creation/RbMainMenu.java
  yio.tro.antiyoy.menu.behaviors.menu_creation.RbMainMenu
 yio/tro/antiyoy/gameplay/user_levels/UlevA1.java
@@ -1334,10 +1227,18 @@ yio/tro/antiyoy/menu/InterfaceElement.java
  yio.tro.antiyoy.menu.InterfaceElement
 yio/tro/antiyoy/gameplay/user_levels/UlevSorvixChallengeArena.java
  yio.tro.antiyoy.gameplay.user_levels.UlevSorvixChallengeArena
-yio/tro/antiyoy/ai/AiExpertGenericRules.java
- yio.tro.antiyoy.ai.AiExpertGenericRules
+yio/tro/antiyoy/gameplay/diplomacy/exchange/ExchangeTypeListener.java
+ yio.tro.antiyoy.gameplay.diplomacy.exchange.ExchangeTypeListener
+yio/tro/antiyoy/stuff/LanguagesManager.java
+ yio.tro.antiyoy.stuff.LanguagesManager
+yio/tro/antiyoy/stuff/LanguageChooseItem.java
+ yio.tro.antiyoy.stuff.LanguageChooseItem
+yio/tro/antiyoy/menu/fireworks_element/FeParticle.java
+ yio.tro.antiyoy.menu.fireworks_element.FeParticle
 yio/tro/antiyoy/gameplay/campaign/LevelPack14.java
  yio.tro.antiyoy.gameplay.campaign.LevelPack14
+yio/tro/antiyoy/gameplay/name_generator/NameGenerator.java
+ yio.tro.antiyoy.gameplay.name_generator.NameGenerator
 yio/tro/antiyoy/menu/income_graph/IgeItem.java
  yio.tro.antiyoy.menu.income_graph.IgeItem
 yio/tro/antiyoy/gameplay/user_levels/UlevYellowBarrier.java
@@ -1378,6 +1279,10 @@ yio/tro/antiyoy/menu/behaviors/menu_creation/RbMoreCampaignOptions.java
  yio.tro.antiyoy.menu.behaviors.menu_creation.RbMoreCampaignOptions
 yio/tro/antiyoy/menu/diplomatic_dialogs/HexSaleDialog.java
  yio.tro.antiyoy.menu.diplomatic_dialogs.HexSaleDialog
+yio/tro/antiyoy/PlatformType.java
+ yio.tro.antiyoy.PlatformType
+yio/tro/antiyoy/ai/AiEasy.java
+ yio.tro.antiyoy.ai.AiEasy
 yio/tro/antiyoy/gameplay/user_levels/UlevExample1.java
  yio.tro.antiyoy.gameplay.user_levels.UlevExample1
 yio/tro/antiyoy/gameplay/user_levels/UlevDeathflake.java
@@ -1392,6 +1297,8 @@ yio/tro/antiyoy/gameplay/user_levels/Ulev1940.java
  yio.tro.antiyoy.gameplay.user_levels.Ulev1940
 yio/tro/antiyoy/gameplay/user_levels/UlevDna.java
  yio.tro.antiyoy.gameplay.user_levels.UlevDna
+yio/tro/antiyoy/factor_yio/MoveBehaviorLighty.java
+ yio.tro.antiyoy.factor_yio.MoveBehaviorLighty
 yio/tro/antiyoy/gameplay/diplomacy/Debt.java
  yio.tro.antiyoy.gameplay.diplomacy.Debt
 yio/tro/antiyoy/gameplay/user_levels/UlevTwoLands.java
@@ -1410,12 +1317,16 @@ yio/tro/antiyoy/gameplay/user_levels/UlevSpanishCivilWar.java
  yio.tro.antiyoy.gameplay.user_levels.UlevSpanishCivilWar
 yio/tro/antiyoy/gameplay/user_levels/UlevJustinSullivanIII.java
  yio.tro.antiyoy.gameplay.user_levels.UlevJustinSullivanIII
+yio/tro/antiyoy/stuff/scroll_engine/SegmentYio.java
+ yio.tro.antiyoy.stuff.scroll_engine.SegmentYio
 yio/tro/antiyoy/gameplay/user_levels/UlevAF1.java
  yio.tro.antiyoy.gameplay.user_levels.UlevAF1
 yio/tro/antiyoy/gameplay/user_levels/UlevATwo.java
  yio.tro.antiyoy.gameplay.user_levels.UlevATwo
 yio/tro/antiyoy/gameplay/user_levels/UlevAsia.java
  yio.tro.antiyoy.gameplay.user_levels.UlevAsia
+yio/tro/antiyoy/stuff/scroll_engine/ScrollEngineYio.java
+ yio.tro.antiyoy.stuff.scroll_engine.ScrollEngineYio
 yio/tro/antiyoy/gameplay/user_levels/UlevWars.java
  yio.tro.antiyoy.gameplay.user_levels.UlevWars
 yio/tro/antiyoy/menu/scenes/gameplay/SceneFinances.java
@@ -1433,8 +1344,12 @@ yio/tro/antiyoy/gameplay/user_levels/UlevAgainstTheChampion.java
  yio.tro.antiyoy.gameplay.user_levels.UlevAgainstTheChampion
 yio/tro/antiyoy/gameplay/user_levels/UlevMiniTournament.java
  yio.tro.antiyoy.gameplay.user_levels.UlevMiniTournament
+yio/tro/antiyoy/stuff/AtlasLoader.java
+ yio.tro.antiyoy.stuff.AtlasLoader
 yio/tro/antiyoy/gameplay/user_levels/UlevYugoslavia.java
  yio.tro.antiyoy.gameplay.user_levels.UlevYugoslavia
+yio/tro/antiyoy/menu/save_slot_selector/SaveSlotInfo.java
+ yio.tro.antiyoy.menu.save_slot_selector.SaveSlotInfo
 yio/tro/antiyoy/gameplay/user_levels/UlevLittleKingdom.java
  yio.tro.antiyoy.gameplay.user_levels.UlevLittleKingdom
 yio/tro/antiyoy/gameplay/user_levels/UlevYouShallNotPass.java
@@ -1448,6 +1363,8 @@ yio/tro/antiyoy/gameplay/MapGenerator.java
  yio.tro.antiyoy.gameplay.MapGenerator$Link
 yio/tro/antiyoy/menu/customizable_list/SimpleDipEntityItem.java
  yio.tro.antiyoy.menu.customizable_list.SimpleDipEntityItem
+yio/tro/antiyoy/ai/master/MaType.java
+ yio.tro.antiyoy.ai.master.MaType
 yio/tro/antiyoy/menu/render/RenderIncomeGraphElement.java
  yio.tro.antiyoy.menu.render.RenderIncomeGraphElement
 yio/tro/antiyoy/menu/scenes/gameplay/SceneHexPurchaseDialog.java
@@ -1465,18 +1382,22 @@ yio/tro/antiyoy/gameplay/user_levels/UlevDino.java
  yio.tro.antiyoy.gameplay.user_levels.UlevDino
 yio/tro/antiyoy/gameplay/user_levels/UlevDirtStar.java
  yio.tro.antiyoy.gameplay.user_levels.UlevDirtStar
-yio/tro/antiyoy/ai/AiHardGenericRules.java
- yio.tro.antiyoy.ai.AiHardGenericRules
+yio/tro/antiyoy/gameplay/user_levels/UlevNeighbourhood.java
+ yio.tro.antiyoy.gameplay.user_levels.UlevNeighbourhood
 yio/tro/antiyoy/gameplay/user_levels/UlevSpiderTrap.java
  yio.tro.antiyoy.gameplay.user_levels.UlevSpiderTrap
 yio/tro/antiyoy/menu/scenes/SceneSaveLoad.java
  yio.tro.antiyoy.menu.scenes.SceneSaveLoad
 yio/tro/antiyoy/menu/behaviors/menu_creation/RbMoreSettings.java
  yio.tro.antiyoy.menu.behaviors.menu_creation.RbMoreSettings
+yio/tro/antiyoy/gameplay/GlobalStatistics.java
+ yio.tro.antiyoy.gameplay.GlobalStatistics
 yio/tro/antiyoy/gameplay/user_levels/UlevBridgeFort.java
  yio.tro.antiyoy.gameplay.user_levels.UlevBridgeFort
 yio/tro/antiyoy/gameplay/user_levels/UlevNotStalemate.java
  yio.tro.antiyoy.gameplay.user_levels.UlevNotStalemate
+yio/tro/antiyoy/menu/UiChildrenHolder.java
+ yio.tro.antiyoy.menu.UiChildrenHolder
 yio/tro/antiyoy/gameplay/campaign/LevelPack15.java
  yio.tro.antiyoy.gameplay.campaign.LevelPack15
 yio/tro/antiyoy/gameplay/user_levels/UlevAntarktida.java
@@ -1495,6 +1416,10 @@ yio/tro/antiyoy/menu/scenes/editor/SceneEditorEditRelation.java
  yio.tro.antiyoy.menu.scenes.editor.SceneEditorEditRelation$2
  yio.tro.antiyoy.menu.scenes.editor.SceneEditorEditRelation$3
  yio.tro.antiyoy.menu.scenes.editor.SceneEditorEditRelation$4
+yio/tro/antiyoy/gameplay/event/EventType.java
+ yio.tro.antiyoy.gameplay.event.EventType
+yio/tro/antiyoy/gameplay/diplomacy/DipMessageType.java
+ yio.tro.antiyoy.gameplay.diplomacy.DipMessageType
 yio/tro/antiyoy/menu/scenes/editor/SceneEditorLobby.java
  yio.tro.antiyoy.menu.scenes.editor.SceneEditorLobby
  yio.tro.antiyoy.menu.scenes.editor.SceneEditorLobby$1
@@ -1521,6 +1446,8 @@ yio/tro/antiyoy/gameplay/user_levels/UlevOleg8.java
  yio.tro.antiyoy.gameplay.user_levels.UlevOleg8
 yio/tro/antiyoy/gameplay/user_levels/UlevWorld.java
  yio.tro.antiyoy.gameplay.user_levels.UlevWorld
+yio/tro/antiyoy/ai/master/PsType.java
+ yio.tro.antiyoy.ai.master.PsType
 yio/tro/antiyoy/gameplay/user_levels/UlevUkraine1651to1657.java
  yio.tro.antiyoy.gameplay.user_levels.UlevUkraine1651to1657
 yio/tro/antiyoy/menu/scenes/gameplay/SceneFriendshipDialog.java
@@ -1529,6 +1456,8 @@ yio/tro/antiyoy/gameplay/diplomacy/DiplomaticCooldown.java
  yio.tro.antiyoy.gameplay.diplomacy.DiplomaticCooldown
 yio/tro/antiyoy/gameplay/replays/actions/RaHillBuilt.java
  yio.tro.antiyoy.gameplay.replays.actions.RaHillBuilt
+yio/tro/antiyoy/menu/context_list_menu/LiEditable.java
+ yio.tro.antiyoy.menu.context_list_menu.LiEditable
 yio/tro/antiyoy/gameplay/user_levels/UlevRebels.java
  yio.tro.antiyoy.gameplay.user_levels.UlevRebels
 yio/tro/antiyoy/gameplay/user_levels/UlevHoney.java
@@ -1580,6 +1509,8 @@ yio/tro/antiyoy/gameplay/user_levels/UlevEnterprise.java
  yio.tro.antiyoy.gameplay.user_levels.UlevEnterprise
 yio/tro/antiyoy/gameplay/user_levels/UlevThirdBalcanWar.java
  yio.tro.antiyoy.gameplay.user_levels.UlevThirdBalcanWar
+yio/tro/antiyoy/gameplay/game_view/RenderProvinceNames.java
+ yio.tro.antiyoy.gameplay.game_view.RenderProvinceNames
 yio/tro/antiyoy/gameplay/touch_mode/TouchMode.java
  yio.tro.antiyoy.gameplay.touch_mode.TouchMode
 yio/tro/antiyoy/gameplay/user_levels/UlevBunker5.java
@@ -1603,6 +1534,8 @@ yio/tro/antiyoy/gameplay/user_levels/UlevBaseball.java
  yio.tro.antiyoy.gameplay.user_levels.UlevBaseball
 yio/tro/antiyoy/menu/render/RenderFireworksElement.java
  yio.tro.antiyoy.menu.render.RenderFireworksElement
+yio/tro/antiyoy/ai/master/PossibleSpending.java
+ yio.tro.antiyoy.ai.master.PossibleSpending
 yio/tro/antiyoy/gameplay/campaign/LevelPack4.java
  yio.tro.antiyoy.gameplay.campaign.LevelPack4
 yio/tro/antiyoy/gameplay/user_levels/UlevKreZam.java
@@ -1623,6 +1556,8 @@ yio/tro/antiyoy/menu/scenes/editor/SceneEditorLoad.java
  yio.tro.antiyoy.menu.scenes.editor.SceneEditorLoad$1
  yio.tro.antiyoy.menu.scenes.editor.SceneEditorLoad$2
  yio.tro.antiyoy.menu.scenes.editor.SceneEditorLoad$3
+yio/tro/antiyoy/gameplay/rules/GameRules.java
+ yio.tro.antiyoy.gameplay.rules.GameRules
 yio/tro/antiyoy/gameplay/user_levels/UlevNinoAlo.java
  yio.tro.antiyoy.gameplay.user_levels.UlevNinoAlo
 yio/tro/antiyoy/menu/scenes/editor/SceneColorPicker.java
@@ -1677,6 +1612,8 @@ yio/tro/antiyoy/gameplay/rules/Ruleset.java
 yio/tro/antiyoy/menu/scenes/exception/SceneExceptionReport.java
  yio.tro.antiyoy.menu.scenes.exception.SceneExceptionReport
  yio.tro.antiyoy.menu.scenes.exception.SceneExceptionReport$1
+yio/tro/antiyoy/stuff/Fonts.java
+ yio.tro.antiyoy.stuff.Fonts
 yio/tro/antiyoy/gameplay/user_levels/UlevAllTheBusyBees2.java
  yio.tro.antiyoy.gameplay.user_levels.UlevAllTheBusyBees2
 yio/tro/antiyoy/gameplay/user_levels/UlevGraySquare.java
@@ -1702,6 +1639,8 @@ yio/tro/antiyoy/menu/scrollable_list/ListBehaviorYio.java
  yio.tro.antiyoy.menu.scrollable_list.ListBehaviorYio
 yio/tro/antiyoy/gameplay/FieldManager.java
  yio.tro.antiyoy.gameplay.FieldManager
+yio/tro/antiyoy/menu/keyboard/AbstractKbReaction.java
+ yio.tro.antiyoy.menu.keyboard.AbstractKbReaction
 yio/tro/antiyoy/gameplay/user_levels/UlevAltayskiKray.java
  yio.tro.antiyoy.gameplay.user_levels.UlevAltayskiKray
 yio/tro/antiyoy/menu/render/RenderFastConstructionPanel.java
@@ -1723,6 +1662,8 @@ yio/tro/antiyoy/gameplay/campaign/LevelPack13.java
  yio.tro.antiyoy.gameplay.campaign.LevelPack13
 yio/tro/antiyoy/ai/master/DmGroup.java
  yio.tro.antiyoy.ai.master.DmGroup
+yio/tro/antiyoy/menu/fast_construction/FcpActionType.java
+ yio.tro.antiyoy.menu.fast_construction.FcpActionType
 yio/tro/antiyoy/menu/diplomatic_exchange/AvFriendship.java
  yio.tro.antiyoy.menu.diplomatic_exchange.AvFriendship
 yio/tro/antiyoy/menu/scenes/SceneUserLevels.java
@@ -1766,14 +1707,14 @@ yio/tro/antiyoy/gameplay/user_levels/UlevMason02.java
  yio.tro.antiyoy.gameplay.user_levels.UlevMason02
 yio/tro/antiyoy/gameplay/user_levels/UlevPowakW.java
  yio.tro.antiyoy.gameplay.user_levels.UlevPowakW
-yio/tro/antiyoy/menu/ButtonRenderer.java
- yio.tro.antiyoy.menu.ButtonRenderer
+yio/tro/antiyoy/menu/scenes/Scenes.java
+ yio.tro.antiyoy.menu.scenes.Scenes
 yio/tro/antiyoy/gameplay/replays/actions/RaHexFractionChanged.java
  yio.tro.antiyoy.gameplay.replays.actions.RaHexFractionChanged
 yio/tro/antiyoy/menu/behaviors/menu_creation/RbCampaignMenu.java
  yio.tro.antiyoy.menu.behaviors.menu_creation.RbCampaignMenu
-yio/tro/antiyoy/ai/AiNormalGenericRules.java
- yio.tro.antiyoy.ai.AiNormalGenericRules
+yio/tro/antiyoy/gameplay/user_levels/UlevBreakUpOfYugoslavia.java
+ yio.tro.antiyoy.gameplay.user_levels.UlevBreakUpOfYugoslavia
 yio/tro/antiyoy/gameplay/user_levels/Ulev900to1200.java
  yio.tro.antiyoy.gameplay.user_levels.Ulev900to1200
 yio/tro/antiyoy/gameplay/user_levels/UlevTripleDuo.java
@@ -1804,6 +1745,8 @@ yio/tro/antiyoy/gameplay/game_view/RenderCityNames.java
  yio.tro.antiyoy.gameplay.game_view.RenderCityNames
 yio/tro/antiyoy/menu/scenes/SceneFireworks.java
  yio.tro.antiyoy.menu.scenes.SceneFireworks
+yio/tro/antiyoy/stuff/LongTapDetector.java
+ yio.tro.antiyoy.stuff.LongTapDetector
 yio/tro/antiyoy/gameplay/user_levels/UlevAhmetErkhan.java
  yio.tro.antiyoy.gameplay.user_levels.UlevAhmetErkhan
 yio/tro/antiyoy/gameplay/user_levels/UlevOleg7.java
@@ -1830,8 +1773,14 @@ yio/tro/antiyoy/menu/keyboard/KbTextArea.java
  yio.tro.antiyoy.menu.keyboard.KbTextArea
 yio/tro/antiyoy/gameplay/user_levels/UlevIslandOfUnity.java
  yio.tro.antiyoy.gameplay.user_levels.UlevIslandOfUnity
+yio/tro/antiyoy/gameplay/campaign/CampaignProgressManager.java
+ yio.tro.antiyoy.gameplay.campaign.CampaignProgressManager
 yio/tro/antiyoy/gameplay/user_levels/UlevRegainControl.java
  yio.tro.antiyoy.gameplay.user_levels.UlevRegainControl
+yio/tro/antiyoy/menu/SingleMessages.java
+ yio.tro.antiyoy.menu.SingleMessages
+yio/tro/antiyoy/menu/income_view/MveBehavior.java
+ yio.tro.antiyoy.menu.income_view.MveBehavior
 yio/tro/antiyoy/gameplay/user_levels/UlevSaveKooNation.java
  yio.tro.antiyoy.gameplay.user_levels.UlevSaveKooNation
 yio/tro/antiyoy/menu/RenderButtons.java
@@ -1850,6 +1799,8 @@ yio/tro/antiyoy/menu/behaviors/editor/RbHideHexPanel.java
  yio.tro.antiyoy.menu.behaviors.editor.RbHideHexPanel
 yio/tro/antiyoy/menu/render/RenderSlider.java
  yio.tro.antiyoy.menu.render.RenderSlider
+yio/tro/antiyoy/menu/diplomatic_exchange/CavsMode.java
+ yio.tro.antiyoy.menu.diplomatic_exchange.CavsMode
 yio/tro/antiyoy/menu/save_slot_selector/SaveSlotSelector.java
  yio.tro.antiyoy.menu.save_slot_selector.SaveSlotSelector
  yio.tro.antiyoy.menu.save_slot_selector.SaveSlotSelector$1
@@ -1866,12 +1817,16 @@ yio/tro/antiyoy/gameplay/game_view/RenderForefinger.java
  yio.tro.antiyoy.gameplay.game_view.RenderForefinger
 yio/tro/antiyoy/gameplay/game_view/RenderMoveZone.java
  yio.tro.antiyoy.gameplay.game_view.RenderMoveZone
+yio/tro/antiyoy/gameplay/data_storage/EncodeableYio.java
+ yio.tro.antiyoy.gameplay.data_storage.EncodeableYio
 yio/tro/antiyoy/gameplay/campaign/LevelPack3.java
  yio.tro.antiyoy.gameplay.campaign.LevelPack3
 yio/tro/antiyoy/menu/context_list_menu/ClmItem.java
  yio.tro.antiyoy.menu.context_list_menu.ClmItem
 yio/tro/antiyoy/gameplay/user_levels/UlevEngland7thCentury.java
  yio.tro.antiyoy.gameplay.user_levels.UlevEngland7thCentury
+yio/tro/antiyoy/menu/customizable_list/IncomeType.java
+ yio.tro.antiyoy.menu.customizable_list.IncomeType
 yio/tro/antiyoy/gameplay/replays/actions/RaRevoltSpawned.java
  yio.tro.antiyoy.gameplay.replays.actions.RaRevoltSpawned
 yio/tro/antiyoy/gameplay/user_levels/UlevMimandraTribe.java
@@ -1885,8 +1840,8 @@ yio/tro/antiyoy/gameplay/user_levels/UlevJustLevelThree.java
 yio/tro/antiyoy/gameplay/TutorialScriptSlayRules.java
  yio.tro.antiyoy.gameplay.TutorialScriptSlayRules
  yio.tro.antiyoy.gameplay.TutorialScriptSlayRules$1
-yio/tro/antiyoy/ai/AiHardSlayRules.java
- yio.tro.antiyoy.ai.AiHardSlayRules
+yio/tro/antiyoy/menu/customizable_list/ScrollListItem.java
+ yio.tro.antiyoy.menu.customizable_list.ScrollListItem
 yio/tro/antiyoy/gameplay/user_levels/UlevWagonWheel.java
  yio.tro.antiyoy.gameplay.user_levels.UlevWagonWheel
 yio/tro/antiyoy/menu/scenes/gameplay/SceneGoalView.java
@@ -1908,12 +1863,16 @@ yio/tro/antiyoy/menu/ButtonYio.java
  yio.tro.antiyoy.menu.ButtonYio$1
 yio/tro/antiyoy/gameplay/user_levels/UlevEatenAlive.java
  yio.tro.antiyoy.gameplay.user_levels.UlevEatenAlive
+yio/tro/antiyoy/gameplay/RefuseStatistics.java
+ yio.tro.antiyoy.gameplay.RefuseStatistics
 yio/tro/antiyoy/menu/customizable_list/SkinListItem.java
  yio.tro.antiyoy.menu.customizable_list.SkinListItem
 yio/tro/antiyoy/gameplay/user_levels/UlevDrunken.java
  yio.tro.antiyoy.gameplay.user_levels.UlevDrunken
 yio/tro/antiyoy/menu/behaviors/editor/RbShowObjectPanel.java
  yio.tro.antiyoy.menu.behaviors.editor.RbShowObjectPanel
+yio/tro/antiyoy/menu/fireworks_element/FeSequence.java
+ yio.tro.antiyoy.menu.fireworks_element.FeSequence
 yio/tro/antiyoy/menu/scenes/SceneSingleMessage.java
  yio.tro.antiyoy.menu.scenes.SceneSingleMessage
 yio/tro/antiyoy/gameplay/campaign/LevelPack6.java
@@ -1942,6 +1901,8 @@ yio/tro/antiyoy/gameplay/LevelSnapshot.java
  yio.tro.antiyoy.gameplay.LevelSnapshot
 yio/tro/antiyoy/gameplay/user_levels/UlevExample3.java
  yio.tro.antiyoy.gameplay.user_levels.UlevExample3
+yio/tro/antiyoy/gameplay/user_levels/UserLevelsManager.java
+ yio.tro.antiyoy.gameplay.user_levels.UserLevelsManager
 yio/tro/antiyoy/menu/editor_elements/add_relation/AerItem.java
  yio.tro.antiyoy.menu.editor_elements.add_relation.AerItem
 yio/tro/antiyoy/menu/behaviors/menu_creation/RbPauseMenu.java
@@ -1980,6 +1941,8 @@ yio/tro/antiyoy/menu/scenes/editor/SceneEditorOverlay.java
  yio.tro.antiyoy.menu.scenes.editor.SceneEditorOverlay$3
  yio.tro.antiyoy.menu.scenes.editor.SceneEditorOverlay$4
  yio.tro.antiyoy.menu.scenes.editor.SceneEditorOverlay$5
+yio/tro/antiyoy/menu/diplomatic_dialogs/AcActionType.java
+ yio.tro.antiyoy.menu.diplomatic_dialogs.AcActionType
 yio/tro/antiyoy/gameplay/user_levels/UlevHalma.java
  yio.tro.antiyoy.gameplay.user_levels.UlevHalma
 yio/tro/antiyoy/menu/behaviors/gameplay/RbBuildSolidObject.java
@@ -1996,10 +1959,14 @@ yio/tro/antiyoy/gameplay/tests/TestLaunchFireworks.java
  yio.tro.antiyoy.gameplay.tests.TestLaunchFireworks
 yio/tro/antiyoy/gameplay/user_levels/UlevOperationBarbarossa.java
  yio.tro.antiyoy.gameplay.user_levels.UlevOperationBarbarossa
-yio/tro/antiyoy/ai/AiEasy.java
- yio.tro.antiyoy.ai.AiEasy
+yio/tro/antiyoy/gameplay/user_levels/UlevColonisationOfAustralia.java
+ yio.tro.antiyoy.gameplay.user_levels.UlevColonisationOfAustralia
+yio/tro/antiyoy/SplatController.java
+ yio.tro.antiyoy.SplatController
 yio/tro/antiyoy/menu/behaviors/menu_creation/RbSkirmishMenu.java
  yio.tro.antiyoy.menu.behaviors.menu_creation.RbSkirmishMenu
+yio/tro/antiyoy/KeyboardManager.java
+ yio.tro.antiyoy.KeyboardManager
 yio/tro/antiyoy/gameplay/user_levels/UlevEurasia.java
  yio.tro.antiyoy.gameplay.user_levels.UlevEurasia
 yio/tro/antiyoy/ai/master/AiData.java
@@ -2015,23 +1982,24 @@ yio/tro/antiyoy/menu/scenes/gameplay/SceneChooseExchangeType.java
 yio/tro/antiyoy/menu/scenes/gameplay/SceneTransferMoneyDialog.java
  yio.tro.antiyoy.menu.scenes.gameplay.SceneTransferMoneyDialog
  yio.tro.antiyoy.menu.scenes.gameplay.SceneTransferMoneyDialog$1
+yio/tro/antiyoy/menu/editor_elements/color_picker/IColorChoiceListener.java
+ yio.tro.antiyoy.menu.editor_elements.color_picker.IColorChoiceListener
+yio/tro/antiyoy/Bubble.java
+ yio.tro.antiyoy.Bubble
 yio/tro/antiyoy/menu/render/RenderSkinListItem.java
  yio.tro.antiyoy.menu.render.RenderSkinListItem
-yio/tro/antiyoy/ai/ArtificialIntelligence.java
- yio.tro.antiyoy.ai.ArtificialIntelligence
+yio/tro/antiyoy/menu/diplomatic_dialogs/AbstractDiplomaticDialog.java
+ yio.tro.antiyoy.menu.diplomatic_dialogs.AbstractDiplomaticDialog
+ yio.tro.antiyoy.menu.diplomatic_dialogs.AbstractDiplomaticDialog$1
+ yio.tro.antiyoy.menu.diplomatic_dialogs.AbstractDiplomaticDialog$2
+yio/tro/antiyoy/gameplay/MatchStatistics.java
+ yio.tro.antiyoy.gameplay.MatchStatistics
+yio/tro/antiyoy/gameplay/loading/LoadingType.java
+ yio.tro.antiyoy.gameplay.loading.LoadingType
 yio/tro/antiyoy/menu/customizable_list/SliReaction.java
  yio.tro.antiyoy.menu.customizable_list.SliReaction
-yio/tro/antiyoy/ai/master/DefenseManager.java
- yio.tro.antiyoy.ai.master.DefenseManager
- yio.tro.antiyoy.ai.master.DefenseManager$1
- yio.tro.antiyoy.ai.master.DefenseManager$2
- yio.tro.antiyoy.ai.master.DefenseManager$3
- yio.tro.antiyoy.ai.master.DefenseManager$4
- yio.tro.antiyoy.ai.master.DefenseManager$5
- yio.tro.antiyoy.ai.master.DefenseManager$6
- yio.tro.antiyoy.ai.master.DefenseManager$7
- yio.tro.antiyoy.ai.master.DefenseManager$8
- yio.tro.antiyoy.ai.master.DefenseManager$9
+yio/tro/antiyoy/ai/AiHardGenericRules.java
+ yio.tro.antiyoy.ai.AiHardGenericRules
 yio/tro/antiyoy/menu/scenes/gameplay/SceneSurrenderDialog.java
  yio.tro.antiyoy.menu.scenes.gameplay.SceneSurrenderDialog
 yio/tro/antiyoy/gameplay/Unit.java
@@ -2045,6 +2013,8 @@ yio/tro/antiyoy/menu/diplomatic_dialogs/PrepareForAttackPropositionDialog.java
  yio.tro.antiyoy.menu.diplomatic_dialogs.PrepareForAttackPropositionDialog
 yio/tro/antiyoy/gameplay/user_levels/UlevCantBeEasier.java
  yio.tro.antiyoy.gameplay.user_levels.UlevCantBeEasier
+yio/tro/antiyoy/stuff/FrameBufferYio.java
+ yio.tro.antiyoy.stuff.FrameBufferYio
 yio/tro/antiyoy/menu/DownsidePanelElement.java
  yio.tro.antiyoy.menu.DownsidePanelElement
 yio/tro/antiyoy/menu/scenes/gameplay/SceneSelectionOverlay.java
@@ -2059,6 +2029,8 @@ yio/tro/antiyoy/gameplay/user_levels/UlevNowhereToHide.java
  yio.tro.antiyoy.gameplay.user_levels.UlevNowhereToHide
 yio/tro/antiyoy/gameplay/user_levels/UlevKayitDosyasi61.java
  yio.tro.antiyoy.gameplay.user_levels.UlevKayitDosyasi61
+yio/tro/antiyoy/menu/editor_elements/edit_land/EleActionType.java
+ yio.tro.antiyoy.menu.editor_elements.edit_land.EleActionType
 yio/tro/antiyoy/gameplay/user_levels/UlevBangladeshRebellion.java
  yio.tro.antiyoy.gameplay.user_levels.UlevBangladeshRebellion
 yio/tro/antiyoy/gameplay/game_view/RenderDefenseTips.java
@@ -2069,6 +2041,8 @@ yio/tro/antiyoy/gameplay/replays/actions/RaTurnEnded.java
  yio.tro.antiyoy.gameplay.replays.actions.RaTurnEnded
 yio/tro/antiyoy/menu/customizable_list/AbstractSingleLineItem.java
  yio.tro.antiyoy.menu.customizable_list.AbstractSingleLineItem
+yio/tro/antiyoy/stuff/CircleYio.java
+ yio.tro.antiyoy.stuff.CircleYio
 yio/tro/antiyoy/menu/diplomatic_exchange/CustomArgViewSlider.java
  yio.tro.antiyoy.menu.diplomatic_exchange.CustomArgViewSlider
  yio.tro.antiyoy.menu.diplomatic_exchange.CustomArgViewSlider$1
@@ -2076,8 +2050,12 @@ yio/tro/antiyoy/gameplay/user_levels/UlevFairOrSquare.java
  yio.tro.antiyoy.gameplay.user_levels.UlevFairOrSquare
 yio/tro/antiyoy/gameplay/user_levels/UlevMedievalAgeEurope.java
  yio.tro.antiyoy.gameplay.user_levels.UlevMedievalAgeEurope
+yio/tro/antiyoy/OneTimeInfo.java
+ yio.tro.antiyoy.OneTimeInfo
 yio/tro/antiyoy/gameplay/user_levels/UlevCatan.java
  yio.tro.antiyoy.gameplay.user_levels.UlevCatan
+yio/tro/antiyoy/menu/scenes/editor/IGoalChoiceListener.java
+ yio.tro.antiyoy.menu.scenes.editor.IGoalChoiceListener
 yio/tro/antiyoy/menu/behaviors/RbDebugActions.java
  yio.tro.antiyoy.menu.behaviors.RbDebugActions
 yio/tro/antiyoy/menu/scenes/SceneConfirmDeleteSlot.java
@@ -2089,6 +2067,10 @@ yio/tro/antiyoy/gameplay/user_levels/UlevEpicenter.java
 yio/tro/antiyoy/menu/customizable_list/SkinLiPreviewIcon.java
  yio.tro.antiyoy.menu.customizable_list.SkinLiPreviewIcon
  yio.tro.antiyoy.menu.customizable_list.SkinLiPreviewIcon$1
+yio/tro/antiyoy/menu/diplomacy_element/DipActionType.java
+ yio.tro.antiyoy.menu.diplomacy_element.DipActionType
+yio/tro/antiyoy/factor_yio/MoveBehaviorApproach.java
+ yio.tro.antiyoy.factor_yio.MoveBehaviorApproach
 yio/tro/antiyoy/menu/diplomatic_exchange/AvNothing.java
  yio.tro.antiyoy.menu.diplomatic_exchange.AvNothing
 yio/tro/antiyoy/menu/scenes/gameplay/SceneDipInfoDialog.java
@@ -2099,6 +2081,8 @@ yio/tro/antiyoy/menu/scenes/SceneAfterGameMenu.java
  yio.tro.antiyoy.menu.scenes.SceneAfterGameMenu
 yio/tro/antiyoy/menu/render/RenderScrollableList.java
  yio.tro.antiyoy.menu.render.RenderScrollableList
+yio/tro/antiyoy/menu/Animation.java
+ yio.tro.antiyoy.menu.Animation
 yio/tro/antiyoy/gameplay/fog_of_war/SliceUpdater.java
  yio.tro.antiyoy.gameplay.fog_of_war.SliceUpdater
 yio/tro/antiyoy/menu/render/RenderDiplomaticLogPanel.java
@@ -2128,6 +2112,8 @@ yio/tro/antiyoy/gameplay/user_levels/UlevOleg4.java
 yio/tro/antiyoy/menu/customizable_list/ProfitDetailItem.java
  yio.tro.antiyoy.menu.customizable_list.ProfitDetailItem
  yio.tro.antiyoy.menu.customizable_list.ProfitDetailItem$1
+yio/tro/antiyoy/gameplay/SavableYio.java
+ yio.tro.antiyoy.gameplay.SavableYio
 yio/tro/antiyoy/gameplay/data_storage/DecodeManager.java
  yio.tro.antiyoy.gameplay.data_storage.DecodeManager
 yio/tro/antiyoy/gameplay/user_levels/UlevGeneralLebedRising.java
@@ -2151,6 +2137,10 @@ yio/tro/antiyoy/gameplay/user_levels/UlevSpikes.java
  yio.tro.antiyoy.gameplay.user_levels.UlevSpikes
 yio/tro/antiyoy/menu/behaviors/RbRestartGame.java
  yio.tro.antiyoy.menu.behaviors.RbRestartGame
+yio/tro/antiyoy/gameplay/GoalType.java
+ yio.tro.antiyoy.gameplay.GoalType
+yio/tro/antiyoy/stuff/DateYio.java
+ yio.tro.antiyoy.stuff.DateYio
 yio/tro/antiyoy/gameplay/user_levels/UlevInDilemma.java
  yio.tro.antiyoy.gameplay.user_levels.UlevInDilemma
 yio/tro/antiyoy/gameplay/TutorialScriptGenericRules.java
@@ -2212,14 +2202,10 @@ yio/tro/antiyoy/gameplay/user_levels/UlevTemporaryDifficulties.java
  yio.tro.antiyoy.gameplay.user_levels.UlevTemporaryDifficulties
 yio/tro/antiyoy/gameplay/user_levels/UlevEastTurkestan.java
  yio.tro.antiyoy.gameplay.user_levels.UlevEastTurkestan
-yio/tro/antiyoy/ai/master/AttackManager.java
- yio.tro.antiyoy.ai.master.AttackManager
- yio.tro.antiyoy.ai.master.AttackManager$1
- yio.tro.antiyoy.ai.master.AttackManager$2
- yio.tro.antiyoy.ai.master.AttackManager$3
- yio.tro.antiyoy.ai.master.AttackManager$4
- yio.tro.antiyoy.ai.master.AttackManager$5
- yio.tro.antiyoy.ai.master.AttackManager$6
+yio/tro/antiyoy/ai/AiBalancerGenericRules.java
+ yio.tro.antiyoy.ai.AiBalancerGenericRules
+yio/tro/antiyoy/stuff/tabs_engine/TeMagnet.java
+ yio.tro.antiyoy.stuff.tabs_engine.TeMagnet
 yio/tro/antiyoy/gameplay/user_levels/UlevScandinavia.java
  yio.tro.antiyoy.gameplay.user_levels.UlevScandinavia
 yio/tro/antiyoy/menu/speed_panel/SpeedPanel.java
@@ -2227,6 +2213,8 @@ yio/tro/antiyoy/menu/speed_panel/SpeedPanel.java
 yio/tro/antiyoy/gameplay/FinishGameManager.java
  yio.tro.antiyoy.gameplay.FinishGameManager
  yio.tro.antiyoy.gameplay.FinishGameManager$1
+yio/tro/antiyoy/gameplay/replays/actions/RaHexFractionChangedWithoutProvince.java
+ yio.tro.antiyoy.gameplay.replays.actions.RaHexFractionChangedWithoutProvince
 yio/tro/antiyoy/gameplay/user_levels/UlevMedievalWarEurope.java
  yio.tro.antiyoy.gameplay.user_levels.UlevMedievalWarEurope
 yio/tro/antiyoy/gameplay/user_levels/UlevLightsGoOut.java
@@ -2246,10 +2234,14 @@ yio/tro/antiyoy/gameplay/user_levels/UlevBelarusianRegions.java
  yio.tro.antiyoy.gameplay.user_levels.UlevBelarusianRegions
 yio/tro/antiyoy/gameplay/user_levels/UlevDieBrucke.java
  yio.tro.antiyoy.gameplay.user_levels.UlevDieBrucke
+yio/tro/antiyoy/gameplay/DebugFlags.java
+ yio.tro.antiyoy.gameplay.DebugFlags
 yio/tro/antiyoy/gameplay/user_levels/UlevKingdomsPt1.java
  yio.tro.antiyoy.gameplay.user_levels.UlevKingdomsPt1
 yio/tro/antiyoy/gameplay/replays/actions/RaMountainBulit.java
  yio.tro.antiyoy.gameplay.replays.actions.RaMountainBulit
+yio/tro/antiyoy/stuff/FakeFbYio.java
+ yio.tro.antiyoy.stuff.FakeFbYio
 yio/tro/antiyoy/gameplay/replays/actions/RaFarmBuilt.java
  yio.tro.antiyoy.gameplay.replays.actions.RaFarmBuilt
 yio/tro/antiyoy/gameplay/user_levels/UlevAtlantidaWar.java
@@ -2258,6 +2250,8 @@ yio/tro/antiyoy/gameplay/TutorialScript.java
  yio.tro.antiyoy.gameplay.TutorialScript
 yio/tro/antiyoy/menu/render/RenderTextViewElement.java
  yio.tro.antiyoy.menu.render.RenderTextViewElement
+yio/tro/antiyoy/gameplay/Obj.java
+ yio.tro.antiyoy.gameplay.Obj
 yio/tro/antiyoy/gameplay/user_levels/UlevDoubleLanes.java
  yio.tro.antiyoy.gameplay.user_levels.UlevDoubleLanes
 yio/tro/antiyoy/menu/SpecialThanksDialog.java
@@ -2276,6 +2270,8 @@ yio/tro/antiyoy/menu/scenes/gameplay/SceneAreaSelectionUI.java
  yio.tro.antiyoy.menu.scenes.gameplay.SceneAreaSelectionUI$2
 yio/tro/antiyoy/gameplay/campaign/LevelPack19.java
  yio.tro.antiyoy.gameplay.campaign.LevelPack19
+yio/tro/antiyoy/gameplay/editor/EditorRelationsManager.java
+ yio.tro.antiyoy.gameplay.editor.EditorRelationsManager
 yio/tro/antiyoy/gameplay/user_levels/UlevBackyardSale.java
  yio.tro.antiyoy.gameplay.user_levels.UlevBackyardSale
 yio/tro/antiyoy/menu/render/RenderNotificationElement.java
@@ -2315,42 +2311,49 @@ yio/tro/antiyoy/gameplay/user_levels/UlevSafrinioAssentianWar.java
  yio.tro.antiyoy.gameplay.user_levels.UlevSafrinioAssentianWar
 yio/tro/antiyoy/gameplay/GameController.java
  yio.tro.antiyoy.gameplay.GameController
-yio/tro/antiyoy/menu/diplomatic_dialogs/EventDialog.java
- yio.tro.antiyoy.menu.diplomatic_dialogs.EventDialog
-yio/tro/antiyoy/gameplay/user_levels/UlevColonisationOfAustralia.java
- yio.tro.antiyoy.gameplay.user_levels.UlevColonisationOfAustralia
-yio/tro/antiyoy/menu/scenes/gameplay/choose_entity/SceneChooseDiplomaticEntity.java
- yio.tro.antiyoy.menu.scenes.gameplay.choose_entity.SceneChooseDiplomaticEntity
- yio.tro.antiyoy.menu.scenes.gameplay.choose_entity.SceneChooseDiplomaticEntity$1
-yio/tro/antiyoy/gameplay/user_levels/UlevForeverGreen.java
- yio.tro.antiyoy.gameplay.user_levels.UlevForeverGreen
-yio/tro/antiyoy/gameplay/user_levels/UlevNeighbourhood.java
- yio.tro.antiyoy.gameplay.user_levels.UlevNeighbourhood
-yio/tro/antiyoy/menu/customizable_list/ScrollListItem.java
- yio.tro.antiyoy.menu.customizable_list.ScrollListItem
-yio/tro/antiyoy/gameplay/user_levels/UlevHansJurgen.java
- yio.tro.antiyoy.gameplay.user_levels.UlevHansJurgen
-yio/tro/antiyoy/gameplay/user_levels/UlevAntiyoy696.java
- yio.tro.antiyoy.gameplay.user_levels.UlevAntiyoy696
-yio/tro/antiyoy/menu/scenes/editor/SceneEditorEventEditor.java
- yio.tro.antiyoy.menu.scenes.editor.SceneEditorEventEditor
- yio.tro.antiyoy.menu.scenes.editor.SceneEditorEventEditor$1
- yio.tro.antiyoy.menu.scenes.editor.SceneEditorEventEditor$10
- yio.tro.antiyoy.menu.scenes.editor.SceneEditorEventEditor$11
- yio.tro.antiyoy.menu.scenes.editor.SceneEditorEventEditor$12
- yio.tro.antiyoy.menu.scenes.editor.SceneEditorEventEditor$13
- yio.tro.antiyoy.menu.scenes.editor.SceneEditorEventEditor$2
- yio.tro.antiyoy.menu.scenes.editor.SceneEditorEventEditor$3
- yio.tro.antiyoy.menu.scenes.editor.SceneEditorEventEditor$4
- yio.tro.antiyoy.menu.scenes.editor.SceneEditorEventEditor$5
- yio.tro.antiyoy.menu.scenes.editor.SceneEditorEventEditor$6
- yio.tro.antiyoy.menu.scenes.editor.SceneEditorEventEditor$7
- yio.tro.antiyoy.menu.scenes.editor.SceneEditorEventEditor$8
- yio.tro.antiyoy.menu.scenes.editor.SceneEditorEventEditor$9
-yio/tro/antiyoy/menu/scenes/editor/SceneEditorEvent.java
- yio.tro.antiyoy.menu.scenes.editor.SceneEditorEvent
- yio.tro.antiyoy.menu.scenes.editor.SceneEditorEvent$1
- yio.tro.antiyoy.menu.scenes.editor.SceneEditorEvent$2
- yio.tro.antiyoy.menu.scenes.editor.SceneEditorEvent$3
-yio/tro/antiyoy/menu/scenes/Scenes.java
- yio.tro.antiyoy.menu.scenes.Scenes
+yio/tro/antiyoy/ai/ArtificialIntelligence.java
+ yio.tro.antiyoy.ai.ArtificialIntelligence
+yio/tro/antiyoy/ai/AiNormalGenericRules.java
+ yio.tro.antiyoy.ai.AiNormalGenericRules
+yio/tro/antiyoy/ai/AiNormalSlayRules.java
+ yio.tro.antiyoy.ai.AiNormalSlayRules
+yio/tro/antiyoy/ai/ArtificialIntelligenceGeneric.java
+ yio.tro.antiyoy.ai.ArtificialIntelligenceGeneric
+yio/tro/antiyoy/ai/AiBalancerSlayRules.java
+ yio.tro.antiyoy.ai.AiBalancerSlayRules
+yio/tro/antiyoy/ai/AiHardSlayRules.java
+ yio.tro.antiyoy.ai.AiHardSlayRules
+yio/tro/antiyoy/gameplay/diplomacy/DiplomaticEntity.java
+ yio.tro.antiyoy.gameplay.diplomacy.DiplomaticEntity
+yio/tro/antiyoy/OnKeyReactions.java
+ yio.tro.antiyoy.OnKeyReactions
+yio/tro/antiyoy/ai/master/AiMaster.java
+ yio.tro.antiyoy.ai.master.AiMaster
+ yio.tro.antiyoy.ai.master.AiMaster$1
+ yio.tro.antiyoy.ai.master.AiMaster$2
+ yio.tro.antiyoy.ai.master.AiMaster$3
+ yio.tro.antiyoy.ai.master.AiMaster$4
+ yio.tro.antiyoy.ai.master.AiMaster$5
+ yio.tro.antiyoy.ai.master.AiMaster$6
+ yio.tro.antiyoy.ai.master.AiMaster$7
+yio/tro/antiyoy/ai/master/AttackManager.java
+ yio.tro.antiyoy.ai.master.AttackManager
+ yio.tro.antiyoy.ai.master.AttackManager$1
+ yio.tro.antiyoy.ai.master.AttackManager$2
+ yio.tro.antiyoy.ai.master.AttackManager$3
+ yio.tro.antiyoy.ai.master.AttackManager$4
+ yio.tro.antiyoy.ai.master.AttackManager$5
+ yio.tro.antiyoy.ai.master.AttackManager$6
+yio/tro/antiyoy/ai/master/DefenseManager.java
+ yio.tro.antiyoy.ai.master.DefenseManager
+ yio.tro.antiyoy.ai.master.DefenseManager$1
+ yio.tro.antiyoy.ai.master.DefenseManager$2
+ yio.tro.antiyoy.ai.master.DefenseManager$3
+ yio.tro.antiyoy.ai.master.DefenseManager$4
+ yio.tro.antiyoy.ai.master.DefenseManager$5
+ yio.tro.antiyoy.ai.master.DefenseManager$6
+ yio.tro.antiyoy.ai.master.DefenseManager$7
+ yio.tro.antiyoy.ai.master.DefenseManager$8
+ yio.tro.antiyoy.ai.master.DefenseManager$9
+yio/tro/antiyoy/ai/AiFactory.java
+ yio.tro.antiyoy.ai.AiFactory

@@ -110,7 +110,7 @@ public class MoneyViewElement extends AbstractRectangularUiElement{
         }
 
         if(turnNeeded && titleValue >= 0){
-            return  "Turns:"+titleValue;
+            return  LanguagesManager.getInstance().getString("turns")+":"+titleValue;
         }
 
         return "" + compactedString;

@@ -18,6 +18,7 @@ public class SceneChosenLands extends AbstractModalScene {
     private ButtonYio cancelButton;
     private ButtonYio applyButton;
     private TextViewElement textViewTitle;
+    ArrayList<Hex> moveZone;
 
     public SceneChosenLands(MenuControllerYio menuControllerYio) {
             super(menuControllerYio);
@@ -47,20 +48,19 @@ public class SceneChosenLands extends AbstractModalScene {
 
         private void onCancelButtonPressed() {
             FieldManager fieldManager = getGameController().fieldManager;
-            fieldManager.diplomacyManager.disableAreaSelectionMode();
         }
 
 
         private void onApplyButtonPressed() {
             GameController gameController = getGameController();
             FieldManager fieldManager = gameController.fieldManager;
-            DiplomacyManager diplomacyManager = fieldManager.diplomacyManager;
-            diplomacyManager.disableAreaSelectionMode();
+            moveZone = fieldManager.moveZoneManager.moveZone;
+            Scenes.sceneEditorProvincePanel.getChosenLands(moveZone);
+            Scenes.sceneEditorProvincePanel.create();
+        }
 
-            ArrayList<Hex> moveZone = fieldManager.moveZoneManager.moveZone;
-
-            Scenes.sceneDiplomaticExchange.create();
-            Scenes.sceneDiplomaticExchange.exchangeUiElement.onAreaSelected(moveZone);
+        public ArrayList<Hex> getChosenLands(){
+            return moveZone;
         }
 
 

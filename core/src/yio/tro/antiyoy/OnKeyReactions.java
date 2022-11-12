@@ -57,6 +57,12 @@ public class OnKeyReactions {
             case Input.Keys.Z:
                 yioGdxGame.gameController.cameraController.setTargetZoomLevel(0.9f);
                 break;
+            case Input.Keys.UP:
+                yioGdxGame.gameController.cameraController.setTargetZoomLevel(yioGdxGame.gameController.cameraController.getTargetZoomLevel()-0.3f);
+                break;
+            case Input.Keys.DOWN:
+                yioGdxGame.gameController.cameraController.setTargetZoomLevel(yioGdxGame.gameController.cameraController.getTargetZoomLevel()+0.3f);
+                break;
             case Input.Keys.NUM_9:
                 onEditLevelButtonPressed();
                 break;

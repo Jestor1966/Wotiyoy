@@ -746,6 +746,12 @@ public class AiMaster extends AbstractAi {
             if (hex.objectInside == Obj.STRONG_TOWER) {
                 increaseSolidDefenseNearby(hex, 3);
             }
+            if (hex.objectInside == Obj.CITY) {
+                increaseSolidDefenseNearby(hex, 3);
+            }
+            if (hex.objectInside == Obj.FORT) {
+                increaseSolidDefenseNearby(hex, 3);
+            }
         }
     }
 
@@ -931,7 +937,7 @@ public class AiMaster extends AbstractAi {
     void applyPeacefulExpansionAction() {
         updateReadyUnits();
         for (Unit unit : readyUnits) {
-            if (unit.strength > 2) continue;
+            if (gameController.getRealUnitStrength(unit.strength) > 2) continue;
             Hex bestOverallHex = getBestHexForPeacefulExpansion(adjacentNeutralLandsList, unit.strength);
             if (bestOverallHex == null) break; // failure
             if (sendUnitWithCheck(unit, bestOverallHex)) return; // success
@@ -1278,6 +1284,21 @@ public class AiMaster extends AbstractAi {
                 break;
             case unit4:
                 applyBuildUnitSpending(4);
+                break;
+            case unit5:
+                applyBuildUnitSpending(5);
+                break;
+            case unit6:
+                applyBuildUnitSpending(7);
+                break;
+            case unit7:
+                applyBuildUnitSpending(7);
+                break;
+            case unit8:
+                applyBuildUnitSpending(8);
+                break;
+            case unit9:
+                applyBuildUnitSpending(8);
                 break;
             case farm:
                 applyFarmSpending();
@@ -1922,7 +1943,7 @@ public class AiMaster extends AbstractAi {
 
     boolean isHexSuitableForNewFarm(Hex hex) {
         if (!hex.isEmpty()) return false;
-        if (currentProvince.hexList.size() >= 10 && hex.aiData.firstLine) return false;
+        if (currentProvince.hexList.size() >= 10 && hex.aiData.firstLine && currentProvince.getFreeLandNum()>=2) return false;
         return hex.hasThisSupportiveObjectNearby(Obj.TOWN) || hex.hasThisSupportiveObjectNearby(Obj.FARM);
     }
 

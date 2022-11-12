@@ -195,6 +195,10 @@ public class ReplayManager {
         replay.addAction(new RaHexFractionChanged(hex, hex.fraction));
     }
 
+    public void onHexChangedFractionWithoutProvince(Hex hex) {
+        replay.addAction(new RaHexFractionChangedWithoutProvince(hex, hex.fraction));
+    }
+
 
     public void setReplay(Replay replay) {
         this.replay = replay;

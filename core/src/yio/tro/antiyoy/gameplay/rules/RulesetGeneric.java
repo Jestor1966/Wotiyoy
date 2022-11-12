@@ -2,6 +2,8 @@ package yio.tro.antiyoy.gameplay.rules;
 
 import yio.tro.antiyoy.gameplay.*;
 
+import java.util.Random;
+
 import static yio.tro.antiyoy.gameplay.rules.GameRules.*;
 
 public class RulesetGeneric extends Ruleset{
@@ -14,18 +16,18 @@ public class RulesetGeneric extends Ruleset{
 
     @Override
     public boolean canSpawnPineOnHex(Hex hex) {
-        return hex.isFree() && howManyTreesNearby(hex) >= 2 && hex.hasPineReadyToExpandNearby() && gameController.getRandom().nextDouble() < 0.2;
+        return !hex.isSea() && hex.isFree() && howManyTreesNearby(hex) >= 2 && hex.hasPineReadyToExpandNearby() && gameController.getRandom().nextDouble() < 0.2;
     }
 
 
     @Override
     public boolean canSpawnPalmOnHex(Hex hex) {
-        return hex.isFree() && hex.isNearWater() && hex.hasPalmReadyToExpandNearby() && gameController.getRandom().nextDouble() < 0.5;
+        return !hex.isSea() && hex.isFree() && hex.isNearWater() && hex.hasPalmReadyToExpandNearby() && gameController.getRandom().nextDouble() < 0.5;
     }
 
     @Override
     public boolean canSpawnRevoltOnHex(Hex hex) {
-        return hex.isRevoltCan() && hex.hasRevoltReadyToExpandNearby() && gameController.getRandom().nextDouble() < 0.3;
+        return !hex.isSea() && hex.isRevoltCan() && hex.hasRevoltReadyToExpandNearby() && gameController.getRandom().nextDouble() < 0.3;
     }
 
 
@@ -37,7 +39,7 @@ public class RulesetGeneric extends Ruleset{
 
         Province provinceByHex = gameController.fieldManager.getProvinceByHex(hex);
         if (provinceByHex != null) {
-            provinceByHex.money += GameRules.CLEAR_REVOLT_REWARD;
+            //provinceByHex.money += GameRules.CLEAR_REVOLT_REWARD;
             provinceByHex.money += GameRules.TREE_CUT_REWARD;
 
         }
@@ -62,6 +64,14 @@ public class RulesetGeneric extends Ruleset{
     public int getHexIncome(Hex hex) {
         if (hex.containsTree()) {
             return 0;
+        }
+
+        if(hex.sea){
+            if(hex.isNearLand()){
+                return 1;
+            }else{
+                return 0;
+            }
         }
 
         if (hex.containsRevolt()) {
@@ -148,6 +158,7 @@ public class RulesetGeneric extends Ruleset{
 
     @Override
     public void onUnitMoveToHex(Unit unit, Hex hex) {
+        Hex temp;
         if (!hex.containsTree()) return;
 
         Province provinceByHex = gameController.getProvinceByHex(hex);
@@ -163,8 +174,7 @@ public class RulesetGeneric extends Ruleset{
 
     @Override
     public boolean canUnitAttackHex(int unitStrength, Hex hex) {
-        //System.out.println(unitStrength);
-        int fix=unitStrength;
+        int fix;
         if (unitStrength == 10) return true;
         if (unitStrength == 4 || unitStrength==9){
             if(hex.getDefenseNumber()==4){
@@ -178,21 +188,15 @@ public class RulesetGeneric extends Ruleset{
                 }
                 return true;
             }
+
+            if(this.canUnitAttackHex(4,hex) && !hex.containsUnit() && !hex.containsTower()){
+                return true;
+            }
         }
         //if(hex.isNullHex()) return true;
 
 
-        if(unitStrength==5) {
-            fix=1;
-        }else if(unitStrength==6) {
-            fix=2;
-        }else if(unitStrength==7) {
-            fix=1;
-        }else if(unitStrength==8) {
-            fix=3;
-        }else if(unitStrength==9) {
-            fix=4;
-        }
+        fix=gameController.getRealUnitStrength(unitStrength);
 
         return fix > hex.getDefenseNumber();
     }

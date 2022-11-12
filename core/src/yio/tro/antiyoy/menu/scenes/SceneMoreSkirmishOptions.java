@@ -160,7 +160,6 @@ public class SceneMoreSkirmishOptions extends AbstractScene{
 
     private void createCheckButtons() {
         initChecks();
-        chkSlayRules.appear();
         chkFogOfWar.appear();
         chkDiplomacy.appear();
     }

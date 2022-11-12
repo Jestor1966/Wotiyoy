@@ -151,7 +151,7 @@ public class GameSaver {
 
 
     private int[] getHexSnapshotByString(String hexString) {
-        int snapshot[] = new int[7];
+        int snapshot[] = new int[8];
         StringTokenizer stringTokenizer = new StringTokenizer(hexString, " ");
         int i = 0;
         while (stringTokenizer.hasMoreTokens()) {
@@ -171,6 +171,7 @@ public class GameSaver {
         Hex hex = gameController.fieldManager.field[index1][index2];
         hex.active = true;
         hex.setFraction(snapshot[2]);
+        hex.sea=snapshot[7]!=0;
         ListIterator activeIterator = gameController.fieldManager.activeHexes.listIterator();
         int objectInside = snapshot[3];
         if (objectInside > 0) {
@@ -194,7 +195,7 @@ public class GameSaver {
 
     public void createHexStrings() {
         StringTokenizer tokenizer = new StringTokenizer(activeHexesString, tokenSeparator);
-        hexStrings = new ArrayList<String>();
+        hexStrings = new ArrayList<>();
         while (tokenizer.hasMoreTokens()) {
             String token = tokenizer.nextToken();
             hexStrings.add(token);
@@ -297,6 +298,10 @@ public class GameSaver {
         if (activeHex.objectInside == Obj.FARM) return true;
         if (activeHex.objectInside == Obj.STRONG_TOWER) return true;
         if (activeHex.objectInside == Obj.MOUNTAIN) return true;
+        if (activeHex.objectInside == Obj.CITY) return true;
+        if (activeHex.objectInside == Obj.FORT) return true;
+        if (activeHex.objectInside == Obj.HILL) return true;
+        if (activeHex.objectInside == Obj.REVOLT) return true;
 
         return false;
     }

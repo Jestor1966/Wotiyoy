@@ -33,7 +33,18 @@ public class AiNormalGenericRules extends ArtificialIntelligenceGeneric{
     void tryToBuildUnits(Province province) {
         tryToBuildUnitsOnPalms(province);
 
-        for (int i = 1; i <= 9; i++) {
+        for (int i = 1; i <= 8; i++) {
+            if(i==7){
+                continue;
+            }
+
+            if(Math.random()>=0.6){
+                i=5;
+            }
+
+            if(Math.random()>=0.8 && i==3){
+                i=8;
+            }
             if (!province.canAiAffordUnit(i)) break;
             while (canProvinceBuildUnit(province, i)) {
                 if (!tryToBuiltUnitInsideProvince(province, i)) break;

@@ -246,6 +246,6 @@ public class ButtonRenderer {
 
 
     public void renderButton(ButtonYio buttonYio) {
-        renderButton(buttonYio, Fonts.buttonFont, Fonts.FONT_SIZE);
+        renderButton(buttonYio, Fonts.buttonFont, Fonts.FONT_SIZE+10);
     }
 }

@@ -11,6 +11,7 @@ import java.util.StringTokenizer;
 public class DipMessageDialog extends AbstractDiplomaticDialog {
 
     String sourceText, title, eventTitle;
+    boolean picture;
     ArrayList<String> lines;
 
 
@@ -19,6 +20,7 @@ public class DipMessageDialog extends AbstractDiplomaticDialog {
 
         sourceText = null;
         title = null;
+        picture=false;
         lines = new ArrayList<>();
     }
 
@@ -46,9 +48,10 @@ public class DipMessageDialog extends AbstractDiplomaticDialog {
         cutOffExcessiveLabels();
     }
 
-    public void setEvent(String title, String eventKey) {
-        this.eventTitle = title;
-        sourceText = eventKey;
+    public void setEvent(String title, String eventKey,boolean picture) {
+        this.title = title;
+        this.picture = picture;
+        sourceText = LanguagesManager.getInstance().getString(eventKey);
         updateLines();
         updateAll();
         cutOffExcessiveLabels();

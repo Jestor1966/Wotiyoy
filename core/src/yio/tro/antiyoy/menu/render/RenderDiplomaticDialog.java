@@ -1,6 +1,8 @@
 package yio.tro.antiyoy.menu.render;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import yio.tro.antiyoy.menu.InterfaceElement;
@@ -9,6 +11,7 @@ import yio.tro.antiyoy.menu.diplomatic_dialogs.AcActionType;
 import yio.tro.antiyoy.menu.diplomatic_dialogs.AcButton;
 import yio.tro.antiyoy.menu.diplomatic_dialogs.AcLabel;
 import yio.tro.antiyoy.stuff.GraphicsYio;
+import yio.tro.antiyoy.stuff.RectangleYio;
 import yio.tro.antiyoy.stuff.RenderableTextYio;
 
 public class RenderDiplomaticDialog extends MenuRender{
@@ -19,6 +22,8 @@ public class RenderDiplomaticDialog extends MenuRender{
     private TextureRegion yesBckTexture;
     private TextureRegion noBckTexture;
     private TextureRegion customBckTexture;
+    RectangleYio eventRect;
+    TextureRegion eventImage;
 
 
     @Override
@@ -29,6 +34,9 @@ public class RenderDiplomaticDialog extends MenuRender{
         yesBckTexture = GraphicsYio.loadTextureRegion("button_background_3.png", false);
         noBckTexture = GraphicsYio.loadTextureRegion("button_background_1.png", false);
         customBckTexture = GraphicsYio.loadTextureRegion("button_background_2.png", false);
+
+        eventRect=new RectangleYio(GraphicsYio.width/2-175,GraphicsYio.height/2,350,200);
+        eventImage=new TextureRegion(new Texture(Gdx.files.internal("event/default.png")));
     }
 
 
@@ -131,7 +139,12 @@ public class RenderDiplomaticDialog extends MenuRender{
             Color color = font.getColor();
             font.setColor(Color.BLACK);
 
+            //eventImage.setRegion(new Texture(Gdx.files.internal("event/default.png")));
+
             GraphicsYio.renderTextOptimized(batch, getBlackPixel(), title, dialog.getFactor().get());
+            if(label.picture){
+                GraphicsYio.drawByRectangle(batch,eventImage,eventRect);
+            }
 
             font.setColor(color);
         }

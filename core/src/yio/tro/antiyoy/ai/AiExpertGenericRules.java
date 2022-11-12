@@ -148,7 +148,19 @@ public class AiExpertGenericRules extends ArtificialIntelligenceGeneric {
     void tryToBuildUnits(Province province) {
         tryToBuildUnitsOnPalms(province);
 
-        for (int i = 1; i <= 4; i++) {
+        for (int i = 1; i <= 6; i++) {
+            if(i==7){
+                continue;
+            }
+
+            if(Math.random()>=0.6){
+                i=5;
+            }
+
+            if(Math.random()>=0.8 && i==3){
+                i=8;
+            }
+
             if (!provinceHasEnoughIncomeForUnit(province, i)) break;
             boolean successfullyAttacked = false;
             if (canProvinceBuildUnit(province, i)) {

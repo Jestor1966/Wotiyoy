@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.glutils.FrameBuffer;
@@ -299,7 +300,9 @@ public class RenderBackgroundCache extends GameRender {
             pos = hex.getPos();
             if (!isPosInCacheFrame(pos, hexViewSize)) continue;
 
-            batchCache.draw(gameView.texturesManager.shadowHexTexture, pos.x - hexViewSize + 0.1f * hexViewSize, pos.y - hexViewSize - 0.15f * hexViewSize, 2 * hexViewSize, 2 * hexViewSize);
+            if(!hex.sea){
+                batchCache.draw(gameView.texturesManager.shadowHexTexture, pos.x - hexViewSize + 0.1f * hexViewSize, pos.y - hexViewSize - 0.15f * hexViewSize, 2 * hexViewSize, 2 * hexViewSize);
+            }
         }
     }
 
@@ -311,7 +314,11 @@ public class RenderBackgroundCache extends GameRender {
             pos = hex.getPos();
             if (!isPosInCacheFrame(pos, hexViewSize)) continue;
 
-            currentHexTexture = texturesManager.getHexTextureByFraction(hex.fraction);
+            if(!hex.sea){
+                currentHexTexture = texturesManager.getHexTextureByFraction(hex.fraction);
+            }else{
+                currentHexTexture = texturesManager.getSeaHexTextureByFraction(hex.fraction);
+            }
             batchCache.draw(currentHexTexture, pos.x - 0.99f * hexViewSize, pos.y - 0.99f * hexViewSize, 2 * 0.99f * hexViewSize, 2 * 0.99f * hexViewSize);
         }
     }
@@ -319,6 +326,9 @@ public class RenderBackgroundCache extends GameRender {
 
     private void renderLinesBetweenHexes() {
         for (Hex hex : gameController.fieldManager.activeHexes) {
+            if(hex.sea){
+                continue;
+            }
             pos = hex.getPos();
             if (!isPosInCacheFrame(pos, hexViewSize)) continue;
 
@@ -328,7 +338,7 @@ public class RenderBackgroundCache extends GameRender {
                 if (adjacentHex == null) continue;
                 if (!isLineBetweenHexesNeeded(hex, dir, adjacentHex)) continue;
 
-                if (isDirectionDown(dir)) {
+                if (isDirectionDown(dir) || adjacentHex.sea) {
                     renderGradientShadow(batchCache, hex, adjacentHex);
                 }
                 renderLineBetweenHexes(batchCache, adjacentHex, hex, gameView.borderLineThickness, dir);
@@ -340,6 +350,7 @@ public class RenderBackgroundCache extends GameRender {
     private boolean isLineBetweenHexesNeeded(Hex hex, int dir, Hex adjacentHex) {
         if (!adjacentHex.active) return true;
         if (!adjacentHex.sameFraction(hex) && isDirectionDown(dir)) return true;
+        if (adjacentHex.sea) return true;
         return false;
     }
 

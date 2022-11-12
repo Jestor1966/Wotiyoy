@@ -51,7 +51,7 @@ public class SceneEditorEventEditor extends AbstractModalScene{
 
     public SceneEditorEventEditor(MenuControllerYio menuControllerYio) {
         super(menuControllerYio);
-        panelHeight = 0.6;
+        panelHeight = 0.5;
         sceneEditorEvent=new SceneEditorEvent(menuControllerYio);
         preparedEvent = new PreparedEvent(getEventManager());
         scrollListItem = new ScrollListItem();
@@ -71,7 +71,7 @@ public class SceneEditorEventEditor extends AbstractModalScene{
         createInvisibleCloseButton(rbHide);
         createBasePanel();
         createEventList();
-        createColorHolder();
+        //createColorHolder();
         //createDeleteButton();
 
         loadValuesEvent();
@@ -185,7 +185,7 @@ public class SceneEditorEventEditor extends AbstractModalScene{
         eventList = new CustomizableListYio(menuControllerYio);
         eventList.setAnimation(Animation.down);
         eventList.setEmbeddedMode(true);
-        eventList.setPosition(generateRectangle(0.02, SceneEditorOverlay.PANEL_HEIGHT, 0.96, panelHeight - 0.08));
+        eventList.setPosition(generateRectangle(0.02, SceneEditorOverlay.PANEL_HEIGHT+0.1, 0.96, panelHeight - 0.06));
         menuControllerYio.addElementToScene(eventList);
     }
 

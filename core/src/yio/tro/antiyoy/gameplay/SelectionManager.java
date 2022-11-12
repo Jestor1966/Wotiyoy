@@ -457,7 +457,7 @@ public class SelectionManager {
         MoveZoneManager moveZoneManager = gameController.fieldManager.moveZoneManager;
         if(selectedUnit.strength>=6 && selectedUnit.strength != 10){
             if(selectedUnit.strength==8){
-                moveFix=2;
+                moveFix=3;
             }
             else if(selectedUnit.strength==9){
                 moveFix=3;
@@ -465,6 +465,9 @@ public class SelectionManager {
             else{
                 moveFix=-1;
             }
+        }
+        if(selectedUnit.currentHex.isSea()){
+            moveFix=moveFix+2;
         }
         //.out.println(temp);
         moveZoneManager.detectAndShowMoveZone(selectedUnit.currentHex, selectedUnit.strength, GameRules.UNIT_MOVE_LIMIT+moveFix);
@@ -612,6 +615,7 @@ public class SelectionManager {
         if (!selectedProvince.canBuildUnit(tipType)) return false;
         if (focusedHex.containsSiege()) return false;
         if (focusedHex.objectInside==Obj.MOUNTAIN || focusedHex.objectInside==Obj.HILL) return false;
+        if (focusedHex.isSea()) return false;
 
         return true;
     }
@@ -666,50 +670,55 @@ public class SelectionManager {
         Province selectedProvince = gameController.fieldManager.selectedProvince;
         switch (tipType) {
             case SelectionTipType.TOWER:
-                if (!focusedHex.containsTree() && !focusedHex.containsUnit()) {
+                if (!focusedHex.containsTree() && !focusedHex.containsUnit() && !focusedHex.isSea()) {
                     gameController.fieldManager.buildTower(selectedProvince, focusedHex);
                 }
                 break;
             case SelectionTipType.UNIT_1:
-                if (!focusedHex.containsRevolt() && !focusedHex.containsUnit()) {
-                    gameController.fieldManager.buildUnit(selectedProvince, focusedHex, tipType);
-                }
-                break;
             case SelectionTipType.UNIT_2:
-                if (!focusedHex.containsRevolt() && !focusedHex.containsUnit()) {
-                    gameController.fieldManager.buildUnit(selectedProvince, focusedHex, tipType);
-                }
             case SelectionTipType.UNIT_3:
             case SelectionTipType.UNIT_4:
-                gameController.fieldManager.buildUnit(selectedProvince, focusedHex, tipType);
-                break;
+                if (!focusedHex.isSea()) {
+                    gameController.fieldManager.buildUnit(selectedProvince, focusedHex, tipType);
+                    break;
+                }
             case SelectionTipType.UNIT_5:
+                if (!focusedHex.isSea()) {
                 gameController.fieldManager.buildUnit(selectedProvince, focusedHex, 5);
                 break;
+                }
             case SelectionTipType.UNIT_6:
+                if (!focusedHex.isSea()) {
                 gameController.fieldManager.buildUnit(selectedProvince, focusedHex, 6);
                 break;
+                }
             case SelectionTipType.UNIT_7:
-                gameController.fieldManager.buildUnit(selectedProvince, focusedHex, 7);
-                break;
+                if (!focusedHex.isSea()) {
+                    gameController.fieldManager.buildUnit(selectedProvince, focusedHex, 7);
+                    break;
+                }
             case SelectionTipType.UNIT_8:
-                gameController.fieldManager.buildUnit(selectedProvince, focusedHex, 8);
-                break;
+                if (!focusedHex.isSea()) {
+                    gameController.fieldManager.buildUnit(selectedProvince, focusedHex, 8);
+                    break;
+                }
             case SelectionTipType.UNIT_9:
-                gameController.fieldManager.buildUnit(selectedProvince, focusedHex, 9);
-                break;
+                if (!focusedHex.isSea()) {
+                    gameController.fieldManager.buildUnit(selectedProvince, focusedHex, 9);
+                    break;
+                }
             case SelectionTipType.FARM:
-                if (!focusedHex.containsTree() && !focusedHex.containsUnit()) {
+                if (!focusedHex.containsTree() && !focusedHex.containsUnit() && !focusedHex.isSea()) {
                     gameController.fieldManager.buildFarm(selectedProvince, focusedHex);
                 }
                 break;
             case SelectionTipType.STRONG_TOWER:
-                if (!focusedHex.containsTree() && !focusedHex.containsUnit()) {
+                if (!focusedHex.containsTree() && !focusedHex.containsUnit() && !focusedHex.isSea()) {
                     gameController.fieldManager.buildStrongTower(selectedProvince, focusedHex);
                 }
                 break;
             case SelectionTipType.TREE:
-                if (focusedHex.isFree()) {
+                if (focusedHex.isFree() && !focusedHex.isSea()) {
                     gameController.fieldManager.buildTree(selectedProvince, focusedHex);
                 }
                 break;
@@ -726,7 +735,7 @@ public class SelectionManager {
             return focusedHex.selected && (!focusedHex.containsBuilding() || focusedHex.objectInside == Obj.TOWER);
         }
 
-        return focusedHex.selected && !focusedHex.containsBuilding();
+        return focusedHex.selected && !focusedHex.containsBuilding() && !focusedHex.sea;
     }
 
 

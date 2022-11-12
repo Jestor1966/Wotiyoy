@@ -82,7 +82,7 @@ public class MoveZoneManager {
 
 
     public void detectAndShowMoveZone(Hex startHex, int strength, int moveLimit) {
-        System.out.println(strength);
+        //System.out.println(strength);
         moveZone = moveZoneDetection.detectMoveZone(startHex, strength, moveLimit);
         checkToForceMoveZoneAnims();
         appearFactor.setValues(0, 0);

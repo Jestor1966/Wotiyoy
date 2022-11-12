@@ -143,6 +143,7 @@ public class DiplomaticAI {
         if (containsExchangeType(exchangeType1, exchangeType2, ExchangeType.stop_war) && getMainEntity().getRelation(targetEntity) != DiplomaticRelation.ENEMY) return;
         if (containsExchangeType(exchangeType1, exchangeType2, ExchangeType.remove_black_mark) && !getMainEntity().isBlackMarkedWith(targetEntity)) return;
         if (containsExchangeType(exchangeType1, exchangeType2, ExchangeType.friendship) && isFriendshipForbidden(targetEntity)) return;
+        if (containsExchangeType(exchangeType1, exchangeType2, ExchangeType.lands) && GameRules.captainAsCityRules) return;
 
         DiplomaticMessage diplomaticMessage = getLog().addMessage(DipMessageType.exchange, getMainEntity(), targetEntity);
 

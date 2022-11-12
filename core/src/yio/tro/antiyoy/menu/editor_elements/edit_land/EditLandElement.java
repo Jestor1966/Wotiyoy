@@ -49,6 +49,7 @@ public class EditLandElement extends InterfaceElement{
         addItem(EleActionType.delete, -1);
         addItem(EleActionType.delete_plus, -1);
         addItem(EleActionType.set_hex_plus, -1);
+        addItem(EleActionType.set_sea, -1);
     }
 
 
@@ -148,6 +149,7 @@ public class EditLandElement extends InterfaceElement{
         alignRight(getItem(EleActionType.random), 0, 4);
         alignRight(getItem(EleActionType.delete_plus), 0, 3);
         alignRight(getItem(EleActionType.set_hex_plus), 0, 2);
+        alignRight(getItem(EleActionType.set_sea), 0, 1);
     }
 
 
@@ -210,12 +212,22 @@ public class EditLandElement extends InterfaceElement{
                 }else{
                     levelEditorManager.setHexPlus=true;
                 }
+                break;
+                //levelEditorManager.setInputMode(LeInputMode.set_hex_plus);
+                //levelEditorManager.setInputFraction(targetItem.value);
+
+            case set_sea:
+                if (levelEditorManager.setSea==true){
+                    levelEditorManager.setSea=false;
+                }else{
+                    levelEditorManager.setSea=true;
+                }
                 //levelEditorManager.setInputMode(LeInputMode.set_hex_plus);
                 //levelEditorManager.setInputFraction(targetItem.value);
                 break;
         }
 
-        if(!(targetItem.actionType==EleActionType.set_hex_plus)){
+        if(!(targetItem.actionType==EleActionType.set_hex_plus) && !(targetItem.actionType==EleActionType.set_sea)){
             Scenes.sceneEditorHexPanel.hide();
         }
 

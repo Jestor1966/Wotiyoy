@@ -42,6 +42,12 @@ public class SceneDipMessage extends AbstractModalScene {
         forceElementToTop(dialog);
     }
 
+    public void showEvent(String titleKey, String messageKey,boolean picture) {
+        create();
+        dialog.setEvent(getString(titleKey), messageKey, picture);
+        forceElementToTop(dialog);
+    }
+
 
     public boolean isCurrentlyVisible() {
         if (dialog == null) return false;

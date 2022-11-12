@@ -52,7 +52,7 @@ public abstract class ArtificialIntelligence extends AbstractAi{
         for (Unit unit : unitsReadyToMove) {
             if (!unit.isReadyToMove()) {
                 System.out.println("Problem in ArtificialIntelligence.moveUnits()");
-                System.out.println(unit.strength+",("+unit.currentHex.index1+","+unit.currentHex.index2+")");
+                System.out.println(unit.strength+",("+unit.currentHex.index1+","+unit.currentHex.index2+"),"+unitsReadyToMove.toString());
                 continue;
             }
 
@@ -112,7 +112,7 @@ public abstract class ArtificialIntelligence extends AbstractAi{
     void mergeUnits(Province province) {
         for (int i = 0; i < province.hexList.size(); i++) {
             Hex hex = province.hexList.get(i);
-            if (hex.containsUnit() && hex.unit.isReadyToMove()) {
+            if (hex.containsUnit() && !hex.isSea() && hex.unit.isReadyToMove()) {
                 tryToMergeWithSomeone(province, hex.unit);
             }
         }
@@ -151,6 +151,7 @@ public abstract class ArtificialIntelligence extends AbstractAi{
         while (province.hasMoneyForTower()) {
             Hex hex = findHexThatNeedsTower(province);
             if (hex == null) return;
+            //if (hex.isSea()) return;
             gameController.fieldManager.buildTower(province, hex);
         }
     }
@@ -158,6 +159,7 @@ public abstract class ArtificialIntelligence extends AbstractAi{
 
     protected Hex findHexThatNeedsTower(Province province) {
         for (Hex hex : province.hexList) {
+            if(hex.isSea()) continue;
             if (needTowerOnHex(hex)) return hex;
         }
         return null;
@@ -167,6 +169,7 @@ public abstract class ArtificialIntelligence extends AbstractAi{
     boolean needTowerOnHex(Hex hex) {
         if (!hex.active) return false;
         if (!hex.isFree()) return false;
+        if ( hex.isSea()) return false;
 
         return getPredictedDefenseGainByNewTower(hex) >= 5;
     }
@@ -241,6 +244,7 @@ public abstract class ArtificialIntelligence extends AbstractAi{
         for (Hex hex : province.hexList) {
             if (!hex.nothingBlocksWayForUnit()) continue;
             if (!isAllowedToBuildNewUnit(province)) continue;
+            if (hex.isSea()) continue;
             buildUnit(province, hex, strength);
             return true;
         }
@@ -250,21 +254,20 @@ public abstract class ArtificialIntelligence extends AbstractAi{
 
     protected boolean isAllowedToBuildNewUnit(Province province) {
         if (!GameRules.diplomacyEnabled) return true;
-        if (gameController.playersNumber == 0) return true;
+        //if (gameController.playersNumber == 0) return true;
         if (numberOfUnitsBuiltThisTurn < getBuildLimitForProvince(province)) return true;
         return false;
     }
 
 
     private  int getBuildLimitForProvince(Province province) {
-        int bottom = Math.max(3, province.hexList.size() / 4);
-        return Math.min(bottom, 10);
+        int bottom = Math.max(3, (province.hexList.size()-province.getSeaHexesNum()) / 6);
+        return Math.min(bottom, 20);
     }
 
 
     protected void buildUnit(Province province, Hex hex, int strength) {
         boolean success = false;
-
 
         if (isAllowedToBuildNewUnit(province)) {
             success = gameController.fieldManager.buildUnit(province, hex, strength);
@@ -292,7 +295,14 @@ public abstract class ArtificialIntelligence extends AbstractAi{
         }
 
         Hex bestHexForAttack = findMostAttractiveHex(attackableHexes, province, strength);
-        buildUnit(province, bestHexForAttack, strength);
+        if(bestHexForAttack.isSea()) {
+            boolean success=tryToBuiltUnitInsideProvince(province,strength);
+            if(!success){
+                return false;
+            }
+        }else{
+            buildUnit(province, bestHexForAttack, strength);
+        }
         return true;
     }
 
@@ -300,15 +310,15 @@ public abstract class ArtificialIntelligence extends AbstractAi{
         Hex temp;
 
         for (Hex hex:province.getNeibourHexList()){
+            if(hex.hasUnit() || hex.isSea()){
+                break;
+            }
             for(int i=0;i<6;i++){
-                if(hex.hasUnit()){
-                    return false;
-                }
                 temp=hex.getAdjacentHex(i);
                 if(temp.fraction!=hex.fraction){
                     if(temp.containsSiege()){
-                        if(province.canAiAffordUnit(7,8)){
-                            buildUnit(province,hex,7);
+                        if(province.canAiAffordUnit(6,8)){
+                            buildUnit(province,hex,6);
                             return true;
                         }
                     }
@@ -316,30 +326,11 @@ public abstract class ArtificialIntelligence extends AbstractAi{
                         return false;
                     }
                     if(temp.unit.strength<=2){
-                        if(province.canAiAffordUnit(8,5)){
-                            buildUnit(province,hex,8);
-                            return true;
-                        }else if(province.canAiAffordUnit(6,5)){
+                        if(province.canAiAffordUnit(6,5)){
                             buildUnit(province,hex,6);
                             return true;
                         }else if(province.canAiAffordUnit(5,5)){
                             buildUnit(province,hex,5);
-                            return true;
-                        }
-                    }
-                    if(temp.unit.strength<=4 || temp.unit.strength >= 8){
-                        Hex temp2;
-                        if(province.canAiAffordUnit(7,12)){
-                            for(int m=0;m<6;m++){
-                                temp2=temp.getAdjacentHex(i);
-                                if(temp2.fraction==hex.fraction){
-                                    buildUnit(province,hex,7);
-                                    return true;
-                                }
-                            }
-                            break;
-                        }else if(province.canAiAffordUnit(9,5)){
-                            buildUnit(province,hex,9);
                             return true;
                         }
                     }
@@ -359,7 +350,7 @@ public abstract class ArtificialIntelligence extends AbstractAi{
             ArrayList<Hex> moveZone = gameController.detectMoveZone(province.getCapital(), 1);
             boolean killedPalm = false;
             for (Hex hex : moveZone) {
-                if (hex.objectInside != Obj.PALM || !hex.sameFraction(province)) continue;
+                if (hex.objectInside != Obj.PALM || !hex.sameFraction(province) || hex.isSea()) continue;
                 buildUnit(province, hex, 1);
                 killedPalm = true;
             }
@@ -376,26 +367,22 @@ public abstract class ArtificialIntelligence extends AbstractAi{
     void tryToBuildUnits(Province province) {
         tryToBuildUnitsOnPalms(province);
 
-        for (int i = 1; i <= 8; i++) {
-            if(i==7){
-                continue;
-            }
-            if(Math.random()>=0.6){
+        for (int i = 1; i <= 6; i++) {
+            if(Math.random()>=0.6&& i==2){
                 i=5;
             }
 
-            if(i==3 || i==4){
-                if(province.hexList.size()>=20){
-                    i+=5;
-                }
-                else if(Math.random()>0.5){
-                    i+=5;
-                }
+            if(Math.random()>=0.8 && i==3){
+                i=8;
             }
 
             if (!province.canAiAffordUnit(i)) break;
             while (canProvinceBuildUnit(province, i)) {
-                if (!tryToAttackWithStrength(province, i)) break;
+                if (!tryToAttackWithStrength(province,i)) {
+                    if (!tryToBuiltUnitInsideProvince(province, i)) {
+                        break;
+                    }
+                }
             }
         }
 
@@ -452,6 +439,7 @@ public abstract class ArtificialIntelligence extends AbstractAi{
 
 
     void decideAboutUnit(Unit unit, ArrayList<Hex> moveZone, Province province) {
+
         // cleaning palms has highest priority
         if (unit.strength <= 2 && checkToCleanSomePalms(unit, moveZone, province)) return;
         ArrayList<Hex> attackableHexes = findAttackableHexes(unit.getFraction(), moveZone);
@@ -459,7 +447,7 @@ public abstract class ArtificialIntelligence extends AbstractAi{
             Hex mostAttackableHex = findMostAttractiveHex(attackableHexes, province, unit.strength);
             gameController.moveUnit(unit, mostAttackableHex, province);
         } else { // nothing to attack
-            if(Math.random()>=0.3){
+            if(Math.random()>=0){
                 boolean cleanedTrees = checkToCleanSomeTrees(unit, moveZone, province);
                 if (!cleanedTrees) {
                     if (unit.currentHex.isInPerimeter()) {

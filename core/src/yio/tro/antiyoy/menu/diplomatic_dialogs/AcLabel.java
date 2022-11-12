@@ -10,10 +10,12 @@ public class AcLabel implements ReusableYio {
 
     AbstractDiplomaticDialog dialog;
     public RenderableTextYio title;
+    public boolean picture;
 
 
     public AcLabel(AbstractDiplomaticDialog dialog) {
         this.dialog = dialog;
+        this.picture = false;
 
         title = new RenderableTextYio();
     }

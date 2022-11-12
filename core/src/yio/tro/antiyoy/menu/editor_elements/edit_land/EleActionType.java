@@ -12,4 +12,6 @@ public enum EleActionType {
 
     set_hex_plus,
 
+    set_sea,
+
 }

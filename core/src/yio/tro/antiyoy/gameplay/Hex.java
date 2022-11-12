@@ -14,8 +14,8 @@ import javax.management.ObjectInstance;
 public class Hex implements ReusableYio, EncodeableYio{
 
     public boolean active, selected, changingFraction, flag, inMoveZone, genFlag, ignoreTouch;
-    public int index1, index2, moveZoneNumber, genPotential, visualDiversityIndex,visualDiversityIndex2;
-    public boolean graycango;
+    public int index1, index2, moveZoneNumber, genPotential, visualDiversityIndex,visualDiversityIndex2,visualDiversityIndex3;
+    public boolean sea;
     public PointYio pos, fieldPos;
     private GameController gameController;
     public FieldManager fieldManager;
@@ -48,6 +48,7 @@ public class Hex implements ReusableYio, EncodeableYio{
 
         gameController = fieldManager.gameController;
         active = false;
+        sea = false;
         pos = new PointYio();
         cos60 = (float) Math.cos(Math.PI / 3d);
         sin60 = (float) Math.sin(Math.PI / 3d);
@@ -55,7 +56,8 @@ public class Hex implements ReusableYio, EncodeableYio{
         selectionFactor = new FactorYio();
         unit = null;
         visualDiversityIndex = (101 * index1 * index2 + 7 * index2) % 6;
-        visualDiversityIndex2 = (101 * index1 * index2 + 7 * index2) % 3;
+        visualDiversityIndex2 = (1919 * index1 * index2 + 7 * index2) % 3;
+        visualDiversityIndex3 = (810 * index1 * index2 + 7 * index2) % 2;
         canContainObjects = true;
         algoLink = null;
         algoValue = 0;
@@ -93,14 +95,31 @@ public class Hex implements ReusableYio, EncodeableYio{
     public boolean isNearWater() {
         if (!this.active) return false;
         for (int i = 0; i < 6; i++) {
-            if (!gameController.fieldManager.adjacentHex(this, i).active) return true;
+            if (!gameController.fieldManager.adjacentHex(this, i).active || gameController.fieldManager.adjacentHex(this, i).sea) return true;
         }
         return false;
     }
 
-    public boolean isGrayCanGo() {
+    public boolean isNearSea() {
         if (!this.active) return false;
+        if (this.isSea()) return true;
+        for (int i = 0; i < 6; i++) {
+            if (gameController.fieldManager.adjacentHex(this, i).sea) return true;
+        }
         return false;
+    }
+
+    public boolean isNearLand() {
+        if (!this.active) return false;
+        if (!this.sea) return true;
+        for (int i = 0; i < 6; i++) {
+            if (!gameController.fieldManager.adjacentHex(this, i).sea) return true;
+        }
+        return false;
+    }
+
+    public boolean isSea() {
+        return this.sea;
     }
 
     public void setFraction(int fraction) {
@@ -164,6 +183,10 @@ public class Hex implements ReusableYio, EncodeableYio{
         return objectInside == Obj.TOWER || objectInside == Obj.STRONG_TOWER || objectInside == Obj.FORT;
     }
 
+    public boolean containsNormalTower() {
+        return objectInside == Obj.TOWER || objectInside == Obj.STRONG_TOWER;
+    }
+
     public boolean containsTowerCantRevolt() {
         return objectInside == Obj.STRONG_TOWER;
     }
@@ -203,6 +226,7 @@ public class Hex implements ReusableYio, EncodeableYio{
         record.fraction = fraction;
         record.objectInside = objectInside;
         record.selected = selected;
+        record.sea = sea;
         if (unit != null) {
             record.unit = unit.getSnapshotCopy();
         }
@@ -293,20 +317,21 @@ public class Hex implements ReusableYio, EncodeableYio{
             }else if(this.unit.strength==7){
                 defenseNumber = Math.max(defenseNumber, 1);
             }else if(this.unit.strength==8){
-                defenseNumber = Math.max(defenseNumber, 3);
+                defenseNumber = Math.max(defenseNumber, 2);
             }else if(this.unit.strength==9){
                 defenseNumber = Math.max(defenseNumber, 4);
             }else{
                 defenseNumber = Math.max(defenseNumber, this.unit.strength);
             }
         }
+
         Hex neighbour;
         for (int i = 0; i < 6; i++) {
             neighbour = getAdjacentHex(i);
             if (!(neighbour.active && neighbour.sameFraction(this))) continue;
             if (neighbour.objectInside == Obj.TOWN){
                 if(GameRules.captainAsCityRules){
-                    defenseNumber = Math.max(defenseNumber, 3);
+                    defenseNumber = Math.max(defenseNumber, 2);
                 }else{
                     defenseNumber = Math.max(defenseNumber, 1);
                 }
@@ -333,6 +358,8 @@ public class Hex implements ReusableYio, EncodeableYio{
                     defenseNumber = Math.max(defenseNumber, neighbour.unit.strength);
                 }
             }
+
+
         }
         return defenseNumber;
     }
@@ -437,6 +464,7 @@ public class Hex implements ReusableYio, EncodeableYio{
     public void set(Hex hex) {
         index1 = hex.index1;
         index2 = hex.index2;
+        sea = hex.sea;
     }
 
 
@@ -462,6 +490,7 @@ public class Hex implements ReusableYio, EncodeableYio{
     }
 
     public boolean isDefendedByMountain() {
+        if(objectInside==Obj.MOUNTAIN) return true;
         for (int i = 0; i < 6; i++) {
             Hex adjHex = getAdjacentHex(i);
             if (adjHex.active && adjHex.sameFraction(this) && adjHex.objectInside==Obj.MOUNTAIN) return true;
@@ -558,16 +587,22 @@ public class Hex implements ReusableYio, EncodeableYio{
 
     @Override
     public String encode() {
-        return index1 + " " + index2 + " " + fraction + " " + objectInside;
+        return index1 + " " + index2 + " " + fraction + " " + objectInside + " "+ (sea ? 1 : 0);
     }
 
 
     @Override
     public void decode(String source) {
         String[] split = source.split(" ");
+
         int obj = Integer.valueOf(split[3]);
         if (obj > 0) {
             fieldManager.addSolidObject(this, obj);
+        }
+        if(split.length>4){
+            this.sea=Integer.valueOf(split[4])!=0;
+        }else{
+            this.sea=false;
         }
     }
 }

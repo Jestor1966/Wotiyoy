@@ -15,6 +15,7 @@ public class RenderEditLandElement extends MenuRender{
     private TextureRegion randomHexTexture;
     private TextureRegion deletePlusHexTexture;
     private TextureRegion setHexPlusTexture;
+    private TextureRegion setSeaTexture;
 
 
     @Override
@@ -23,6 +24,7 @@ public class RenderEditLandElement extends MenuRender{
         deletePlusHexTexture = GraphicsYio.loadTextureRegion("menu/editor/remove_plus_icon.png", true);
         randomHexTexture = GraphicsYio.loadTextureRegion("menu/editor/random_color_icon.png", true);
         setHexPlusTexture = GraphicsYio.loadTextureRegion("menu/editor/hex_plus_icon.png", true);
+        setSeaTexture = GraphicsYio.loadTextureRegion("menu/editor/hex_sea_icon.png", true);
     }
 
 
@@ -70,6 +72,8 @@ public class RenderEditLandElement extends MenuRender{
                 return deletePlusHexTexture;
             case set_hex_plus:
                 return setHexPlusTexture;
+            case set_sea:
+                return setSeaTexture;
         }
     }
 

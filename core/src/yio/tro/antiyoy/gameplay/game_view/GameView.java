@@ -154,6 +154,7 @@ public class GameView {
         rList.renderDiplomaticIndicators.render();
         rList.renderFogOfWar.render();
         rList.renderCityNames.render();
+        //rList.renderProvinceNames.render();
         rList.renderSelectedUnit.render();
         rList.renderDefenseTips.render();
         rList.renderDebug.render();

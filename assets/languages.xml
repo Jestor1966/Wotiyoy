@@ -23,6 +23,9 @@
 		<string key="rebel_new_country" value="Rebel Can Independence"/>
 		<string key="change_leader" value="Leader Change"/>
 		<string key="most_hexes_in_turn" value="Has most hexes in turn"/>
+		<string key="turns" value="Turns"/>
+		<string key="ai_attack" value="AI Attack Tendency"/>
+		<string key="ai_develop" value="AI Develop Tendency"/>
 
         <!-- Main menu -->
         <string key="main_menu_info" value="Info"/>
@@ -461,13 +464,492 @@
 
 
 
+<language name="cn_CN" title="Chinese" author="Jim Chen, Jestor">
+        <!-- All characters -->
+        <string key="lang_characters" value="一乙二十丁厂七卜人入八九几儿了力乃刀又三于干亏士工土才寸下大丈与万上小口巾山千乞川亿个勺久凡及夕丸么广亡门义之尸弓己已子卫也女飞刃习叉马乡丰王井开夫天无元专云扎艺木五支厅不太犬区历尤友匹车巨牙屯比互切瓦止少日中冈贝内水见午牛手毛气升长仁什片仆化仇币仍仅斤爪反介父从今凶分乏公仓月氏勿欠风丹匀乌凤勾文六方火为斗忆订计户认心尺引丑巴孔队办以允予劝双书幻玉刊示末未击打巧正扑扒功扔去甘世古节本术可丙左厉右石布龙平灭轧东卡北占业旧帅归且旦目叶甲申叮电号田由史只央兄叼叫另叨叹四生失禾丘付仗代仙们仪白仔他斥瓜乎丛令用甩印乐句匆册犯外处冬鸟务包饥主市立闪兰半汁汇头汉宁穴它讨写让礼训必议讯记永司尼民出辽奶奴加召皮边发孕圣对台矛纠母幼丝式刑动扛寺吉扣考托老执巩圾扩扫地扬场耳共芒亚芝朽朴机权过臣再协西压厌在有百存而页匠夸夺灰达列死成夹轨邪划迈毕至此贞师尘尖劣光当早吐吓虫曲团同吊吃因吸吗屿帆岁回岂刚则肉网年朱先丢舌竹迁乔伟传乒乓休伍伏优伐延件任伤价份华仰仿伙伪自血向似后行舟全会杀合兆企众爷伞创肌朵杂危旬旨负各名多争色壮冲冰庄庆亦刘齐交次衣产决充妄闭问闯羊并关米灯州汗污江池汤忙兴宇守宅字安讲军许论农讽设访寻那迅尽导异孙阵阳收阶阴防奸如妇好她妈戏羽观欢买红纤级约纪驰巡寿弄麦形进戒吞远违运扶抚坛技坏扰拒找批扯址走抄坝贡攻赤折抓扮抢孝均抛投坟抗坑坊抖护壳志扭块声把报却劫芽花芹芬苍芳严芦劳克苏杆杠杜材村杏极李杨求更束豆两丽医辰励否还歼来连步坚旱盯呈时吴助县里呆园旷围呀吨足邮男困吵串员听吩吹呜吧吼别岗帐财针钉告我乱利秃秀私每兵估体何但伸作伯伶佣低你住位伴身皂佛近彻役返余希坐谷妥含邻岔肝肚肠龟免狂犹角删条卵岛迎饭饮系言冻状亩况床库疗应冷这序辛弃冶忘闲间闷判灶灿弟汪沙汽沃泛沟没沈沉怀忧快完宋宏牢究穷灾良证启评补初社识诉诊词译君灵即层尿尾迟局改张忌际陆阿陈阻附妙妖妨努忍劲鸡驱纯纱纳纲驳纵纷纸纹纺驴纽奉玩环武青责现表规抹拢拔拣担坦押抽拐拖拍者顶拆拥抵拘势抱垃拉拦拌幸招坡披拨择抬其取苦若茂苹苗英范直茄茎茅林枝杯柜析板松枪构杰述枕丧或画卧事刺枣雨卖矿码厕奔奇奋态欧垄妻轰顷转斩轮软到非叔肯齿些虎虏肾贤尚旺具果味昆国昌畅明易昂典固忠咐呼鸣咏呢岸岩帖罗帜岭凯败贩购图钓制知垂牧物乖刮秆和季委佳侍供使例版侄侦侧凭侨佩货依的迫质欣征往爬彼径所舍金命斧爸采受乳贪念贫肤肺肢肿胀朋股肥服胁周昏鱼兔狐忽狗备饰饱饲变京享店夜庙府底剂郊废净盲放刻育闸闹郑券卷单炒炊炕炎炉沫浅法泄河沾泪油泊沿泡注泻泳泥沸波泼泽治怖性怕怜怪学宝宗定宜审宙官空帘实试郎诗肩房诚衬衫视话诞询该详建肃录隶居届刷屈弦承孟孤陕降限妹姑姐姓始驾参艰线练组细驶织终驻驼绍经贯奏春帮珍玻毒型挂封持项垮挎城挠政赴赵挡挺括拴拾挑指垫挣挤拼挖按挥挪某甚革荐巷带草茧茶荒茫荡荣故胡南药标枯柄栋相查柏柳柱柿栏树要咸威歪研砖厘厚砌砍面耐耍牵残殃轻鸦皆背战点临览竖省削尝是盼眨哄显哑冒映星昨畏趴胃贵界虹虾蚁思蚂虽品咽骂哗咱响哈咬咳哪炭峡罚贱贴骨钞钟钢钥钩卸缸拜看矩怎牲选适秒香种秋科重复竿段便俩贷顺修保促侮俭俗俘信皇泉鬼侵追俊盾待律很须叙剑逃食盆胆胜胞胖脉勉狭狮独狡狱狠贸怨急饶蚀饺饼弯将奖哀亭亮度迹庭疮疯疫疤姿亲音帝施闻阀阁差养美姜叛送类迷前首逆总炼炸炮烂剃洁洪洒浇浊洞测洗活派洽染济洋洲浑浓津恒恢恰恼恨举觉宣室宫宪突穿窃客冠语扁袄祖神祝误诱说诵垦退既屋昼费陡眉孩除险院娃姥姨姻娇怒架贺盈勇怠柔垒绑绒结绕骄绘给络骆绝绞统耕耗艳泰珠班素蚕顽盏匪捞栽捕振载赶起盐捎捏埋捉捆捐损都哲逝捡换挽热恐壶挨耻耽恭莲莫荷获晋恶真框桂档桐株桥桃格校核样根索哥速逗栗配翅辱唇夏础破原套逐烈殊顾轿较顿毙致柴桌虑监紧党晒眠晓鸭晃晌晕蚊哨哭恩唤啊唉罢峰圆贼贿钱钳钻铁铃铅缺氧特牺造乘敌秤租积秧秩称秘透笔笑笋债借值倚倾倒倘俱倡候俯倍倦健臭射躬息徒徐舰舱般航途拿爹爱颂翁脆脂胸胳脏胶脑狸狼逢留皱饿恋桨浆衰高席准座脊症病疾疼疲效离唐资凉站剖竞部旁旅畜阅羞瓶拳粉料益兼烤烘烦烧烛烟递涛浙涝酒涉消浩海涂浴浮流润浪浸涨烫涌悟悄悔悦害宽家宵宴宾窄容宰案请朗诸读扇袜袖袍被祥课谁调冤谅谈谊剥恳展剧屑弱陵陶陷陪娱娘通能难预桑绢绣验继球理捧堵描域掩捷排掉堆推掀授教掏掠培接控探据掘职基著勒黄萌萝菌菜萄菊萍菠营械梦梢梅检梳梯桶救副票戚爽聋袭盛雪辅辆虚雀堂常匙晨睁眯眼悬野啦晚啄距跃略蛇累唱患唯崖崭崇圈铜铲银甜梨犁移笨笼笛符第敏做袋悠偿偶偷您售停偏假得衔盘船斜盒鸽悉欲彩领脚脖脸脱象够猜猪猎猫猛馅馆凑减毫麻痒痕廊康庸鹿盗章竟商族旋望率着盖粘粗粒断剪兽清添淋淹渠渐混渔淘液淡深婆梁渗情惜惭悼惧惕惊惨惯寇寄宿窑密谋谎祸谜逮敢屠弹随蛋隆隐婚婶颈绩绪续骑绳维绵绸绿琴斑替款堪搭塔越趁趋超提堤博揭喜插揪搜煮援裁搁搂搅握揉斯期欺联散惹葬葛董葡敬葱落朝辜葵棒棋植森椅椒棵棍棉棚棕惠惑逼厨厦硬确雁殖裂雄暂雅辈悲紫辉敞赏掌晴暑最量喷晶喇遇喊景践跌跑遗蛙蛛蜓喝喂喘喉幅帽赌赔黑铸铺链销锁锄锅锈锋锐短智毯鹅剩稍程稀税筐等筑策筛筒答筋筝傲傅牌堡集焦傍储奥街惩御循艇舒番释禽腊脾腔鲁猾猴然馋装蛮就痛童阔善羡普粪尊道曾焰港湖渣湿温渴滑湾渡游滋溉愤慌惰愧愉慨割寒富窜窝窗遍裕裤裙谢谣谦属屡强粥疏隔隙絮嫂登缎缓编骗缘瑞魂肆摄摸填搏塌鼓摆携搬摇搞塘摊蒜勤鹊蓝墓幕蓬蓄蒙蒸献禁楚想槐榆楼概赖酬感碍碑碎碰碗碌雷零雾雹输督龄鉴睛睡睬鄙愚暖盟歇暗照跨跳跪路跟遣蛾蜂嗓置罪罩错锡锣锤锦键锯矮辞稠愁筹签简毁舅鼠催傻像躲微愈遥腰腥腹腾腿触解酱痰廉新韵意粮数煎塑慈煤煌满漠源滤滥滔溪溜滚滨粱滩慎誉塞谨福群殿辟障嫌嫁叠缝缠静碧璃墙撇嘉摧截誓境摘摔聚蔽慕暮蔑模榴榜榨歌遭酷酿酸磁愿需弊裳颗嗽蜻蜡蝇蜘赚锹锻舞稳算箩管僚鼻魄貌膜膊膀鲜疑馒裹敲豪膏遮腐瘦辣竭端旗精歉熄熔漆漂漫滴演漏慢寨赛察蜜谱嫩翠熊凳骡缩慧撕撒趣趟撑播撞撤增聪鞋蕉蔬横槽樱橡飘醋醉震霉瞒题暴瞎影踢踏踩踪蝶蝴嘱墨镇靠稻黎稿稼箱箭篇僵躺僻德艘膝膛熟摩颜毅糊遵潜潮懂额慰劈操燕薯薪薄颠橘整融醒餐嘴蹄器赠默镜赞篮邀衡膨雕磨凝辨辩糖糕燃澡激懒壁避缴戴擦鞠藏霜霞瞧蹈螺穗繁辫赢糟糠燥臂翼骤鞭覆蹦镰翻鹰警攀蹲颤瓣爆疆壤耀躁嚼嚷籍魔灌蠢霸露囊罐匕刁丐歹戈夭仑讥冗邓艾夯凸卢叭叽皿凹囚矢乍尔冯玄邦迂邢芋芍吏夷吁吕吆屹廷迄臼仲伦伊肋旭匈凫妆亥汛讳讶讹讼诀弛阱驮驯纫玖玛韧抠扼汞扳抡坎坞抑拟抒芙芜苇芥芯芭杖杉巫杈甫匣轩卤肖吱吠呕呐吟呛吻吭邑囤吮岖牡佑佃伺囱肛肘甸狈鸠彤灸刨庇吝庐闰兑灼沐沛汰沥沦汹沧沪忱诅诈罕屁坠妓姊妒纬玫卦坷坯拓坪坤拄拧拂拙拇拗茉昔苛苫苟苞茁苔枉枢枚枫杭郁矾奈奄殴歧卓昙哎咕呵咙呻咒咆咖帕账贬贮氛秉岳侠侥侣侈卑刽刹肴觅忿瓮肮肪狞庞疟疙疚卒氓炬沽沮泣泞泌沼怔怯宠宛衩祈诡帚屉弧弥陋陌函姆虱叁绅驹绊绎契贰玷玲珊拭拷拱挟垢垛拯荆茸茬荚茵茴荞荠荤荧荔栈柑栅柠枷勃柬砂泵砚鸥轴韭虐昧盹咧昵昭盅勋哆咪哟幽钙钝钠钦钧钮毡氢秕俏俄俐侯徊衍胚胧胎狰饵峦奕咨飒闺闽籽娄烁炫洼柒涎洛恃恍恬恤宦诫诬祠诲屏屎逊陨姚娜蚤骇耘耙秦匿埂捂捍袁捌挫挚捣捅埃耿聂荸莽莱莉莹莺梆栖桦栓桅桩贾酌砸砰砾殉逞哮唠哺剔蚌蚜畔蚣蚪蚓哩圃鸯唁哼唆峭唧峻赂赃钾铆氨秫笆俺赁倔殷耸舀豺豹颁胯胰脐脓逛卿鸵鸳馁凌凄衷郭斋疹紊瓷羔烙浦涡涣涤涧涕涩悍悯窍诺诽袒谆祟恕娩骏琐麸琉琅措捺捶赦埠捻掐掂掖掷掸掺勘聊娶菱菲萎菩萤乾萧萨菇彬梗梧梭曹酝酗厢硅硕奢盔匾颅彪眶晤曼晦冕啡畦趾啃蛆蚯蛉蛀唬唾啤啥啸崎逻崔崩婴赊铐铛铝铡铣铭矫秸秽笙笤偎傀躯兜衅徘徙舶舷舵敛翎脯逸凰猖祭烹庶庵痊阎阐眷焊焕鸿涯淑淌淮淆渊淫淳淤淀涮涵惦悴惋寂窒谍谐裆袱祷谒谓谚尉堕隅婉颇绰绷综绽缀巢琳琢琼揍堰揩揽揖彭揣搀搓壹搔葫募蒋蒂韩棱椰焚椎棺榔椭粟棘酣酥硝硫颊雳翘凿棠晰鼎喳遏晾畴跋跛蛔蜒蛤鹃喻啼喧嵌赋赎赐锉锌甥掰氮氯黍筏牍粤逾腌腋腕猩猬惫敦痘痢痪竣翔奠遂焙滞湘渤渺溃溅湃愕惶寓窖窘雇谤犀隘媒媚婿缅缆缔缕骚瑟鹉瑰搪聘斟靴靶蓖蒿蒲蓉楔椿楷榄楞楣酪碘硼碉辐辑频睹睦瞄嗜嗦暇畸跷跺蜈蜗蜕蛹嗅嗡嗤署蜀幌锚锥锨锭锰稚颓筷魁衙腻腮腺鹏肄猿颖煞雏馍馏禀痹廓痴靖誊漓溢溯溶滓溺寞窥窟寝褂裸谬媳嫉缚缤剿赘熬赫蔫摹蔓蔗蔼熙蔚兢榛榕酵碟碴碱碳辕辖雌墅嘁踊蝉嘀幔镀舔熏箍箕箫舆僧孵瘩瘟彰粹漱漩漾慷寡寥谭褐褪隧嫡缨撵撩撮撬擒墩撰鞍蕊蕴樊樟橄敷豌醇磕磅碾憋嘶嘲嘹蝠蝎蝌蝗蝙嘿幢镊镐稽篓膘鲤鲫褒瘪瘤瘫凛澎潭潦澳潘澈澜澄憔懊憎翩褥谴鹤憨履嬉豫缭撼擂擅蕾薛薇擎翰噩橱橙瓢蟥霍霎辙冀踱蹂蟆螃螟噪鹦黔穆篡篷篙篱儒膳鲸瘾瘸糙燎濒憾懈窿缰壕藐檬檐檩檀礁磷了瞬瞳瞪曙蹋蟋蟀嚎赡镣魏簇儡徽爵朦臊鳄糜癌懦豁臀藕藤瞻嚣鳍癞瀑襟璧戳攒孽蘑藻鳖蹭蹬簸簿蟹靡癣羹鬓攘蠕巍鳞糯譬霹躏髓蘸镶瓤矗，。、；‘’“”【】·；？！"/>
+<!--New things-->
+		<string key="leader_name_gen_masks" value="fs fsp x xh ypx"/>
+        <string key="leader_name_gen_groups" value="f: 赵 钱 孙 李 周 吴 郑 王 冯 陈 褚 卫 蒋 沈 韩 杨 朱 秦 尤 许 何 吕 施 张 孔 曹 严 华 金 魏 陶 姜 戚 谢 邹 喻 柏 水 窦 章 云 苏 潘 葛 奚 范 彭 郎 鲁 韦 昌 马 苗 凤 花 方 俞 任 袁 柳 酆 鲍 史 唐 费 廉 岑 薛 雷 贺 倪 汤 滕 殷 罗 毕 郝 邬 安 常 乐 于 时 傅 皮 卞 齐 康 伍 余 元 卜 顾 孟 平 黄 和 穆 萧 尹 姚 邵 湛 汪 祁 毛 禹 狄 米 贝 明 臧 计 伏 成 戴 谈 宋 茅 庞 熊 纪 舒 屈 项 祝 董 梁 杜 阮 蓝 闵 席 季 麻 强 贾 路 娄 危 江 童 颜 郭 梅 盛 林 刁 钟 丘 徐 邱 骆 高 夏 蔡 田 樊 胡 凌 霍 虞 万 支 柯 昝 管 卢 莫 经 房 裘 缪 干 解 应 宗 丁 宣 贲 邓 单 杭 洪 包 诸 左 石 崔 吉 钮 龚 程 嵇 邢 滑 裴 陆 荣 翁 荀 羊 於 惠 甄 曲 家 封 #s: 明 永 健 世 广 志 义 兴 良 海 山 仁 波 宁 贵 福 生 龙 元 全 国 胜 学 祥 才 发 武 新 利 清 飞 彬 富 顺 信 子 杰 涛 昌 成 康 星 光 席 季 麻 强 贾 路 娄 危 江 童 颜 郭 轩 辕 圣 省 升 剑 语 余 欲 域 鱼 浴 宇 博 波 伯 仲 叔 济 季 皓 #p: 轩 辕 圣 省 升 剑 语 余 欲 域 鱼 浴 宇 博 波 伯 仲 叔 济 季 皓 明 永 健 世 广 志 义 兴 良 海 山 仁 波 宁 贵 福 生 龙 元 全 国 胜 学 祥 才 发 武 新 利 清 飞 彬 富 顺 信 子 杰 涛 昌 成 康 星 光 席 季 麻 强 贾 路 娄 危 江 童 颜 郭 #x: 希拉克略 君士坦丁 玛利亚 特蕾莎 威廉 腓特烈 菲利普 腓力 查理 理查德 玛丽 约翰 杰克 米罗斯拉夫 吉娜 布莱诺 波拿巴 拿破仑 亚当 艾伦 亚历山大 阿尔瓦 阿曼达 巴里 #h: 一世 二世 三世 四世 五世 六世 七世 八世 九世 十世 十一 十二 十三 十四 十五 十六 十七 十八 十九 二十 #y: 德 冯 唐 #p:·"/>
+		<string key="giant" value="巨大"/>
+		<string key="world" value="世界"/>
+		<string key="download" value="下载"/>
+		<string key="exported_txt" value="地图导出在本地目录"/>
+ 		<string key="event" value="事件"/>
+		<string key="new_event" value="+ 创建新事件"/>
+		<string key="event_editor" value="事件编辑器"/>
+		<string key="enable_event" value="启用事件"/>
+		<string key="destory_city" value="可以摧毁城市"/>
+		<string key="enable_rebel" value="启用叛军"/>
+		<string key="rebel_new_country" value="叛军可独立"/>
+		<string key="change_leader" value="改变领袖"/>
+		<string key="most_hexes_in_turn" value="在指定回合前获得最多土地"/>
+		<string key="export_txt" value="在本地导出地图为TXT文件"/>
+		<string key="turns" value="回合数"/>
+		<string key="ai_attack" value="AI进攻倾向"/>
+		<string key="ai_develop" value="AI种田倾向"/>
+		<string key="ai_defense" value="AI防御倾向"/>
+		<string key="filter_only_sea" value="仅填充无地块"/>
+		
+        <!-- Main menu -->
+        <string key="main_menu_info" value="信息"/>
+        <string key="main_menu_exit" value="退出"/>
+        <string key="main_menu_something" value="没有东西"/>
 
+        <!-- Random stuff -->
+        <string key="menu_level" value="等级"/>
+        <string key="menu_reset" value="重设"/>
 
+        <string key="game_saved" value="已保存"/>
+        <string key="restart_app" value="重启游戏"/>
+        <string key="city_name_gen_masks" value="pd ko mo ao ku mu au amo c p cu pu kaoh aoh kh"/> <!-- Same as english -->
+        <string key="city_name_gen_groups" value="k: 阿 波 茨 德 俄 佛 格 荷 机 克 勒 莫 尼 #m: 格 兰 尼 斯 拉 #a: 阿 蒙 克 拉 力 斯 诺 #o: 西亚 尼亚 兰德 顿 兰 亚 #p:张家 王家 李家 赵家 孙家 钱家 贾家 #d: 村 镇 堡 店 屯 #c: 秦 楚 齐 燕 赵 魏 韩 卫 宋 明 清 元 唐 晋 吴 越 壮 湘 赣 #u: 国 堡 城 #h: 联合王国 公国 王国 帝国 共和国 联邦 共主邦联 邦联 合众国 神权国 系 军 义军"/>
 
+        <!-- Info -->
+        <string key="info_back" value="返回"/>
+        <string key="info_array" value="这是一个简单极简风格游戏的策略游戏
+        #免费， 没有广告， 无需打赏
+        #如果你第一次玩这个游戏
+        #如果你是新手
+        #
+        #记得看教程或者‘帮助'
+        #
+        #
+        #本游戏受Sean O'Connor的Slay的启发
+        #
+        #
+        #
+        #
+        #
+        #
+        #Reddit: /r/yiotro_games
+        #邮箱: yiotro93@gmail.com
+        #yiotro出品
+		"/>
+        <string key="reset_campaign_data" value="重置数据"/>
+        <string key="special_thanks" value="#Skin: ShroomArts #Music: Derek Bryant #Slimes: @DomCh1 #Skin: Jannes Peters #Fix PL: Aleksander Zarzynski #Fix FR: Sebastien Duperrier #Fix IT: Ivano Rocco #Fix RU: Oles Radev #Skin AWW: AFG, Timur #Fix CZ: Tadeas Hendrych #Fix NOR: Moon Moon #Katuri: Laurent Hien #Matveismi art: Matvej #Skin AWW 2: Timur "/> <!-- Same as english -->
+        <string key="special_thanks_title" value="Special thanks"/>
+        <string key="antiyoy_online" value="I finally made an online version of antiyoy ;) # #Now you can play online with other people. Player levels can be rated, and these ratings will be seen by other players. And the 'calendar' game mode allows you to go through a new level every day. All of this can be found in my new game 'Antiyoy Online'. # #The button at the bottom will open the game page on Google Play. I hope you'll like it :)"/>
+        <string key="catched_exception" value="Oh no, something went wrong. # #If it's not too difficult for you, please take a screenshot and send it to my email: yiotro93@gmail.com"/>
 
+        <!-- Choose game mode menu-->
+        <string key="choose_game_mode_skirmish" value="遭遇战"/>
+        <string key="choose_game_mode_tutorial" value="教程"/>
+        <string key="choose_game_mode_campaign" value="战役"/>
+        <string key="choose_game_mode_load" value="载入游戏"/>
+        <string key="user_levels" value="玩家地图"/>
 
+        <!-- User levels -->
+        <string key="add_my_map" value="Add my map"/>
+        <string key="how_add_my_map" value="How to get your map here: #1. Make it in editor. #2. Make sure that it's interesting and beatable. #3. Press 'export'. #4a. Post it on pastebin.com and send me the link to my email yiotro93@gmail.com #4b. Or post it on my subreddit /r/yiotro_games # #Also, if your map is very hard, then would be nice if you included some video showing how to beat it."/>
 
+        <!-- Skirmish menu -->
+        <string key="game_settings_main_menu" value="主菜单"/>
+        <string key="game_settings_tutorial" value="教程"/>
+        <string key="game_settings_start" value="开始"/>
+		<string key="download" value="下载"/>
+        <string key="map_size" value="地图大小"/>
+        <string key="color_number" value="颜色"/>
+        <string key="player_number" value="玩家"/>
+        <string key="small" value="小"/>
+        <string key="medium" value="中"/>
+        <string key="big" value="大"/>
+        <string key="huge" value="巨大"/>
+        <string key="ai_only" value="只有AI"/>
+        <string key="single_player" value="单人"/>
+        <string key="multiplayer" value="多人"/>
+        <string key="colors" value="颜色"/>
+        <string key="color" value="颜色"/>
+        <string key="difficulty" value="难度"/>
+        <string key="easy" value="简单"/>
+        <string key="normal" value="正常"/>
+        <string key="hard" value="困难"/>
+        <string key="expert" value="专家"/>
+        <string key="balancer" value="平衡"/>
+        <string key="player_color" value="玩家颜色"/>
+        <string key="fog_of_war" value="迷雾"/>
+        <string key="diplomacy" value="外交"/>
+        <string key="provinces" value="省份"/>
+        <string key="default" value="默认"/>
+        <string key="master" value="大师"/>
+		<string key="change_city" value="更改城市"/>
 
+        <!-- In game menu -->
+        <string key="in_game_menu_resume" value="返回游戏"/>
+        <string key="in_game_menu_save" value="保存游戏"/>
+        <string key="in_game_menu_surrender" value="投降"/>
+        <string key="in_game_menu_main_menu" value="主菜单"/>
+        <string key="in_game_menu_restart" value="重新开始"/>
+        <string key="confirm_restart" value="重新开始游戏?"/>
+        <string key="cancel" value="取消"/>
+        <string key="confirm_end_turn" value="结束本轮?"/>
+        <string key="yes" value="是"/>
+
+        <!-- End game menu -->
+        <string key="end_game_ok" value="行"/>
+        <string key="end_game_okay" value="成吧..."/>
+        <string key="player" value="玩家"/>
+        <string key="ai" value="电脑"/>
+        <string key="won" value="赢了"/>
+        <string key="statistics" value="记分牌"/>
+        <string key="next" value="下一个"/>
+        <string key="level_complete" value="关卡完成"/>
+        <string key="win_game" value="你赢了"/>
+        <string key="win_or_continue" value="结束#还是继续?"/>
+        <string key="continue" value="继续"/>
+        <string key="winner" value="胜利者"/>
+
+        <!-- Tutorial -->
+        <string key="normal_rules" value="普通规则"/>
+        <string key="how_to_play" value="怎么玩?"/>
+        <string key="tutorial_ok" value="好"/>
+        <string key="tut_select_unit" value="选择单位"/>
+        <string key="tut_tap_on_hex" value="点击六边形"/>
+        <string key="tut_press_button" value="点击按钮"/>
+        <string key="tut_build_tower" value="建造防御塔"/>
+        <string key="tut_again" value="再来一次"/>
+        <string key="tut_build_spearman" value="建造长枪兵"/>
+        <string key="tut_tap_to_undo" value="点击 '上一步'"/>
+        <string key="tut_tap_to_end_turn" value="点击结束本轮"/>
+        <string key="tut_hold_hex" value="保持按住"/>
+        <string key="tut_merge_units" value="单位合体"/>
+        <string key="tut_good_luck" value="祝你好运!"/>
+
+        <!-- Tutorial tips -->
+        <string key="tip_capture_with_units" value="派你的士兵去#侵占地方领土吧"/>
+        <string key="tip_about_money" value="你的领土越大#你的钱越多"/>
+        <string key="tip_build_towers" value="建造防御塔#来保护临近单位"/>
+        <string key="tip_about_taxes" value="强大的单位#消耗更多钱"/>
+        <string key="tip_about_defense" value="单位和房子#也能保护临近单位哦"/>
+        <string key="tip_hold_to_march" value="按住并拖动#即刻移动大量单位"/>
+        <string key="tip_about_unit_death" value="如果钱用光了#所有单位都会死亡#投资需谨慎"/>
+        <string key="tip_merging" value="合并单位#即刻升级"/>
+        <string key="tip_trees" value="树林不会产出#所以砍光他们吧"/>
+        <string key="tip_help" value="To skip rest of tutorial press 'help'"/>
+
+        <!-- Generic Tutorial -->
+        <string key="gen_greetings" value="哈咯. 本教程会讲解游戏规则."/>
+        <string key="gen_select_province" value="点击你的主城以选中它Tap on your city to select it."/>
+        <string key="gen_select_unit" value="很好. 你有几个单位. 点击其中一个."/>
+        <string key="gen_move_unit" value="每个单位每回合移动一格。现在，点击相邻的地块以占领它。"/>
+        <string key="gen_income" value="你的领地能给你每回合一块金币， 占领越多，收入越多"/>
+        <string key="gen_lets_build_farm" value="让我们建造农场，获得更高的收入."/>
+        <string key="gen_press_button_twice" value="点击按钮两次"/>
+        <string key="gen_build_farm" value="农场只能建在主城和其他农场附近。"/>
+        <string key="gen_about_farms" value="每座农场每轮产生4块金币， 但每座农场的造价都会比前一座高。"/>
+        <string key="gen_lets_build_peasant" value="让我们建造一个新的单位，然后占领无人区吧！"/>
+        <string key="gen_press_button" value="点击底部的按钮"/>
+        <string key="gen_build_peasant" value="把你的单位放置在领土边缘外。"/>
+        <string key="gen_capture_peasant" value="现在，选中单位然后指挥他们占领无人区吧！"/>
+        <string key="gen_capture_hex" value="占领无人区"/>
+        <string key="gen_lets_build_tower" value="你需要保卫你的领土，防御塔是个不错的选择。"/>
+        <string key="gen_build_tower" value="点击高光的地块以建立防御塔。"/>
+        <string key="gen_about_towers" value="防御塔会保护临近的土地，免受农民和长枪兵的入侵。"/>
+        <string key="gen_lets_build_spearman" value="长枪兵比农民更加强壮，让我们建一个。"/>
+        <string key="gen_build_spearman" value="点击地块以建立长枪兵"/>
+        <string key="gen_units_consume_money" value="单位每回合会消耗金币，越强壮消耗越多。"/>
+        <string key="gen_undo_spearman" value="现在你的收入为-1，这样可不妙，还是取消建立长枪兵吧。"/>
+        <string key="gen_why_units_die" value="如果钱用光了，所有单位都会死亡，投资需谨慎"/>
+        <string key="gen_about_trees_one" value="树木也是一个大问题，有树木的地块不会产出金币！"/>
+        <string key="gen_about_trees_two" value="在树木泛滥之前赶紧砍光他们吧。"/>
+        <string key="gen_end_turn" value="点击右下角的按钮即可结束本回合。"/>
+        <string key="gen_choose_to_merge" value="你也可以合并单位， 选择下面的农民。"/>
+        <string key="gen_merge_units" value="当你选择了一个农民的时候，点击另一个农民即可合并他们。"/>
+        <string key="gen_long_tap" value="如果你有太多单位的话，你可以用长点击一次性移动他们。"/>
+        <string key="gen_several_provinces" value="你可以用若干个主城（领地），每个主城的金币是独立计算的。"/>
+
+        <!-- Tutorial help -->
+        <string key="help" value="帮助"/>
+        <string key="help_about_units" value="单位"/>
+        <string key="help_about_trees" value="树木"/>
+        <string key="help_about_towers" value="防御塔"/>
+        <string key="help_about_money" value="金币"/>
+        <string key="help_about_tactics" value="策略"/>
+        <string key="help_about_rules" value="规则"/>
+        <string key="my_games" value="我的其他游戏"/>
+
+        <string key="help_units_article" value="游戏有四种单位。
+        #他们的战斗力各不相同
+        #战斗力从弱到强分别为：
+        #[1] 农民
+        #[2] 长枪兵
+        #[3] 男爵
+        #[4] 骑士
+        #
+        #单位能保护临近地块
+        #不受同等单位的入侵
+        #
+        #如果想占领敌方土地
+        #己方战斗力必须比
+        #敌方受到的保护更高
+        #
+        #每个单位每回合分别消耗
+        #2, 6, 18 和  54 块金币
+        "/>
+
+        <string key="help_trees_article" value="树木生长在
+        #死亡的单位之上
+        #
+        #有树木的地块没有产出
+        #这意味着
+        #树木在游戏里不是好东西
+        #
+        #你必须清除树木
+        #否则，树木会占领的你的领地
+        #击败你！
+        #
+        #棕榈树生长在海边
+        #并且生长的更快
+        #你最好迅速消灭他们
+        #
+        "/>
+
+        <string key="help_towers_article" value="防御塔用来
+        #保护临近地块
+        #
+        #防御塔的战斗力为2
+        #所以，只有男爵和骑士
+        #能占领他们
+        #
+        #农场的战斗力为1
+        #
+        #在游戏初期
+        #这是保护你的土地的
+        #最好的选择
+        #防御塔造价很低
+        #也不会消耗金币
+        "/>
+
+        <string key="help_money_article" value="收入取决于
+        #占领区块的数量
+        #领地越大
+        #收入越高
+        #但树木会制止地块产出金币
+        #
+        #单位会不断消耗金币
+        #特别是强大的单位
+        #消耗更多
+        #
+        #
+        #
+        #当你的钱花光了
+        #你的军队会毁于一旦
+        #
+        #收入将会显示
+        #在顶部中间
+        "/>
+
+        <string key="help_tactics_article" value="在游戏初期尽量
+        #占领更多无人区
+        #然后保护好你的领地
+        #
+        #
+        #在建造单位前，
+        #确保你有足够的收入
+        #去养活他们。
+        #
+        #
+        #
+        #把敌人的领土
+        #分割成一块块
+        #从而破坏敌人的经济。
+        "/>
+
+        <string key="article_rules" value="There are 2 rulesets in game: Normal rules and Slay rules. Normal rules are enabled by default.
+        #
+        #Initially game had only slay rules. That's why help describes them instead of normal rules.
+        #
+        #To change rules in skirmish you have to tap 'more' before starting new game.
+        #
+        #To change rules in campaign you have to tap '...' in top right corner of level choose menu."/>
+
+        <string key="article_diplomacy_1" value="To win in diplomacy mode you have to be in friendship with everyone on map.
+        #
+        #To open diplomacy UI just select your country and tap little 'flag' icon.
+        #
+        #Tap on any country in list and you'll see what you can do.
+        #
+        #'Like' and 'dislike' buttons can make relations with that country better or worse."/>
+
+        <string key="article_diplomacy_2" value="The idea of black mark is simple: any other country can't be friends with both of you. It's a sort of diplomatical pressure.
+        #
+        #Also, you won't be able to become friend with everyone easily. Last country will always refuse your friend request."/>
+
+        <string key="article_my_games" value="If you liked this game then you may also like some of my other games:"/>
+
+        <!-- Statistics -->
+        <string key="turns_made" value="回合数"/>
+        <string key="units_died" value="单位死亡数"/>
+        <string key="units_produced" value="单位生产数"/>
+        <string key="money_spent" value="金币支出"/>
+        <string key="time" value="用时"/>
+        <string key="wins" value="胜利数"/>
+        <string key="hours_abbreviation" value="时"/>
+        <string key="minutes_abbreviation" value="分"/>
+        <string key="seconds_abbreviation" value="秒"/>
+        <string key="friendships_broken" value="破坏的同盟数"/>
+
+        <!-- Editor -->
+        <string key="editor" value="编辑器"/>
+        <string key="slot" value="插槽"/>
+        <string key="slots" value="保存插槽"/>
+        <string key="import" value="导入"/>
+        <string key="export" value="导出"/>
+        <string key="empty" value="空白"/>
+        <string key="play" value="开始"/>
+        <string key="edit" value="编辑"/>
+        <string key="random" value="随机"/>
+        <string key="exported" value="地图已复制"/>
+        <string key="editor_clear" value="清空"/>
+        <string key="no" value="取消"/>
+        <string key="yes" value="确认"/>
+        <string key="confirm_import" value="确认导入"/>
+        <string key="filter_no" value="无过滤"/>
+        <string key="filter_only_land" value="仅填充地块"/>
+        <string key="confirm_clear_level" value="清除地图？"/>
+        <string key="confirm_randomize" value="生成随机地图？"/>
+        <string key="randomize" value="随机"/>
+        <string key="create" value="创建"/>
+        <string key="change" value="更改"/>
+        <string key="messages" value="信息"/>
+        <string key="goal" value="任务"/>
+        <string key="destroy_everyone" value="摧毁所有势力"/>
+        <string key="diplomatic_victory" value="外交胜利"/>
+        <string key="survive_long_enough" value="生存足够长时间"/>
+        <string key="destroy_target_kingdom" value="摧毁指定势力"/>
+        <string key="reach_target_income" value="达到收入"/>
+        <string key="ensure_target_victory" value="让指定势力胜利"/>
+        <string key="lock_relations" value="锁定外交"/>
+
+        <!-- Settings -->
+        <string key="autosave" value="自动保存"/>
+        <string key="long_tap_to_end_turn" value="长按结束回合"/>
+        <string key="city_names" value="城市名称"/>
+        <string key="sound" value="音效"/>
+        <string key="limited_turns" value="有限回合"/>
+        <string key="hold_to_march" value="长按行军"/>
+        <string key="skin" value="皮肤"/>
+        <string key="original" value="原版"/>
+        <string key="points" value="点阵"/>
+        <string key="grid" value="方格"/>
+        <string key="skin_shroomarts" value="Shroomarts"/>  <!-- Same as english -->
+        <string key="anim_style" value="灵敏度"/>
+        <string key="more" value="更多"/>
+        <string key="camera_offset" value="相机调整"/>
+        <string key="slay_rules" value="Slay 模式"/>
+        <string key="language" value="语言"/>
+        <string key="more_settings_checks" value="# #水纹理 # # "/>
+        <string key="water_texture" value="水纹理"/>
+        <string key="confirm_reset" value="清除设置？"/>
+        <string key="replays" value="回放"/>
+        <string key="save_replay" value="保存回放"/>
+        <string key="replay" value="回放"/>
+        <string key="replay_saved" value="回放已保存"/>
+        <string key="fast_construction" value="快速建造"/>
+        <string key="music" value="音乐"/>
+        <string key="left_handed" value="左手模式"/>
+        <string key="full_screen_mode" value="全屏"/>
+        <string key="system_keyboard" value="系统键盘"/>
+        <string key="use_list" value="使用列表"/>
+        <string key="automatic_transition" value="自动变换"/>
+
+        <!-- Skins -->
+        <string key="slimes" value="Slimes"/>  <!-- Same as english -->
+        <string key="jannes_peters" value="Jannes Peters"/>  <!-- Same as english -->
+        <string key="world_war" value="AWW"/>  <!-- Same as english -->
+        <string key="katuri" value="Katuri"/>  <!-- Same as english -->
+        <string key="matveismi_art" value="Matveismi art"/>  <!-- Same as english -->
+        <string key="aww2" value="AWW 2"/>  <!-- Same as english -->
+
+        <!-- Single messages -->
+        <string key="level_24" value="这是第一个'困难' 关卡。 注意防守！"/>
+        <string key="map_too_big_for_user_levels" value="地图成功导出！"/>
+        <string key="available_on_ios" value="Now available on iOS"/>
+
+        <!-- Gameplay -->
+        <string key="friends" value="朋友"/>
+        <string key="mutual_friends" value="互相"/>
+        <string key="dotations" value="定期财政支持"/>
+        <string key="treaty_of_friendship" value="盟友的宝藏"/>
+        <string key="state" value="国家"/>
+        <string key="duration" value="期限"/>
+        <string key="refuse_friendship" value="对不起，我不能同意你的交易。"/>
+        <string key="friend" value="友邦"/>
+        <string key="enemy" value="仇敌"/>
+        <string key="neutral" value="中立"/>
+        <string key="dead" value="灭亡"/>
+        <string key="confirm_cancel_friendship" value="取消友邦吗?"/>
+        <string key="confirm_start_war" value="发动战争吗?"/>
+        <string key="peace_treaty" value="和平条约"/>
+        <string key="pay" value="支付"/>
+        <string key="reparations" value="赔款"/>
+        <string key="refuse_stop_war" value="我们将会战斗到底！"/>
+        <string key="win_conditions" value="胜利条件"/>
+        <string key="diplomatic_win_conditions" value="为了在外交上取胜，你需要和每个国家成为友邦。"/>
+        <string key="confirm_black_mark" value="设置绝交吗？"/>
+        <string key="black_mark_description" value="通过与国家绝交，你禁止其他国家同时和两国成为友邦。不适用于已签订的条约。"/>
+        <string key="player_turn" value="玩家回合"/>
+        <string key="fine" value="行"/>
+        <string key="log" value="信件"/>
+        <string key="friendship_proposal" value="友邦提议"/>
+        <string key="war_declaration" value="宣布战争"/>
+        <string key="stop_war" value="停战"/>
+        <string key="friendship_ended" value="友邦时期结束"/>
+        <string key="friendship_canceled" value="取消友邦"/>
+        <string key="black_marked" value="绝交"/>
+        <string key="letter_sent" value="信件已送出"/>
+        <string key="delete" value="删除"/>
+        <string key="rename" value="重命名"/>
+        <string key="confirm_delete_slot" value="删除存档吗?"/>
+        <string key="resume_button" value="'继续' 按钮"/>
+        <string key="filters" value="过滤器"/>
+        <string key="completed" value="通过"/>
+        <string key="historical" value="历史性的"/>
+        <string key="temp_slot" value="临时存档"/>
+        <string key="can_skip_level" value="你可以跳过这些关卡"/>
+        <string key="reason" value="原因"/>
+        <string key="friends_with_everybody" value="与众国友好"/>
+        <string key="hex_purchase" value="土地交易"/>
+        <string key="confirm_buy_hexes" value="买地吗?"/>
+        <string key="price" value="价格"/>
+        <string key="gift" value="礼物"/>
+        <string key="gift_received" value="礼物已收到"/>
+        <string key="confirm_sell_hexes" value="卖地吗?"/>
+        <string key="confirm_skip_level" value="跳过关卡吗?"/>
+        <string key="ok" value="行"/>
+        <string key="money" value="钱"/>
+        <string key="quantity" value="数量"/>
+        <string key="income" value="收入"/>
+        <string key="by_name" value="通过名字"/>
+        <string key="hex_trade" value="土地交易"/>
+        <string key="hex_sale" value="土地出售"/>
+        <string key="buyer_not_enough_money" value="买方没有足够的钱"/>
+        <string key="message" value="信息"/>
+        <string key="show" value="展示"/>
+        <string key="check_filters" value="检查过滤器"/>
+        <string key="lands" value="土地"/>
+        <string key="farms" value="农场"/>
+        <string key="units" value="单位"/>
+        <string key="trees" value="树"/>
+        <string key="towers" value="塔"/>
+        <string key="profit" value="收入"/>
+        <string key="aggressor" value="侵略者"/>
+        <string key="target" value="目标"/>
+        <string key="choose" value="选择"/>
+        <string key="attack_proposition" value="进攻主张"/>
+        <string key="nothing" value="什么也没有"/>
+        <string key="friendship" value="结盟"/>
+        <string key="remove_black_mark" value="取消绝交"/>
+        <string key="refuse_offer" value="对不起，我不能同意你的交易。"/>
+        <string key="accept" value="同意"/>
+        <string key="refuse" value="拒绝"/>
+        <string key="what_you_get" value="这是你想得到的"/>
+        <string key="what_you_give" value="这是你在交易中想给出的"/>
+        <string key="hidden" value="隐藏"/> <!-- plural -->
+        <string key="hide" value="隐藏"/>
+        <string key="debt" value="欠款"/>
+        <string key="some_units_can_move" value="一些单位可移动"/>
+    </language>
+       
 
 
 
@@ -4796,537 +5278,6 @@
         <string key="debt" value="Debt"/>
         <string key="some_units_can_move" value="Some units can move"/>
     </language>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <language name="cn_CN" title="Chinese" author="Jim Chen, Jestor">
-        <!-- All characters -->
-        <string key="lang_characters" value="一乙二十丁厂七卜人入八九几儿了力乃刀又三于干亏士工土才寸下大丈与万上小口巾山千乞川亿个勺久凡及夕丸么广亡门义之尸弓己已子卫也女飞刃习叉马乡丰王井开夫天无元专云扎艺木五支厅不太犬区历尤友匹车巨牙屯比互切瓦止少日中冈贝内水见午牛手毛气升长仁什片仆化仇币仍仅斤爪反介父从今凶分乏公仓月氏勿欠风丹匀乌凤勾文六方火为斗忆订计户认心尺引丑巴孔队办以允予劝双书幻玉刊示末未击打巧正扑扒功扔去甘世古节本术可丙左厉右石布龙平灭轧东卡北占业旧帅归且旦目叶甲申叮电号田由史只央兄叼叫另叨叹四生失禾丘付仗代仙们仪白仔他斥瓜乎丛令用甩印乐句匆册犯外处冬鸟务包饥主市立闪兰半汁汇头汉宁穴它讨写让礼训必议讯记永司尼民出辽奶奴加召皮边发孕圣对台矛纠母幼丝式刑动扛寺吉扣考托老执巩圾扩扫地扬场耳共芒亚芝朽朴机权过臣再协西压厌在有百存而页匠夸夺灰达列死成夹轨邪划迈毕至此贞师尘尖劣光当早吐吓虫曲团同吊吃因吸吗屿帆岁回岂刚则肉网年朱先丢舌竹迁乔伟传乒乓休伍伏优伐延件任伤价份华仰仿伙伪自血向似后行舟全会杀合兆企众爷伞创肌朵杂危旬旨负各名多争色壮冲冰庄庆亦刘齐交次衣产决充妄闭问闯羊并关米灯州汗污江池汤忙兴宇守宅字安讲军许论农讽设访寻那迅尽导异孙阵阳收阶阴防奸如妇好她妈戏羽观欢买红纤级约纪驰巡寿弄麦形进戒吞远违运扶抚坛技坏扰拒找批扯址走抄坝贡攻赤折抓扮抢孝均抛投坟抗坑坊抖护壳志扭块声把报却劫芽花芹芬苍芳严芦劳克苏杆杠杜材村杏极李杨求更束豆两丽医辰励否还歼来连步坚旱盯呈时吴助县里呆园旷围呀吨足邮男困吵串员听吩吹呜吧吼别岗帐财针钉告我乱利秃秀私每兵估体何但伸作伯伶佣低你住位伴身皂佛近彻役返余希坐谷妥含邻岔肝肚肠龟免狂犹角删条卵岛迎饭饮系言冻状亩况床库疗应冷这序辛弃冶忘闲间闷判灶灿弟汪沙汽沃泛沟没沈沉怀忧快完宋宏牢究穷灾良证启评补初社识诉诊词译君灵即层尿尾迟局改张忌际陆阿陈阻附妙妖妨努忍劲鸡驱纯纱纳纲驳纵纷纸纹纺驴纽奉玩环武青责现表规抹拢拔拣担坦押抽拐拖拍者顶拆拥抵拘势抱垃拉拦拌幸招坡披拨择抬其取苦若茂苹苗英范直茄茎茅林枝杯柜析板松枪构杰述枕丧或画卧事刺枣雨卖矿码厕奔奇奋态欧垄妻轰顷转斩轮软到非叔肯齿些虎虏肾贤尚旺具果味昆国昌畅明易昂典固忠咐呼鸣咏呢岸岩帖罗帜岭凯败贩购图钓制知垂牧物乖刮秆和季委佳侍供使例版侄侦侧凭侨佩货依的迫质欣征往爬彼径所舍金命斧爸采受乳贪念贫肤肺肢肿胀朋股肥服胁周昏鱼兔狐忽狗备饰饱饲变京享店夜庙府底剂郊废净盲放刻育闸闹郑券卷单炒炊炕炎炉沫浅法泄河沾泪油泊沿泡注泻泳泥沸波泼泽治怖性怕怜怪学宝宗定宜审宙官空帘实试郎诗肩房诚衬衫视话诞询该详建肃录隶居届刷屈弦承孟孤陕降限妹姑姐姓始驾参艰线练组细驶织终驻驼绍经贯奏春帮珍玻毒型挂封持项垮挎城挠政赴赵挡挺括拴拾挑指垫挣挤拼挖按挥挪某甚革荐巷带草茧茶荒茫荡荣故胡南药标枯柄栋相查柏柳柱柿栏树要咸威歪研砖厘厚砌砍面耐耍牵残殃轻鸦皆背战点临览竖省削尝是盼眨哄显哑冒映星昨畏趴胃贵界虹虾蚁思蚂虽品咽骂哗咱响哈咬咳哪炭峡罚贱贴骨钞钟钢钥钩卸缸拜看矩怎牲选适秒香种秋科重复竿段便俩贷顺修保促侮俭俗俘信皇泉鬼侵追俊盾待律很须叙剑逃食盆胆胜胞胖脉勉狭狮独狡狱狠贸怨急饶蚀饺饼弯将奖哀亭亮度迹庭疮疯疫疤姿亲音帝施闻阀阁差养美姜叛送类迷前首逆总炼炸炮烂剃洁洪洒浇浊洞测洗活派洽染济洋洲浑浓津恒恢恰恼恨举觉宣室宫宪突穿窃客冠语扁袄祖神祝误诱说诵垦退既屋昼费陡眉孩除险院娃姥姨姻娇怒架贺盈勇怠柔垒绑绒结绕骄绘给络骆绝绞统耕耗艳泰珠班素蚕顽盏匪捞栽捕振载赶起盐捎捏埋捉捆捐损都哲逝捡换挽热恐壶挨耻耽恭莲莫荷获晋恶真框桂档桐株桥桃格校核样根索哥速逗栗配翅辱唇夏础破原套逐烈殊顾轿较顿毙致柴桌虑监紧党晒眠晓鸭晃晌晕蚊哨哭恩唤啊唉罢峰圆贼贿钱钳钻铁铃铅缺氧特牺造乘敌秤租积秧秩称秘透笔笑笋债借值倚倾倒倘俱倡候俯倍倦健臭射躬息徒徐舰舱般航途拿爹爱颂翁脆脂胸胳脏胶脑狸狼逢留皱饿恋桨浆衰高席准座脊症病疾疼疲效离唐资凉站剖竞部旁旅畜阅羞瓶拳粉料益兼烤烘烦烧烛烟递涛浙涝酒涉消浩海涂浴浮流润浪浸涨烫涌悟悄悔悦害宽家宵宴宾窄容宰案请朗诸读扇袜袖袍被祥课谁调冤谅谈谊剥恳展剧屑弱陵陶陷陪娱娘通能难预桑绢绣验继球理捧堵描域掩捷排掉堆推掀授教掏掠培接控探据掘职基著勒黄萌萝菌菜萄菊萍菠营械梦梢梅检梳梯桶救副票戚爽聋袭盛雪辅辆虚雀堂常匙晨睁眯眼悬野啦晚啄距跃略蛇累唱患唯崖崭崇圈铜铲银甜梨犁移笨笼笛符第敏做袋悠偿偶偷您售停偏假得衔盘船斜盒鸽悉欲彩领脚脖脸脱象够猜猪猎猫猛馅馆凑减毫麻痒痕廊康庸鹿盗章竟商族旋望率着盖粘粗粒断剪兽清添淋淹渠渐混渔淘液淡深婆梁渗情惜惭悼惧惕惊惨惯寇寄宿窑密谋谎祸谜逮敢屠弹随蛋隆隐婚婶颈绩绪续骑绳维绵绸绿琴斑替款堪搭塔越趁趋超提堤博揭喜插揪搜煮援裁搁搂搅握揉斯期欺联散惹葬葛董葡敬葱落朝辜葵棒棋植森椅椒棵棍棉棚棕惠惑逼厨厦硬确雁殖裂雄暂雅辈悲紫辉敞赏掌晴暑最量喷晶喇遇喊景践跌跑遗蛙蛛蜓喝喂喘喉幅帽赌赔黑铸铺链销锁锄锅锈锋锐短智毯鹅剩稍程稀税筐等筑策筛筒答筋筝傲傅牌堡集焦傍储奥街惩御循艇舒番释禽腊脾腔鲁猾猴然馋装蛮就痛童阔善羡普粪尊道曾焰港湖渣湿温渴滑湾渡游滋溉愤慌惰愧愉慨割寒富窜窝窗遍裕裤裙谢谣谦属屡强粥疏隔隙絮嫂登缎缓编骗缘瑞魂肆摄摸填搏塌鼓摆携搬摇搞塘摊蒜勤鹊蓝墓幕蓬蓄蒙蒸献禁楚想槐榆楼概赖酬感碍碑碎碰碗碌雷零雾雹输督龄鉴睛睡睬鄙愚暖盟歇暗照跨跳跪路跟遣蛾蜂嗓置罪罩错锡锣锤锦键锯矮辞稠愁筹签简毁舅鼠催傻像躲微愈遥腰腥腹腾腿触解酱痰廉新韵意粮数煎塑慈煤煌满漠源滤滥滔溪溜滚滨粱滩慎誉塞谨福群殿辟障嫌嫁叠缝缠静碧璃墙撇嘉摧截誓境摘摔聚蔽慕暮蔑模榴榜榨歌遭酷酿酸磁愿需弊裳颗嗽蜻蜡蝇蜘赚锹锻舞稳算箩管僚鼻魄貌膜膊膀鲜疑馒裹敲豪膏遮腐瘦辣竭端旗精歉熄熔漆漂漫滴演漏慢寨赛察蜜谱嫩翠熊凳骡缩慧撕撒趣趟撑播撞撤增聪鞋蕉蔬横槽樱橡飘醋醉震霉瞒题暴瞎影踢踏踩踪蝶蝴嘱墨镇靠稻黎稿稼箱箭篇僵躺僻德艘膝膛熟摩颜毅糊遵潜潮懂额慰劈操燕薯薪薄颠橘整融醒餐嘴蹄器赠默镜赞篮邀衡膨雕磨凝辨辩糖糕燃澡激懒壁避缴戴擦鞠藏霜霞瞧蹈螺穗繁辫赢糟糠燥臂翼骤鞭覆蹦镰翻鹰警攀蹲颤瓣爆疆壤耀躁嚼嚷籍魔灌蠢霸露囊罐匕刁丐歹戈夭仑讥冗邓艾夯凸卢叭叽皿凹囚矢乍尔冯玄邦迂邢芋芍吏夷吁吕吆屹廷迄臼仲伦伊肋旭匈凫妆亥汛讳讶讹讼诀弛阱驮驯纫玖玛韧抠扼汞扳抡坎坞抑拟抒芙芜苇芥芯芭杖杉巫杈甫匣轩卤肖吱吠呕呐吟呛吻吭邑囤吮岖牡佑佃伺囱肛肘甸狈鸠彤灸刨庇吝庐闰兑灼沐沛汰沥沦汹沧沪忱诅诈罕屁坠妓姊妒纬玫卦坷坯拓坪坤拄拧拂拙拇拗茉昔苛苫苟苞茁苔枉枢枚枫杭郁矾奈奄殴歧卓昙哎咕呵咙呻咒咆咖帕账贬贮氛秉岳侠侥侣侈卑刽刹肴觅忿瓮肮肪狞庞疟疙疚卒氓炬沽沮泣泞泌沼怔怯宠宛衩祈诡帚屉弧弥陋陌函姆虱叁绅驹绊绎契贰玷玲珊拭拷拱挟垢垛拯荆茸茬荚茵茴荞荠荤荧荔栈柑栅柠枷勃柬砂泵砚鸥轴韭虐昧盹咧昵昭盅勋哆咪哟幽钙钝钠钦钧钮毡氢秕俏俄俐侯徊衍胚胧胎狰饵峦奕咨飒闺闽籽娄烁炫洼柒涎洛恃恍恬恤宦诫诬祠诲屏屎逊陨姚娜蚤骇耘耙秦匿埂捂捍袁捌挫挚捣捅埃耿聂荸莽莱莉莹莺梆栖桦栓桅桩贾酌砸砰砾殉逞哮唠哺剔蚌蚜畔蚣蚪蚓哩圃鸯唁哼唆峭唧峻赂赃钾铆氨秫笆俺赁倔殷耸舀豺豹颁胯胰脐脓逛卿鸵鸳馁凌凄衷郭斋疹紊瓷羔烙浦涡涣涤涧涕涩悍悯窍诺诽袒谆祟恕娩骏琐麸琉琅措捺捶赦埠捻掐掂掖掷掸掺勘聊娶菱菲萎菩萤乾萧萨菇彬梗梧梭曹酝酗厢硅硕奢盔匾颅彪眶晤曼晦冕啡畦趾啃蛆蚯蛉蛀唬唾啤啥啸崎逻崔崩婴赊铐铛铝铡铣铭矫秸秽笙笤偎傀躯兜衅徘徙舶舷舵敛翎脯逸凰猖祭烹庶庵痊阎阐眷焊焕鸿涯淑淌淮淆渊淫淳淤淀涮涵惦悴惋寂窒谍谐裆袱祷谒谓谚尉堕隅婉颇绰绷综绽缀巢琳琢琼揍堰揩揽揖彭揣搀搓壹搔葫募蒋蒂韩棱椰焚椎棺榔椭粟棘酣酥硝硫颊雳翘凿棠晰鼎喳遏晾畴跋跛蛔蜒蛤鹃喻啼喧嵌赋赎赐锉锌甥掰氮氯黍筏牍粤逾腌腋腕猩猬惫敦痘痢痪竣翔奠遂焙滞湘渤渺溃溅湃愕惶寓窖窘雇谤犀隘媒媚婿缅缆缔缕骚瑟鹉瑰搪聘斟靴靶蓖蒿蒲蓉楔椿楷榄楞楣酪碘硼碉辐辑频睹睦瞄嗜嗦暇畸跷跺蜈蜗蜕蛹嗅嗡嗤署蜀幌锚锥锨锭锰稚颓筷魁衙腻腮腺鹏肄猿颖煞雏馍馏禀痹廓痴靖誊漓溢溯溶滓溺寞窥窟寝褂裸谬媳嫉缚缤剿赘熬赫蔫摹蔓蔗蔼熙蔚兢榛榕酵碟碴碱碳辕辖雌墅嘁踊蝉嘀幔镀舔熏箍箕箫舆僧孵瘩瘟彰粹漱漩漾慷寡寥谭褐褪隧嫡缨撵撩撮撬擒墩撰鞍蕊蕴樊樟橄敷豌醇磕磅碾憋嘶嘲嘹蝠蝎蝌蝗蝙嘿幢镊镐稽篓膘鲤鲫褒瘪瘤瘫凛澎潭潦澳潘澈澜澄憔懊憎翩褥谴鹤憨履嬉豫缭撼擂擅蕾薛薇擎翰噩橱橙瓢蟥霍霎辙冀踱蹂蟆螃螟噪鹦黔穆篡篷篙篱儒膳鲸瘾瘸糙燎濒憾懈窿缰壕藐檬檐檩檀礁磷了瞬瞳瞪曙蹋蟋蟀嚎赡镣魏簇儡徽爵朦臊鳄糜癌懦豁臀藕藤瞻嚣鳍癞瀑襟璧戳攒孽蘑藻鳖蹭蹬簸簿蟹靡癣羹鬓攘蠕巍鳞糯譬霹躏髓蘸镶瓤矗"/>
-<!--New things-->
-		<string key="leader_name_gen_masks" value="f s n"/>
-        <string key="leader_name_gen_groups" value="f: Steven Tom Jack Slavia Don Hack King Julia Flosia Harry Frank Franklin John Peter #s: Smith Williams Brown Taylor Olivia Ivans Thomas #n: 'Killer' 'Knight' 'Rat' 'Spearman' 'Farmer' 'Emperor' 'Luckyman' #p: -"/>
-		<string key="giant" value="巨大"/>
-		<string key="world" value="世界"/>
-		<string key="download" value="下载"/>
-		<string key="exported_txt" value="The map is exported to a local directory."/>
- 		<string key="event" value="Event"/>
-		<string key="new_event" value="+ New Event"/>
-		<string key="event_editor" value="Event Editor"/>
-		<string key="enable_event" value="Enable Event"/>
-		<string key="destory_city" value="Can Destory City"/>
-		<string key="enable_rebel" value="Enable Rebel"/>
-		<string key="rebel_new_country" value="Rebel Can Independence"/>
-		<string key="change_leader" value="Leader Change"/>
-		<string key="most_hexes_in_turn" value="Has most hexes in turn"/>
-        <!-- Main menu -->
-        <string key="main_menu_info" value="信息"/>
-        <string key="main_menu_exit" value="退出"/>
-        <string key="main_menu_something" value="没有东西"/>
-
-        <!-- Random stuff -->
-        <string key="menu_level" value="等级"/>
-        <string key="menu_reset" value="重设"/>
-
-        <string key="game_saved" value="已保存"/>
-        <string key="restart_app" value="重启游戏"/>
-        <string key="city_name_gen_masks" value="pd"/> <!-- Same as english -->
-        <string key="city_name_gen_groups" value="k: 日 英 法 德 意 拉 中 西 卡 #m: 格 兰 不 尼 斯 拉 #a: 阿 蒙 克 拉 力 斯 诺 #o: 兰 堡 西亚 尼亚 国 城 兰德 顿 #p:张家 王家 李家 赵家 孙家 钱家 贾家 #d: 村 镇 堡 店 屯"/>
-
-        <!-- Info -->
-        <string key="info_back" value="返回"/>
-        <string key="info_array" value="这是一个简单极简风格游戏的策略游戏
-        #免费， 没有广告， 无需打赏
-        #如果你第一次玩这个游戏
-        #如果你是新手
-        #
-        #记得看教程或者‘帮助'
-        #
-        #
-        #本游戏受Sean O'Connor的Slay的启发
-        #
-        #
-        #
-        #
-        #
-        #
-        #Reddit: /r/yiotro_games
-        #邮箱: yiotro93@gmail.com
-        #yiotro出品
-		"/>
-        <string key="reset_campaign_data" value="重置数据"/>
-        <string key="special_thanks" value="#Skin: ShroomArts #Music: Derek Bryant #Slimes: @DomCh1 #Skin: Jannes Peters #Fix PL: Aleksander Zarzynski #Fix FR: Sebastien Duperrier #Fix IT: Ivano Rocco #Fix RU: Oles Radev #Skin AWW: AFG, Timur #Fix CZ: Tadeas Hendrych #Fix NOR: Moon Moon #Katuri: Laurent Hien #Matveismi art: Matvej #Skin AWW 2: Timur "/> <!-- Same as english -->
-        <string key="special_thanks_title" value="Special thanks"/>
-        <string key="antiyoy_online" value="I finally made an online version of antiyoy ;) # #Now you can play online with other people. Player levels can be rated, and these ratings will be seen by other players. And the 'calendar' game mode allows you to go through a new level every day. All of this can be found in my new game 'Antiyoy Online'. # #The button at the bottom will open the game page on Google Play. I hope you'll like it :)"/>
-        <string key="catched_exception" value="Oh no, something went wrong. # #If it's not too difficult for you, please take a screenshot and send it to my email: yiotro93@gmail.com"/>
-
-        <!-- Choose game mode menu-->
-        <string key="choose_game_mode_skirmish" value="遭遇战"/>
-        <string key="choose_game_mode_tutorial" value="教程"/>
-        <string key="choose_game_mode_campaign" value="战役"/>
-        <string key="choose_game_mode_load" value="载入游戏"/>
-        <string key="user_levels" value="玩家地图"/>
-
-        <!-- User levels -->
-        <string key="add_my_map" value="Add my map"/>
-        <string key="how_add_my_map" value="How to get your map here: #1. Make it in editor. #2. Make sure that it's interesting and beatable. #3. Press 'export'. #4a. Post it on pastebin.com and send me the link to my email yiotro93@gmail.com #4b. Or post it on my subreddit /r/yiotro_games # #Also, if your map is very hard, then would be nice if you included some video showing how to beat it."/>
-
-        <!-- Skirmish menu -->
-        <string key="game_settings_main_menu" value="主菜单"/>
-        <string key="game_settings_tutorial" value="教程"/>
-        <string key="game_settings_start" value="开始"/>
-		<string key="download" value="下载"/>
-        <string key="map_size" value="地图大小"/>
-        <string key="color_number" value="颜色"/>
-        <string key="player_number" value="玩家"/>
-        <string key="small" value="小"/>
-        <string key="medium" value="中"/>
-        <string key="big" value="大"/>
-        <string key="huge" value="巨大"/>
-        <string key="ai_only" value="只有AI"/>
-        <string key="single_player" value="单人"/>
-        <string key="multiplayer" value="多人"/>
-        <string key="colors" value="颜色"/>
-        <string key="color" value="颜色"/>
-        <string key="difficulty" value="难度"/>
-        <string key="easy" value="简单"/>
-        <string key="normal" value="正常"/>
-        <string key="hard" value="困难"/>
-        <string key="expert" value="专家"/>
-        <string key="balancer" value="平衡"/>
-        <string key="player_color" value="玩家颜色"/>
-        <string key="fog_of_war" value="迷雾"/>
-        <string key="diplomacy" value="外交"/>
-        <string key="provinces" value="省份"/>
-        <string key="default" value="默认"/>
-        <string key="master" value="大师"/>
-
-        <!-- In game menu -->
-        <string key="in_game_menu_resume" value="返回游戏"/>
-        <string key="in_game_menu_save" value="保存游戏"/>
-        <string key="in_game_menu_surrender" value="投降"/>
-        <string key="in_game_menu_main_menu" value="主菜单"/>
-        <string key="in_game_menu_restart" value="重新开始"/>
-        <string key="confirm_restart" value="重新开始游戏?"/>
-        <string key="cancel" value="取消"/>
-        <string key="confirm_end_turn" value="结束本轮?"/>
-        <string key="yes" value="是"/>
-
-        <!-- End game menu -->
-        <string key="end_game_ok" value="行"/>
-        <string key="end_game_okay" value="成吧..."/>
-        <string key="player" value="玩家"/>
-        <string key="ai" value="电脑"/>
-        <string key="won" value="赢了"/>
-        <string key="statistics" value="记分牌"/>
-        <string key="next" value="下一个"/>
-        <string key="level_complete" value="关卡完成"/>
-        <string key="win_game" value="你赢了"/>
-        <string key="win_or_continue" value="结束#还是继续?"/>
-        <string key="continue" value="继续"/>
-        <string key="winner" value="胜利者"/>
-
-        <!-- Tutorial -->
-        <string key="normal_rules" value="普通规则"/>
-        <string key="how_to_play" value="怎么玩?"/>
-        <string key="tutorial_ok" value="好"/>
-        <string key="tut_select_unit" value="选择单位"/>
-        <string key="tut_tap_on_hex" value="点击六边形"/>
-        <string key="tut_press_button" value="点击按钮"/>
-        <string key="tut_build_tower" value="建造防御塔"/>
-        <string key="tut_again" value="再来一次"/>
-        <string key="tut_build_spearman" value="建造长枪兵"/>
-        <string key="tut_tap_to_undo" value="点击 '上一步'"/>
-        <string key="tut_tap_to_end_turn" value="点击结束本轮"/>
-        <string key="tut_hold_hex" value="保持按住"/>
-        <string key="tut_merge_units" value="单位合体"/>
-        <string key="tut_good_luck" value="祝你好运!"/>
-
-        <!-- Tutorial tips -->
-        <string key="tip_capture_with_units" value="派你的士兵去#侵占地方领土吧"/>
-        <string key="tip_about_money" value="你的领土越大#你的钱越多"/>
-        <string key="tip_build_towers" value="建造防御塔#来保护临近单位"/>
-        <string key="tip_about_taxes" value="强大的单位#消耗更多钱"/>
-        <string key="tip_about_defense" value="单位和房子#也能保护临近单位哦"/>
-        <string key="tip_hold_to_march" value="按住并拖动#即刻移动大量单位"/>
-        <string key="tip_about_unit_death" value="如果钱用光了#所有单位都会死亡#投资需谨慎"/>
-        <string key="tip_merging" value="合并单位#即刻升级"/>
-        <string key="tip_trees" value="树林不会产出#所以砍光他们吧"/>
-        <string key="tip_help" value="To skip rest of tutorial press 'help'"/>
-
-        <!-- Generic Tutorial -->
-        <string key="gen_greetings" value="哈咯. 本教程会讲解游戏规则."/>
-        <string key="gen_select_province" value="点击你的主城以选中它Tap on your city to select it."/>
-        <string key="gen_select_unit" value="很好. 你有几个单位. 点击其中一个."/>
-        <string key="gen_move_unit" value="每个单位每回合移动一格。现在，点击相邻的地块以占领它。"/>
-        <string key="gen_income" value="你的领地能给你每回合一块金币， 占领越多，收入越多"/>
-        <string key="gen_lets_build_farm" value="让我们建造农场，获得更高的收入."/>
-        <string key="gen_press_button_twice" value="点击按钮两次"/>
-        <string key="gen_build_farm" value="农场只能建在主城和其他农场附近。"/>
-        <string key="gen_about_farms" value="每座农场每轮产生4块金币， 但每座农场的造价都会比前一座高。"/>
-        <string key="gen_lets_build_peasant" value="让我们建造一个新的单位，然后占领无人区吧！"/>
-        <string key="gen_press_button" value="点击底部的按钮"/>
-        <string key="gen_build_peasant" value="把你的单位放置在领土边缘外。"/>
-        <string key="gen_capture_peasant" value="现在，选中单位然后指挥他们占领无人区吧！"/>
-        <string key="gen_capture_hex" value="占领无人区"/>
-        <string key="gen_lets_build_tower" value="你需要保卫你的领土，防御塔是个不错的选择。"/>
-        <string key="gen_build_tower" value="点击高光的地块以建立防御塔。"/>
-        <string key="gen_about_towers" value="防御塔会保护临近的土地，免受农民和长枪兵的入侵。"/>
-        <string key="gen_lets_build_spearman" value="长枪兵比农民更加强壮，让我们建一个。"/>
-        <string key="gen_build_spearman" value="点击地块以建立长枪兵"/>
-        <string key="gen_units_consume_money" value="单位每回合会消耗金币，越强壮消耗越多。"/>
-        <string key="gen_undo_spearman" value="现在你的收入为-1，这样可不妙，还是取消建立长枪兵吧。"/>
-        <string key="gen_why_units_die" value="如果钱用光了，所有单位都会死亡，投资需谨慎"/>
-        <string key="gen_about_trees_one" value="树木也是一个大问题，有树木的地块不会产出金币！"/>
-        <string key="gen_about_trees_two" value="在树木泛滥之前赶紧砍光他们吧。"/>
-        <string key="gen_end_turn" value="点击右下角的按钮即可结束本回合。"/>
-        <string key="gen_choose_to_merge" value="你也可以合并单位， 选择下面的农民。"/>
-        <string key="gen_merge_units" value="当你选择了一个农民的时候，点击另一个农民即可合并他们。"/>
-        <string key="gen_long_tap" value="如果你有太多单位的话，你可以用长点击一次性移动他们。"/>
-        <string key="gen_several_provinces" value="你可以用若干个主城（领地），每个主城的金币是独立计算的。"/>
-
-        <!-- Tutorial help -->
-        <string key="help" value="帮助"/>
-        <string key="help_about_units" value="单位"/>
-        <string key="help_about_trees" value="树木"/>
-        <string key="help_about_towers" value="防御塔"/>
-        <string key="help_about_money" value="金币"/>
-        <string key="help_about_tactics" value="策略"/>
-        <string key="help_about_rules" value="规则"/>
-        <string key="my_games" value="我的其他游戏"/>
-
-        <string key="help_units_article" value="游戏有四种单位。
-        #他们的战斗力各不相同
-        #战斗力从弱到强分别为：
-        #[1] 农民
-        #[2] 长枪兵
-        #[3] 男爵
-        #[4] 骑士
-        #
-        #单位能保护临近地块
-        #不受同等单位的入侵
-        #
-        #如果想占领敌方土地
-        #己方战斗力必须比
-        #敌方受到的保护更高
-        #
-        #每个单位每回合分别消耗
-        #2, 6, 18 和  54 块金币
-        "/>
-
-        <string key="help_trees_article" value="树木生长在
-        #死亡的单位之上
-        #
-        #有树木的地块没有产出
-        #这意味着
-        #树木在游戏里不是好东西
-        #
-        #你必须清除树木
-        #否则，树木会占领的你的领地
-        #击败你！
-        #
-        #棕榈树生长在海边
-        #并且生长的更快
-        #你最好迅速消灭他们
-        #
-        "/>
-
-        <string key="help_towers_article" value="防御塔用来
-        #保护临近地块
-        #
-        #防御塔的战斗力为2
-        #所以，只有男爵和骑士
-        #能占领他们
-        #
-        #农场的战斗力为1
-        #
-        #在游戏初期
-        #这是保护你的土地的
-        #最好的选择
-        #防御塔造价很低
-        #也不会消耗金币
-        "/>
-
-        <string key="help_money_article" value="收入取决于
-        #占领区块的数量
-        #领地越大
-        #收入越高
-        #但树木会制止地块产出金币
-        #
-        #单位会不断消耗金币
-        #特别是强大的单位
-        #消耗更多
-        #
-        #
-        #
-        #当你的钱花光了
-        #你的军队会毁于一旦
-        #
-        #收入将会显示
-        #在顶部中间
-        "/>
-
-        <string key="help_tactics_article" value="在游戏初期尽量
-        #占领更多无人区
-        #然后保护好你的领地
-        #
-        #
-        #在建造单位前，
-        #确保你有足够的收入
-        #去养活他们。
-        #
-        #
-        #
-        #把敌人的领土
-        #分割成一块块
-        #从而破坏敌人的经济。
-        "/>
-
-        <string key="article_rules" value="There are 2 rulesets in game: Normal rules and Slay rules. Normal rules are enabled by default.
-        #
-        #Initially game had only slay rules. That's why help describes them instead of normal rules.
-        #
-        #To change rules in skirmish you have to tap 'more' before starting new game.
-        #
-        #To change rules in campaign you have to tap '...' in top right corner of level choose menu."/>
-
-        <string key="article_diplomacy_1" value="To win in diplomacy mode you have to be in friendship with everyone on map.
-        #
-        #To open diplomacy UI just select your country and tap little 'flag' icon.
-        #
-        #Tap on any country in list and you'll see what you can do.
-        #
-        #'Like' and 'dislike' buttons can make relations with that country better or worse."/>
-
-        <string key="article_diplomacy_2" value="The idea of black mark is simple: any other country can't be friends with both of you. It's a sort of diplomatical pressure.
-        #
-        #Also, you won't be able to become friend with everyone easily. Last country will always refuse your friend request."/>
-
-        <string key="article_my_games" value="If you liked this game then you may also like some of my other games:"/>
-
-        <!-- Statistics -->
-        <string key="turns_made" value="回合数"/>
-        <string key="units_died" value="单位死亡数"/>
-        <string key="units_produced" value="单位生产数"/>
-        <string key="money_spent" value="金币支出"/>
-        <string key="time" value="用时"/>
-        <string key="wins" value="胜利数"/>
-        <string key="hours_abbreviation" value="时"/>
-        <string key="minutes_abbreviation" value="分"/>
-        <string key="seconds_abbreviation" value="秒"/>
-        <string key="friendships_broken" value="破坏的同盟数"/>
-
-        <!-- Editor -->
-        <string key="editor" value="编辑器"/>
-        <string key="slot" value="插槽"/>
-        <string key="slots" value="保存插槽"/>
-        <string key="import" value="导入"/>
-        <string key="export" value="导出"/>
-        <string key="empty" value="空白"/>
-        <string key="play" value="开始"/>
-        <string key="edit" value="编辑"/>
-        <string key="random" value="随机"/>
-        <string key="exported" value="地图已复制"/>
-        <string key="editor_clear" value="清空"/>
-        <string key="no" value="取消"/>
-        <string key="yes" value="确认"/>
-        <string key="confirm_import" value="确认导入"/>
-        <string key="filter_no" value="无过滤"/>
-        <string key="filter_only_land" value="只有土地"/>
-        <string key="confirm_clear_level" value="清除地图？"/>
-        <string key="confirm_randomize" value="生成随机地图？"/>
-        <string key="randomize" value="随机"/>
-        <string key="create" value="创建"/>
-        <string key="change" value="更改"/>
-        <string key="messages" value="信息"/>
-        <string key="goal" value="任务"/>
-        <string key="destroy_everyone" value="摧毁所有势力"/>
-        <string key="diplomatic_victory" value="外交胜利"/>
-        <string key="survive_long_enough" value="生存足够长时间"/>
-        <string key="destroy_target_kingdom" value="摧毁指定势力"/>
-        <string key="reach_target_income" value="达到收入"/>
-        <string key="ensure_target_victory" value="让指定势力胜利"/>
-        <string key="lock_relations" value="锁定外交"/>
-
-        <!-- Settings -->
-        <string key="autosave" value="自动保存"/>
-        <string key="long_tap_to_end_turn" value="长按结束回合"/>
-        <string key="city_names" value="城市名称"/>
-        <string key="sound" value="音效"/>
-        <string key="limited_turns" value="有限回合"/>
-        <string key="hold_to_march" value="长按行军"/>
-        <string key="skin" value="皮肤"/>
-        <string key="original" value="原版"/>
-        <string key="points" value="点阵"/>
-        <string key="grid" value="方格"/>
-        <string key="skin_shroomarts" value="Shroomarts"/>  <!-- Same as english -->
-        <string key="anim_style" value="灵敏度"/>
-        <string key="more" value="更多"/>
-        <string key="camera_offset" value="相机调整"/>
-        <string key="slay_rules" value="Slay 模式"/>
-        <string key="language" value="语言"/>
-        <string key="more_settings_checks" value="# #水纹理 # # "/>
-        <string key="water_texture" value="水纹理"/>
-        <string key="confirm_reset" value="清除设置？"/>
-        <string key="replays" value="回放"/>
-        <string key="save_replay" value="保存回放"/>
-        <string key="replay" value="回放"/>
-        <string key="replay_saved" value="回放已保存"/>
-        <string key="fast_construction" value="快速建造"/>
-        <string key="music" value="音乐"/>
-        <string key="left_handed" value="左手模式"/>
-        <string key="full_screen_mode" value="全屏"/>
-        <string key="system_keyboard" value="系统键盘"/>
-        <string key="use_list" value="使用列表"/>
-        <string key="automatic_transition" value="自动变换"/>
-
-        <!-- Skins -->
-        <string key="slimes" value="Slimes"/>  <!-- Same as english -->
-        <string key="jannes_peters" value="Jannes Peters"/>  <!-- Same as english -->
-        <string key="world_war" value="AWW"/>  <!-- Same as english -->
-        <string key="katuri" value="Katuri"/>  <!-- Same as english -->
-        <string key="matveismi_art" value="Matveismi art"/>  <!-- Same as english -->
-        <string key="aww2" value="AWW 2"/>  <!-- Same as english -->
-
-        <!-- Single messages -->
-        <string key="level_24" value="这是第一个'困难' 关卡。 注意防守！"/>
-        <string key="map_too_big_for_user_levels" value="Map was successfully exported, but if you want to send it as user level then please make it smaller."/>
-        <string key="available_on_ios" value="Now available on iOS"/>
-
-        <!-- Gameplay -->
-        <string key="friends" value="朋友"/>
-        <string key="mutual_friends" value="互相"/>
-        <string key="dotations" value="赞助"/>
-        <string key="treaty_of_friendship" value="盟友的宝藏"/>
-        <string key="state" value="国家"/>
-        <string key="duration" value="期限"/>
-        <string key="refuse_friendship" value="对不起，我不能同意你的交易。"/>
-        <string key="friend" value="friend"/>
-        <string key="enemy" value="enemy"/>
-        <string key="neutral" value="neutral"/>
-        <string key="dead" value="dead"/>
-        <string key="confirm_cancel_friendship" value="Cancel friendship?"/>
-        <string key="confirm_start_war" value="Start war?"/>
-        <string key="peace_treaty" value="Peace treaty"/>
-        <string key="pay" value="Pay"/>
-        <string key="reparations" value="Reparations"/>
-        <string key="refuse_stop_war" value="I will fight to the end!"/>
-        <string key="win_conditions" value="Conditions of victory"/>
-        <string key="diplomatic_win_conditions" value="To win diplomatically you need to be friends with everyone."/>
-        <string key="confirm_black_mark" value="Put black mark?"/>
-        <string key="black_mark_description" value="By putting a black mark on the player you forbid others to be friends with both of you at the same time. Does not work on already concluded contracts."/>
-        <string key="player_turn" value="Player turn"/>
-        <string key="fine" value="Fine"/>
-        <string key="log" value="Letters"/>
-        <string key="friendship_proposal" value="Friendship proposal"/>
-        <string key="war_declaration" value="War declaration"/>
-        <string key="stop_war" value="Stop war"/>
-        <string key="friendship_ended" value="Friendship ended"/>
-        <string key="friendship_canceled" value="Friendship canceled"/>
-        <string key="black_marked" value="Black marked"/>
-        <string key="letter_sent" value="Letter sent"/>
-        <string key="delete" value="Delete"/>
-        <string key="rename" value="Rename"/>
-        <string key="confirm_delete_slot" value="Delete slot?"/>
-        <string key="resume_button" value="'Resume' button"/>
-        <string key="filters" value="Filters"/>
-        <string key="completed" value="Completed"/>
-        <string key="historical" value="Historical"/>
-        <string key="temp_slot" value="Temporary slot"/>
-        <string key="can_skip_level" value="You can skip this level"/>
-        <string key="reason" value="Reason"/>
-        <string key="friends_with_everybody" value="friendship with all kingdoms"/>
-        <string key="hex_purchase" value="Hex purchase"/>
-        <string key="confirm_buy_hexes" value="Buy hexes?"/>
-        <string key="price" value="Price"/>
-        <string key="gift" value="Gift"/>
-        <string key="gift_received" value="Gift received"/>
-        <string key="confirm_sell_hexes" value="Sell hexes?"/>
-        <string key="confirm_skip_level" value="Skip level?"/>
-        <string key="ok" value="Ok"/>
-        <string key="money" value="Money"/>
-        <string key="quantity" value="Quantity"/>
-        <string key="income" value="Income"/>
-        <string key="by_name" value="By name"/>
-        <string key="hex_trade" value="Hex trade"/>
-        <string key="hex_sale" value="Hex sale"/>
-        <string key="buyer_not_enough_money" value="Buyer doesn't have enough money"/>
-        <string key="message" value="Message"/>
-        <string key="show" value="Show"/>
-        <string key="check_filters" value="Check filters"/>
-        <string key="lands" value="Lands"/>
-        <string key="farms" value="Farms"/>
-        <string key="units" value="Units"/>
-        <string key="trees" value="Trees"/>
-        <string key="towers" value="Towers"/>
-        <string key="profit" value="Profit"/>
-        <string key="aggressor" value="Aggressor"/>
-        <string key="target" value="Target"/>
-        <string key="choose" value="Choose"/>
-        <string key="attack_proposition" value="Attack proposition"/>
-        <string key="nothing" value="Nothing"/>
-        <string key="friendship" value="Friendship"/>
-        <string key="remove_black_mark" value="Remove black mark"/>
-        <string key="refuse_offer" value="Sorry, I can't accept your offer."/>
-        <string key="accept" value="Accept"/>
-        <string key="refuse" value="Refuse"/>
-        <string key="what_you_get" value="This is what you get"/>
-        <string key="what_you_give" value="This is what you give in exchange"/>
-        <string key="hidden" value="Hidden"/> <!-- plural -->
-        <string key="hide" value="Hide"/>
-        <string key="debt" value="Debt"/>
-        <string key="some_units_can_move" value="Some units can move"/>
-    </language>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

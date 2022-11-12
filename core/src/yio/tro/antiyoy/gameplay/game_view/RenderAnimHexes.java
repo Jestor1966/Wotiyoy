@@ -75,12 +75,22 @@ public class RenderAnimHexes extends GameRender {
             if (!isPosInViewFrame(pos, hexViewSize)) continue;
 
             if (hex.animFactor.get() < 1) {
-                previousTexture = texturesManager.getHexTextureByFraction(hex.previousFraction);
+                if(hex.isSea()){
+                    previousTexture = texturesManager.getSeaHexTextureByFraction(hex.previousFraction);
+                }else{
+                    previousTexture = texturesManager.getHexTextureByFraction(hex.previousFraction);
+                }
+
                 batchMovable.setColor(c.r, c.g, c.b, 1f - hex.animFactor.get());
                 GraphicsYio.drawFromCenter(batchMovable, previousTexture, pos.x, pos.y, hexViewSize);
             }
 
-            targetTexture = texturesManager.getHexTextureByFraction(hex.fraction);
+            if(hex.isSea()){
+                targetTexture = texturesManager.getSeaHexTextureByFraction(hex.fraction);
+            }else{
+                targetTexture = texturesManager.getHexTextureByFraction(hex.fraction);
+            }
+
             batchMovable.setColor(c.r, c.g, c.b, hex.animFactor.get());
             GraphicsYio.drawFromCenter(batchMovable, targetTexture, pos.x, pos.y, hexViewSize);
         }
