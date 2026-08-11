@@ -25,14 +25,17 @@ public class AiHardGenericRules extends ArtificialIntelligenceGeneric{
     @Override
     void tryToBuildTowers(Province province) {
         while (province.hasMoneyForTower()) {
+            int moneyBefore = province.money;
             Hex hex = findHexThatNeedsTower(province);
             if (hex == null) return;
 
             if (province.hasMoneyForStrongTower()) {
                 gameController.fieldManager.buildStrongTower(province, hex);
+                if (province.money == moneyBefore) return;
                 continue;
             }
             gameController.fieldManager.buildTower(province, hex);
+            if (province.money == moneyBefore) return;
         }
     }
 }

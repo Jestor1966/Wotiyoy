@@ -24,6 +24,7 @@ import yio.tro.antiyoy.gameplay.name_generator.LeaderNameGenerator;
 import yio.tro.antiyoy.gameplay.replays.ReplaySaveSystem;
 import yio.tro.antiyoy.gameplay.rules.GameRules;
 import yio.tro.antiyoy.gameplay.skins.SkinManager;
+import yio.tro.antiyoy.factor_yio.FactorYio;
 import yio.tro.antiyoy.gameplay.user_levels.UserLevelFactory;
 import yio.tro.antiyoy.gameplay.user_levels.UserLevelsManager;
 import yio.tro.antiyoy.menu.*;
@@ -503,6 +504,7 @@ public class YioGdxGame extends ApplicationAdapter implements InputProcessor{
     @Override
     public void render() {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+        FactorYio.updateDtFactor();
 
         if (!loadedResources) {
             renderWhenNotLoadedResources();
@@ -520,17 +522,24 @@ public class YioGdxGame extends ApplicationAdapter implements InputProcessor{
         if (gamePaused) {
             renderInternals();
         } else {
-            if (Gdx.graphics.getDeltaTime() < 0.025 || frameSkipCount >= 2) {
-                frameSkipCount = 0;
-                frameBuffer.begin();
-                renderInternals();
-                frameBuffer.end();
+            if (gameView.appearFactor.get() < 1) {
+                // during scene transitions keep the previous offscreen-buffer path
+                if (Gdx.graphics.getDeltaTime() < 0.025 || frameSkipCount >= 2) {
+                    frameSkipCount = 0;
+                    frameBuffer.begin();
+                    renderInternals();
+                    frameBuffer.end();
+                } else {
+                    frameSkipCount++;
+                }
+                batch.begin();
+                batch.draw(frameBuffer.getColorBufferTexture(), 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), false, true);
+                batch.end();
             } else {
-                frameSkipCount++;
+                // normal gameplay: render directly to the screen, no extra
+                // full-screen offscreen pass (big FPS win on mobile GPUs)
+                renderInternals();
             }
-            batch.begin();
-            batch.draw(frameBuffer.getColorBufferTexture(), 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), false, true);
-            batch.end();
         }
 
         stage.draw();

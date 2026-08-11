@@ -20,11 +20,18 @@ public class AiEasy extends ArtificialIntelligence {
         moveUnits();
 
         spendMoneyAndMergeUnits();
+        moveAfkUnits();
     }
 
 
     @Override
     void decideAboutUnit(Unit unit, ArrayList<Hex> moveZone, Province province) {
+        // 海上单位交给海上远征逻辑：沿最短海路前往最近的非己方大陆
+        if (unit.currentHex.isSea()) {
+            moveAfkUnit(province, unit);
+            return;
+        }
+
         if (checkToCleanSomeTrees(unit, moveZone, province)) return;
         gameController.moveUnit(unit, moveZone.get(random.nextInt(moveZone.size())), province);
     }
@@ -35,7 +42,9 @@ public class AiEasy extends ArtificialIntelligence {
         for (int i = 1; i <= 9; i++) {
             if (!province.canAiAffordUnit(i)) break;
             while (canProvinceBuildUnit(province, i)) {
+                int moneyBefore = province.money;
                 if (!tryToBuiltUnitInsideProvince(province, i)) break;
+                if (province.money == moneyBefore) break;
             }
         }
 

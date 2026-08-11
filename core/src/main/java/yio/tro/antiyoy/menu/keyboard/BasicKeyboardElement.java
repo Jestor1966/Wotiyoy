@@ -1,5 +1,6 @@
 package yio.tro.antiyoy.menu.keyboard;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import yio.tro.antiyoy.SoundManagerYio;
@@ -390,6 +391,18 @@ public class BasicKeyboardElement extends InterfaceElement {
         onButtonPressed(button);
 
         return true;
+    }
+
+
+    public void pasteFromClipboard() {
+        String clipboardText = Gdx.app.getClipboard().getContents();
+        if (clipboardText == null) return;
+
+        for (int i = 0; i < clipboardText.length(); i++) {
+            char c = clipboardText.charAt(i);
+            if (c == '\n' || c == '\r') continue;
+            textArea.addSymbol("" + c);
+        }
     }
 
 

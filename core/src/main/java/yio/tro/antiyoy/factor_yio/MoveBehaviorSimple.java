@@ -40,7 +40,7 @@ class MoveBehaviorSimple extends MoveBehavior {
     void move(FactorYio fy) {
         if (fy.dy == 0) fy.dy = fy.gravity;
         if (needsToMove(fy)) {
-            fy.f += fy.speedMultiplier * fy.dy;
+            fy.f += fy.speedMultiplier * fy.dy * FactorYio.getDtFactor();
         }
         strictBounds(fy);
     }

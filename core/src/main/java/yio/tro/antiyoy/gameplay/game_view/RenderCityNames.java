@@ -82,6 +82,9 @@ public class RenderCityNames extends GameRender{
 
     private void renderSingleCityName(Province province) {
         prepare(province);
+        if (capitalHex == null) return;
+        if (!isPosInViewFrame(hexPos, 2 * hvSize)) return;
+
         updatePos();
         updateTrianglePos();
         updateTextPosition();

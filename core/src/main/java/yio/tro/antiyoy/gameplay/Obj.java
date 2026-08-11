@@ -15,5 +15,6 @@ public class Obj {
     public static final int CITY = 11;
     public static final int REVOLT = 12;
     public static final int LABEL_MARK = 13;
+    public static final int PORT = 14;
 
 }

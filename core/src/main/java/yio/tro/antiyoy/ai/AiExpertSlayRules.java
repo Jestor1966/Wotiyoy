@@ -34,6 +34,12 @@ public class AiExpertSlayRules extends ArtificialIntelligence {
 
     @Override
     void decideAboutUnit(Unit unit, ArrayList<Hex> moveZone, Province province) {
+        // 海上单位交给海上远征逻辑：沿最短海路前往最近的非己方大陆
+        if (unit.currentHex.isSea()) {
+            moveAfkUnit(province, unit);
+            return;
+        }
+
         // cleaning palms has highest priority
         if (unit.strength <= 2 && checkToCleanSomePalms(unit, moveZone, province)) return;
 
@@ -73,7 +79,9 @@ public class AiExpertSlayRules extends ArtificialIntelligence {
                     adjHex.isInPerimeter())
                 leftBehindNumber++;
         }
-        return leftBehindNumber <= 3;
+        // 放宽限制：统一大陆后与残余势力的接触线很长，
+        // 过于保守会让所有前线单位都拒绝出击
+        return leftBehindNumber <= 5;
     }
 
 
@@ -134,8 +142,21 @@ public class AiExpertSlayRules extends ArtificialIntelligence {
 
     @Override
     void moveAfkUnit(Province province, Unit unit) {
+        // 防御：陆地单位必须属于某个省份；海上单位不依赖省份，仍可远征
+        if (province == null && !unit.currentHex.isSea()) return;
+
+        // 海上单位：交给基类的海上远征逻辑（沿最短海路前往最近大陆）
+        if (unit.currentHex.isSea()) {
+            super.moveAfkUnit(province, unit);
+            return;
+        }
+
         Hex hexToMove = findRandomHexInPerimeter(province);
-        if (hexToMove == null) return;
+        if (hexToMove == null) {
+            // 没有前线目标（例如整块大陆已被统一）：仍然要尝试建港/下海
+            super.moveAfkUnit(province, unit);
+            return;
+        }
         tempHex.set(unit.currentHex);
         gameController.fieldManager.massMarchManager.performForSingleUnit(unit, hexToMove);
         if (tempHex.equals(unit.currentHex)) super.moveAfkUnit(province, unit); // to prevent infinite loop

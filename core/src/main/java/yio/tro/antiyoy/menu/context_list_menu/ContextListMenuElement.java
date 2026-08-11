@@ -4,6 +4,7 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import yio.tro.antiyoy.KeyboardManager;
 import yio.tro.antiyoy.factor_yio.FactorYio;
 import yio.tro.antiyoy.menu.InterfaceElement;
+import yio.tro.antiyoy.menu.behaviors.Reaction;
 import yio.tro.antiyoy.menu.keyboard.AbstractKbReaction;
 import yio.tro.antiyoy.menu.render.MenuRender;
 import yio.tro.antiyoy.menu.scenes.Scenes;
@@ -22,6 +23,9 @@ public class ContextListMenuElement extends InterfaceElement{
     public ArrayList<ClmItem> items;
     public BitmapFont font;
     boolean readyToPerform;
+    public Reaction detailsReaction;
+    private ClmItem detailsItem;
+    private ClmItem renameItem;
 
 
     public ContextListMenuElement() {
@@ -51,6 +55,7 @@ public class ContextListMenuElement extends InterfaceElement{
         renameItem.setKey("rename");
         renameItem.setValue(LanguagesManager.getInstance().getString("rename"));
         items.add(renameItem);
+        this.renameItem = renameItem;
     }
 
 
@@ -67,6 +72,37 @@ public class ContextListMenuElement extends InterfaceElement{
 
     public void setEditableItem(LiEditable editableItem) {
         this.editableItem = editableItem;
+    }
+
+
+    public void enableDetailsItem(Reaction reaction) {
+        detailsReaction = reaction;
+
+        if (detailsItem != null) {
+            updateItemDeltas();
+            return;
+        }
+
+        detailsItem = new ClmItem(this);
+        detailsItem.setKey("details");
+        detailsItem.setValue(LanguagesManager.getInstance().getString("details"));
+        items.add(detailsItem);
+        updateItemDeltas();
+    }
+
+
+    public void setRenameEnabled(boolean enabled) {
+        if (renameItem == null) return;
+
+        if (enabled) {
+            if (!items.contains(renameItem)) {
+                items.add(Math.min(1, items.size()), renameItem);
+            }
+        } else {
+            items.remove(renameItem);
+        }
+
+        updateItemDeltas();
     }
 
 
@@ -108,6 +144,11 @@ public class ContextListMenuElement extends InterfaceElement{
         if (editableItem != null) {
             editableItem.onContextMenuDestroy();
         }
+        if (detailsItem != null) {
+            items.remove(detailsItem);
+            detailsItem = null;
+        }
+        detailsReaction = null;
     }
 
 
@@ -120,12 +161,15 @@ public class ContextListMenuElement extends InterfaceElement{
 
 
     private void onAppear() {
+        if (renameItem != null && !items.contains(renameItem)) {
+            items.add(Math.min(1, items.size()), renameItem);
+        }
         updateItemDeltas();
         readyToPerform = false;
     }
 
 
-    private void updateItemDeltas() {
+    public void updateItemDeltas() {
         double bw = 0.7 * position.width;
         double bh = 0.08 * GraphicsYio.width;
         double y = 0.08 * GraphicsYio.width;
@@ -175,6 +219,13 @@ public class ContextListMenuElement extends InterfaceElement{
                     onRenameInputReceived(input);
                 }
             });
+            return;
+        }
+
+        if (item.key.equals("details")) {
+            if (detailsReaction != null) {
+                detailsReaction.perform(null);
+            }
             return;
         }
     }

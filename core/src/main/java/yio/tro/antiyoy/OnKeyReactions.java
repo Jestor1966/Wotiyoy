@@ -1,6 +1,7 @@
 package yio.tro.antiyoy;
 
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.Gdx;
 import yio.tro.antiyoy.ai.AbstractAi;
 import yio.tro.antiyoy.ai.master.AiMaster;
 import yio.tro.antiyoy.gameplay.DebugFlags;
@@ -22,6 +23,11 @@ public class OnKeyReactions {
 
 
     boolean onKeyPressed(int keycode) {
+        if (keycode == Input.Keys.V &&
+                (Gdx.input.isKeyPressed(Input.Keys.CONTROL_LEFT) || Gdx.input.isKeyPressed(Input.Keys.CONTROL_RIGHT))) {
+            return pasteToActiveKeyboard();
+        }
+
         if (checkForBasicKeyboardElement(keycode)) return true;
         if (checkForNativeKeyboardElement(keycode)) return true;
 
@@ -137,6 +143,23 @@ public class OnKeyReactions {
         if (basicKeyboardElement.getFactor().get() < 0.2) return false;
 
         return basicKeyboardElement.onPcKeyPressed(keycode);
+    }
+
+
+    private boolean pasteToActiveKeyboard() {
+        BasicKeyboardElement basicKeyboardElement = Scenes.sceneBasicKeyboard.basicKeyboardElement;
+        if (basicKeyboardElement != null && basicKeyboardElement.getFactor().get() >= 0.2) {
+            basicKeyboardElement.pasteFromClipboard();
+            return true;
+        }
+
+        NativeKeyboardElement nativeKeyboardElement = Scenes.sceneNativeKeyboard.nativeKeyboardElement;
+        if (nativeKeyboardElement != null && nativeKeyboardElement.getFactor().get() >= 0.2) {
+            nativeKeyboardElement.pasteFromClipboard();
+            return true;
+        }
+
+        return false;
     }
 
 

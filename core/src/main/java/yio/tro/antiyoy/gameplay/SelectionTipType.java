@@ -15,4 +15,5 @@ public class SelectionTipType {
     public static final int UNIT_7 = 10;
     public static final int UNIT_8 = 11;
     public static final int UNIT_9 = 12;
+    public static final int PORT = 13;
 }

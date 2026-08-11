@@ -4,6 +4,9 @@ import yio.tro.antiyoy.gameplay.GameController;
 import yio.tro.antiyoy.gameplay.Hex;
 import yio.tro.antiyoy.gameplay.Obj;
 import yio.tro.antiyoy.gameplay.Province;
+import yio.tro.antiyoy.gameplay.rules.GameRules;
+
+import java.util.ArrayList;
 
 public abstract class ArtificialIntelligenceGeneric extends ArtificialIntelligence{
 
@@ -18,9 +21,20 @@ public abstract class ArtificialIntelligenceGeneric extends ArtificialIntelligen
 
     @Override
     protected void spendMoney(Province province) {
-        tryToBuildTowers(province);
-        tryToBuildFarms(province);
-        tryToBuildUnits(province);
+        tryToBuildEssentialPort(province); // 沿海省份至少一个港口，优先保障
+        invasionMode = gameController.fieldManager.provinceHasMultipleContinents(province);
+        if (invasionMode) {
+            // 登陆扩张：暴兵优先，迅速打击对方核心区域
+            tryToBuildUnits(province);
+            tryToBuildTowers(province);
+            tryToBuildFarms(province);
+            tryToBuildPort(province);
+        } else {
+            tryToBuildTowers(province);
+            tryToBuildFarms(province);
+            tryToBuildUnits(province);
+            tryToBuildPort(province); // 港口排在防御塔、农场、单位之后，用盈余建造
+        }
     }
 
 
@@ -28,11 +42,14 @@ public abstract class ArtificialIntelligenceGeneric extends ArtificialIntelligen
 //        if (province.getExtraFarmCost() > province.getIncome()) return;
         if (province.getExtraFarmCost() > MAX_EXTRA_FARM_COST) return;
 
-        while (province.hasMoneyForFarm()) {
+        while (province.hasMoneyForFarm()
+                && province.money >= province.getCurrentFarmPrice() + province.getPortPrice() + GameRules.PRICE_UNIT) {
+            int moneyBefore = province.money;
             if (!isOkToBuildNewFarm(province)) return;
             Hex hex = findGoodHexForFarm(province);
             if (hex == null) return;
             gameController.fieldManager.buildFarm(province, hex);
+            if (province.money == moneyBefore) return; // no progress -> avoid endless loop
         }
     }
 
@@ -70,12 +87,16 @@ public abstract class ArtificialIntelligenceGeneric extends ArtificialIntelligen
 
 
     protected Hex findGoodHexForFarm(Province province) {
-        if (!hasProvinceGoodHexForFarm(province)) return null;
-
-        while (true) {
-            Hex hex = province.hexList.get(random.nextInt(province.hexList.size()));
-            if (isHexGoodForFarm(hex)) return hex;
+        boolean provinceHasPort = gameController.fieldManager.provinceHasUsablePort(province);
+        ArrayList<Hex> candidates = new ArrayList<>();
+        for (Hex hex : province.hexList) {
+            if (!isHexGoodForFarm(hex)) continue;
+            // 省份还没有可用港口时，沿海陆格留给港口，避免单位无法下海
+            if (!provinceHasPort && !hex.isSea() && gameController.fieldManager.hasSeaNeighbor(hex)) continue;
+            candidates.add(hex);
         }
+        if (candidates.size() == 0) return null;
+        return candidates.get(random.nextInt(candidates.size()));
     }
 
 
@@ -90,8 +111,31 @@ public abstract class ArtificialIntelligenceGeneric extends ArtificialIntelligen
 
     protected boolean isHexGoodForFarm(Hex hex) {
         if (!hex.isFree()) return false;
-        if (hex.isSea()) return false;
-        if (!hex.hasThisSupportiveObjectNearby(Obj.TOWN) && !hex.hasThisSupportiveObjectNearby(Obj.FARM) && !hex.hasThisSupportiveObjectNearby(Obj.CITY)) return false;
+        if (hex.isSea() && !hex.inPortRange) return false;
+        if (portWaterWouldBeBlocked(hex)) return false; // keep at least one free port-water hex for units
+        if (!hex.isSea() && gameController.fieldManager.isAdjacentToOwnPortWater(hex, hex.fraction)) return false; // 港口落点保留空地
+        if (!hex.isSea() && gameController.fieldManager.hasSeaNeighbor(hex)) return false; // 沿海陆格永远留给港口
+        if (!hex.hasThisSupportiveObjectNearby(Obj.TOWN) && !hex.hasThisSupportiveObjectNearby(Obj.FARM)
+                && !hex.hasThisSupportiveObjectNearby(Obj.CITY) && !hex.hasThisSupportiveObjectNearby(Obj.PORT)) return false;
         return true;
+    }
+
+
+    private boolean portWaterWouldBeBlocked(Hex hex) {
+        if (hex.isSea() && hex.inPortRange && portWaterFreeSpaces(hex) <= 1) return true;
+        return false;
+    }
+
+
+    private int portWaterFreeSpaces(Hex hex) {
+        int freeSpaces = 0;
+        for (int i = 0; i < 6; i++) {
+            Hex adjHex = hex.getAdjacentHex(i);
+            if (adjHex == null || adjHex.isNullHex()) continue;
+            if (!adjHex.active || !adjHex.sea || !adjHex.inPortRange) continue;
+            if (!adjHex.sameFraction(hex)) continue;
+            if (adjHex.isFree()) freeSpaces++;
+        }
+        return freeSpaces;
     }
 }

@@ -12,15 +12,16 @@ public class MoveBehaviorPlayful extends MoveBehavior {
     @Override
     void move(FactorYio fy) {
         if (fy.itsTimeToStop) return;
+        double k = FactorYio.getDtFactor();
         if (fy.f < 1) {
-            fy.f += fy.speedMultiplier * fy.dy;
-            fy.dy += fy.gravity;
+            fy.f += fy.speedMultiplier * fy.dy * k;
+            fy.dy += fy.gravity * k;
             if (fy.f > 1) {
                 fy.speedMultiplier /= 3;
             }
         } else {
-            fy.f += fy.speedMultiplier * fy.dy;
-            fy.dy -= 3 * fy.gravity;
+            fy.f += fy.speedMultiplier * fy.dy * k;
+            fy.dy -= 3 * fy.gravity * k;
         }
         if (fy.dy < 0 && fy.f < 1) {
             fy.f = 1;

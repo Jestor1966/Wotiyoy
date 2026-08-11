@@ -22,7 +22,7 @@ public class MapGeneratorGeneric extends MapGenerator {
 
         beginGeneration();
 
-        createLand();
+        createLandForMapType();
         addTrees();
 
         while (!hasGreenProvince()) {
@@ -85,7 +85,7 @@ public class MapGeneratorGeneric extends MapGenerator {
             int c = 3;
             for (int i = 0; i < 6; i++) {
                 Hex adjHex = activeHex.getAdjacentHex(i);
-                if (!adjHex.active || !adjHex.isNeutral()) continue;
+                if (!adjHex.active || !adjHex.isNeutral() || adjHex.isSea()) continue;
                 adjHex.fraction = activeHex.fraction;
                 c--;
                 if (c == 0) break;
@@ -183,7 +183,7 @@ public class MapGeneratorGeneric extends MapGenerator {
             if (hex.genPotential == 0) continue;
             for (int i = 0; i < 6; i++) {
                 Hex adjHex = hex.getAdjacentHex(i);
-                if (!propagationList.contains(adjHex) && adjHex.active && adjHex.fraction == GameRules.NEUTRAL_FRACTION) {
+                if (!propagationList.contains(adjHex) && adjHex.active && adjHex.fraction == GameRules.NEUTRAL_FRACTION && !adjHex.isSea()) {
                     adjHex.genPotential = hex.genPotential - 1;
                     propagationList.add(adjHex);
                 }
@@ -250,6 +250,8 @@ public class MapGeneratorGeneric extends MapGenerator {
         Hex result = null;
 
         for (Hex hex : getActiveHexes()) {
+            if (hex.isSea()) continue;
+            if (!hasLandNeighbor(hex)) continue; // provinces can't start on 1-hex islets
             if (result == null || hex.moveZoneNumber > result.moveZoneNumber) {
                 result = hex;
             }
@@ -291,7 +293,26 @@ public class MapGeneratorGeneric extends MapGenerator {
 
 
     protected Hex getRandomFreeHex() {
-        return getActiveHexes().get(random.nextInt(getActiveHexes().size()));
+        ArrayList<Hex> candidates = new ArrayList<>();
+        for (Hex hex : getActiveHexes()) {
+            if (hex.isSea()) continue;
+            if (!hasLandNeighbor(hex)) continue; // provinces can't start on 1-hex islets
+            candidates.add(hex);
+        }
+        if (candidates.size() == 0) return null;
+        return candidates.get(random.nextInt(candidates.size()));
+    }
+
+
+    private boolean hasLandNeighbor(Hex hex) {
+        for (int i = 0; i < 6; i++) {
+            Hex adjHex = hex.getAdjacentHex(i);
+            if (adjHex == null || adjHex.isNullHex()) continue;
+            if (!adjHex.active) continue;
+            if (adjHex.isSea()) continue;
+            return true;
+        }
+        return false;
     }
 
 

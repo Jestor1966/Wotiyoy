@@ -16,24 +16,26 @@ public class MoveBehaviorMaterial extends MoveBehavior {
 
 
     private void moveDestroy(FactorYio fy) {
+        double k = FactorYio.getDtFactor();
         if (fy.f > 0.99) fy.f = 0.99;
         if (fy.f < 0.01) fy.f = 0;
 
         if (fy.f > 0.5) {
-            fy.f -= 0.05 * fy.speedMultiplier * (1 - fy.f);
+            fy.f -= 0.05 * fy.speedMultiplier * (1 - fy.f) * k;
         } else {
-            fy.f -= 0.05 * fy.speedMultiplier * fy.f;
+            fy.f -= 0.05 * fy.speedMultiplier * fy.f * k;
         }
     }
 
 
     private void moveSpawn(FactorYio fy) {
+        double k = FactorYio.getDtFactor();
         if (fy.f < 0.01) {
             fy.f = 0.01;
         }
 
         if (fy.f > 0.99) {
-            fy.f += 0.001;
+            fy.f += 0.001 * k;
 
             if (fy.f > 1) {
                 fy.f = 1;
@@ -43,9 +45,9 @@ public class MoveBehaviorMaterial extends MoveBehavior {
         }
 
         if (fy.f < 0.5) {
-            fy.f += 0.05 * fy.speedMultiplier * fy.f;
+            fy.f += 0.05 * fy.speedMultiplier * fy.f * k;
         } else {
-            fy.f += 0.05 * fy.speedMultiplier * (1 - fy.f);
+            fy.f += 0.05 * fy.speedMultiplier * (1 - fy.f) * k;
         }
     }
 

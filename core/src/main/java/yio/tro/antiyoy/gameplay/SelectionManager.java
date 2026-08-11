@@ -215,6 +215,7 @@ public class SelectionManager {
             case SelectionTipType.FARM:
             case SelectionTipType.STRONG_TOWER:
             case SelectionTipType.TREE:
+            case SelectionTipType.PORT:
                 return true;
         }
     }
@@ -762,6 +763,10 @@ public class SelectionManager {
                 return GameRules.PRICE_STRONG_TOWER;
             case SelectionTipType.TREE:
                 return GameRules.PRICE_TREE;
+            case SelectionTipType.PORT:
+                Province portProvince = gameController.fieldManager.selectedProvince;
+                if (portProvince == null) return 9999;
+                return portProvince.getPortPrice();
         }
     }
 
@@ -808,7 +813,7 @@ public class SelectionManager {
                     break;
                 }
             case SelectionTipType.FARM:
-                if (!focusedHex.containsTree() && !focusedHex.containsUnit() && !focusedHex.isSea()) {
+                if (!focusedHex.containsTree() && !focusedHex.containsUnit() && (!focusedHex.isSea() || focusedHex.inPortRange)) {
                     gameController.fieldManager.buildFarm(selectedProvince, focusedHex);
                 }
                 break;
@@ -820,6 +825,11 @@ public class SelectionManager {
             case SelectionTipType.TREE:
                 if (focusedHex.isFree() && !focusedHex.isSea()) {
                     gameController.fieldManager.buildTree(selectedProvince, focusedHex);
+                }
+                break;
+            case SelectionTipType.PORT:
+                if (!focusedHex.containsTree() && !focusedHex.containsUnit() && !focusedHex.isSea()) {
+                    gameController.fieldManager.buildPort(selectedProvince, focusedHex);
                 }
                 break;
         }
@@ -834,8 +844,19 @@ public class SelectionManager {
         if (tipType == SelectionTipType.STRONG_TOWER) { // strong tower
             return focusedHex.selected && (!focusedHex.containsBuilding() || focusedHex.objectInside == Obj.TOWER);
         }
+        if (tipType == SelectionTipType.PORT) {
+            return focusedHex.selected && !focusedHex.containsBuilding() && !focusedHex.sea
+                    && gameController.fieldManager.hasSeaNeighbor(focusedHex);
+        }
+        if (focusedHex.sea) {
+            // units can be built directly in non-neutral port water
+            return tipType >= SelectionTipType.UNIT_1 && tipType <= SelectionTipType.UNIT_9
+                    && focusedHex.inPortRange
+                    && focusedHex.portOwnerFraction == focusedHex.fraction
+                    && focusedHex.selected;
+        }
 
-        return focusedHex.selected && !focusedHex.containsBuilding() && !focusedHex.sea;
+        return focusedHex.selected && !focusedHex.containsBuilding();
     }
 
 

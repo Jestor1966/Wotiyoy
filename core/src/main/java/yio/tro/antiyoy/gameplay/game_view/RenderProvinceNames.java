@@ -11,6 +11,7 @@ import yio.tro.antiyoy.gameplay.Hex;
 import yio.tro.antiyoy.gameplay.Province;
 import yio.tro.antiyoy.gameplay.rules.GameRules;
 import yio.tro.antiyoy.stuff.Fonts;
+import yio.tro.antiyoy.stuff.LanguagesManager;
 
 import java.util.ArrayList;
 
@@ -100,7 +101,7 @@ public class RenderProvinceNames extends GameRender{
 
     private void renderSingleCityName(Province province, ArrayList<Hex> hexes, float alpha, float scaleFactor) {
         prepare(province);
-        updateTextPosition(hexes, scaleFactor);
+        if (!updateTextPosition(hexes, scaleFactor)) return; // no land to anchor the name to
 
         batchMovable.setColor(c.r, c.g, c.b, alpha);
         renderText();
@@ -108,19 +109,27 @@ public class RenderProvinceNames extends GameRender{
     }
 
 
-    private void updateTextPosition(ArrayList<Hex> hexes, float scaleFactor) {
-        float centerX = 0, centerY = 0;
+    private boolean updateTextPosition(ArrayList<Hex> hexes, float scaleFactor) {
+        // only land hexes are taken into account: sea hexes must not stretch the name box
+        ArrayList<Hex> landHexes = new ArrayList<>();
         for (Hex hex : hexes) {
+            if (hex.sea) continue;
+            landHexes.add(hex);
+        }
+        if (landHexes.size() == 0) return false;
+
+        float centerX = 0, centerY = 0;
+        for (Hex hex : landHexes) {
             centerX += hex.pos.x;
             centerY += hex.pos.y;
         }
-        centerX /= hexes.size();
-        centerY /= hexes.size();
+        centerX /= landHexes.size();
+        centerY /= landHexes.size();
 
         // main axis: direction towards the hex farthest from the center
-        Hex farHex = hexes.get(0);
+        Hex farHex = landHexes.get(0);
         float maxDistance = 0;
-        for (Hex hex : hexes) {
+        for (Hex hex : landHexes) {
             float dx = hex.pos.x - centerX;
             float dy = hex.pos.y - centerY;
             float d = dx * dx + dy * dy;
@@ -143,7 +152,7 @@ public class RenderProvinceNames extends GameRender{
         ny = cosA;
 
         float minT = Float.MAX_VALUE, maxT = -Float.MAX_VALUE;
-        for (Hex hex : hexes) {
+        for (Hex hex : landHexes) {
             float t = (hex.pos.x - centerX) * cosA + (hex.pos.y - centerY) * sinA;
             if (t < minT) minT = t;
             if (t > maxT) maxT = t;
@@ -152,6 +161,12 @@ public class RenderProvinceNames extends GameRender{
         if (tRange <= 0) tRange = 1;
 
         name = province.getName();
+        if (SettingsManager.dynamicTitlesEnabled) {
+            String titleKey = gameController.fieldManager.getProvinceTitle(province.getFraction());
+            if (titleKey.length() > 0) {
+                name = name + " " + LanguagesManager.getInstance().getString(titleKey);
+            }
+        }
         charCount = name.length();
 
         Fonts.mapFont.getData().setScale(getFontScale() * scaleFactor);
@@ -195,6 +210,7 @@ public class RenderProvinceNames extends GameRender{
             }
             charAngle[i] = angleDeg;
         }
+        return true;
     }
 
 

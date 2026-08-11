@@ -25,6 +25,7 @@ public abstract class MenuRender {
     public static RenderSlider renderSlider = new RenderSlider();
     public static RenderDiplomacyElement renderDiplomacyElement = new RenderDiplomacyElement();
     public static RenderDiplomaticDialog renderDiplomaticDialog = new RenderDiplomaticDialog();
+    public static RenderSlotDetailsDialog renderSlotDetailsDialog = new RenderSlotDetailsDialog();
     public static RenderScrollableList renderScrollableList = new RenderScrollableList();
     public static RenderSpecialThanksDialog renderSpecialThanksDialog = new RenderSpecialThanksDialog();
     public static RenderTurnStartDialog renderTurnStartDialog = new RenderTurnStartDialog();
@@ -44,6 +45,7 @@ public abstract class MenuRender {
     public static RenderRelationListItem renderRelationListItem = new RenderRelationListItem();
     public static RenderAddEditorRelationElement renderAddEditorRelationElement = new RenderAddEditorRelationElement();
     public static RenderColorPickerElement renderColorPickerElement = new RenderColorPickerElement();
+    public static RenderMapTypeElement renderMapTypeElement = new RenderMapTypeElement();
     public static RenderEditLandElement renderEditLandElement = new RenderEditLandElement();
     public static RenderIncomeGraphElement renderIncomeGraphElement = new RenderIncomeGraphElement();
     public static RenderColorHolderElement renderColorHolderElement = new RenderColorHolderElement();

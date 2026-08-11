@@ -86,6 +86,7 @@ public class FastConstructionPanel extends InterfaceElement {
         addItem(FcpActionType.farm);
         addItem(FcpActionType.tower);
         addItem(FcpActionType.strong_tower);
+        addItem(FcpActionType.port);
         addItem(FcpActionType.undo);
         addItem(FcpActionType.end_turn);
         addItem(FcpActionType.diplomacy);
@@ -260,6 +261,7 @@ public class FastConstructionPanel extends InterfaceElement {
         placeItem(FcpActionType.strong_tower, 0, 1,false);
         placeItem(FcpActionType.tower, 1, 1,false);
         placeItem(FcpActionType.farm, 2, 1,false);
+        placeItem(FcpActionType.port, 3, 1,false);
 
         placeItem(FcpActionType.unit_1, 3, 1,true);
         placeItem(FcpActionType.unit_2, 2, 1,true);
@@ -408,6 +410,9 @@ public class FastConstructionPanel extends InterfaceElement {
             case strong_tower:
                 applyBuildSolidObject(Obj.STRONG_TOWER);
                 break;
+            case port:
+                applyBuildSolidObject(Obj.PORT);
+                break;
             case undo:
                 applyUndoAction();
                 break;
@@ -508,11 +513,16 @@ public class FastConstructionPanel extends InterfaceElement {
             case Obj.STRONG_TOWER:
                 tipType = SelectionTipType.STRONG_TOWER;
                 break;
+            case Obj.PORT:
+                tipType = SelectionTipType.PORT;
+                break;
         }
 
         gameController.selectionManager.awakeTip(tipType);
         if (tipType == SelectionTipType.FARM) {
             gameController.detectAndShowMoveZoneForFarm();
+        } else if (tipType == SelectionTipType.PORT) {
+            gameController.detectAndShowMoveZoneForPort();
         }
     }
 

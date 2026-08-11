@@ -26,6 +26,8 @@ public enum FcpActionType {
 
     strong_tower,
 
+    port,
+
     undo,
 
     end_turn,

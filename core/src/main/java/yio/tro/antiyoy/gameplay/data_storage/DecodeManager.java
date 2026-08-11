@@ -192,6 +192,30 @@ public class DecodeManager {
     }
 
 
+    public String extractMapAuthor(String levelCode) {
+        source = levelCode;
+        String section = getSection("map_author");
+        if (section == null || section.length() == 0) return "Anonymous";
+        return section;
+    }
+
+
+    public String extractMapDescription(String levelCode) {
+        source = levelCode;
+        String section = getSection("map_description");
+        if (section == null) return "";
+        return MapInfoCodec.decode(section);
+    }
+
+
+    public String extractMapCreateTime(String levelCode) {
+        source = levelCode;
+        String section = getSection("map_create_time");
+        if (section == null || section.length() == 0) return "1970-01-01";
+        return section;
+    }
+
+
     public int extractChosenColor(String levelCode) {
         source = levelCode;
         String section = getSection("editor_info");

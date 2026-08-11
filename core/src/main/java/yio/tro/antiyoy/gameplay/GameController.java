@@ -163,6 +163,7 @@ public class GameController {
     private void checkForAloneUnits() {
         for (int i = unitList.size() - 1; i >= 0; i--) {
             Unit unit = unitList.get(i);
+            if (unit.currentHex.isSea()) continue; // sea units roam the sea freely
             if (isCurrentTurn(unit.getFraction()) && unit.currentHex.numberOfFriendlyHexesNearby() == 0) {
                 fieldManager.killUnitByStarvation(unit.currentHex);
             }
@@ -241,7 +242,6 @@ public class GameController {
     private void doCheckAnimHexes() {
         if (!fieldManager.letsCheckAnimHexes) return;
         if (currentTime <= fieldManager.timeToCheckAnimHexes) return;
-        if (!doesCurrentTurnEndDependOnAnimHexes()) return;
 
         fieldManager.checkAnimHexes();
     }
@@ -269,7 +269,13 @@ public class GameController {
 
 
     private void performAiMove() {
-        aiList.get(turn).perform();
+        try {
+            aiList.get(turn).perform();
+        } catch (Exception exception) {
+            // 单个 AI 回合的异常不应让整个游戏死机：打印后跳过本回合
+            System.out.println("GameController.performAiMove: exception in AI turn " + turn);
+            exception.printStackTrace();
+        }
         updateCacheOnceAfterSomeTime();
         applyReadyToEndTurn();
     }
@@ -339,7 +345,6 @@ public class GameController {
     private boolean isReadyToUpdateCache() {
         if (!letsUpdateCacheByAnim) return false;
         if (currentTime <= timeToUpdateCache) return false;
-        if (!doesCurrentTurnEndDependOnAnimHexes()) return false;
         if (isSomethingMoving()) return false;
 
         return true;
@@ -379,12 +384,7 @@ public class GameController {
     private boolean doesCurrentTurnEndDependOnAnimHexes() {
         if (DebugFlags.testMode) return false;
         if (isPlayerTurn()) return true;
-
-        if (speedManager.getSpeed() == SpeedManager.SPEED_FAST_FORWARD) {
-            return isCurrentTurn(0);
-        }
-
-        return true;
+        return false; // AI 回合不等动画，避免单位动画导致回合无法结束
     }
 
 
@@ -417,7 +417,8 @@ public class GameController {
 
     public boolean isUnitValidForMovement(Unit unit) {
         if (!isCurrentTurn(unit.getFraction())) return false;
-        if (unit.currentHex.numberOfFriendlyHexesNearby() == 0) return false;
+        if (unit.currentHex.isSea()) return true; // sea units always keep their single move
+        if (isPlayerTurn() && unit.currentHex.numberOfFriendlyHexesNearby() == 0) return false; // 玩家回合保留孤立检查
         return true;
     }
 
@@ -535,6 +536,8 @@ public class GameController {
 
     private void turnStartActions() {
         fieldManager.checkToNeutralizeAllSeaProvinces();
+        fieldManager.updateLandStatistics();
+        fieldManager.tryToDetectAdditionalProvinces(); // repair provinces that lost their province object
         for (Unit unit : unitList) {
             if (unit.strength == 6) {
                 unit.shotsLeft = 2; // cannon shoots twice per turn
@@ -569,7 +572,6 @@ public class GameController {
             }
 
             readyToApplyDebugPause = true;
-            fieldManager.crossbowKill();
             fieldManager.expandTrees();
         }
 
@@ -782,6 +784,8 @@ public class GameController {
 
     public void onEndCreation() {
         fieldManager.checkToNeutralizeAllSeaProvinces();
+        fieldManager.updateAllPortRanges();
+        fieldManager.updateLandStatistics();
         snapshotManager.clear();
         fieldManager.createPlayerHexCount();
         updateRuleset();
@@ -956,7 +960,7 @@ public class GameController {
 
     boolean isSomethingMoving() {
         for (Hex hex : fieldManager.animHexes) {
-            if (hex.containsUnit() && hex.unit.moveFactor.get() < 1) return true;
+            if (hex.containsUnit() && !hex.isSea() && hex.unit.moveFactor.get() < 1) return true; // 海上动画不阻塞回合
         }
         if (GameRules.inEditorMode && levelEditorManager.isSomethingMoving()) return true;
         return false;
@@ -984,6 +988,11 @@ public class GameController {
 
     public void detectAndShowMoveZoneForFarm() {
         fieldManager.moveZoneManager.detectAndShowMoveZoneForFarm();
+    }
+
+
+    public void detectAndShowMoveZoneForPort() {
+        fieldManager.moveZoneManager.detectAndShowMoveZoneForPort();
     }
 
 
@@ -1097,16 +1106,18 @@ public class GameController {
             if (!destination.canBeAttackedBy(unit) || unitProvince == null) {
                 return; // target is not attackable by this unit, just ignore
             }
+            Hex unitStartHex = unit.currentHex;
             fieldManager.setHexFraction(destination, turn);
             fieldManager.cleanOutHex(destination);// must be called before object in hex destroyed
             unit.moveToHex(destination);
             // make sure the conquered hex belongs only to the attacker's province:
             // setHexFraction may have joined it to another adjacent province
-            Province destinationProvince = fieldManager.getProvinceByHex(destination);
-            if (destinationProvince != null && destinationProvince != unitProvince) {
-                destinationProvince.removeHex(destination);
+            Province targetProvince = unitProvince;
+            if (!fieldManager.provinces.contains(targetProvince)) {
+                // unit's province was merged into another one during setHexFraction
+                targetProvince = fieldManager.getProvinceByHex(unitStartHex);
             }
-            unitProvince.addHex(destination);
+            fieldManager.addHexToProvince(targetProvince, destination);
             if (isPlayerTurn()) {
                 fieldManager.selectedHexes.add(destination);
                 updateCacheOnceAfterSomeTime();

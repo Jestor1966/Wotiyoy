@@ -30,6 +30,7 @@ public class RenderFastConstructionPanel extends MenuRender{
     private TextureRegion man8;
     private TextureRegion tower;
     private TextureRegion strongTower;
+    private TextureRegion port;
     private TextureRegion house;
     private TextureRegion sideShadow;
     private float smDelta;
@@ -67,6 +68,7 @@ public class RenderFastConstructionPanel extends MenuRender{
         man8 = loadFromFieldElements("man8");
         tower = loadFromFieldElements("tower");
         strongTower = loadFromFieldElements("strong_tower");
+        port = loadFromFieldElements("port");
         house = loadFromFieldElements("house");
     }
 
@@ -183,6 +185,7 @@ public class RenderFastConstructionPanel extends MenuRender{
             case farm: return house;
             case tower: return tower;
             case strong_tower: return strongTower;
+            case port: return port;
         }
     }
 

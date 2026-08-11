@@ -6,6 +6,7 @@ import yio.tro.antiyoy.gameplay.diplomacy.DiplomaticEntity;
 import yio.tro.antiyoy.gameplay.diplomacy.DiplomaticRelation;
 import yio.tro.antiyoy.gameplay.rules.GameRules;
 import yio.tro.antiyoy.gameplay.rules.Ruleset;
+import yio.tro.antiyoy.ai.Difficulty;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -187,6 +188,7 @@ public class AttackManager {
         if (mostTastefulHex == null) return;
         applyArmyPresenseToFirstLine();
         updateEntryHex();
+        if (entryHex == null) return; // cannot reach the target, skip attack
         updateMagnetHex();
         updateReadyArea();
         updatePattern();
@@ -240,6 +242,7 @@ public class AttackManager {
         }
 
         aiMaster.buildUnit(hex, strength);
+        if (hex.unit == null) return false; // build failed (e.g. sea) -> can't cover this way
         hex.unit.setReadyToMove(false);
         return true;
     }
@@ -264,6 +267,7 @@ public class AttackManager {
         Hex bestHex = null;
         int maxGain = 0;
         for (Hex hex : tempHexList) {
+            if (hex.isSea()) continue;
             if (!isHexAdjacentToWholeTempHexList(hex)) continue;
             int currentGain = aiMaster.getDefenseGainPrediction(hex, 1);
             if (bestHex == null || currentGain > maxGain) {
@@ -294,6 +298,7 @@ public class AttackManager {
 
 
     boolean isHexVulnerable(Hex hex) {
+        if (hex.isSea()) return false;
         if (!hex.isEmpty()) return false;
         if (aiMaster.hasOwnedTowerNearby(hex)) return false;
         if (!hex.aiData.firstLine && !hex.aiData.secondLine) return false;
@@ -304,9 +309,11 @@ public class AttackManager {
     void updateTempHexListByPathToCapital(Hex startHex) {
         tempHexList.clear();
         Hex currentHex = startHex;
+        int guard = 0;
         while (currentHex != null) {
             tempHexList.add(currentHex);
             currentHex = currentHex.aiData.referenceHex;
+            if (guard++ > 10000) break; // safety against reference cycles
         }
     }
 
@@ -325,12 +332,13 @@ public class AttackManager {
 
         update();
         if (mostTastefulHex == null) return 0;
-        if (aiMaster.turnsWithoutTerritoryGain >= 4) return 0;
-        if (stuckTurnsMap.getOrDefault(mostTastefulProvince, 0) >= 4) return 0;
         if (mostTastefulHex.aiData.tastiness < 0.25 && aiMaster.money < 120) return 0;
 
-        if (aiMaster.countWholePerimeter() > aiMaster.adjacentNeutralLandsQuantity) {
-            return 2;
+        boolean staleTarget = stuckTurnsMap.getOrDefault(mostTastefulProvince, 0) >= 4
+                || (aiMaster.turnsWithoutTerritoryGain >= 4 && mostTastefulHex.aiData.tastiness < 0.4);
+
+        if (aiMaster.difficulty >= Difficulty.HARD || aiMaster.countWholePerimeter() > aiMaster.adjacentNeutralLandsQuantity) {
+            return staleTarget ? 1 : 2;
         }
 
         return 0;
@@ -530,7 +538,7 @@ public class AttackManager {
         if (!isItAcceptableToAcquireUnitToAttack(hex, strength)) return false;
 
         aiMaster.buildUnit(hex, strength);
-        return true;
+        return hex.unit != null;
     }
 
 
@@ -567,7 +575,9 @@ public class AttackManager {
 
         aiMaster.buildUnit(emptyOwnedHex, additionalStrength);
         Unit builtUnit = emptyOwnedHex.unit;
+        if (builtUnit == null) return false;
         Unit newUnit = mergeUnits(builtUnit, unit);
+        if (newUnit == null) return false;
         sendUnitDirectly(newUnit, hex);
         return true;
     }
@@ -607,6 +617,7 @@ public class AttackManager {
             int minStrength = getMinimumStrengthInTempUnitList();
             Unit kamikaze = getFurthestUnitFromTempList(hex, minStrength);
             Unit newUnit = mergeUnits(kamikaze, unit);
+            if (newUnit == null) continue;
             sendUnitWithCheck(newUnit, hex);
             return true;
         }
@@ -686,9 +697,7 @@ public class AttackManager {
         if (hex.aiData.potentialAttackers.size() == 0) return false;
         if (!canHexBeCapturedWithStrongEnoughUnit(hex, defenseNumber)) return false;
         Unit unit = getFurthestStrongEnoughPotentialAttacker(hex, defenseNumber);
-        if (unit == null) {
-            say("AttackManager.tryToCaptureWithStrongEnoughUnit: problem");
-        }
+        if (unit == null) return false;
         sendUnitDirectly(unit, hex);
         return true;
     }
@@ -779,6 +788,8 @@ public class AttackManager {
 
 
     private void updatePattern() {
+        if (magnetHex == null || entryHex == null) return;
+
         pattern.clear();
 
         if (entryHex == mostTastefulHex) {
@@ -879,6 +890,8 @@ public class AttackManager {
 
 
     private void updateReadyArea() {
+        if (magnetHex == null) return;
+
         readyArea.clear();
         readyArea.add(magnetHex);
         casterReadyArea.perform(magnetHex, GameRules.UNIT_MOVE_LIMIT - 1);
@@ -1161,6 +1174,7 @@ public class AttackManager {
             if (!hex.containsUnit()) continue;
             Unit unit = hex.unit;
             if (!unit.isReadyToMove()) continue;
+            if (unit.currentHex.isSea()) continue; // 海上单位由海上远征逻辑统一管理
             readyUnits.add(hex.unit);
         }
     }

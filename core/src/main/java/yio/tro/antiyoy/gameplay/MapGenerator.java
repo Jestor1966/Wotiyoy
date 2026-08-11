@@ -48,16 +48,21 @@ public class MapGenerator {
 
 
     public void generateMap(Random random, Hex field[][]) {
-        setValues(random, field);
+        generateMap(random, field, GameRules.mapType);
+    }
 
-        beginGeneration();
 
-        createLand();
-        removeSingleHoles();
-        addTrees();
-        balanceMap();
+    public void generateMap(Random random, Hex field[][], int mapType) {
+        generateMap(random, field, MapType.byId(mapType));
+    }
 
-        endGeneration();
+
+    public void generateMap(Random random, Hex field[][], MapType mapType) {
+        if (mapType == null) {
+            mapType = MapType.DEFAULT;
+        }
+
+        MapGeneratorFactory.getGenerator(gameController, mapType).generateMap(random, field);
     }
 
 
@@ -111,7 +116,7 @@ public class MapGenerator {
         for (Hex hex : provinceList) {
             for (int i = 0; i < 6; i++) {
                 Hex adjHex = hex.getAdjacentHex(i);
-                if (adjHex.active && !adjHex.sameFraction(hex) && random.nextDouble() < power) {
+                if (adjHex.active && !adjHex.sameFraction(hex) && !adjHex.isSea() && random.nextDouble() < power) {
                     adjHex.fraction = hex.fraction;
                 }
             }
@@ -668,6 +673,7 @@ public class MapGenerator {
 
     protected void addTrees() {
         for (Hex activeHex : gameController.fieldManager.activeHexes) {
+            if (activeHex.isSea()) continue;
             if (random.nextDouble() >= GameRules.treesSpawnChance) continue;
             if (activeHex.containsObject()) continue;
             gameController.fieldManager.spawnTree(activeHex);
@@ -735,6 +741,21 @@ public class MapGenerator {
     }
 
 
+    protected void createLandForMapType() {
+        switch (MapType.byId(GameRules.mapType)) {
+            case CONTINENTAL:
+                ContinentalMapGenerator.createContinentalLandOn(this);
+                break;
+            case ISLANDS:
+                IslandsMapGenerator.createIslandsLandOn(this);
+                break;
+            default:
+                createLand();
+                break;
+        }
+    }
+
+
     protected void endGeneration() {
         gameController.fieldManager.nullHex.active = false;
     }
@@ -744,6 +765,195 @@ public class MapGenerator {
         gameController.fieldManager.createFieldMatrix();
         islandCenters = new ArrayList<>();
         links = new ArrayList<>();
+    }
+
+
+    protected static void spawnRoundContinent(MapGenerator host, PointYio center, double radiusInHexes) {
+        double radius = radiusInHexes * host.gameController.fieldManager.hexSize;
+        double transitionWidth = 0.5 * host.gameController.fieldManager.hexSize;
+        double phase1 = host.random.nextDouble() * 2 * Math.PI;
+        double phase2 = host.random.nextDouble() * 2 * Math.PI;
+
+        for (int i = 0; i < host.fWidth; i++) {
+            for (int j = 0; j < host.fHeight; j++) {
+                Hex hex = host.field[i][j];
+                if (hex == null || hex.isNullHex()) continue;
+                if (hex.active && !hex.sea) continue; // already land
+
+                PointYio pos = hex.getPos();
+                double dx = pos.x - center.x;
+                double dy = pos.y - center.y;
+                double distance = Math.sqrt(dx * dx + dy * dy);
+                double angle = Math.atan2(dy, dx);
+                double waviness = 0.88 + 0.15 * Math.sin(3 * angle + phase1) + 0.08 * Math.sin(5 * angle + phase2);
+                double localRadius = radius * waviness;
+
+                double diff = distance - localRadius;
+                if (diff > transitionWidth) continue;
+                if (diff < -transitionWidth) {
+                    activateLandHex(host, hex);
+                    continue;
+                }
+                double t = (diff + transitionWidth) / (2 * transitionWidth);
+                if (getHexNoise(hex) > t) {
+                    activateLandHex(host, hex);
+                }
+            }
+        }
+    }
+
+
+    protected static void spawnSolidIsland(MapGenerator host, PointYio center, double radiusInHexes) {
+        double radius = radiusInHexes * host.gameController.fieldManager.hexSize;
+
+        for (int i = 0; i < host.fWidth; i++) {
+            for (int j = 0; j < host.fHeight; j++) {
+                Hex hex = host.field[i][j];
+                if (hex == null || hex.isNullHex()) continue;
+                if (hex.active && !hex.sea) continue; // already land
+
+                PointYio pos = hex.getPos();
+                double dx = pos.x - center.x;
+                double dy = pos.y - center.y;
+                double distance = Math.sqrt(dx * dx + dy * dy);
+                // solid island: radius varies smoothly, interior stays fully filled
+                double localRadius = radius * (0.88 + 0.24 * getSmoothNoise(hex.index1, hex.index2));
+
+                if (distance > localRadius) continue;
+                activateLandHex(host, hex);
+            }
+        }
+    }
+
+
+    protected static void spawnSmallIsland(MapGenerator host, PointYio center, int size) {
+        Hex startHex = host.gameController.fieldManager.getHexByPos(center.x, center.y);
+        if (startHex == null || startHex.isNullHex()) return;
+
+        ArrayList<Hex> island = new ArrayList<>();
+        island.add(startHex);
+        activateLandHex(host, startHex);
+
+        int guard = 0;
+        while (island.size() < size && guard++ < 50) {
+            Hex parent = island.get(host.random.nextInt(island.size()));
+            ArrayList<Hex> candidates = new ArrayList<>();
+            for (int dir = 0; dir < 6; dir++) {
+                Hex adjHex = parent.getAdjacentHex(dir);
+                if (adjHex == null || adjHex.isNullHex()) continue;
+                if (adjHex.active && !adjHex.sea) continue; // land neighbor
+                candidates.add(adjHex);
+            }
+            if (candidates.size() == 0) break;
+
+            Hex newHex = candidates.get(host.random.nextInt(candidates.size()));
+            activateLandHex(host, newHex);
+            island.add(newHex);
+        }
+    }
+
+
+    protected static void activateLandHex(MapGenerator host, Hex hex) {
+        if (hex.active && !hex.sea) return; // already land
+        if (!hex.active) {
+            hex.active = true;
+            host.gameController.fieldManager.activeHexes.add(hex);
+        }
+        hex.sea = false;
+        hex.setFraction(host.getRandomFraction());
+    }
+
+
+    protected static void markSeaHex(MapGenerator host, Hex hex) {
+        hex.active = true;
+        hex.sea = true;
+        hex.setFraction(GameRules.NEUTRAL_FRACTION);
+        host.gameController.fieldManager.activeHexes.add(hex);
+    }
+
+
+    protected static void spawnSeaBlob(MapGenerator host, PointYio center, double radiusInHexes) {
+        double radius = radiusInHexes * host.gameController.fieldManager.hexSize;
+        double transitionWidth = 0.6 * host.gameController.fieldManager.hexSize;
+        double phase1 = host.random.nextDouble() * 2 * Math.PI;
+        double phase2 = host.random.nextDouble() * 2 * Math.PI;
+
+        for (int i = 0; i < host.fWidth; i++) {
+            for (int j = 0; j < host.fHeight; j++) {
+                Hex hex = host.field[i][j];
+                if (hex == null || hex.isNullHex()) continue;
+                if (hex.active) continue;
+
+                PointYio pos = hex.getPos();
+                double dx = pos.x - center.x;
+                double dy = pos.y - center.y;
+                double distance = Math.sqrt(dx * dx + dy * dy);
+                double angle = Math.atan2(dy, dx);
+                double waviness = 0.85 + 0.18 * Math.sin(3 * angle + phase1) + 0.1 * Math.sin(5 * angle + phase2);
+                double localRadius = radius * waviness;
+
+                double diff = distance - localRadius;
+                if (diff > transitionWidth) continue;
+                if (diff < -transitionWidth) {
+                    markSeaHex(host, hex);
+                    continue;
+                }
+                double t = (diff + transitionWidth) / (2 * transitionWidth);
+                if (getHexNoise(hex) > t) {
+                    markSeaHex(host, hex);
+                }
+            }
+        }
+    }
+
+
+    protected static PointYio getRandomPointInsideBounds(MapGenerator host) {
+        double x = 0.2 * host.boundWidth + host.random.nextDouble() * 0.6 * host.boundWidth;
+        double y = 0.25 * host.boundHeight + host.random.nextDouble() * 0.5 * host.boundHeight;
+        return new PointYio(x, y);
+    }
+
+
+    private static double getHexNoise(Hex hex) {
+        return getSmoothNoise(hex.index1, hex.index2);
+    }
+
+
+    private static double getSmoothNoise(int x, int y) {
+        double cellSize = 3.5;
+        double gx = x / cellSize;
+        double gy = y / cellSize;
+        int gxi = (int) Math.floor(gx);
+        int gyi = (int) Math.floor(gy);
+        double fx = gx - gxi;
+        double fy = gy - gyi;
+
+        double v00 = hashNoise(gxi, gyi);
+        double v10 = hashNoise(gxi + 1, gyi);
+        double v01 = hashNoise(gxi, gyi + 1);
+        double v11 = hashNoise(gxi + 1, gyi + 1);
+
+        double ix = smoothstep(fx);
+        double iy = smoothstep(fy);
+        return lerp(lerp(v00, v10, ix), lerp(v01, v11, ix), iy);
+    }
+
+
+    private static double hashNoise(int x, int y) {
+        int hash = x * 374761393 + y * 668265263;
+        hash = (hash ^ (hash >> 13)) * 1274126177;
+        hash = hash ^ (hash >> 16);
+        return (hash & 0x7fffffff) / (double) 0x40000000; // 0..1
+    }
+
+
+    private static double smoothstep(double t) {
+        return t * t * (3 - 2 * t);
+    }
+
+
+    private static double lerp(double a, double b, double t) {
+        return a + (b - a) * t;
     }
 
 

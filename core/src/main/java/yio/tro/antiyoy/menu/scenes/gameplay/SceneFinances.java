@@ -162,6 +162,7 @@ public class SceneFinances extends AbstractModalScene{
                 GameController gameController = menuControllerYio.yioGdxGame.gameController;
                 Province selectedProvince = gameController.fieldManager.selectedProvince;
                 if (selectedProvince == null) return 0;
+                if (!gameController.fieldManager.provinces.contains(selectedProvince)) return 0; // province was merged/removed
                 return selectedProvince.getProfit();
             }
         };

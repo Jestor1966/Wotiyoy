@@ -296,14 +296,26 @@ public class DefenseManager {
     private boolean fightDirectly(DmGroup group) {
         boolean success = false;
         int c = 0;
+        Unit lastEnemyUnit = null;
+        int noProgressRounds = 0;
         while (true) {
             c++;
-            if (c == 1000) {
-                System.out.println("DefenseManager.fightDirectly");
+            if (c > 50) {
+                System.out.println("DefenseManager.fightDirectly: gave up after 50 attempts");
+                break;
             }
             Unit enemyUnit = getStrongestAdjacentUnit(group);
             if (enemyUnit == null) break;
             if (enemyUnit.strength == 1) break;
+
+            if (enemyUnit == lastEnemyUnit) {
+                noProgressRounds++;
+                if (noProgressRounds > 5) break; // same enemy, no progress -> avoid endless loop
+            } else {
+                noProgressRounds = 0;
+            }
+            lastEnemyUnit = enemyUnit;
+
             if (tryToFightUnitDirectly(enemyUnit)) {
                 success = true;
                 continue;
@@ -349,7 +361,9 @@ public class DefenseManager {
 
         aiMaster.buildUnit(emptyOwnedHex, additionalStrength);
         Unit builtUnit = emptyOwnedHex.unit;
+        if (builtUnit == null) return false;
         Unit newUnit = aiMaster.mergeUnits(builtUnit, strongestUnit);
+        if (newUnit == null) return false;
         aiMaster.sendUnitDirectly(newUnit, enemyUnit.currentHex);
         return true;
     }
@@ -397,6 +411,7 @@ public class DefenseManager {
             int minStrength = getMinimumStrengthInTempUnitList();
             Unit kamikaze = getFurthestUnitFromTempList(enemyUnit.currentHex, minStrength);
             Unit newUnit = aiMaster.mergeUnits(kamikaze, unit);
+            if (newUnit == null) continue;
             aiMaster.sendUnitDirectly(newUnit, enemyUnit.currentHex);
             return true;
         }
@@ -484,6 +499,7 @@ public class DefenseManager {
         if (!isReallyNeeded && !aiMaster.canAffordTaxChange(taxChange)) return false;
 
         aiMaster.buildUnit(targetHex, necessaryStrength);
+        if (targetHex.unit == null) return false; // build failed (e.g. sea)
         return true;
     }
 
@@ -703,6 +719,7 @@ public class DefenseManager {
             if (!hex.containsUnit()) continue;
             Unit unit = hex.unit;
             if (!unit.isReadyToMove()) continue;
+            if (unit.currentHex.isSea()) continue; // 海上单位由海上远征逻辑统一管理
             readyUnits.add(hex.unit);
         }
     }

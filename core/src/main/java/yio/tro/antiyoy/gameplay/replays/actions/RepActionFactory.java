@@ -23,6 +23,8 @@ public class RepActionFactory {
             case RepAction.FORT_SPAWNED: return new RaFortBuilt(null);
             case RepAction.REVOLT_SPAWNED: return new RaRevoltSpawned(null);
             case RepAction.HEX_CHANGED_FRACTION_WITHOUT_PROVINCE: return new RaHexFractionChangedWithoutProvince(null, -1);
+            case RepAction.ARCHER_SHOT: return new RaArcherShot(null);
+            case RepAction.CANNON_SHOT: return new RaCannonShot(null);
         }
     }
 

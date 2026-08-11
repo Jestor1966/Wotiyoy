@@ -30,6 +30,12 @@ public class AiExpertGenericRules extends ArtificialIntelligenceGeneric {
     @Override
     void decideAboutUnit(Unit unit, ArrayList<Hex> moveZone, Province province) {
 
+        // 海上单位交给海上远征逻辑：沿最短海路前往最近的非己方大陆
+        if (unit.currentHex.isSea()) {
+            moveAfkUnit(province, unit);
+            return;
+        }
+
         if (unit.strength <= 3 && checkToCleanSomeRebels(unit, moveZone, province)) return;
         // cleaning palms has highest priority
         if (unit.strength <= 2 && checkToCleanSomePalms(unit, moveZone, province)) return;
@@ -67,7 +73,9 @@ public class AiExpertGenericRules extends ArtificialIntelligenceGeneric {
             if (adjHex.active && adjHex.sameFraction(unit.currentHex) && !isHexDefendedBySomethingElse(adjHex, unit) && adjHex.isInPerimeter())
                 leftBehindNumber++;
         }
-        return leftBehindNumber <= 3;
+        // 放宽限制：统一大陆后与残余势力的接触线很长，
+        // 过于保守会让所有前线单位都拒绝出击
+        return leftBehindNumber <= 5;
     }
 
 
@@ -128,8 +136,21 @@ public class AiExpertGenericRules extends ArtificialIntelligenceGeneric {
 
     @Override
     void moveAfkUnit(Province province, Unit unit) {
+        // 防御：陆地单位必须属于某个省份；海上单位不依赖省份，仍可远征
+        if (province == null && !unit.currentHex.isSea()) return;
+
+        // 海上单位：交给基类的海上远征逻辑（沿最短海路前往最近大陆）
+        if (unit.currentHex.isSea()) {
+            super.moveAfkUnit(province, unit);
+            return;
+        }
+
         Hex hexToMove = findRandomHexInPerimeter(province);
-        if (hexToMove == null) return;
+        if (hexToMove == null) {
+            // 没有前线目标（例如整块大陆已被统一）：仍然要尝试建港/下海
+            super.moveAfkUnit(province, unit);
+            return;
+        }
         tempHex.set(unit.currentHex);
         gameController.fieldManager.massMarchManager.performForSingleUnit(unit, hexToMove);
         if (tempHex.equals(unit.currentHex)) super.moveAfkUnit(province, unit); // to prevent infinite loop
@@ -179,18 +200,22 @@ public class AiExpertGenericRules extends ArtificialIntelligenceGeneric {
     void tryToBuildTowers(Province province) {
         // try to build normal towers
         while (province.hasMoneyForTower()) {
+            int moneyBefore = province.money;
             Hex hex = findHexThatNeedsTower(province);
             if (hex == null) break;
 
             gameController.fieldManager.buildTower(province, hex);
+            if (province.money == moneyBefore) break; // no progress -> avoid endless loop
         }
 
         // try to build strong towers
         while (provinceCanAffordStrongTower(province)) {
+            int moneyBefore = province.money;
             Hex hex = findHexForStrongTower(province);
             if (hex == null) break;
 
             gameController.fieldManager.buildStrongTower(province, hex);
+            if (province.money == moneyBefore) break; // no progress -> avoid endless loop
         }
     }
 

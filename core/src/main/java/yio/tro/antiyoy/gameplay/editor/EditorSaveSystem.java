@@ -18,6 +18,8 @@ import yio.tro.antiyoy.menu.scenes.Scenes;
 import yio.tro.antiyoy.stuff.LanguagesManager;
 
 import java.util.ArrayList;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class EditorSaveSystem {
 
@@ -41,6 +43,14 @@ public class EditorSaveSystem {
         instance.difficulty = Difficulty.BALANCER;
 
         int slotNumber = getNewSlotNumber();
+
+        // record metadata (including creation time) synchronously at creation
+        Preferences prefs = getPreferences();
+        prefs.putString(SLOT_NAME + slotNumber + ":author", "Anonymous");
+        prefs.putString(SLOT_NAME + slotNumber + ":description", "");
+        prefs.putString(SLOT_NAME + slotNumber + ":create_time", getCurrentDateString());
+        prefs.flush();
+
         LoadingManager.getInstance().startGame(instance, new Runnable() {
             @Override
             public void run() {
@@ -60,12 +70,15 @@ public class EditorSaveSystem {
         GameRules.editorSlotNumber = slotNumber;
         gameController.levelEditorManager.onLevelImported(levelCode);
 
+        Preferences prefs = getPreferences();
         String mapName = gameController.decodeManager.extractMapName(levelCode);
         if (mapName != null && !mapName.equals("unknown")) {
-            Preferences prefs = getPreferences();
             prefs.putString(SLOT_NAME + slotNumber + ":name", mapName);
-            prefs.flush();
         }
+        prefs.putString(SLOT_NAME + slotNumber + ":author", gameController.decodeManager.extractMapAuthor(levelCode));
+        prefs.putString(SLOT_NAME + slotNumber + ":description", gameController.decodeManager.extractMapDescription(levelCode));
+        prefs.putString(SLOT_NAME + slotNumber + ":create_time", gameController.decodeManager.extractMapCreateTime(levelCode));
+        prefs.flush();
     }
 
 
@@ -284,6 +297,15 @@ public class EditorSaveSystem {
         prefs.putString("prepared_event" + slotNumber, gameController.eventManager.encode());
         prefs.putString("goal" + slotNumber, gameController.finishGameManager.encode());
         prefs.putString("labels" + slotNumber, HexLabel.encodeLabels(gameController.fieldManager.activeHexes));
+        if (!prefs.contains(SLOT_NAME + slotNumber + ":author")) {
+            prefs.putString(SLOT_NAME + slotNumber + ":author", "Anonymous");
+        }
+        if (!prefs.contains(SLOT_NAME + slotNumber + ":description")) {
+            prefs.putString(SLOT_NAME + slotNumber + ":description", "");
+        }
+        if (!prefs.contains(SLOT_NAME + slotNumber + ":create_time")) {
+            prefs.putString(SLOT_NAME + slotNumber + ":create_time", "1970-01-01");
+        }
         String preview = EditorPreviewManager.encodePreview(gameController);
         if (preview != null) {
             prefs.putString("preview" + slotNumber, preview);
@@ -300,5 +322,10 @@ public class EditorSaveSystem {
 
     private Preferences getPreferences() {
         return Gdx.app.getPreferences(EDITOR_PREFS);
+    }
+
+
+    private String getCurrentDateString() {
+        return new SimpleDateFormat("yyyy-MM-dd").format(new Date());
     }
 }

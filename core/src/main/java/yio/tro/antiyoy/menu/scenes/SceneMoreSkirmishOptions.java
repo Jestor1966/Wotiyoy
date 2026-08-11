@@ -5,6 +5,7 @@ import com.badlogic.gdx.Preferences;
 import yio.tro.antiyoy.gameplay.MapGenerator;
 import yio.tro.antiyoy.menu.*;
 import yio.tro.antiyoy.menu.color_picking.ColorHolderElement;
+import yio.tro.antiyoy.menu.map_type_picking.MapTypeElement;
 import yio.tro.antiyoy.menu.slider.SliderBehavior;
 import yio.tro.antiyoy.menu.slider.SliderYio;
 import yio.tro.antiyoy.stuff.GraphicsYio;
@@ -16,6 +17,7 @@ public class SceneMoreSkirmishOptions extends AbstractScene{
 
     private ButtonYio label;
     ColorHolderElement colorHolderElement;
+    public MapTypeElement mapTypeElement;
     public CheckButtonYio chkSlayRules;
     public CheckButtonYio chkFogOfWar;
     public CheckButtonYio chkDiplomacy;
@@ -27,6 +29,7 @@ public class SceneMoreSkirmishOptions extends AbstractScene{
         super(menuControllerYio);
 
         colorHolderElement = null;
+        mapTypeElement = null;
         chkSlayRules = null;
         provincesSlider = null;
         treesSlider = null;
@@ -42,6 +45,7 @@ public class SceneMoreSkirmishOptions extends AbstractScene{
         createLabel();
         createCheckButtons();
         createColorHolder();
+        createMapTypeElement();
         createProvincesSlider();
         createTreesSlider();
 
@@ -129,11 +133,29 @@ public class SceneMoreSkirmishOptions extends AbstractScene{
     }
 
 
+    private void createMapTypeElement() {
+        initMapTypeElement();
+        mapTypeElement.appear();
+    }
+
+
+    private void initMapTypeElement() {
+        if (mapTypeElement != null) return;
+        mapTypeElement = new MapTypeElement(menuControllerYio);
+        mapTypeElement.setTitle("map_type");
+        mapTypeElement.setAnimation(Animation.up);
+        mapTypeElement.setPosition(generateRectangle(0.1, 0.63, 0.8, 0.08));
+        menuControllerYio.addElementToScene(mapTypeElement);
+    }
+
+
     private void loadValues() {
         Preferences prefs = Gdx.app.getPreferences("skirmish");
 
         int valueIndex = prefs.getInteger("color_offset", 0);
         colorHolderElement.setValueIndex(valueIndex);
+
+        mapTypeElement.setValueIndex(prefs.getInteger("map_type", 0));
 
         chkSlayRules.setChecked(prefs.getBoolean("slay_rules", false));
         chkFogOfWar.setChecked(prefs.getBoolean("fog_of_war", false));
@@ -148,6 +170,7 @@ public class SceneMoreSkirmishOptions extends AbstractScene{
         Preferences prefs = Gdx.app.getPreferences("skirmish");
 
         prefs.putInteger("color_offset", colorHolderElement.getValueIndex());
+        prefs.putInteger("map_type", mapTypeElement.getValueIndex());
         prefs.putBoolean("slay_rules", chkSlayRules.isChecked());
         prefs.putBoolean("fog_of_war", chkFogOfWar.isChecked());
         prefs.putBoolean("diplomacy", chkDiplomacy.isChecked());

@@ -130,8 +130,9 @@ public class Unit implements EncodeableYio{
 
 
     void moveJumpAnim() {
-        jumpDy -= jumpGravity;
-        jumpPos += jumpDy;
+        float k = (float) FactorYio.getDtFactor();
+        jumpDy -= jumpGravity * k;
+        jumpPos += jumpDy * k;
         if (jumpPos < 0) {
             jumpPos = 0;
             jumpDy = jumpStartingImpulse;

@@ -47,7 +47,9 @@ public class AiNormalGenericRules extends ArtificialIntelligenceGeneric{
             }
             if (!province.canAiAffordUnit(i)) break;
             while (canProvinceBuildUnit(province, i)) {
+                int moneyBefore = province.money;
                 if (!tryToBuiltUnitInsideProvince(province, i)) break;
+                if (province.money == moneyBefore) break;
             }
         }
 

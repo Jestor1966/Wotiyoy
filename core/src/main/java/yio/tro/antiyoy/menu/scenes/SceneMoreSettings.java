@@ -35,6 +35,7 @@ public class SceneMoreSettings extends AbstractScene{
     private double topLabelPos;
     private CheckButtonYio chkAutoTransition;
     private CheckButtonYio chkProvinceNames;
+    private CheckButtonYio chkDynamicTitles;
     private ButtonYio nextPageButton;
     private ButtonYio previousPageButton;
     private ButtonYio pageLabel;
@@ -140,6 +141,7 @@ public class SceneMoreSettings extends AbstractScene{
         chkFullScreen.setChecked(SettingsManager.fullScreenMode);
         chkAutoTransition.setChecked(SettingsManager.automaticTransition);
         chkProvinceNames.setChecked(SettingsManager.provinceNamesEnabled);
+        chkDynamicTitles.setChecked(SettingsManager.dynamicTitlesEnabled);
     }
 
 
@@ -155,6 +157,7 @@ public class SceneMoreSettings extends AbstractScene{
         SettingsManager.resumeButtonEnabled = chkResumeButton.isChecked();
         SettingsManager.automaticTransition = chkAutoTransition.isChecked();
         SettingsManager.provinceNamesEnabled = chkProvinceNames.isChecked();
+        SettingsManager.dynamicTitlesEnabled = chkDynamicTitles.isChecked();
 
         if (SettingsManager.fullScreenMode != chkFullScreen.isChecked()) {
             SettingsManager.fullScreenMode = chkFullScreen.isChecked();
@@ -277,6 +280,7 @@ public class SceneMoreSettings extends AbstractScene{
             chkFullScreen.appear();
             chkAutoTransition.appear();
             chkProvinceNames.destroy();
+            chkDynamicTitles.destroy();
             nextPageButton.appear();
             nextPageButton.setTouchable(true);
             previousPageButton.destroy();
@@ -288,6 +292,7 @@ public class SceneMoreSettings extends AbstractScene{
             chkFullScreen.destroy();
             chkAutoTransition.destroy();
             chkProvinceNames.appear();
+            chkDynamicTitles.appear();
             previousPageButton.appear();
             previousPageButton.setTouchable(true);
             nextPageButton.destroy();
@@ -340,6 +345,12 @@ public class SceneMoreSettings extends AbstractScene{
         chkProvinceNames.setHeight(0.055);
         chkProvinceNames.alignTop(0);
         chkProvinceNames.setTitle("province_names");
+
+        chkDynamicTitles = CheckButtonYio.getFreshCheckButton(menuControllerYio);
+        chkDynamicTitles.setParent(checksLabel);
+        chkDynamicTitles.setHeight(0.055);
+        chkDynamicTitles.alignUnder(chkProvinceNames);
+        chkDynamicTitles.setTitle("dynamic_province_titles");
     }
 
 

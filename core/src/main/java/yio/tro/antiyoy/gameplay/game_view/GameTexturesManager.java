@@ -37,6 +37,7 @@ public class GameTexturesManager {
     public Storage3xTexture manTextures[], palmTexture[], houseTexture,towerTexture, graveTexture, pineTexture[];
     public Storage3xTexture manSeaTextures[],graveSeaTexture;
     public Storage3xTexture castleTexture, strongTowerTexture, mountainTexture[], hillTexture, fortTexture, cityTexture[], revoltTexture, farmTexture[];
+    public Storage3xTexture portTexture;
     public AtlasLoader atlasLoader;
 
 
@@ -184,6 +185,7 @@ public class GameTexturesManager {
         pineTexture[2] = new Storage3xTexture(atlasLoader, "pine3.png");
         towerTexture = new Storage3xTexture(atlasLoader, "tower.png");
         castleTexture = new Storage3xTexture(atlasLoader, "castle.png");
+        portTexture = new Storage3xTexture(atlasLoader, "port.png");
         farmTexture = new Storage3xTexture[6];
         farmTexture[0] = new Storage3xTexture(atlasLoader, "farm1.png");
         farmTexture[1] = new Storage3xTexture(atlasLoader, "farm2.png");

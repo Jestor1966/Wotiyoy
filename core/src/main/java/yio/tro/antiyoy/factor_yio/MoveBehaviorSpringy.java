@@ -34,8 +34,9 @@ public class MoveBehaviorSpringy extends MoveBehavior {
     @Override
     void move(FactorYio fy) {
         if (needsToMove(fy)) {
-            fy.f += fy.speedMultiplier * fy.dy;
-            fy.dy += fy.gravity;
+            double k = FactorYio.getDtFactor();
+            fy.f += fy.speedMultiplier * fy.dy * k;
+            fy.dy += fy.gravity * k;
         }
         springyBounds(fy);
 //        System.out.println("f = " + fy.f + "; dy = " + fy.dy);

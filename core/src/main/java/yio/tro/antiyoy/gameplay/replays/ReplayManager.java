@@ -191,6 +191,18 @@ public class ReplayManager {
     }
 
 
+    public void onArcherShot(Hex hex) {
+        if (!canAddAction()) return;
+        replay.addAction(new RaArcherShot(hex));
+    }
+
+
+    public void onCannonShot(Hex hex) {
+        if (!canAddAction()) return;
+        replay.addAction(new RaCannonShot(hex));
+    }
+
+
     public void onHexChangedFractionWithoutObviousReason(Hex hex) {
         replay.addAction(new RaHexFractionChanged(hex, hex.fraction));
     }

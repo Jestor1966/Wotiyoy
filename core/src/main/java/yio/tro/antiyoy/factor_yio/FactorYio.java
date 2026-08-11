@@ -1,7 +1,10 @@
 package yio.tro.antiyoy.factor_yio;
 
+import com.badlogic.gdx.Gdx;
+
 
 public class FactorYio {
+    static double dtFactor = 1; // 1 == 60 frames per second
     boolean itsTimeToStop;
     double f, gravity, dy, speedMultiplier;
     MoveBehavior moveBehavior;
@@ -21,6 +24,17 @@ public class FactorYio {
 
     public void move() {
         moveBehavior.move(this);
+    }
+
+
+    public static void updateDtFactor() {
+        float dt = Gdx.graphics.getDeltaTime();
+        dtFactor = Math.max(0.1, Math.min(dt * 60, 3));
+    }
+
+
+    public static double getDtFactor() {
+        return dtFactor;
     }
 
 

@@ -389,6 +389,12 @@ public class DiplomaticAI {
         propagationList.clear();
 
         Hex randomHex = province.getRandomHex();
+        int guard = 0;
+        while (randomHex.isSea() && guard < 50) {
+            randomHex = province.getRandomHex();
+            guard++;
+        }
+        if (randomHex.isSea()) return; // all-sea province, nothing to trade
         propagationList.add(randomHex);
 
         int goalQuantity = YioGdxGame.random.nextInt(4) + 3;
@@ -398,19 +404,25 @@ public class DiplomaticAI {
 
         while (propagationList.size() < goalQuantity) {
             Hex newHex = getRandomHexNearPropagationList(province);
+            if (newHex == null) break;
             propagationList.add(newHex);
         }
     }
 
 
     private Hex getRandomHexNearPropagationList(Province province) {
-        while (true) {
+        int attempts = 0;
+        while (attempts < 100) {
+            attempts++;
             Hex randomHex = province.getRandomHex();
+            if (randomHex.isSea()) continue; // water cannot be traded
             if (propagationList.contains(randomHex)) continue;
             if (!isHexNearPropagationList(randomHex)) continue;
 
             return randomHex;
         }
+
+        return null; // province part is not connected, cannot expand further
     }
 
 

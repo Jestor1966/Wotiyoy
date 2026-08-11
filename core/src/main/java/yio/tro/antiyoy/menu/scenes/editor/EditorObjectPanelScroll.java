@@ -222,7 +222,7 @@ public class EditorObjectPanelScroll extends InterfaceElement {
 
     private ButtonYio getButtonUnderTouch(PointYio touchPoint) {
         float touchOffset = 0.02f * GraphicsYio.width;
-        for (int id = 160; id <= 175; id++) {
+        for (int id = 160; id <= 176; id++) {
             ButtonYio buttonYio = menuControllerYio.getButtonById(id);
             if (buttonYio == null) continue;
             if (!buttonYio.isVisible()) continue;

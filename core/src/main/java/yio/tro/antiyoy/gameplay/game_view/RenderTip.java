@@ -64,6 +64,8 @@ public class RenderTip extends GameRender{
                 return gameView.texturesManager.strongTowerTexture.getNormal();
             case SelectionTipType.TREE:
                 return gameView.texturesManager.pineTexture[0].getNormal();
+            case SelectionTipType.PORT:
+                return gameView.texturesManager.portTexture.getNormal();
             case SelectionTipType.UNIT_1:
                 return gameView.texturesManager.manTextures[0].getNormal();
             case SelectionTipType.UNIT_2:

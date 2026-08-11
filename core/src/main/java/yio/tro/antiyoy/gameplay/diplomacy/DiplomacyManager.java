@@ -1060,6 +1060,7 @@ public class DiplomacyManager {
     public int getProvinceDotations(Province province) {
         int fraction = province.getFraction();
         DiplomaticEntity entity = getEntity(fraction);
+        if (entity == null) return 0;
         int stateDotations = entity.getStateDotations();
 
         return (int) (province.getIncomeCoefficient() * stateDotations);

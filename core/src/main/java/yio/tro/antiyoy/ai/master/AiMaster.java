@@ -10,6 +10,7 @@ import yio.tro.antiyoy.gameplay.diplomacy.DiplomacyManager;
 import yio.tro.antiyoy.gameplay.diplomacy.DiplomaticEntity;
 import yio.tro.antiyoy.gameplay.diplomacy.DiplomaticRelation;
 import yio.tro.antiyoy.gameplay.rules.GameRules;
+import yio.tro.antiyoy.ai.Difficulty;
 import yio.tro.antiyoy.gameplay.rules.Ruleset;
 import yio.tro.antiyoy.menu.scenes.Scenes;
 import yio.tro.antiyoy.stuff.Yio;
@@ -48,10 +49,12 @@ public class AiMaster extends AbstractAi {
     double averageOwnedAttractiveness;
     int totalHexesLastTurn;
     public int turnsWithoutTerritoryGain;
+    public int difficulty;
 
 
-    public AiMaster(GameController gameController, int fraction) {
+    public AiMaster(GameController gameController, int fraction, int difficulty) {
         super(gameController, fraction);
+        this.difficulty = difficulty;
         fieldManager = gameController.fieldManager;
         tempHexList = new ArrayList<>();
         firstLine = new ArrayList<>();
@@ -184,7 +187,44 @@ public class AiMaster extends AbstractAi {
             performForSingleProvince(ownedProvince);
         }
 
+        handleStraySeaUnits();
         endDebug();
+    }
+
+
+    /**
+     * 处理不在任何省份 hexList 中的己方海上单位（省份数据异常时仍让海军继续远征）。
+     */
+    private void handleStraySeaUnits() {
+        for (Unit unit : gameController.unitList) {
+            if (unit.getFraction() != fraction) continue;
+            if (unit.currentHex.fraction != fraction) continue; // 防御：所在格已被移交/吞并的单位不算己方
+            if (!unit.isReadyToMove()) continue;
+            if (!unit.currentHex.isSea()) continue;
+            if (fieldManager.getProvinceByHex(unit.currentHex) != null) continue; // 已有省份，交给省份处理
+
+            currentProvince = getAnyOwnedProvince();
+            if (currentProvince == null) continue;
+
+            ArrayList<Hex> moveZone = gameController.detectMoveZone(unit.currentHex, unit.strength, GameRules.UNIT_MOVE_LIMIT);
+            Hex step = getSeaStepTowardsEnemyLand(unit, moveZone);
+            if (step != null && !step.isSea()) {
+                gameController.moveUnit(unit, step, currentProvince); // 登录进攻
+                continue;
+            }
+            if (step != null && step.isSea()) {
+                if (tryToMergeSeaUnits(unit)) continue; // 久攻不下先合成
+                gameController.moveUnit(unit, step, currentProvince);
+            }
+        }
+    }
+
+
+    private Province getAnyOwnedProvince() {
+        for (Province province : ownedProvinces) {
+            if (fieldManager.provinces.contains(province)) return province;
+        }
+        return null;
     }
 
 
@@ -288,19 +328,149 @@ public class AiMaster extends AbstractAi {
         updateSolidDefense();
         updateVicinity();
         checkToMergePeasants();
-        defenseManager.onTurnStarted();
-        attackManager.onTurnStarted();
-        applyActionsAndSpendings();
+          defenseManager.onTurnStarted();
+          attackManager.onTurnStarted();
+          // 沿海省份至少确保一个可用港口（优先于其他支出）
+          gameController.fieldManager.aiTryToBuildEssentialPort(currentProvince);
+          // 登陆扩张状态：暴兵优先，迅速打击对方核心区域
+          if (gameController.fieldManager.provinceHasMultipleContinents(currentProvince)) {
+              tryToBuildInvasionArmy();
+          }
+          applyActionsAndSpendings();
+          gameController.fieldManager.aiTryToBuildPort(currentProvince);
         checkForCasualGrab();
         pullUnitsCloserToPerimeter();
         checkToSupplyArmyWithTowers();
         checkToPushUnitsToBettrDefense();
+        tryToGoToSeaWithIdleUnits();
+    }
+
+
+    /**
+     * 登陆后的桥头堡省份：在财政允许下尽量暴兵（保留一个单位的价格作为应急盈余）。
+     */
+    private void tryToBuildInvasionArmy() {
+        while (currentProvince.money >= GameRules.PRICE_UNIT * 2 && currentProvince.canAiAffordUnit(1)) {
+            int moneyBefore = currentProvince.money;
+            Hex hex = findEmptyOwnedHexForInvasionUnit();
+            if (hex == null) break;
+            buildUnit(hex, 1);
+            if (currentProvince.money == moneyBefore) break;
+        }
+    }
+
+
+    private Hex findEmptyOwnedHexForInvasionUnit() {
+        for (Hex hex : currentProvince.hexList) {
+            if (hex.isSea()) continue;
+            if (!hex.isEmpty()) continue;
+            return hex;
+        }
+        return null;
+    }
+
+
+    private void tryToGoToSeaWithIdleUnits() {
+        boolean continentSecured = gameController.fieldManager.isProvinceContinentSecured(currentProvince);
+
+        // 快照单位列表，避免移动过程中省份 hexList 被修改引发并发修改异常
+        ArrayList<Unit> unitsToProcess = new ArrayList<>();
+        for (Hex hex : currentProvince.hexList) {
+            if (!hex.containsUnit()) continue;
+            Unit unit = hex.unit;
+            if (!unit.isReadyToMove()) continue;
+            unitsToProcess.add(unit);
+        }
+
+        for (Unit unit : unitsToProcess) {
+            if (!unit.isReadyToMove()) continue; // 可能已被前面的单位处理
+            if (!currentProvince.hexList.contains(unit.currentHex)) continue; // 可能已离开省份
+
+            // 海上单位：始终沿最短海路前往海外目标并登录，不受大陆安全影响
+            if (unit.currentHex.isSea()) {
+                ArrayList<Hex> moveZone = gameController.detectMoveZone(unit.currentHex, unit.strength, GameRules.UNIT_MOVE_LIMIT);
+                Hex step = getSeaStepTowardsEnemyLand(unit, moveZone);
+                if (step != null && !step.isSea()) {
+                    // 可以直接登录目标：进攻
+                    gameController.moveUnit(unit, step, currentProvince);
+                    continue;
+                }
+                if (step != null && step.isSea()) {
+                    // 目标大陆存在但当前无法登录（久攻不下）：尝试海上合成更高等级单位
+                    if (tryToMergeSeaUnits(unit)) continue;
+                    gameController.moveUnit(unit, step, currentProvince);
+                    continue;
+                }
+                continue;
+            }
+
+            // 陆地单位：只有大陆安全且有海外目标时才下海/走向沿海
+            if (!continentSecured) continue;
+
+            ArrayList<Hex> moveZone = gameController.detectMoveZone(unit.currentHex, unit.strength, GameRules.UNIT_MOVE_LIMIT);
+            Hex seaHex = getFarthestSeaHexFromMoveZone(moveZone, unit);
+            if (seaHex == null) {
+                // 无法下海：有海外目标时主动走向最近的己方港口水域
+                if (hasOverseasTarget()) {
+                    Hex approachHex = findHexToApproachPort(unit, moveZone);
+                    if (approachHex != null && !approachHex.equals(unit.currentHex)) {
+                        gameController.moveUnit(unit, approachHex, currentProvince);
+                        return;
+                    }
+                }
+                continue;
+            }
+            if (!hasOverseasTarget()) continue;
+            gameController.moveUnit(unit, seaHex, currentProvince);
+            return; // one unit per turn is enough
+        }
+    }
+
+
+    /**
+     * 海军久攻不下时，尝试与相邻海上单位合成更高等级的单位（仅限普通单位，结果不超过 4 级）。
+     */
+    private boolean tryToMergeSeaUnits(Unit unit) {
+        if (GameRules.isSpecialUnitStrength(unit.strength)) return false;
+
+        for (int dir = 0; dir < 6; dir++) {
+            Hex adj = unit.currentHex.getAdjacentHex(dir);
+            if (adj == null || adj.isNullHex()) continue;
+            if (!adj.active || !adj.containsUnit()) continue;
+            Unit other = adj.unit;
+            if (other.getFraction() != fraction) continue;
+            if (GameRules.isSpecialUnitStrength(other.strength)) continue;
+            int mergedStrength = unit.strength + other.strength;
+            if (mergedStrength > 4) continue;
+            // 合理财政预期：省份能够长期负担合成后的单位
+            if (!currentProvince.canAiAffordUnit(mergedStrength)) continue;
+
+            gameController.mergeUnits(adj, unit, other);
+            return true;
+        }
+        return false;
+    }
+
+
+    private Hex getFarthestSeaHexFromMoveZone(ArrayList<Hex> moveZone, Unit unit) {
+        Hex bestHex = null;
+        double maxDistance = 0;
+        for (Hex hex : moveZone) {
+            if (!hex.isSea()) continue;
+            double distance = hex.pos.fastDistanceTo(unit.currentHex.pos);
+            if (bestHex == null || distance > maxDistance) {
+                bestHex = hex;
+                maxDistance = distance;
+            }
+        }
+        return bestHex;
     }
 
 
     private void checkToPushUnitsToBettrDefense() {
         updateReadyUnits();
         for (Unit unit : readyUnits) {
+            if (unit.currentHex.isSea()) continue; // 海上单位留给海上远征逻辑
             pushUnitToBetterDefense(unit);
         }
     }
@@ -320,6 +490,7 @@ public class AiMaster extends AbstractAi {
         if (getMaxStrengthInProvince() < 2) return;
         Hex capital = currentProvince.getCapital();
         while (currentProvince.money >= GameRules.PRICE_TOWER) {
+            int moneyBefore = currentProvince.money;
             prepareForSupplyArmyAlgorithm();
             casterPathIndex.perform(capital, 9999);
             castDependence();
@@ -330,9 +501,12 @@ public class AiMaster extends AbstractAi {
             filterTempHexListByVulnerability(maxVulnerability);
             if (tempHexList.size() == 0) {
                 System.out.println("AiMaster.checkToSupplyArmyWithTowers: problem");
+                break;
             }
             Hex hexWithMostDefenseGain = getHexWithMostDefenseGain(tempHexList, 2);
+            if (hexWithMostDefenseGain == null) break;
             buildTower(hexWithMostDefenseGain, 2);
+            if (currentProvince.money == moneyBefore) break; // no progress -> avoid endless loop
         }
     }
 
@@ -400,6 +574,7 @@ public class AiMaster extends AbstractAi {
     private void updateTempHexListWithVulnerableHexes() {
         tempHexList.clear();
         for (Hex hex : currentProvince.hexList) {
+            if (hex.isSea()) continue;
             if (!hex.isEmpty()) continue;
             if (hex.aiData.dependentUnits.size() == 0) continue;
             if (!hasEnemyLandsNearby(hex)) continue;
@@ -433,10 +608,12 @@ public class AiMaster extends AbstractAi {
 
     void castUnitDependenceToCapital(Unit unit) {
         Hex hex = unit.currentHex;
+        int guard = 0;
         while (true) {
             if (hex.aiData.referenceHex == null) break;
             hex = hex.aiData.referenceHex;
             hex.aiData.dependentUnits.add(unit);
+            if (guard++ > 10000) break; // safety against reference cycles
         }
     }
 
@@ -486,6 +663,7 @@ public class AiMaster extends AbstractAi {
         updateReadyUnits();
         for (int i = readyUnits.size() - 1; i >= 0; i--) {
             Unit unit = readyUnits.get(i);
+            if (unit.currentHex.isSea()) continue; // 海上单位留给海上远征逻辑
             updateMoveZone(unit);
             Hex hex = getBestHexForCasualGrab(moveZone, unit);
             if (hex == null) continue;
@@ -511,6 +689,7 @@ public class AiMaster extends AbstractAi {
             if (!hex.containsUnit()) continue;
             Unit unit = hex.unit;
             if (!unit.isReadyToMove()) continue;
+            if (unit.currentHex.isSea()) continue; // 海上单位由海上远征逻辑统一管理
             readyUnits.add(hex.unit);
         }
     }
@@ -518,17 +697,56 @@ public class AiMaster extends AbstractAi {
 
     private void pullUnitsCloserToPerimeter() {
         for (Hex hex : currentProvince.hexList) {
-            if (hex.aiData.firstLine || hex.aiData.secondLine) continue; // already at perimeter
             if (!hex.containsUnit()) continue;
             Unit unit = hex.unit;
             if (!unit.isReadyToMove()) continue;
+            if (unit.currentHex.isSea()) continue; // 海上单位留给海上远征逻辑
+
+            if (hex.aiData.secondLine) {
+                tryToAdvanceUnitToFirstLine(unit);
+                continue;
+            }
+
             Hex targetHex = getClosestHexInPerimeter(unit);
             if (targetHex == null) {
                 targetHex = getClosestHexNearNeutralLands(unit);
             }
+            if (targetHex == null) {
+                targetHex = getFurthestHexFromCapital();
+            }
             if (targetHex == null) continue;
             getMassMarchManager().performForSingleUnit(unit, targetHex);
         }
+    }
+
+
+    private void tryToAdvanceUnitToFirstLine(Unit unit) {
+        for (int dir = 0; dir < 6; dir++) {
+            Hex adjacentHex = unit.currentHex.getAdjacentHex(dir);
+            if (!isWorkable(adjacentHex)) continue;
+            if (!adjacentHex.sameFraction(unit.currentHex)) continue;
+            if (!adjacentHex.isFree()) continue;
+            if (!adjacentHex.aiData.firstLine) continue;
+            sendUnitDirectly(unit, adjacentHex);
+            return;
+        }
+    }
+
+
+    Hex getFurthestHexFromCapital() {
+        Hex capital = currentProvince.getCapital();
+        if (capital == null) return null;
+
+        Hex bestHex = null;
+        double maxDistance = 0;
+        for (Hex hex : currentProvince.hexList) {
+            double distance = hex.pos.fastDistanceTo(capital.pos);
+            if (bestHex == null || distance > maxDistance) {
+                bestHex = hex;
+                maxDistance = distance;
+            }
+        }
+        return bestHex;
     }
 
 
@@ -691,7 +909,12 @@ public class AiMaster extends AbstractAi {
 
     void syncProvince() {
         addCurrentlyOwnedTags();
+        if (currentProvince == null || currentProvince.hexList.size() == 0) {
+            reacquireCurrentProvince();
+            return;
+        }
         Hex capital = currentProvince.getCapital();
+        if (capital == null) return;
         Province provinceByHex = fieldManager.getProvinceByHex(capital);
         if (provinceByHex == currentProvince) return;
         if (provinceByHex == null) return;
@@ -699,6 +922,26 @@ public class AiMaster extends AbstractAi {
         // province object changed
         currentProvince = provinceByHex;
         updateCurrentlyOwned();
+    }
+
+
+    private void reacquireCurrentProvince() {
+        currentProvince = null;
+
+        for (Unit unit : gameController.unitList) {
+            if (unit.getFraction() != fraction) continue;
+            Province province = fieldManager.getProvinceByHex(unit.currentHex);
+            if (province == null) continue;
+            if (province.getFraction() != fraction) continue;
+            currentProvince = province;
+            updateCurrentlyOwned();
+            return;
+        }
+
+        currentProvince = getBiggestOwnedProvince();
+        if (currentProvince != null) {
+            updateCurrentlyOwned();
+        }
     }
 
 
@@ -746,6 +989,7 @@ public class AiMaster extends AbstractAi {
                 if (!isWorkable(adjacentHex)) continue;
                 if (!adjacentHex.isNeutral()) continue;
                 if (adjacentHex.containsMountain()) continue;
+                if (adjacentHex.isSea()) continue;
                 if (adjacentNeutralLandsList.contains(adjacentHex)) continue;
                 adjacentNeutralLandsList.add(adjacentHex);
             }
@@ -985,6 +1229,7 @@ public class AiMaster extends AbstractAi {
         while (currentProvince.money >= GameRules.PRICE_UNIT) {
             if (!currentProvince.containsTrees()) break;
             Hex hex = getWorstTree();
+            if (hex == null) break;
             buildUnit(hex, 1);
         }
     }
@@ -1007,6 +1252,7 @@ public class AiMaster extends AbstractAi {
         ArrayList<Hex> capturableNeutralLands = new ArrayList<>();
         for (Hex hex : adjacentNeutralLandsList) {
             if (hex.containsMountain()) continue;
+            if (hex.isSea()) continue;
             capturableNeutralLands.add(hex);
         }
         if (capturableNeutralLands.size() == 0) return null;
@@ -1131,6 +1377,14 @@ public class AiMaster extends AbstractAi {
 
     void sendUnitDirectly(Unit unit, Hex targetHex) {
         // should be careful with calling this method in attackManager
+        if (unit == null || targetHex == null) return;
+        if (currentProvince == null || currentProvince.hexList.size() == 0) {
+            reacquireCurrentProvince();
+            if (currentProvince == null) return;
+        }
+        if (!targetHex.sameFraction(unit.currentHex) &&
+                (targetHex.containsSiege() || !targetHex.canBeAttackedBy(unit))) return;
+
         checkForUnitMovementProblems(unit, targetHex);
         gameController.moveUnit(unit, targetHex, currentProvince);
         syncProvince();
@@ -1405,6 +1659,7 @@ public class AiMaster extends AbstractAi {
 
 
     void buildTower(Hex hex, int targetDefense) {
+        if (hex == null || hex.isSea()) return;
         switch (targetDefense) {
             default:
                 System.out.println("AiMaster.buildTower: problem");
@@ -1441,15 +1696,19 @@ public class AiMaster extends AbstractAi {
     }
 
 
-    Hex getBestPlaceForNewFarm() {
-        Hex bestHex = null;
-        double maxAttractiveness = 0;
-        for (Hex hex : currentProvince.hexList) {
-            if (!isHexSuitableForNewFarm(hex)) continue;
-            double currentAttractiveness = hex.aiData.attractiveness;
-            if (hex.aiData.firstLine) {
-                currentAttractiveness *= 0.5;
-            }
+      Hex getBestPlaceForNewFarm() {
+          boolean provinceHasPort = gameController.fieldManager.provinceHasUsablePort(currentProvince);
+          Hex bestHex = null;
+          double maxAttractiveness = 0;
+          for (Hex hex : currentProvince.hexList) {
+              if (hex.isSea()) continue;
+              if (!isHexSuitableForNewFarm(hex)) continue;
+              // 省份还没有可用港口时，沿海陆格留给港口
+              if (!provinceHasPort && gameController.fieldManager.hasSeaNeighbor(hex)) continue;
+              double currentAttractiveness = hex.aiData.attractiveness;
+              if (hex.aiData.firstLine) {
+                  currentAttractiveness *= 0.5;
+              }
             if (bestHex == null || currentAttractiveness > maxAttractiveness) {
                 bestHex = hex;
                 maxAttractiveness = currentAttractiveness;
@@ -1486,18 +1745,20 @@ public class AiMaster extends AbstractAi {
 
 
     Hex getRandomEmptyHex(ArrayList<Hex> list) {
-        if (!doesListHaveEmptyHexes(list)) return null;
-
-        while (true) {
-            int index = YioGdxGame.random.nextInt(list.size());
-            Hex hex = list.get(index);
-            if (hex.isEmpty()) return hex;
+        ArrayList<Hex> candidates = new ArrayList<>();
+        for (Hex hex : list) {
+            if (hex.isSea()) continue;
+            if (!hex.isEmpty()) continue;
+            candidates.add(hex);
         }
+        if (candidates.size() == 0) return null;
+        return candidates.get(YioGdxGame.random.nextInt(candidates.size()));
     }
 
 
     boolean doesListHaveEmptyHexes(ArrayList<Hex> list) {
         for (Hex hex : list) {
+            if (hex.isSea()) continue;
             if (hex.isEmpty()) return true;
         }
         return false;
@@ -1507,6 +1768,7 @@ public class AiMaster extends AbstractAi {
     Hex getWorstTree() {
         Hex resultHex = null;
         for (Hex hex : currentProvince.hexList) {
+            if (hex.isSea()) continue;
             if (!hex.containsTree()) continue;
             if (resultHex == null || hex.aiData.attractiveness > resultHex.aiData.attractiveness) {
                 resultHex = hex;
@@ -1613,6 +1875,11 @@ public class AiMaster extends AbstractAi {
 
 
     void buildUnit(Hex hex, int strength) {
+        if (hex == null || hex.isSea()) return;
+        if (currentProvince == null || currentProvince.hexList.size() == 0) {
+            reacquireCurrentProvince();
+            if (currentProvince == null) return;
+        }
         if (strength > 4) {
             if(strength > 5){
                 return;
@@ -1628,6 +1895,7 @@ public class AiMaster extends AbstractAi {
 
 
     Unit mergeUnits(Unit kamikaze, Unit target) {
+        if (kamikaze == null || target == null) return null;
         if (kamikaze.strength>=5 || target.strength >= 5) {
             return null;
         }
@@ -1826,6 +2094,7 @@ public class AiMaster extends AbstractAi {
 
 
     boolean isHexSuitableForNewTower(Hex hex, int targetDefense) {
+        if (hex.isSea()) return false;
         if (!hex.isEmpty()) return false;
         if (hex.aiData.solidDefense >= targetDefense) return false;
         if (hex.getDefenseNumber() < 2 && hex.aiData.firstLine) return true;
@@ -1839,8 +2108,12 @@ public class AiMaster extends AbstractAi {
             return taxChange < profit + 50;
         }
         if (money > 200) {
-            return taxChange < profit + 20;
+            int margin = 20;
+            if (difficulty >= Difficulty.HARD) margin = 35;
+            if (difficulty >= Difficulty.EXPERT) margin = 50;
+            return taxChange < profit + margin;
         }
+        if (difficulty >= Difficulty.HARD) return taxChange < profit;
         return taxChange < profit - 7;
     }
 
@@ -1965,17 +2238,23 @@ public class AiMaster extends AbstractAi {
     }
 
 
-    boolean doesProvinceHaveHexForNewFarm() {
-        for (Hex hex : currentProvince.hexList) {
-            if (isHexSuitableForNewFarm(hex)) return true;
-        }
-        return false;
-    }
+      boolean doesProvinceHaveHexForNewFarm() {
+          boolean provinceHasPort = gameController.fieldManager.provinceHasUsablePort(currentProvince);
+          for (Hex hex : currentProvince.hexList) {
+              if (!isHexSuitableForNewFarm(hex)) continue;
+              if (!provinceHasPort && gameController.fieldManager.hasSeaNeighbor(hex)) continue;
+              return true;
+          }
+          return false;
+      }
 
 
     boolean isHexSuitableForNewFarm(Hex hex) {
+        if (hex.isSea()) return false;
         if (!hex.isEmpty()) return false;
         if (currentProvince.hexList.size() >= 10 && hex.aiData.firstLine && currentProvince.getFreeLandNum()>=2) return false;
+        if (gameController.fieldManager.isAdjacentToOwnPortWater(hex, hex.fraction)) return false; // 港口落点保留空地
+        if (gameController.fieldManager.hasSeaNeighbor(hex)) return false; // 沿海陆格永远留给港口
         return hex.hasThisSupportiveObjectNearby(Obj.TOWN) || hex.hasThisSupportiveObjectNearby(Obj.FARM);
     }
 

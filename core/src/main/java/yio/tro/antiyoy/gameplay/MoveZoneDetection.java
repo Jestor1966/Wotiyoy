@@ -43,7 +43,32 @@ public class MoveZoneDetection {
 
 
     public static boolean canBuildFarmOnHex(Hex hex) {
-        return hex.hasThisSupportiveObjectNearby(Obj.FARM) || hex.hasThisSupportiveObjectNearby(Obj.TOWN) || hex.hasThisSupportiveObjectNearby(Obj.CITY);
+        if (hex.sea && !hex.inPortRange) return false; // farms only in port water
+        if (hex.sea && hex.portOwnerFraction != hex.fraction) return false; // only own port water
+        return hex.hasThisSupportiveObjectNearby(Obj.FARM) || hex.hasThisSupportiveObjectNearby(Obj.TOWN)
+                || hex.hasThisSupportiveObjectNearby(Obj.CITY) || hex.hasThisSupportiveObjectNearby(Obj.PORT);
+    }
+
+
+    public static boolean canBuildPortOnHex(Hex hex) {
+        if (!hex.active) return false;
+        if (hex.sea) return false;
+        if (!hex.isFree()) return false;
+        if (!hex.fieldManager.hasSeaNeighbor(hex)) return false;
+        return true;
+    }
+
+
+    public ArrayList<Hex> detectMoveZoneForPort() {
+        fieldManager.moveZoneManager.clear();
+        unFlagAllHexesInArrayList(fieldManager.activeHexes);
+        result.clear();
+        for (Hex hex : fieldManager.selectedProvince.hexList) {
+            if (!canBuildPortOnHex(hex)) continue;
+            hex.inMoveZone = true;
+            result.add(hex);
+        }
+        return result;
     }
 
 
@@ -78,6 +103,15 @@ public class MoveZoneDetection {
         for (int dir = 0; dir < 6; dir++) {
             adjHex = tempHex.getAdjacentHex(dir);
             if (!adjHex.active) continue;
+            if (adjHex.isSea()) {
+                if (tempHex.isSea()) {
+                    // already at sea: roam freely, but cannot use another faction's port water
+                    if (adjHex.inPortRange && adjHex.portOwnerFraction != startHex.fraction) continue;
+                } else {
+                    // on land: can only step into own port water
+                    if (!adjHex.inPortRange || adjHex.portOwnerFraction != startHex.fraction) continue;
+                }
+            }
             if (adjHex.flag) continue;
 
             if (adjHex.sameFraction(startHex)) {

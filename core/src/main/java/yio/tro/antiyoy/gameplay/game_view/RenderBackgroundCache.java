@@ -29,6 +29,7 @@ public class RenderBackgroundCache extends GameRender {
     ObjectPoolYio<CacheItem> poolItems;
     PointYio tempPoint;
     public boolean updateAllowed;
+    int animCacheUpdateCounter;
     boolean fullCacheUpdateInProgress;
     int fullCacheUpdateIndex;
 
@@ -165,7 +166,9 @@ public class RenderBackgroundCache extends GameRender {
 
     @Override
     public void render() {
+        RectangleYio cameraFrame = gameController.cameraController.frame;
         for (CacheItem item : items) {
+            if (!item.position.isInCollisionWith(cameraFrame)) continue;
             GraphicsYio.drawByRectangle(
                     batchMovable,
                     item.textureRegion,
@@ -177,8 +180,17 @@ public class RenderBackgroundCache extends GameRender {
 
     void updateCacheNearAnimHexes() {
         if (DebugFlags.testMode) return;
-        if (!isThereAtLeastOneAnimHex()) return;
+        if (!isThereAtLeastOneAnimHex()) {
+            animCacheUpdateCounter = 0;
+            return;
+        }
         if (!isUpdateAllowed()) return;
+
+        // hex animations are forced off in this build, so the tiles barely change
+        // between frames; re-rendering them every frame is wasted GPU work on mobile
+        animCacheUpdateCounter++;
+        if (animCacheUpdateCounter < 3) return;
+        animCacheUpdateCounter = 0;
 
         updateAnimBounds();
 
@@ -296,30 +308,36 @@ public class RenderBackgroundCache extends GameRender {
     private void renderCacheItem(CacheItem item) {
         FrameBuffer frameBuffer = item.frameBuffer;
         frameBuffer.begin();
-        Gdx.gl.glClearColor(0, 0, 0, 1);
-        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+        try {
+            Gdx.gl.glClearColor(0, 0, 0, 1);
+            Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
-        tempPoint.set(item.position.x + item.position.width / 2, item.position.y + item.position.height / 2); // current center
-        cacheCam.translate(tempPoint.x - cacheCam.position.x, tempPoint.y - cacheCam.position.y);
-        cacheFrame.setBy(item.position);
+            tempPoint.set(item.position.x + item.position.width / 2, item.position.y + item.position.height / 2); // current center
+            cacheCam.translate(tempPoint.x - cacheCam.position.x, tempPoint.y - cacheCam.position.y);
+            cacheFrame.setBy(item.position);
 
-        cacheCam.update();
-        batchCache.setProjectionMatrix(cacheCam.combined);
-        renderCache();
+            cacheCam.update();
+            batchCache.setProjectionMatrix(cacheCam.combined);
+            renderCache();
 
-        applyFrameBuffer(item, frameBuffer);
-        frameBuffer.end();
+            applyFrameBuffer(item, frameBuffer);
+        } finally {
+            frameBuffer.end();
+        }
     }
 
 
     private void renderCache() {
         batchCache.begin();
-        renderBackground();
         int actualZoomQuality = gameView.currentZoomQuality;
-        gameView.currentZoomQuality = 2;
-        renderHexField();
-        gameView.currentZoomQuality = actualZoomQuality;
-        batchCache.end();
+        try {
+            renderBackground();
+            gameView.currentZoomQuality = 2;
+            renderHexField();
+        } finally {
+            gameView.currentZoomQuality = actualZoomQuality;
+            batchCache.end();
+        }
         Gdx.gl.glDisable(GL20.GL_DEPTH_TEST);
     }
 
@@ -412,6 +430,7 @@ public class RenderBackgroundCache extends GameRender {
 
     private void renderSolidObjects() {
         for (Hex hex : gameController.fieldManager.solidObjects) {
+            if (!isPosInCacheFrame(hex.getPos(), hexViewSize)) continue;
             renderSolidObject(batchCache, hex.getPos(), hex);
         }
     }

@@ -10,7 +10,17 @@ public class GameRules {
     public static final int PRICE_TOWER = 15;
     public static final int PRICE_FARM = 12;
     public static final int PRICE_STRONG_TOWER = 35;
+    public static final int PRICE_PORT = 15;
     public static final int PRICE_MOUNTAIN = 0;
+
+
+    /**
+     * 特殊单位（弓箭手/弩车/炮车/骑兵/重骑兵等）：
+     * 强度 5 及以上，不允许参与单位合成。
+     */
+    public static boolean isSpecialUnitStrength(int strength) {
+        return strength >= 5;
+    }
 
     public static final int PRICE_TREE = 10;
     public static final int FARM_INCOME = 4;
@@ -52,6 +62,7 @@ public class GameRules {
     public static boolean landscape;
     public static boolean keepDifferentProvinceNames;
     public static int provinceMaxMoney; // -1 means unlimited
+    public static int mapType; // 0 - default, 1 - continental
     public static boolean editorColorFixApplied;
     public static int editorSlotNumber;
     public static int genProvinces;
@@ -79,6 +90,7 @@ public class GameRules {
         landscape = false;
         keepDifferentProvinceNames = false;
         provinceMaxMoney = -1;
+        mapType = 0;
         editorColorFixApplied = false;
         diplomaticRelationsLocked = false;
         canCityDestory = false;

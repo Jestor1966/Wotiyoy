@@ -62,6 +62,7 @@ public class AiBalancerGenericRules extends AiExpertGenericRules implements Comp
 
     private void killRedundantUnits(Province province) {
         while (province.money >= GameRules.PRICE_UNIT && province.getProfit() >= 0) {
+            int moneyBefore = province.money;
             Unit unitWithMaxStrengh = findUnitWithMaxStrenghExceptKnight(province);
             if (unitWithMaxStrengh == null) break;
             if (!canProvinceBuildUnit(province, 1)) break;
@@ -70,6 +71,7 @@ public class AiBalancerGenericRules extends AiExpertGenericRules implements Comp
             }else{
                 return;
             }
+            if (province.money == moneyBefore) break; // no progress -> avoid endless loop
         }
     }
 
@@ -115,6 +117,12 @@ public class AiBalancerGenericRules extends AiExpertGenericRules implements Comp
     void decideAboutUnit(Unit unit, ArrayList<Hex> moveZone, Province province) {
         if (!unit.isReadyToMove()) {
             System.out.println("AiBalancerGenericRules.decideAboutUnit: received unit that is not ready to move");
+            return;
+        }
+
+        // 海上单位交给海上远征逻辑：沿最短海路前往最近的非己方大陆
+        if (unit.currentHex.isSea()) {
+            moveAfkUnit(province, unit);
             return;
         }
 
@@ -291,11 +299,13 @@ public class AiBalancerGenericRules extends AiExpertGenericRules implements Comp
             }
 
             while (canProvinceBuildUnit(province, i)) {
+                int moneyBefore = province.money;
                 if (!tryToAttackWithStrength(province,i)) {
                     if (!tryToBuiltUnitInsideProvince(province, i)) {
                         break;
                     }
                 }
+                if (province.money == moneyBefore) break; // no progress -> avoid endless loop
                 //System.out.println("If you in the loop try to get out.  "+i);
             }
         }

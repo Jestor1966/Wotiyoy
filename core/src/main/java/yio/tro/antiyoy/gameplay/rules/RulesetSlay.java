@@ -40,6 +40,10 @@ public class RulesetSlay extends Ruleset{
 
     @Override
     public boolean canMergeUnits(Unit unit1, Unit unit2) {
+        // 特殊单位不允许参与合成（弓箭手/弩车/炮车/骑兵/重骑兵等）
+        if (GameRules.isSpecialUnitStrength(unit1.strength) || GameRules.isSpecialUnitStrength(unit2.strength)) {
+            return false;
+        }
         int mergedUnitStrength = gameController.mergedUnitStrength(unit1, unit2);
 
         return mergedUnitStrength <= 4;
@@ -49,6 +53,9 @@ public class RulesetSlay extends Ruleset{
     @Override
     public int getHexIncome(Hex hex) {
         if (hex.containsTree()) {
+            return 0;
+        }
+        if (hex.isSea()) {
             return 0;
         }
         return 1;

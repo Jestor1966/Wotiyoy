@@ -37,7 +37,7 @@ public class SceneEditorObjectPanel extends AbstractEditorPanel{
 
         objectButtons.clear();
         ButtonYio objectButton;
-        for (int i = 0; i < 13; i++) {
+        for (int i = 0; i < 14; i++) {
             RectangleYio position = generateSquare(
                     (0.07 + 0.07 * i) / YioGdxGame.screenRatio,
                     SceneEditorOverlay.PANEL_HEIGHT,
@@ -88,10 +88,13 @@ public class SceneEditorObjectPanel extends AbstractEditorPanel{
                 case 12:
                     menuControllerYio.loadButtonOnce(objectButton, "field_elements/label_mark.png");
                     break;
+                case 13:
+                    menuControllerYio.loadButtonOnce(objectButton, "field_elements/port_low.png");
+                    break;
             }
         }
 
-        for (int i = 160; i <= 175; i++) {
+        for (int i = 160; i <= 176; i++) {
             ButtonYio buttonYio = menuControllerYio.getButtonById(i);
             if (buttonYio == null) continue;
 
@@ -123,7 +126,7 @@ public class SceneEditorObjectPanel extends AbstractEditorPanel{
             scrollController.setActive(false);
         }
 
-        for (int i = 160; i <= 175; i++) {
+        for (int i = 160; i <= 176; i++) {
             ButtonYio buttonYio = menuControllerYio.getButtonById(i);
             if (buttonYio == null) continue;
             buttonYio.destroy();

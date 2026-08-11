@@ -15,7 +15,8 @@ public class Hex implements ReusableYio, EncodeableYio{
 
     public boolean active, selected, changingFraction, flag, inMoveZone, inArcherRange, genFlag, ignoreTouch;
     public int index1, index2, moveZoneNumber, genPotential, visualDiversityIndex,visualDiversityIndex2,visualDiversityIndex3;
-    public boolean sea;
+    public boolean sea, inPortRange;
+    public int portOwnerFraction = -1;
     public PointYio pos, fieldPos;
     private GameController gameController;
     public FieldManager fieldManager;
@@ -185,6 +186,11 @@ public class Hex implements ReusableYio, EncodeableYio{
         return objectInside == Obj.TOWER || objectInside == Obj.STRONG_TOWER || objectInside == Obj.FORT;
     }
 
+
+    public boolean containsPort() {
+        return objectInside == Obj.PORT;
+    }
+
     public boolean containsNormalTower() {
         return objectInside == Obj.TOWER || objectInside == Obj.STRONG_TOWER;
     }
@@ -213,7 +219,8 @@ public class Hex implements ReusableYio, EncodeableYio{
                 || objectInside == Obj.MOUNTAIN
                 || objectInside == Obj.HILL
                 || objectInside == Obj.FORT
-                || objectInside == Obj.CITY;
+                || objectInside == Obj.CITY
+                || objectInside == Obj.PORT;
     }
 
     public boolean containRevoltCantDestory(){
@@ -306,6 +313,7 @@ public class Hex implements ReusableYio, EncodeableYio{
                 defenseNumber = 1;
             }
         }
+        if (this.objectInside == Obj.PORT) defenseNumber = 1;
         if (this.objectInside == Obj.TOWER) defenseNumber = 2;
         if (this.objectInside == Obj.STRONG_TOWER) defenseNumber = 3;
         if (this.objectInside == Obj.MOUNTAIN) defenseNumber = 10;
@@ -341,6 +349,7 @@ public class Hex implements ReusableYio, EncodeableYio{
                     defenseNumber = Math.max(defenseNumber, 1);
                 }
             }
+            if (neighbour.objectInside == Obj.PORT) defenseNumber = Math.max(defenseNumber, 1);
             if (neighbour.objectInside == Obj.TOWER) defenseNumber = Math.max(defenseNumber, 2);
             if (neighbour.objectInside == Obj.STRONG_TOWER) defenseNumber = Math.max(defenseNumber, 3);
             if (neighbour.objectInside == Obj.MOUNTAIN) defenseNumber = Math.max(defenseNumber, 10);
@@ -635,9 +644,8 @@ public class Hex implements ReusableYio, EncodeableYio{
         boolean canUnitAttackHex = gameController.canUnitAttackHex(unit.strength, unit.getFraction(), this);
 
         if (GameRules.replayMode) {
-            if (!canUnitAttackHex) {
-                System.out.println("Problem in Hex.canBeAttackedBy(): " + this);
-            }
+            // during replay a recorded move is always executed, even if the
+            // current validation disagrees; the check is only informational
             return true;
         }
 

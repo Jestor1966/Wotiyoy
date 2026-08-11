@@ -108,6 +108,9 @@ public class EncodeManager {
         encodeLevelSize();
         encodeGeneralInfo();
         encodeMapName();
+        encodeMapAuthor();
+        encodeMapDescription();
+        encodeMapCreateTime();
         encodeLandscape();
         encodeProvinceMaxMoney();
         encodeKeepDifferentProvinceNames();
@@ -193,6 +196,32 @@ public class EncodeManager {
             name = savedNameString;
         }
         builder.append(name);
+    }
+
+
+    private void encodeMapAuthor() {
+        startSection("map_author");
+        int slotNumber = GameRules.editorSlotNumber;
+        String author = getPreferences().getString("slot" + slotNumber + ":author", "");
+        if (author.length() == 0) author = "Anonymous";
+        builder.append(author);
+    }
+
+
+    private void encodeMapDescription() {
+        startSection("map_description");
+        int slotNumber = GameRules.editorSlotNumber;
+        String description = getPreferences().getString("slot" + slotNumber + ":description", "");
+        builder.append(MapInfoCodec.encode(description));
+    }
+
+
+    private void encodeMapCreateTime() {
+        startSection("map_create_time");
+        int slotNumber = GameRules.editorSlotNumber;
+        String createTime = getPreferences().getString("slot" + slotNumber + ":create_time", "");
+        if (createTime.length() == 0) createTime = "1970-01-01";
+        builder.append(createTime);
     }
 
 

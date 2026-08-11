@@ -51,6 +51,7 @@ public class RenderDiplomaticIndicators extends GameRender{
     private void renderRelation(Province province, int relation) {
         Hex capital = province.getCapital();
         if (capital == null) return;
+        if (!isPosInViewFrame(capital.pos, 5 * GraphicsYio.borderThickness)) return;
         TextureRegion relationTexture = getRelationTexture(relation);
         if (relationTexture == null) return;
         tempCircle.center.setBy(capital.pos);

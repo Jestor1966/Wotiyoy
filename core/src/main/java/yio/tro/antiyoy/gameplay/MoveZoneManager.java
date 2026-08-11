@@ -110,6 +110,15 @@ public class MoveZoneManager {
     }
 
 
+    public void detectAndShowMoveZoneForPort() {
+        moveZone = moveZoneDetection.detectMoveZoneForPort();
+        checkToForceMoveZoneAnims();
+        appearFactor.setValues(0, 0);
+        appearFactor.appear(3, 1.5);
+        getSelectionController().getBlackoutFactor().appear(3, 1.5);
+    }
+
+
     private GameController getGameController() {
         return fieldManager.gameController;
     }

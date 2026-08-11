@@ -26,6 +26,12 @@ public class FieldManager implements EncodeableYio {
 
     public final GameController gameController;
     public boolean letsCheckAnimHexes;
+    public int landHexesQuantity;
+    public int[] fractionLandHexes;
+    public ArrayList<ArrayList<Hex>> continents = new ArrayList<>();
+    private ArrayList<Integer> continentTotalLand = new ArrayList<>();
+    private ArrayList<int[]> continentFractionLand = new ArrayList<>();
+    private String[] fractionTitles = new String[0];
     public float hexSize;
     public float hexStep1;
     public float hexStep2;
@@ -264,6 +270,7 @@ public class FieldManager implements EncodeableYio {
         // kingdom can be multiple provinces of same fraction
         int fraction = -1;
         for (Province province : provinces) {
+            if (province.hexList.size() == 0) continue; // 防御：跳过空省份
             if (province.hexList.get(0).isNeutral()) continue;
 
             if (fraction == -1) {
@@ -283,6 +290,7 @@ public class FieldManager implements EncodeableYio {
     public int numberOfDifferentActiveProvinces() {
         int c = 0;
         for (Province province : provinces) {
+            if (province.hexList.size() == 0) continue; // 防御：跳过空省份
             if (province.hexList.get(0).isNeutral()) continue;
             c++;
         }
@@ -451,7 +459,7 @@ public class FieldManager implements EncodeableYio {
         if (intersectedProvince != null) {
             for (Hex hex : list) {
                 if (intersectedProvince.containsHex(hex)) continue;
-                intersectedProvince.addHex(hex);
+                addHexToProvince(intersectedProvince, hex);
             }
             return;
         }
@@ -762,7 +770,9 @@ public class FieldManager implements EncodeableYio {
         ListIterator iterator = animHexes.listIterator();
         while (iterator.hasNext()) {
             Hex h = (Hex) iterator.next();
-            if (h.animFactor.get() > 0.99 && !(h.containsUnit() && h.unit.moveFactor.get() < 1) && System.currentTimeMillis() > h.animStartTime + 250) {
+            if (h.animFactor.get() > 0.99
+                    && !(h.containsUnit() && !h.isSea() && h.unit.moveFactor.get() < 1)
+                    && System.currentTimeMillis() > h.animStartTime + 250) {
                 h.changingFraction = false;
                 iterator.remove();
             }
@@ -1043,6 +1053,7 @@ public class FieldManager implements EncodeableYio {
 
     public void addSolidObject(Hex hex, int type) {
         if (hex == null || !hex.active) return;
+        if (hex.sea && isBuildingType(type)) return;
         if (hex.objectInside == type) return;
         if (!hex.canContainObjects) return;
 
@@ -1052,6 +1063,22 @@ public class FieldManager implements EncodeableYio {
 
         hex.setObjectInside(type);
         solidObjects.listIterator().add(hex);
+    }
+
+
+    private boolean isBuildingType(int type) {
+        switch (type) {
+            case Obj.TOWN:
+            case Obj.TOWER:
+            case Obj.FARM:
+            case Obj.STRONG_TOWER:
+            case Obj.FORT:
+            case Obj.CITY:
+            case Obj.PORT:
+                return true;
+            default:
+                return false;
+        }
     }
 
     public void controlAll(Province province){
@@ -1077,12 +1104,16 @@ public class FieldManager implements EncodeableYio {
     }
 
     public void cleanOutHex(Hex hex) {
+        boolean wasPort = hex.objectInside == Obj.PORT;
         if (hex.containsUnit()) {
             gameController.getMatchStatistics().onUnitKilled();
             gameController.getUnitList().remove(hex.unit);
             hex.unit = null;
         }
         hex.setObjectInside(0);
+        if (wasPort) {
+            markPortRange(hex, false);
+        }
         addAnimHex(hex);
         ListIterator iterator = solidObjects.listIterator();
         while (iterator.hasNext()) {
@@ -1102,6 +1133,7 @@ public class FieldManager implements EncodeableYio {
 
     public void archerShot(Hex targetHex) {
         if (targetHex == null) return;
+        gameController.replayManager.onArcherShot(targetHex);
         cleanOutHex(targetHex);
         addSolidObject(targetHex, Obj.GRAVE);
         gameController.updateCacheOnceAfterSomeTime();
@@ -1179,6 +1211,7 @@ public class FieldManager implements EncodeableYio {
 
     public void cannonShot(Hex targetHex) {
         if (targetHex == null) return;
+        gameController.replayManager.onCannonShot(targetHex);
         if (targetHex.containsSiege()) {
             setHexFraction(targetHex, gameController.turn); // full capture (province joining etc.)
             gameController.updateCacheOnceAfterSomeTime();
@@ -1210,134 +1243,6 @@ public class FieldManager implements EncodeableYio {
         }
     }
 
-
-    public void crossbowKill() {
-        Hex temp, temp2, temp3;
-        int attacked = 0;
-        for (Hex hex : activeHexes) {
-            if (hex.hasUnit()) {
-                if(hex.unit.strength==7){
-                    for (int m = 0; m < 6; m++) {
-                        if(attacked==3){
-                            break;
-                        }
-                        temp = hex.getAdjacentHex(m);
-                        if(temp.index1<0 || temp.index2<0){
-                            continue;
-                        }
-                        for (int n = 0; n < 6; n++) {
-                            if (attacked==3){
-                                break;
-                            }
-
-                            temp2 = temp.getAdjacentHex(n);
-                            if(temp2.index1<0 || temp2.index2<0){
-                                continue;
-                            }
-                            if(temp2.active && temp2.hasUnit() && !(temp2.fraction==hex.fraction) && diplomacyManager.isWar(hex, temp2)&& gameController.canUnitAttackHex(2,hex.fraction,temp2) && Math.random()>=0.6){
-                                cleanOutHex(temp2);
-                                addSolidObject(temp2,Obj.GRAVE);
-                                attacked+=1;
-                                break;
-                            }
-                            for (int b = 0; b < 6; b++) {
-                                if (attacked==3){
-                                    break;
-                                }
-                                temp3 = temp2.getAdjacentHex(n);
-                                if(temp3.index1<0 || temp3.index2<0){
-                                    continue;
-                                }
-                                if(temp3.active && temp3.hasUnit() && !(temp3.fraction==hex.fraction) && diplomacyManager.isWar(hex, temp3)&&gameController.canUnitAttackHex(2,hex.fraction,temp3)&& Math.random()>=0.8){
-                                    cleanOutHex(temp3);
-                                    addSolidObject(temp3,Obj.GRAVE);
-                                    attacked+=1;
-                                    break;
-                                }
-                            }
-                        }
-
-                        if(temp.active && temp.hasUnit() && !(temp.fraction==hex.fraction) && diplomacyManager.isWar(hex, temp)&& gameController.canUnitAttackHex(2,hex.fraction,temp) &&Math.random()>=0.4){
-                            cleanOutHex(temp);
-                            addSolidObject(temp,Obj.GRAVE);
-                            attacked+=1;
-                            break;
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-    public void gunboatKill() {
-        Hex temp, temp2, temp3;
-        int attacked = 0;
-        int max=(int)(Math.random()*(6-2)+2);
-        for (Hex hex : activeHexes) {
-            if (hex.hasUnit()) {
-                if(hex.unit.strength==6){
-                    for (int m = 0; m < 6; m++) {
-                        if(attacked==max){
-                            break;
-                        }
-                        temp = hex.getAdjacentHex(m);
-                        if(temp.index1<0 || temp.index2<0){
-                            continue;
-                        }
-                        for (int n = 0; n < 6; n++) {
-                            if (attacked==max){
-                                break;
-                            }
-                            temp2 = temp.getAdjacentHex(n);
-                            if(temp2.index1<0 || temp2.index2<0){
-                                continue;
-                            }
-                            if(temp2.active && temp2.hasUnit() && !(temp2.fraction==hex.fraction) && diplomacyManager.isWar(hex, temp2)&& gameController.canUnitAttackHex(4,hex.fraction,temp2)&& gameController.predictableRandom.nextInt(10)>=3){
-                                cleanOutHex(temp2);
-                                addSolidObject(temp2,Obj.GRAVE);
-                                attacked+=1;
-                                break;
-                            }
-                            if(temp2.active && temp2.containsNormalTower() && !(temp2.fraction==hex.fraction) && diplomacyManager.isWar(hex, temp2)&& gameController.predictableRandom.nextInt(10)>=3){
-                                cleanOutHex(temp2);
-                                break;
-                            }
-                            if(temp2.active && temp2.objectInside==Obj.FARM && !(temp2.fraction==hex.fraction) && diplomacyManager.isWar(hex, temp2)&& gameController.predictableRandom.nextInt(10)>=6){
-                                cleanOutHex(temp2);
-                                break;
-                            }
-                            for (int b = 0; b < 6; b++) {
-                                if (attacked==max){
-                                    break;
-                                }
-                                temp3 = temp2.getAdjacentHex(n);
-                                if(temp3.index1<0 || temp3.index2<0){
-                                    continue;
-                                }
-                                if(temp3.active && temp3.hasUnit() && !(temp3.fraction==hex.fraction) && diplomacyManager.isWar(hex, temp3)&& gameController.canUnitAttackHex(4,hex.fraction,temp3)&& gameController.predictableRandom.nextInt(10)>=5){
-                                    cleanOutHex(temp3);
-                                    addSolidObject(temp3,Obj.GRAVE);
-                                    attacked+=1;
-                                    break;
-                                }
-                            }
-                        }
-                        if(temp.active && temp.containsSiege() && !(temp.fraction==hex.fraction) && diplomacyManager.isWar(hex, temp)&& gameController.predictableRandom.nextInt(10)>=4){
-                            temp.setFraction(hex.fraction);
-                            temp.changingFraction = true;
-                            break;
-                        }
-                        if(temp.active && temp.hasUnit() && !(temp.fraction==hex.fraction) && diplomacyManager.isWar(hex, temp)&& gameController.canUnitAttackHex(4,hex.fraction,temp) && gameController.predictableRandom.nextInt(10)>=5){
-                            cleanOutHex(temp);
-                            addSolidObject(temp,Obj.GRAVE);
-                            attacked+=1;
-                            break;
-                        }
-                    }
-                }
-            }
-        }
-    }
 
     public static int findMostInArray(int[] a){
         int[] b=new int[50];
@@ -1385,6 +1290,7 @@ public class FieldManager implements EncodeableYio {
     public boolean buildUnit(Province province, Hex hex, int strength) {
         int moneyFix=0;
         if (province == null || hex == null) return false;
+        if (hex.sea && (!hex.inPortRange || hex.portOwnerFraction != province.getFraction())) return false;
         // check for unmergeable situation
         if (isUnmergeableSituationDetected(province, hex, strength)) return false;
 
@@ -1433,7 +1339,7 @@ public class FieldManager implements EncodeableYio {
         addUnit(hex, strength);
         hex.unit.setReadyToMove(false);
         hex.unit.stopJumping();
-        province.addHex(hex);
+        addHexToProvince(province, hex);
         addAnimHex(hex);
         gameController.updateCacheOnceAfterSomeTime();
     }
@@ -1477,6 +1383,7 @@ public class FieldManager implements EncodeableYio {
 
     public boolean buildTower(Province province, Hex hex) {
         if (province == null) return false;
+        if (hex.sea) return false;
         if (province.hasMoneyForTower()) {
             gameController.takeSnapshot();
             gameController.replayManager.onTowerBuilt(hex, false);
@@ -1496,6 +1403,7 @@ public class FieldManager implements EncodeableYio {
 
     public boolean buildStrongTower(Province province, Hex hex) {
         if (province == null) return false;
+        if (hex.sea) return false;
         if (province.hasMoneyForStrongTower()) {
             gameController.takeSnapshot();
             gameController.replayManager.onTowerBuilt(hex, true);
@@ -1515,7 +1423,9 @@ public class FieldManager implements EncodeableYio {
 
     public boolean buildFarm(Province province, Hex hex) {
         if (province == null) return false;
-        if (!hex.hasThisSupportiveObjectNearby(Obj.TOWN) && !hex.hasThisSupportiveObjectNearby(Obj.FARM) && !hex.hasThisSupportiveObjectNearby(Obj.CITY)) {
+        if (hex.sea && (!hex.inPortRange || hex.portOwnerFraction != province.getFraction())) return false; // farms only in own port water
+        if (!hex.hasThisSupportiveObjectNearby(Obj.TOWN) && !hex.hasThisSupportiveObjectNearby(Obj.FARM)
+                && !hex.hasThisSupportiveObjectNearby(Obj.CITY) && !hex.hasThisSupportiveObjectNearby(Obj.PORT)) {
             return false;
         }
 
@@ -1533,6 +1443,559 @@ public class FieldManager implements EncodeableYio {
         // can't build farm
         tickleMoneySign();
         return false;
+    }
+
+
+    public boolean buildPort(Province province, Hex hex) {
+        if (province == null || hex == null) return false;
+        if (hex.sea) return false; // ports are built on coastal land
+        if (!hex.isFree()) return false;
+        if (!hasSeaNeighbor(hex)) return false;
+
+        int price = province.getPortPrice();
+        if (province.money < price) {
+            tickleMoneySign();
+            return false;
+        }
+
+        gameController.takeSnapshot();
+        addSolidObject(hex, Obj.PORT);
+        addAnimHex(hex);
+        province.money -= price;
+        gameController.getMatchStatistics().onMoneySpent(gameController.turn, price);
+        markPortRange(hex, true);
+        gameController.updateCacheOnceAfterSomeTime();
+        return true;
+    }
+
+
+    public boolean hasSeaNeighbor(Hex hex) {
+        for (int i = 0; i < 6; i++) {
+            Hex adjHex = hex.getAdjacentHex(i);
+            if (adjHex == null || adjHex.isNullHex()) continue;
+            if (adjHex.active && adjHex.sea) return true;
+        }
+        return false;
+    }
+
+
+    public boolean aiTryToBuildPort(Province province) {
+        if (province == null) return false;
+
+        ArrayList<ArrayList<Hex>> continents = getContinentsInProvince(province);
+        boolean builtAny = false;
+
+        while (true) {
+            // 财政允许且有合理盈余：建完这座港后至少还能保留一个单位的价格
+            if (province.money < province.getPortPrice() + GameRules.PRICE_UNIT) break;
+
+            // 覆盖整条海岸线：不限单位 3 格内可达，只要沿海空地、水域不重叠
+            Hex portHex = findBestPortHex(province, continents, null);
+            if (portHex == null) break;
+
+            if (buildPort(province, portHex)) {
+                builtAny = true;
+            } else {
+                break; // 建港失败（例如财政突变），停止本轮
+            }
+        }
+        return builtAny;
+    }
+
+
+    /**
+     * 确保省份至少拥有一个可用港口：
+     * 沿海省份还没有港口时优先建造（只要买得起），不要求额外盈余。
+     */
+    public boolean aiTryToBuildEssentialPort(Province province) {
+        if (province == null) return false;
+        ArrayList<ArrayList<Hex>> continents = getContinentsInProvince(province);
+        boolean builtAny = false;
+
+        // 每个大陆（包括跨海新登录的大陆）都保证至少一个可用港口
+        for (ArrayList<Hex> continent : continents) {
+            if (continentHasUsablePort(continent, province.getFraction())) continue; // 该大陆已有可用港口
+            if (province.money < province.getPortPrice()) break;
+
+            ArrayList<ArrayList<Hex>> singleContinent = new ArrayList<>();
+            singleContinent.add(continent);
+            // 第一个港口不要求单位 3 格内可达（单位之后会走向沿海），只要求是沿海空地；树格永远不用
+            Hex portHex = findBestPortHex(province, singleContinent, null);
+            if (portHex == null) continue;
+            if (buildPort(province, portHex)) builtAny = true;
+        }
+        return builtAny;
+    }
+
+
+    /**
+     * 在所有大陆中挑选下一个港口位置：
+     * 优先东西南北向的沿海地块，其次斜向；同优先级优先靠近首都。
+     */
+    private Hex findBestPortHex(Province province, ArrayList<ArrayList<Hex>> continents, HashSet<Hex> reachableLand) {
+        int fraction = province.getFraction();
+        Hex capital = province.getCapital();
+        Hex best = null;
+        int bestPriority = Integer.MAX_VALUE;
+        double bestDist = Double.MAX_VALUE;
+
+        for (ArrayList<Hex> continent : continents) {
+            for (Hex hex : continent) {
+                if (hex.sea) continue;
+                if (hex.containsUnit() || hex.containsBuilding()) continue;
+                if (hex.containsTree()) continue; // 永远不允许使用树格
+                if (reachableLand != null && !reachableLand.contains(hex)) continue; // 扩展港口必须建在单位可达区域
+                if (!hasSeaNeighbor(hex)) continue;
+                if (isPortTooClose(hex, fraction)) continue; // 港口之间保持松散间隔
+
+                int priority = getPortDirectionPriority(hex);
+                double dist = capital == null ? 0 : hex.pos.fastDistanceTo(capital.pos);
+                if (priority < bestPriority || (priority == bestPriority && dist < bestDist)) {
+                    bestPriority = priority;
+                    bestDist = dist;
+                    best = hex;
+                }
+            }
+        }
+        return best;
+    }
+
+
+    /**
+     * 沿海地块的方向优先级：
+     * 海邻居包含东西南北（方向 0/1/3/4）为 0（优先建港），
+     * 只有斜向（方向 2/5）为 1（其次）。
+     */
+    private int getPortDirectionPriority(Hex hex) {
+        for (int dir = 0; dir < 6; dir++) {
+            Hex adj = hex.getAdjacentHex(dir);
+            if (adj == null || adj.isNullHex()) continue;
+            if (!adj.active || !adj.sea) continue;
+            if (dir == 0 || dir == 1 || dir == 3 || dir == 4) return 0;
+        }
+        return 1;
+    }
+
+
+    /**
+     * 港口之间保持松散间隔：候选格两圈范围内不允许存在己方港口，
+     * 避免港口一个挨一个、海域过度重叠。
+     */
+    private boolean isPortTooClose(Hex hex, int fraction) {
+        for (int dir = 0; dir < 6; dir++) {
+            Hex adj = hex.getAdjacentHex(dir);
+            if (adj == null || adj.isNullHex()) continue;
+            if (adj.containsPort() && adj.fraction == fraction) return true;
+            for (int dir2 = 0; dir2 < 6; dir2++) {
+                Hex adj2 = adj.getAdjacentHex(dir2);
+                if (adj2 == null || adj2.isNullHex()) continue;
+                if (adj2.containsPort() && adj2.fraction == fraction) return true;
+            }
+        }
+        return false;
+    }
+
+
+    /**
+     * 大陆上是否存在"可用"的己方港口：
+     * 港口必须仍然覆盖着至少一格属于自己的水域
+     * 且水域旁有己方空地落点（被农场/塔等围死则不可用，需要另建）。
+     */
+    private boolean continentHasUsablePort(ArrayList<Hex> continent, int fraction) {
+        for (Hex hex : continent) {
+            if (!hex.containsPort() || hex.fraction != fraction) continue;
+            for (int i = 0; i < 6; i++) {
+                Hex adjHex = hex.getAdjacentHex(i);
+                if (adjHex == null || adjHex.isNullHex()) continue;
+                if (!adjHex.active || !adjHex.sea) continue;
+                if (!adjHex.inPortRange || adjHex.portOwnerFraction != fraction) continue;
+                // 水域必须仍有单位可以落脚的己方空地，否则判定不可用（被农场/塔等挡路）
+                if (portWaterHasFreeLanding(adjHex, fraction)) return true;
+            }
+        }
+        return false;
+    }
+
+
+    /**
+     * 港口覆盖的水域旁是否有己方空地（单位可以从这里进入水域）。
+     * 农场、防御塔、山地、港口本身等建筑占据的格子不算落点。
+     */
+    private boolean portWaterHasFreeLanding(Hex water, int fraction) {
+        for (int i = 0; i < 6; i++) {
+            Hex adjHex = water.getAdjacentHex(i);
+            if (adjHex == null || adjHex.isNullHex()) continue;
+            if (!adjHex.active || adjHex.isSea()) continue;
+            if (adjHex.fraction != fraction) continue;
+            if (adjHex.containsBuilding() || adjHex.containsUnit()) continue;
+            return true;
+        }
+        return false;
+    }
+
+
+    /**
+     * 己方陆格是否紧邻己方港口水域（该格是单位下海的落点，应保留空地）。
+     */
+    public boolean isAdjacentToOwnPortWater(Hex hex, int fraction) {
+        for (int i = 0; i < 6; i++) {
+            Hex adjHex = hex.getAdjacentHex(i);
+            if (adjHex == null || adjHex.isNullHex()) continue;
+            if (!adjHex.active || !adjHex.sea) continue;
+            if (adjHex.inPortRange && adjHex.portOwnerFraction == fraction) return true;
+        }
+        return false;
+    }
+
+
+    /**
+     * 省份是否已有至少一个可用港口（水域未被敌方覆盖）。
+     */
+    public boolean provinceHasUsablePort(Province province) {
+        if (province == null) return false;
+        return provinceHasUsablePort(province, getContinentsInProvince(province));
+    }
+
+
+    /**
+     * 省份是否横跨多个大陆（登录扩张状态：海军已在新大陆建立桥头堡）。
+     */
+    public boolean provinceHasMultipleContinents(Province province) {
+        if (province == null) return false;
+        return getContinentsInProvince(province).size() >= 2;
+    }
+
+
+    /**
+     * 本大陆是否存在接壤的弱势力（己方收入至少是对方的两倍）。
+     * 存在时应优先在陆地上摧毁该势力，而不是把兵力投入下海。
+     */
+    public boolean hasWeakEnemyOnContinent(Province province) {
+        if (province == null) return false;
+        if (province.hexList.size() == 0) return false;
+        double myIncome = province.getIncome();
+        int myFraction = province.getFraction();
+
+        for (ArrayList<Hex> continent : getContinentsInProvince(province)) {
+            for (Hex hex : continent) {
+                for (int dir = 0; dir < 6; dir++) {
+                    Hex adj = hex.getAdjacentHex(dir);
+                    if (adj == null || adj.isNullHex()) continue;
+                    if (!adj.active || adj.sea) continue;
+                    if (adj.fraction == myFraction) continue;
+                    if (adj.fraction == GameRules.NEUTRAL_FRACTION) continue;
+                    Province enemyProvince = getProvinceByHex(adj);
+                    if (enemyProvince == null) continue;
+                    if (enemyProvince.getFraction() != adj.fraction) continue;
+                    if (myIncome >= enemyProvince.getIncome() * 2) return true;
+                }
+            }
+        }
+        return false;
+    }
+
+
+    private boolean provinceHasUsablePort(Province province, ArrayList<ArrayList<Hex>> continents) {
+        for (ArrayList<Hex> continent : continents) {
+            if (continentHasUsablePort(continent, province.getFraction())) return true;
+        }
+        return false;
+    }
+
+
+    /**
+     * 判断港口可用性的可达区域：
+     * 把每个己方单位所在格和每个农场周围的己方空地格都视作单位位置，
+     * 从这些位置出发按最大移动距离（UNIT_MOVE_LIMIT）扩散，
+     * 覆盖范围内可以抵达港口周围水域；超出范围视为不可达。
+     */
+    public HashSet<Hex> getReachableLandFromUnits(Province province) {
+        HashSet<Hex> visited = new HashSet<>();
+        ArrayList<Hex> queue = new ArrayList<>();
+        int moveLimit = GameRules.UNIT_MOVE_LIMIT;
+
+        // 起点：己方单位所在格
+        for (Hex hex : province.hexList) {
+            if (hex.isSea() || hex.fraction != province.getFraction()) continue;
+            if (!hex.containsUnit()) continue;
+            if (visited.add(hex)) queue.add(hex);
+        }
+
+        // 起点：每个己方农场周围的己方空地格（单位可能从那里出发去下海）
+        for (Hex hex : province.hexList) {
+            if (hex.isSea() || hex.fraction != province.getFraction()) continue;
+            if (hex.objectInside != Obj.FARM) continue;
+            for (int dir = 0; dir < 6; dir++) {
+                Hex adj = hex.getAdjacentHex(dir);
+                if (adj == null || adj.isNullHex()) continue;
+                if (!adj.active || adj.isSea()) continue;
+                if (adj.fraction != province.getFraction()) continue;
+                if (adj.containsBuilding() || adj.containsUnit()) continue; // 起点必须是可站立的空地
+                if (visited.add(adj)) queue.add(adj);
+            }
+        }
+
+        // BFS 沿己方陆地扩散（机制上可以穿过建筑），限制最大移动距离
+        int distance = 0;
+        int index = 0;
+        while (index < queue.size()) {
+            if (distance >= moveLimit) break;
+            int layerEnd = queue.size();
+            for (; index < layerEnd; index++) {
+                Hex hex = queue.get(index);
+                for (int dir = 0; dir < 6; dir++) {
+                    Hex adj = hex.getAdjacentHex(dir);
+                    if (adj == null || adj.isNullHex()) continue;
+                    if (!adj.active || adj.isSea()) continue;
+                    if (adj.fraction != province.getFraction()) continue;
+                    if (visited.contains(adj)) continue;
+                    visited.add(adj);
+                    queue.add(adj);
+                }
+            }
+            distance++;
+        }
+        return visited;
+    }
+
+
+    // a continent is a connected group of at least two land hexes
+    public ArrayList<ArrayList<Hex>> getContinentsInProvince(Province province) {
+        ArrayList<ArrayList<Hex>> continents = new ArrayList<>();
+        ArrayList<Hex> tempList = new ArrayList<>();
+        ArrayList<Hex> propagationList = new ArrayList<>();
+        HashSet<Hex> visited = new HashSet<>();
+        HashSet<Hex> provinceSet = new HashSet<>(province.hexList);
+
+        for (Hex startHex : province.hexList) {
+            if (startHex.sea) continue;
+            if (visited.contains(startHex)) continue;
+
+            tempList.clear();
+            propagationList.clear();
+            propagationList.add(startHex);
+            visited.add(startHex);
+
+            int index = 0;
+            while (index < propagationList.size()) {
+                Hex hex = propagationList.get(index);
+                index++;
+                tempList.add(hex);
+                for (int dir = 0; dir < 6; dir++) {
+                    Hex adjHex = hex.getAdjacentHex(dir);
+                    if (adjHex == null || adjHex.isNullHex()) continue;
+                    if (!adjHex.active || adjHex.sea) continue;
+                    if (visited.contains(adjHex)) continue;
+                    if (!provinceSet.contains(adjHex)) continue;
+                    visited.add(adjHex);
+                    propagationList.add(adjHex);
+                }
+            }
+
+            if (tempList.size() >= 2) {
+                continents.add(new ArrayList<>(tempList));
+            }
+        }
+        return continents;
+    }
+
+
+    public boolean isContinent(ArrayList<Hex> hexes) {
+        if (hexes == null) return false;
+        if (hexes.size() < 2) return false;
+        for (Hex hex : hexes) {
+            if (hex.sea) return false;
+        }
+
+        ArrayList<Hex> tempList = new ArrayList<>();
+        ArrayList<Hex> propagationList = new ArrayList<>();
+        HashSet<Hex> visited = new HashSet<>();
+        Hex firstHex = hexes.get(0);
+        propagationList.add(firstHex);
+        visited.add(firstHex);
+        while (propagationList.size() > 0) {
+            Hex hex = propagationList.remove(0);
+            tempList.add(hex);
+            for (int dir = 0; dir < 6; dir++) {
+                Hex adjHex = hex.getAdjacentHex(dir);
+                if (adjHex == null || adjHex.isNullHex()) continue;
+                if (!adjHex.active || adjHex.sea) continue;
+                if (visited.contains(adjHex)) continue;
+                if (!hexes.contains(adjHex)) continue;
+                visited.add(adjHex);
+                propagationList.add(adjHex);
+            }
+        }
+
+        return tempList.size() == hexes.size();
+    }
+
+
+    public boolean isProvinceContinentSecured(Province province) {
+        for (ArrayList<Hex> continent : getContinentsInProvince(province)) {
+            boolean secured = true;
+            for (Hex hex : continent) {
+                if (hex.isNeutral()) continue;
+                if (hex.sameFraction(province)) continue;
+                secured = false;
+                break;
+            }
+            if (secured) return true; // at least one fully owned continent
+        }
+        return false;
+    }
+
+
+    private boolean portRangeOverlaps(Hex hex, int fraction) {
+        for (int i = 0; i < 6; i++) {
+            Hex adjHex = hex.getAdjacentHex(i);
+            if (adjHex == null || adjHex.isNullHex()) continue;
+            if (!adjHex.active || !adjHex.sea) continue;
+            if (adjHex.inPortRange && adjHex.portOwnerFraction == fraction) return true; // own water already covered by another port
+        }
+        return false;
+    }
+
+
+    public void updateAllPortRanges() {
+        for (Hex hex : activeHexes) {
+            hex.inPortRange = false;
+            hex.portOwnerFraction = -1;
+        }
+        for (Hex hex : activeHexes) {
+            if (!hex.containsPort()) continue;
+            markPortRange(hex, true);
+        }
+    }
+
+
+    public void updateLandStatistics() {
+        // 防御：清理失去所有地块的省份，避免空省份引发崩溃
+        for (int i = provinces.size() - 1; i >= 0; i--) {
+            Province province = provinces.get(i);
+            if (province.hexList.size() > 0) continue;
+            if (selectedProvince == province) selectedProvince = null;
+            provinces.remove(i);
+        }
+
+        landHexesQuantity = 0;
+        for (Hex hex : activeHexes) {
+            if (hex.sea) continue;
+            landHexesQuantity++;
+        }
+
+        fractionLandHexes = new int[GameRules.MAX_FRACTIONS_QUANTITY];
+        for (Province province : provinces) {
+            int fraction = province.getFraction();
+            if (fraction < 0 || fraction >= fractionLandHexes.length) continue;
+            fractionLandHexes[fraction] += province.getLandHexesCount();
+        }
+
+        updateContinentsStatistics();
+    }
+
+
+    /**
+     * 统计每个大陆（陆地连通块，至少 2 格）的地块数量，
+     * 以及各势力在每个大陆上的格子数量，并据此计算头衔：
+     * 势力在任意一个大陆上达到比例阈值即晋升头衔。
+     */
+    private void updateContinentsStatistics() {
+        continents.clear();
+        continentTotalLand.clear();
+        continentFractionLand.clear();
+
+        HashSet<Hex> visited = new HashSet<>();
+        for (Hex hex : activeHexes) {
+            if (hex.sea) continue;
+            if (visited.contains(hex)) continue;
+
+            ArrayList<Hex> continent = new ArrayList<>();
+            ArrayList<Hex> queue = new ArrayList<>();
+            queue.add(hex);
+            visited.add(hex);
+            int index = 0;
+            while (index < queue.size()) {
+                Hex h = queue.get(index);
+                index++;
+                continent.add(h);
+                for (int dir = 0; dir < 6; dir++) {
+                    Hex adj = h.getAdjacentHex(dir);
+                    if (adj == null || adj.isNullHex()) continue;
+                    if (!adj.active || adj.sea) continue;
+                    if (visited.contains(adj)) continue;
+                    visited.add(adj);
+                    queue.add(adj);
+                }
+            }
+
+            if (continent.size() < 2) continue; // 单格孤岛不算大陆
+
+            int[] fractionCounts = new int[GameRules.MAX_FRACTIONS_QUANTITY];
+            for (Hex h : continent) {
+                if (h.fraction >= 0 && h.fraction < fractionCounts.length) {
+                    fractionCounts[h.fraction]++;
+                }
+            }
+            continents.add(continent);
+            continentTotalLand.add(continent.size());
+            continentFractionLand.add(fractionCounts);
+        }
+
+        fractionTitles = new String[GameRules.MAX_FRACTIONS_QUANTITY];
+        for (int f = 0; f < fractionTitles.length; f++) {
+            fractionTitles[f] = computeTitleForFraction(f);
+        }
+    }
+
+
+    private String computeTitleForFraction(int fraction) {
+        double bestRatio = 0;
+        boolean canBeEmpire = false;
+        for (int i = 0; i < continents.size(); i++) {
+            int total = continentTotalLand.get(i);
+            if (total <= 0) continue;
+            int count = continentFractionLand.get(i)[fraction];
+            double ratio = (double) count / total;
+            // 称帝要求：至少在一个大陆拥有超过 8 个地块且达到帝国比例
+            if (count > 8 && ratio >= 0.34) canBeEmpire = true;
+            if (ratio > bestRatio) bestRatio = ratio;
+        }
+        if (bestRatio <= 0) return "";
+        String title = getTitleKeyByRatio(bestRatio);
+        if (title.equals("title_empire") && !canBeEmpire) {
+            return "title_kingdom"; // 占领的地块不够多，不能称帝
+        }
+        return title;
+    }
+
+
+    public String getProvinceTitle(int fraction) {
+        if (!SettingsManager.dynamicTitlesEnabled) return "";
+        if (fraction < 0 || fraction >= fractionTitles.length) return "";
+        String title = fractionTitles[fraction];
+        return title == null ? "" : title;
+    }
+
+
+    private String getTitleKeyByRatio(double ratio) {
+        if (ratio >= 0.34) return "title_empire";
+        if (ratio >= 0.24) return "title_kingdom";
+        if (ratio >= 0.16) return "title_duchy";
+        if (ratio >= 0.09) return "title_marquis";
+        if (ratio >= 0.02) return "title_county";
+        return "title_city";
+    }
+
+
+    private void markPortRange(Hex portHex, boolean value) {
+        for (int i = 0; i < 6; i++) {
+            Hex adjHex = portHex.getAdjacentHex(i);
+            if (adjHex == null || adjHex.isNullHex()) continue;
+            if (!adjHex.active || !adjHex.sea) continue;
+            adjHex.inPortRange = value;
+            adjHex.portOwnerFraction = value ? portHex.fraction : -1;
+        }
     }
 
 
@@ -1582,10 +2045,28 @@ public class FieldManager implements EncodeableYio {
             System.out.println("Problem in FieldController.addProvince()");
             System.out.println(province);
             Yio.printStackTrace();
+            Province existing = getEqualProvince(province);
+            if (existing != null) {
+                // make sure every hex is owned by the existing province, so no hex is left ownerless
+                for (Hex hex : new ArrayList<>(province.hexList)) {
+                    if (!existing.containsHex(hex)) {
+                        addHexToProvince(existing, hex);
+                    }
+                }
+            }
+            province.hexList.clear();
             return;
         }
 
         provinces.add(province);
+    }
+
+
+    private Province getEqualProvince(Province province) {
+        for (Province p : provinces) {
+            if (p.equals(province)) return p;
+        }
+        return null;
     }
 
 
@@ -1758,6 +2239,7 @@ public class FieldManager implements EncodeableYio {
         for (int dir = 0; dir < 6; dir++) {
             startHex = hex.getAdjacentHex(dir);
             if (!startHex.active || startHex.fraction != fraction || startHex.flag) continue;
+            if (!oldProvince.containsHex(startHex)) continue; // don't absorb neighbouring provinces
             tempList.clear();
             propagationList.clear();
             propagationList.add(startHex);
@@ -1769,7 +2251,7 @@ public class FieldManager implements EncodeableYio {
                 propagationList.remove(0);
                 for (int i = 0; i < 6; i++) {
                     adjHex = tempHex.getAdjacentHex(i);
-                    if (adjHex.active && adjHex.sameFraction(tempHex) && !adjHex.flag) {
+                    if (adjHex.active && adjHex.sameFraction(tempHex) && !adjHex.flag && oldProvince.containsHex(adjHex)) {
                         propagationList.add(adjHex);
                         adjHex.flag = true;
                     }
@@ -1800,6 +2282,7 @@ public class FieldManager implements EncodeableYio {
             getMaxProvinceFromList(provincesAdded).money = oldProvince.money;
         }
         removeProvince(oldProvince);
+        oldProvince.hexList.clear(); // prevent stale references from holding onto the same hexes
         diplomacyManager.updateEntityAliveStatus(fraction);
     }
 
@@ -1826,6 +2309,7 @@ public class FieldManager implements EncodeableYio {
                 sum += province.money;
                 hexArrayList.addAll(province.hexList);
                 removeProvince(province);
+                province.hexList.clear(); // prevent stale references from holding onto the same hexes
             }
             Province unitedProvince = new Province(gameController, hexArrayList);
             unitedProvince.money = sum;
@@ -1837,6 +2321,9 @@ public class FieldManager implements EncodeableYio {
 
     private void removeProvince(Province province) {
         provinces.remove(province);
+        if (selectedProvince == province) {
+            selectedProvince = null; // don't keep a stale reference to a removed province
+        }
     }
 
 
@@ -1850,13 +2337,92 @@ public class FieldManager implements EncodeableYio {
         if (seaProvinces.size() == 0) return;
 
         for (Province province : seaProvinces) {
+            Province conqueror = getAdjacentNonSeaProvince(province, gameController.turn);
+            if (conqueror != null) {
+                // a faction conquered this province and turned it into water:
+                // hand the province over to that faction instead of neutralizing it
+                ArrayList<Hex> hexesToHandOver = new ArrayList<>(province.hexList);
+                for (Hex hex : hexesToHandOver) {
+                    if (hex.containsUnit()) {
+                        killUnitByStarvation(hex); // 被吞并海域困死的舰队直接变墓地，不移交给新阵营
+                    }
+                    if (hex.isNeutral()) continue;
+                    hex.setFraction(conqueror.getFraction());
+                    addHexToProvince(conqueror, hex);
+                }
+                province.hexList.clear();
+                removeProvince(province);
+                continue;
+            }
+
+            // no neighbouring faction to take it over: kill the units (they become
+            // graves), neutralize the hexes, dissolve the province
             for (Hex hex : province.hexList) {
+                if (hex.containsUnit()) {
+                    killUnitByStarvation(hex);
+                }
                 if (hex.isNeutral()) continue;
-                cleanOutHex(hex);
                 hex.setFraction(GameRules.NEUTRAL_FRACTION);
             }
+            province.hexList.clear();
             removeProvince(province);
         }
+
+        // stray sea hexes that don't belong to any province are also restored to neutral
+        for (Hex hex : activeHexes) {
+            if (!hex.sea) continue;
+            if (hex.isNeutral()) continue;
+            if (getProvinceByHex(hex) != null) continue;
+
+            Province adjacent = getAdjacentNonSeaProvinceForHex(hex, gameController.turn);
+            if (adjacent != null) {
+                hex.setFraction(adjacent.getFraction());
+                addHexToProvince(adjacent, hex);
+                continue;
+            }
+
+            if (hex.containsUnit()) {
+                killUnitByStarvation(hex); // kill the unit, it becomes a grave
+            }
+            cleanOutHex(hex);
+            hex.setFraction(GameRules.NEUTRAL_FRACTION);
+        }
+    }
+
+
+    private Province getAdjacentNonSeaProvinceForHex(Hex hex, int fraction) {
+        Province sameFactionResult = null;
+        for (int dir = 0; dir < 6; dir++) {
+            Hex adjHex = hex.getAdjacentHex(dir);
+            if (adjHex == null || adjHex.isNullHex()) continue;
+            Province adjacent = getProvinceByHex(adjHex);
+            if (adjacent == null) continue;
+            if (adjacent.getFraction() != fraction) continue;
+            if (adjacent.isAllSea()) continue;
+            if (sameFactionResult == null || adjacent.hexList.size() > sameFactionResult.hexList.size()) {
+                sameFactionResult = adjacent;
+            }
+        }
+        return sameFactionResult;
+    }
+
+
+    private Province getAdjacentNonSeaProvince(Province province, int fraction) {
+        Province sameFactionResult = null;
+        for (Hex hex : province.hexList) {
+            for (int dir = 0; dir < 6; dir++) {
+                Hex adjHex = hex.getAdjacentHex(dir);
+                if (adjHex == null || adjHex.isNullHex()) continue;
+                Province adjacent = getProvinceByHex(adjHex);
+                if (adjacent == null || adjacent == province) continue;
+                if (adjacent.getFraction() != fraction) continue;
+                if (adjacent.isAllSea()) continue;
+                if (sameFactionResult == null || adjacent.hexList.size() > sameFactionResult.hexList.size()) {
+                    sameFactionResult = adjacent;
+                }
+            }
+        }
+        return sameFactionResult;
     }
 
 
@@ -1865,7 +2431,7 @@ public class FieldManager implements EncodeableYio {
         for (int i = 0; i < 6; i++) {
             p = getProvinceByHex(hex.getAdjacentHex(i));
             if (p != null && hex.sameFraction(p)) {
-                p.addHex(hex);
+                addHexToProvince(p, hex);
                 Hex h;
                 for (int j = 0; j < 6; j++) {
                     h = adjacentHex(hex, j);
@@ -1874,6 +2440,16 @@ public class FieldManager implements EncodeableYio {
                 return;
             }
         }
+    }
+
+
+    public void addHexToProvince(Province province, Hex hex) {
+        if (province == null || hex == null) return;
+        for (Province p : provinces) {
+            if (p == province) continue;
+            p.removeHex(hex);
+        }
+        province.addHex(hex);
     }
 
 
@@ -1890,6 +2466,9 @@ public class FieldManager implements EncodeableYio {
         }
         int previousFraction = hex.fraction;
         hex.setFraction(fraction);
+        if (hex.containsPort()) {
+            markPortRange(hex, true); // update port water ownership after capture
+        }
         splitProvince(hex, previousFraction, previousObject);
         checkToUniteProvinces(hex);
         joinHexToAdjacentProvince(hex);

@@ -21,6 +21,7 @@ public class SettingsManager {
     public static boolean resumeButtonEnabled;
     public static boolean cityNamesEnabled;
     public static boolean provinceNamesEnabled;
+    public static boolean dynamicTitlesEnabled;
     public static boolean fullScreenMode;
     public static boolean nativeKeyboard;
     public static boolean useCityNamesList;
@@ -71,6 +72,7 @@ public class SettingsManager {
         nativeKeyboard = true;
         automaticTransition = prefs.getBoolean("automatic_transition", false);
         provinceNamesEnabled = prefs.getBoolean("province_names", true);
+        dynamicTitlesEnabled = prefs.getBoolean("dynamic_titles", false);
 
     }
 
@@ -84,9 +86,9 @@ public class SettingsManager {
         Preferences prefs = getPrefs();
 
         autosave = convertToBoolean(prefs.getInteger("autosave", 1));
-        musicEnabled = prefs.getBoolean("music", false);
+        musicEnabled = prefs.getBoolean("music", YioGdxGame.platformType == PlatformType.pc);
         cautiosEndTurnEnabled = prefs.getBoolean("cautious_end_turn", false);
-        soundEnabled = convertToBoolean(prefs.getInteger("sound", 0));
+        soundEnabled = convertToBoolean(prefs.getInteger("sound", YioGdxGame.platformType == PlatformType.pc ? 1 : 0));
         fastConstructionEnabled = prefs.getBoolean("fast_construction", false);
         exportTxt = prefs.getBoolean("export_txt", false);
         textSize = prefs.getInteger("text_size", -1);
@@ -155,6 +157,7 @@ public class SettingsManager {
         prefs.putBoolean("full_screen", fullScreenMode);
         prefs.putBoolean("automatic_transition", automaticTransition);
         prefs.putBoolean("province_names", provinceNamesEnabled);
+        prefs.putBoolean("dynamic_titles", dynamicTitlesEnabled);
 
 
         prefs.flush();

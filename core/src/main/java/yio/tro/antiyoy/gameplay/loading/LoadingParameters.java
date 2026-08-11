@@ -37,6 +37,7 @@ public class LoadingParameters {
     public String goalData;
     public int genProvinces;
     public int treesPercentageIndex;
+    public int mapType;
     public boolean diplomaticRelationsLocked;
 
 
@@ -66,6 +67,7 @@ public class LoadingParameters {
         goalData = "";
         genProvinces = 0;
         treesPercentageIndex = 2;
+        mapType = 0;
         diplomaticRelationsLocked = false;
     }
 
@@ -95,6 +97,7 @@ public class LoadingParameters {
         preparedEventData = src.preparedEventData;
         genProvinces = src.genProvinces;
         treesPercentageIndex = src.treesPercentageIndex;
+        mapType = src.mapType;
         goalData = src.goalData;
         diplomaticRelationsLocked = src.diplomaticRelationsLocked;
         editorCoalitionsData = src.editorCoalitionsData;
@@ -142,6 +145,7 @@ public class LoadingParameters {
         System.out.println("preparedEventData = " + preparedEventData);
         System.out.println("genProvinces = " + genProvinces);
         System.out.println("treesPercentageIndex = " + treesPercentageIndex);
+        System.out.println("mapType = " + mapType);
         System.out.println("goalData = " + goalData);
         System.out.println("diplomaticRelationsLocked = " + diplomaticRelationsLocked);
         System.out.println("editorCoalitionsData = " + editorCoalitionsData);

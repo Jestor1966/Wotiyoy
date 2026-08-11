@@ -92,6 +92,7 @@ public class CampaignLevelFactory {
 
     private boolean checkForTutorial() {
         if (index != 0) return false;
+        if (CampaignProgressManager.getInstance().isLevelComplete(0)) return false;
         gameController.initTutorial();
         return true;
     }

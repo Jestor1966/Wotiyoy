@@ -15,6 +15,7 @@ public abstract class ArtificialIntelligence extends AbstractAi{
     private ArrayList<Hex> tempResultList;
     private ArrayList<Hex> junkList;
     int numberOfUnitsBuiltThisTurn;
+    protected boolean invasionMode; // 登陆扩张状态：暴兵优先
 
 
     public ArtificialIntelligence(GameController gameController, int fraction) {
@@ -29,10 +30,13 @@ public abstract class ArtificialIntelligence extends AbstractAi{
 
     void updateUnitsReadyToMove() {
         unitsReadyToMove.clear();
-        for (Province province : gameController.fieldManager.provinces) {
-            if (province.getFraction() == fraction) {
-                searchForUnitsReadyToMoveInProvince(province);
-            }
+        // 直接从全局单位列表收集，避免游离单位（不在任何省份 hexList 中）被忽略
+        for (Unit unit : gameController.unitList) {
+            if (unit.getFraction() != fraction) continue;
+            if (unit.currentHex.fraction != fraction) continue; // 防御：所在格已被移交/吞并的单位不算己方
+            if (!unit.isReadyToMove()) continue;
+            if (unitsReadyToMove.contains(unit)) continue;
+            unitsReadyToMove.add(unit);
         }
     }
 
@@ -40,7 +44,7 @@ public abstract class ArtificialIntelligence extends AbstractAi{
     private void searchForUnitsReadyToMoveInProvince(Province province) {
         for (int k = province.hexList.size() - 1; k >= 0; k--) {
             Hex hex = province.hexList.get(k);
-            if (hex.containsUnit() && hex.unit.isReadyToMove()) {
+            if (hex.containsUnit() && hex.unit.isReadyToMove() && !unitsReadyToMove.contains(hex.unit)) {
                 unitsReadyToMove.add(hex.unit);
             }
         }
@@ -83,9 +87,7 @@ public abstract class ArtificialIntelligence extends AbstractAi{
             if (!unit.isReadyToMove()) continue;
 
             Province province = gameController.getProvinceByHex(unit.currentHex);
-            if (province.hexList.size() > 20) {
-                moveAfkUnit(province, unit);
-            }
+            moveAfkUnit(province, unit);
         }
     }
 
@@ -101,36 +103,91 @@ public abstract class ArtificialIntelligence extends AbstractAi{
 
 
     void moveAfkUnit(Province province, Unit unit) {
+        // 防御：陆地单位必须属于某个省份；海上单位不依赖省份，仍可远征
+        if (province == null && !unit.currentHex.isSea()) return;
+
         ArrayList<Hex> moveZone = gameController.detectMoveZone(unit.currentHex, unit.strength, GameRules.UNIT_MOVE_LIMIT);
         excludeFriendlyUnitsFromMoveZone(moveZone);
         excludeFriendlyBuildingsFromMoveZone(moveZone);
         if (moveZone.size() == 0) return;
-        gameController.moveUnit(unit, moveZone.get(random.nextInt(moveZone.size())), province);
+
+        // 已经在海上的单位：沿最短海路前往最近的非己方大陆，而不是盲目乱走/占领海洋
+        if (unit.currentHex.isSea()) {
+            Hex seaStep = getSeaStepTowardsEnemyLand(unit, moveZone);
+            if (seaStep != null && !seaStep.isSea()) {
+                // 可以直接登录目标：进攻
+                gameController.moveUnit(unit, seaStep, province);
+                return;
+            }
+            if (seaStep != null && seaStep.isSea()) {
+                // 目标大陆存在但当前无法登录（久攻不下）：尝试海上合成更高等级单位
+                if (tryToMergeWithSomeone(province, unit)) return;
+                // 合成不成就继续沿海路朝目标前进
+                gameController.moveUnit(unit, seaStep, province);
+                return;
+            }
+            return; // 海路不通或没有目标：留在原地，避免乱走
+        }
+
+        // idle units go to sea whenever the sea is actually reachable
+        Hex seaHex = getFarthestSeaHexFromMoveZone(moveZone, unit);
+        if (seaHex != null) {
+            // 只有存在海外目标且本大陆没有需要优先消灭的弱敌时才出海
+            if (hasOverseasTarget() && !hasWeakEnemyOnContinent(province)) {
+                gameController.moveUnit(unit, seaHex, province);
+            }
+            return;
+        }
+
+        // 无法下海：没有弱敌需要优先消灭时，才走向港口准备下海
+        if (hasOverseasTarget() && !hasWeakEnemyOnContinent(province)) {
+            Hex approachHex = findHexToApproachPort(unit, moveZone);
+            if (approachHex != null && !approachHex.equals(unit.currentHex)) {
+                gameController.moveUnit(unit, approachHex, province);
+            }
+        }
+    }
+
+
+    private Hex getFarthestSeaHexFromMoveZone(ArrayList<Hex> moveZone, Unit unit) {
+        Hex bestHex = null;
+        double maxDistance = 0;
+        for (Hex hex : moveZone) {
+            if (!hex.isSea()) continue;
+            double distance = hex.pos.fastDistanceTo(unit.currentHex.pos);
+            if (bestHex == null || distance > maxDistance) {
+                bestHex = hex;
+                maxDistance = distance;
+            }
+        }
+        return bestHex;
     }
 
 
     void mergeUnits(Province province) {
         for (int i = 0; i < province.hexList.size(); i++) {
             Hex hex = province.hexList.get(i);
-            if (hex.containsUnit() && !hex.isSea() && hex.unit.isReadyToMove()) {
+            if (hex.containsUnit() && hex.unit.isReadyToMove()) {
                 tryToMergeWithSomeone(province, hex.unit);
             }
         }
     }
 
 
-    private void tryToMergeWithSomeone(Province province, Unit unit) {
+    private boolean tryToMergeWithSomeone(Province province, Unit unit) {
         ArrayList<Hex> moveZone = gameController.detectMoveZone(unit.currentHex, unit.strength, GameRules.UNIT_MOVE_LIMIT);
-        if (moveZone.size() == 0) return;
+        if (moveZone.size() == 0) return false;
         for (Hex hex : moveZone) {
             if (!mergeConditions(province, unit, hex)) continue;
             gameController.moveUnit(unit, hex, province); // should not call mergeUnits() directly
-            break;
+            return true;
         }
+        return false;
     }
 
 
     protected boolean mergeConditions(Province province, Unit unit, Hex hex) {
+        if (unit.currentHex.isSea() != hex.isSea()) return false; // 陆海单位不混合合并
         if (!hex.sameFraction(unit.currentHex)) return false;
         if (!hex.containsUnit()) return false;
         if (!hex.unit.isReadyToMove()) return false;
@@ -142,17 +199,41 @@ public abstract class ArtificialIntelligence extends AbstractAi{
 
 
     protected void spendMoney(Province province) {
-        tryToBuildTowers(province);
-        tryToBuildUnits(province);
+        tryToBuildEssentialPort(province); // 沿海省份至少一个港口，优先保障
+        invasionMode = gameController.fieldManager.provinceHasMultipleContinents(province);
+        if (invasionMode) {
+            // 登陆扩张：暴兵优先，迅速打击对方核心区域
+            tryToBuildUnits(province);
+            tryToBuildTowers(province);
+            tryToBuildPort(province);
+        } else {
+            tryToBuildTowers(province);
+            tryToBuildUnits(province);
+            tryToBuildPort(province); // 港口排在防御塔和单位之后，用盈余建造
+        }
     }
 
 
+    void tryToBuildEssentialPort(Province province) {
+        gameController.fieldManager.aiTryToBuildEssentialPort(province);
+    }
+
+
+    void tryToBuildPort(Province province) {
+        gameController.fieldManager.aiTryToBuildPort(province);
+    }
+
+
+
+
     void tryToBuildTowers(Province province) {
-        while (province.hasMoneyForTower()) {
+        while (province.hasMoneyForTower()
+                && province.money >= GameRules.PRICE_TOWER + province.getPortPrice() + GameRules.PRICE_UNIT) {
+            int moneyBefore = province.money;
             Hex hex = findHexThatNeedsTower(province);
             if (hex == null) return;
-            //if (hex.isSea()) return;
             gameController.fieldManager.buildTower(province, hex);
+            if (province.money == moneyBefore) return; // no progress -> avoid endless loop
         }
     }
 
@@ -360,7 +441,25 @@ public abstract class ArtificialIntelligence extends AbstractAi{
 
 
     protected boolean canProvinceBuildUnit(Province province, int strength) {
-        return province.canBuildUnit(strength) && isAllowedToBuildNewUnit(province);
+        if (!province.canBuildUnit(strength)) return false;
+        if (!isAllowedToBuildNewUnit(province)) return false;
+        if (invasionMode) {
+            // 登陆暴兵：只保留一个单位的价格作为应急盈余
+            return province.money >= getUnitPrice(strength) + GameRules.PRICE_UNIT;
+        }
+        // 正常扩张：至少保留下一个港口的价格作为合理盈余
+        return province.money >= getUnitPrice(strength) + province.getPortPrice() + GameRules.PRICE_UNIT;
+    }
+
+
+    private int getUnitPrice(int strength) {
+        int fix = strength;
+        if (strength == 5) fix = 2;
+        else if (strength == 6) fix = 12;
+        else if (strength == 7) fix = 5;
+        else if (strength == 8) fix = 4;
+        else if (strength == 9) fix = 4;
+        return GameRules.PRICE_UNIT * fix;
     }
 
 
@@ -378,11 +477,13 @@ public abstract class ArtificialIntelligence extends AbstractAi{
 
             if (!province.canAiAffordUnit(i)) break;
             while (canProvinceBuildUnit(province, i)) {
+                int moneyBefore = province.money;
                 if (!tryToAttackWithStrength(province,i)) {
                     if (!tryToBuiltUnitInsideProvince(province, i)) {
                         break;
                     }
                 }
+                if (province.money == moneyBefore) break; // no progress -> avoid endless loop
             }
         }
 
@@ -439,6 +540,12 @@ public abstract class ArtificialIntelligence extends AbstractAi{
 
 
     void decideAboutUnit(Unit unit, ArrayList<Hex> moveZone, Province province) {
+
+        // 海上单位交给海上远征逻辑：沿最短海路前往最近的非己方大陆，而不是乱走/占领海洋
+        if (unit.currentHex.isSea()) {
+            moveAfkUnit(province, unit);
+            return;
+        }
 
         // cleaning palms has highest priority
         if (unit.strength <= 2 && checkToCleanSomePalms(unit, moveZone, province)) return;

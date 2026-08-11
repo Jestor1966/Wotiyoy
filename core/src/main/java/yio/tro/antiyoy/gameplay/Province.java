@@ -25,7 +25,11 @@ public class Province {
 
     public Province(GameController gameController, ArrayList<Hex> hexList) {
         this.gameController = gameController;
-        this.hexList = new ArrayList<>(hexList);
+        this.hexList = new ArrayList<>();
+        for (Hex hex : hexList) {
+            if (this.hexList.contains(hex)) continue;
+            this.hexList.add(hex);
+        }
         tempList = new ArrayList<>();
         aiPara = new float[3];
         aiPara[0]=1f;
@@ -145,6 +149,7 @@ public class Province {
 
 
     public Hex getCapital() {
+        if (hexList.size() == 0) return null;
         for (Hex hex : hexList) {
             if (hex.objectInside != Obj.TOWN) continue;
             return hex;
@@ -258,6 +263,16 @@ public class Province {
         }
 
         return income;
+    }
+
+
+    public int getLandHexesCount() {
+        int count = 0;
+        for (Hex hex : hexList) {
+            if (hex.sea) continue;
+            count++;
+        }
+        return count;
     }
 
 
@@ -497,6 +512,11 @@ public class Province {
 
     public int getCurrentFarmPrice() {
         return GameRules.PRICE_FARM + getExtraFarmCost();
+    }
+
+
+    public int getPortPrice() {
+        return GameRules.PRICE_PORT + countObjects(Obj.PORT) * 10;
     }
 
 

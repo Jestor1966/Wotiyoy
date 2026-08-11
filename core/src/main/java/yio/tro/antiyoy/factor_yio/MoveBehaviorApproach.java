@@ -27,11 +27,12 @@ public class MoveBehaviorApproach extends MoveBehavior {
     @Override
     void move(FactorYio fy) {
         if (needsToMove(fy)) {
+            double k = FactorYio.getDtFactor();
             if (fy.gravity > 0) {
-                fy.f += Math.max(fy.speedMultiplier * 0.15 * (1 - fy.f), 0.01);
+                fy.f += Math.max(fy.speedMultiplier * 0.15 * (1 - fy.f) * k, 0.01 * k);
                 if (fy.f > 0.99) fy.f = 1;
             } else {
-                fy.f += Math.min(fy.speedMultiplier * 0.15 * (0 - fy.f), -0.01);
+                fy.f += Math.min(fy.speedMultiplier * 0.15 * (0 - fy.f) * k, -0.01 * k);
                 if (fy.f < 0.01) fy.f = 0;
             }
         }

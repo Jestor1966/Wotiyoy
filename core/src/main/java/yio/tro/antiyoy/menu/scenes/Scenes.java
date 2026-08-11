@@ -92,6 +92,7 @@ public class Scenes {
     public static SceneEditorEvent sceneEditorEvent;
     public static SceneEditorEventEditor sceneEditorEventEditor;
     public static SceneLabelMarkEditor sceneLabelMarkEditor;
+    public static SceneSlotDetails sceneSlotDetails;
     public static SceneEvent sceneEvent;
     public static SceneColorPicker sceneColorPicker;
     public static SceneEditorMessages sceneEditorMessages;
@@ -201,6 +202,7 @@ public class Scenes {
         sceneEditorEvent = new SceneEditorEvent(menuController);
         //sceneEditorEventEditor = new SceneEditorEventEditor(menuController);
         sceneLabelMarkEditor = new SceneLabelMarkEditor(menuController);
+        sceneSlotDetails = new SceneSlotDetails(menuController);
         sceneColorPicker = new SceneColorPicker(menuController);
         sceneEditorMessages = new SceneEditorMessages(menuController);
         sceneDiplomaticRelations = new SceneDiplomaticRelations(menuController);

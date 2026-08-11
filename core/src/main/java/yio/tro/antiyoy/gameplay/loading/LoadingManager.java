@@ -438,5 +438,6 @@ public class LoadingManager {
         GameRules.setDiplomacyEnabled(parameters.diplomacy);
         GameRules.setDiplomaticRelationsLocked(parameters.diplomaticRelationsLocked);
         GameRules.setCaptainAsCityRules(parameters.captainAsCity);
+        GameRules.mapType = parameters.mapType;
     }
 }

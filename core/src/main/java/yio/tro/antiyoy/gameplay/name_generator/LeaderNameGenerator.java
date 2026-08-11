@@ -81,6 +81,7 @@ public class LeaderNameGenerator {
         nameGenerator.setMasks(masks);
         nameGenerator.setGroups(groups);
         nameGenerator.setCapitalize(true);
+        nameGenerator.setSeparator(LanguagesManager.getInstance().getLanguage().equals("cn_CN") ? "·" : " ");
 
         return nameGenerator.generateName(random);
     }

@@ -4,6 +4,17 @@
 <languages>
 
     <language name="en_UK" title="English" author="yiotro">
+        <string key="dynamic_province_titles" value="Dynamic province titles"/>
+        <string key="title_city" value="City"/>
+        <string key="title_county" value="County"/>
+        <string key="title_marquis" value="Marquis"/>
+        <string key="title_duchy" value="Duchy"/>
+        <string key="title_kingdom" value="Kingdom"/>
+        <string key="title_empire" value="Empire"/>
+        <string key="map_type_islands" value="Islands"/>
+        <string key="map_type" value="Map type"/>
+        <string key="map_type_default" value="default"/>
+        <string key="map_type_continental" value="Continental"/>
 
         <string key="label_editor" value="Label Editor"/>
         <string key="label_text" value="Label text: %s"/>
@@ -30,8 +41,8 @@
         <string key="lang_characters" value="ö"/>
 		
 		<!--New things-->
-		<string key="leader_name_gen_masks" value="f s n"/>
-        <string key="leader_name_gen_groups" value="f: Steven Tom Jack Slavia Don Hack King Julia Flosia Harry Frank Franklin John Peter #s: Smith Williams Brown Taylor Olivia Ivans Thomas #n: 'Killer' 'Knight' 'Rat' 'Spearman' 'Farmer' 'Emperor' 'Luckyman' #p: -"/>
+		<string key="leader_name_gen_masks" value="fs"/>
+        <string key="leader_name_gen_groups" value="f: James John Robert Michael William David Richard Joseph Thomas Charles Daniel Matthew Anthony Paul Steven Andrew Alexander #s: Smith Johnson Williams Brown Jones Miller Davis Wilson Taylor Moore Anderson Thomas Jackson White Harris Martin Thompson"/>
 		<string key="giant" value="giant"/>
 		<string key="world" value="world"/>
 		<string key="download" value="Download"/>
@@ -476,6 +487,11 @@
         <string key="some_units_can_move" value="Some units can move"/>
         <string key="text_size" value="Text size"/>
 
+            <string key="map_name" value="Map name"/>
+            <string key="author" value="Author"/>
+            <string key="create_time" value="Created"/>
+            <string key="description" value="Description"/>
+            <string key="details" value="Details"/>
     </language>
 
 
@@ -488,6 +504,17 @@
 
 
 <language name="cn_CN" title="Chinese" author="Jim Chen, Jestor">
+        <string key="dynamic_province_titles" value="动态省份头衔"/>
+        <string key="title_city" value="城"/>
+        <string key="title_county" value="伯国"/>
+        <string key="title_marquis" value="侯国"/>
+        <string key="title_duchy" value="公国"/>
+        <string key="title_kingdom" value="王国"/>
+        <string key="title_empire" value="帝国"/>
+        <string key="map_type_islands" value="岛屿"/>
+        <string key="map_type" value="地图类型"/>
+        <string key="map_type_default" value="默认"/>
+        <string key="map_type_continental" value="大陆"/>
 
         <string key="label_editor" value="标签编辑器"/>
         <string key="label_text" value="标签文本: %s"/>
@@ -513,8 +540,8 @@
         <!-- All characters -->
         <string key="lang_characters" value="一乙二十丁厂七卜人入八九几儿了力乃刀又三于干亏士工土才寸下大丈与万上小口巾山千乞川亿个勺久凡及夕丸么广亡门义之尸弓己已子卫也女飞刃习叉马乡丰王井开夫天无元专云扎艺木五支厅不太犬区历尤友匹车巨牙屯比互切瓦止少日中冈贝内水见午牛手毛气升长仁什片仆化仇币仍仅斤爪反介父从今凶分乏公仓月氏勿欠风丹匀乌凤勾文六方火为斗忆订计户认心尺引丑巴孔队办以允予劝双书幻玉刊示末未击打巧正扑扒功扔去甘世古节本术可丙左厉右石布龙平灭轧东卡北占业旧帅归且旦目叶甲申叮电号田由史只央兄叼叫另叨叹四生失禾丘付仗代仙们仪白仔他斥瓜乎丛令用甩印乐句匆册犯外处冬鸟务包饥主市立闪兰半汁汇头汉宁穴它讨写让礼训必议讯记永司尼民出辽奶奴加召皮边发孕圣对台矛纠母幼丝式刑动扛寺吉扣考托老执巩圾扩扫地扬场耳共芒亚芝朽朴机权过臣再协西压厌在有百存而页匠夸夺灰达列死成夹轨邪划迈毕至此贞师尘尖劣光当早吐吓虫曲团同吊吃因吸吗屿帆岁回岂刚则肉网年朱先丢舌竹迁乔伟传乒乓休伍伏优伐延件任伤价份华仰仿伙伪自血向似后行舟全会杀合兆企众爷伞创肌朵杂危旬旨负各名多争色壮冲冰庄庆亦刘齐交次衣产决充妄闭问闯羊并关米灯州汗污江池汤忙兴宇守宅字安讲军许论农讽设访寻那迅尽导异孙阵阳收阶阴防奸如妇好她妈戏羽观欢买红纤级约纪驰巡寿弄麦形进戒吞远违运扶抚坛技坏扰拒找批扯址走抄坝贡攻赤折抓扮抢孝均抛投坟抗坑坊抖护壳志扭块声把报却劫芽花芹芬苍芳严芦劳克苏杆杠杜材村杏极李杨求更束豆两丽医辰励否还歼来连步坚旱盯呈时吴助县里呆园旷围呀吨足邮男困吵串员听吩吹呜吧吼别岗帐财针钉告我乱利秃秀私每兵估体何但伸作伯伶佣低你住位伴身皂佛近彻役返余希坐谷妥含邻岔肝肚肠龟免狂犹角删条卵岛迎饭饮系言冻状亩况床库疗应冷这序辛弃冶忘闲间闷判灶灿弟汪沙汽沃泛沟没沈沉怀忧快完宋宏牢究穷灾良证启评补初社识诉诊词译君灵即层尿尾迟局改张忌际陆阿陈阻附妙妖妨努忍劲鸡驱纯纱纳纲驳纵纷纸纹纺驴纽奉玩环武青责现表规抹拢拔拣担坦押抽拐拖拍者顶拆拥抵拘势抱垃拉拦拌幸招坡披拨择抬其取苦若茂苹苗英范直茄茎茅林枝杯柜析板松枪构杰述枕丧或画卧事刺枣雨卖矿码厕奔奇奋态欧垄妻轰顷转斩轮软到非叔肯齿些虎虏肾贤尚旺具果味昆国昌畅明易昂典固忠咐呼鸣咏呢岸岩帖罗帜岭凯败贩购图钓制知垂牧物乖刮秆和季委佳侍供使例版侄侦侧凭侨佩货依的迫质欣征往爬彼径所舍金命斧爸采受乳贪念贫肤肺肢肿胀朋股肥服胁周昏鱼兔狐忽狗备饰饱饲变京享店夜庙府底剂郊废净盲放刻育闸闹郑券卷单炒炊炕炎炉沫浅法泄河沾泪油泊沿泡注泻泳泥沸波泼泽治怖性怕怜怪学宝宗定宜审宙官空帘实试郎诗肩房诚衬衫视话诞询该详建肃录隶居届刷屈弦承孟孤陕降限妹姑姐姓始驾参艰线练组细驶织终驻驼绍经贯奏春帮珍玻毒型挂封持项垮挎城挠政赴赵挡挺括拴拾挑指垫挣挤拼挖按挥挪某甚革荐巷带草茧茶荒茫荡荣故胡南药标枯柄栋相查柏柳柱柿栏树要咸威歪研砖厘厚砌砍面耐耍牵残殃轻鸦皆背战点临览竖省削尝是盼眨哄显哑冒映星昨畏趴胃贵界虹虾蚁思蚂虽品咽骂哗咱响哈咬咳哪炭峡罚贱贴骨钞钟钢钥钩卸缸拜看矩怎牲选适秒香种秋科重复竿段便俩贷顺修保促侮俭俗俘信皇泉鬼侵追俊盾待律很须叙剑逃食盆胆胜胞胖脉勉狭狮独狡狱狠贸怨急饶蚀饺饼弯将奖哀亭亮度迹庭疮疯疫疤姿亲音帝施闻阀阁差养美姜叛送类迷前首逆总炼炸炮烂剃洁洪洒浇浊洞测洗活派洽染济洋洲浑浓津恒恢恰恼恨举觉宣室宫宪突穿窃客冠语扁袄祖神祝误诱说诵垦退既屋昼费陡眉孩除险院娃姥姨姻娇怒架贺盈勇怠柔垒绑绒结绕骄绘给络骆绝绞统耕耗艳泰珠班素蚕顽盏匪捞栽捕振载赶起盐捎捏埋捉捆捐损都哲逝捡换挽热恐壶挨耻耽恭莲莫荷获晋恶真框桂档桐株桥桃格校核样根索哥速逗栗配翅辱唇夏础破原套逐烈殊顾轿较顿毙致柴桌虑监紧党晒眠晓鸭晃晌晕蚊哨哭恩唤啊唉罢峰圆贼贿钱钳钻铁铃铅缺氧特牺造乘敌秤租积秧秩称秘透笔笑笋债借值倚倾倒倘俱倡候俯倍倦健臭射躬息徒徐舰舱般航途拿爹爱颂翁脆脂胸胳脏胶脑狸狼逢留皱饿恋桨浆衰高席准座脊症病疾疼疲效离唐资凉站剖竞部旁旅畜阅羞瓶拳粉料益兼烤烘烦烧烛烟递涛浙涝酒涉消浩海涂浴浮流润浪浸涨烫涌悟悄悔悦害宽家宵宴宾窄容宰案请朗诸读扇袜袖袍被祥课谁调冤谅谈谊剥恳展剧屑弱陵陶陷陪娱娘通能难预桑绢绣验继球理捧堵描域掩捷排掉堆推掀授教掏掠培接控探据掘职基著勒黄萌萝菌菜萄菊萍菠营械梦梢梅检梳梯桶救副票戚爽聋袭盛雪辅辆虚雀堂常匙晨睁眯眼悬野啦晚啄距跃略蛇累唱患唯崖崭崇圈铜铲银甜梨犁移笨笼笛符第敏做袋悠偿偶偷您售停偏假得衔盘船斜盒鸽悉欲彩领脚脖脸脱象够猜猪猎猫猛馅馆凑减毫麻痒痕廊康庸鹿盗章竟商族旋望率着盖粘粗粒断剪兽清添淋淹渠渐混渔淘液淡深婆梁渗情惜惭悼惧惕惊惨惯寇寄宿窑密谋谎祸谜逮敢屠弹随蛋隆隐婚婶颈绩绪续骑绳维绵绸绿琴斑替款堪搭塔越趁趋超提堤博揭喜插揪搜煮援裁搁搂搅握揉斯期欺联散惹葬葛董葡敬葱落朝辜葵棒棋植森椅椒棵棍棉棚棕惠惑逼厨厦硬确雁殖裂雄暂雅辈悲紫辉敞赏掌晴暑最量喷晶喇遇喊景践跌跑遗蛙蛛蜓喝喂喘喉幅帽赌赔黑铸铺链销锁锄锅锈锋锐短智毯鹅剩稍程稀税筐等筑策筛筒答筋筝傲傅牌堡集焦傍储奥街惩御循艇舒番释禽腊脾腔鲁猾猴然馋装蛮就痛童阔善羡普粪尊道曾焰港湖渣湿温渴滑湾渡游滋溉愤慌惰愧愉慨割寒富窜窝窗遍裕裤裙谢谣谦属屡强粥疏隔隙絮嫂登缎缓编骗缘瑞魂肆摄摸填搏塌鼓摆携搬摇搞塘摊蒜勤鹊蓝墓幕蓬蓄蒙蒸献禁楚想槐榆楼概赖酬感碍碑碎碰碗碌雷零雾雹输督龄鉴睛睡睬鄙愚暖盟歇暗照跨跳跪路跟遣蛾蜂嗓置罪罩错锡锣锤锦键锯矮辞稠愁筹签简毁舅鼠催傻像躲微愈遥腰腥腹腾腿触解酱痰廉新韵意粮数煎塑慈煤煌满漠源滤滥滔溪溜滚滨粱滩慎誉塞谨福群殿辟障嫌嫁叠缝缠静碧璃墙撇嘉摧截誓境摘摔聚蔽慕暮蔑模榴榜榨歌遭酷酿酸磁愿需弊裳颗嗽蜻蜡蝇蜘赚锹锻舞稳算箩管僚鼻魄貌膜膊膀鲜疑馒裹敲豪膏遮腐瘦辣竭端旗精歉熄熔漆漂漫滴演漏慢寨赛察蜜谱嫩翠熊凳骡缩慧撕撒趣趟撑播撞撤增聪鞋蕉蔬横槽樱橡飘醋醉震霉瞒题暴瞎影踢踏踩踪蝶蝴嘱墨镇靠稻黎稿稼箱箭篇僵躺僻德艘膝膛熟摩颜毅糊遵潜潮懂额慰劈操燕薯薪薄颠橘整融醒餐嘴蹄器赠默镜赞篮邀衡膨雕磨凝辨辩糖糕燃澡激懒壁避缴戴擦鞠藏霜霞瞧蹈螺穗繁辫赢糟糠燥臂翼骤鞭覆蹦镰翻鹰警攀蹲颤瓣爆疆壤耀躁嚼嚷籍魔灌蠢霸露囊罐匕刁丐歹戈夭仑讥冗邓艾夯凸卢叭叽皿凹囚矢乍尔冯玄邦迂邢芋芍吏夷吁吕吆屹廷迄臼仲伦伊肋旭匈凫妆亥汛讳讶讹讼诀弛阱驮驯纫玖玛韧抠扼汞扳抡坎坞抑拟抒芙芜苇芥芯芭杖杉巫杈甫匣轩卤肖吱吠呕呐吟呛吻吭邑囤吮岖牡佑佃伺囱肛肘甸狈鸠彤灸刨庇吝庐闰兑灼沐沛汰沥沦汹沧沪忱诅诈罕屁坠妓姊妒纬玫卦坷坯拓坪坤拄拧拂拙拇拗茉昔苛苫苟苞茁苔枉枢枚枫杭郁矾奈奄殴歧卓昙哎咕呵咙呻咒咆咖帕账贬贮氛秉岳侠侥侣侈卑刽刹肴觅忿瓮肮肪狞庞疟疙疚卒氓炬沽沮泣泞泌沼怔怯宠宛衩祈诡帚屉弧弥陋陌函姆虱叁绅驹绊绎契贰玷玲珊拭拷拱挟垢垛拯荆茸茬荚茵茴荞荠荤荧荔栈柑栅柠枷勃柬砂泵砚鸥轴韭虐昧盹咧昵昭盅勋哆咪哟幽钙钝钠钦钧钮毡氢秕俏俄俐侯徊衍胚胧胎狰饵峦奕咨飒闺闽籽娄烁炫洼柒涎洛恃恍恬恤宦诫诬祠诲屏屎逊陨姚娜蚤骇耘耙秦匿埂捂捍袁捌挫挚捣捅埃耿聂荸莽莱莉莹莺梆栖桦栓桅桩贾酌砸砰砾殉逞哮唠哺剔蚌蚜畔蚣蚪蚓哩圃鸯唁哼唆峭唧峻赂赃钾铆氨秫笆俺赁倔殷耸舀豺豹颁胯胰脐脓逛卿鸵鸳馁凌凄衷郭斋疹紊瓷羔烙浦涡涣涤涧涕涩悍悯窍诺诽袒谆祟恕娩骏琐麸琉琅措捺捶赦埠捻掐掂掖掷掸掺勘聊娶菱菲萎菩萤乾萧萨菇彬梗梧梭曹酝酗厢硅硕奢盔匾颅彪眶晤曼晦冕啡畦趾啃蛆蚯蛉蛀唬唾啤啥啸崎逻崔崩婴赊铐铛铝铡铣铭矫秸秽笙笤偎傀躯兜衅徘徙舶舷舵敛翎脯逸凰猖祭烹庶庵痊阎阐眷焊焕鸿涯淑淌淮淆渊淫淳淤淀涮涵惦悴惋寂窒谍谐裆袱祷谒谓谚尉堕隅婉颇绰绷综绽缀巢琳琢琼揍堰揩揽揖彭揣搀搓壹搔葫募蒋蒂韩棱椰焚椎棺榔椭粟棘酣酥硝硫颊雳翘凿棠晰鼎喳遏晾畴跋跛蛔蜒蛤鹃喻啼喧嵌赋赎赐锉锌甥掰氮氯黍筏牍粤逾腌腋腕猩猬惫敦痘痢痪竣翔奠遂焙滞湘渤渺溃溅湃愕惶寓窖窘雇谤犀隘媒媚婿缅缆缔缕骚瑟鹉瑰搪聘斟靴靶蓖蒿蒲蓉楔椿楷榄楞楣酪碘硼碉辐辑频睹睦瞄嗜嗦暇畸跷跺蜈蜗蜕蛹嗅嗡嗤署蜀幌锚锥锨锭锰稚颓筷魁衙腻腮腺鹏肄猿颖煞雏馍馏禀痹廓痴靖誊漓溢溯溶滓溺寞窥窟寝褂裸谬媳嫉缚缤剿赘熬赫蔫摹蔓蔗蔼熙蔚兢榛榕酵碟碴碱碳辕辖雌墅嘁踊蝉嘀幔镀舔熏箍箕箫舆僧孵瘩瘟彰粹漱漩漾慷寡寥谭褐褪隧嫡缨撵撩撮撬擒墩撰鞍蕊蕴樊樟橄敷豌醇磕磅碾憋嘶嘲嘹蝠蝎蝌蝗蝙嘿幢镊镐稽篓膘鲤鲫褒瘪瘤瘫凛澎潭潦澳潘澈澜澄憔懊憎翩褥谴鹤憨履嬉豫缭撼擂擅蕾薛薇擎翰噩橱橙瓢蟥霍霎辙冀踱蹂蟆螃螟噪鹦黔穆篡篷篙篱儒膳鲸瘾瘸糙燎濒憾懈窿缰壕藐檬檐檩檀礁磷了瞬瞳瞪曙蹋蟋蟀嚎赡镣魏簇儡徽爵朦臊鳄糜癌懦豁臀藕藤瞻嚣鳍癞瀑襟璧戳攒孽蘑藻鳖蹭蹬簸簿蟹靡癣羹鬓攘蠕巍鳞糯譬霹躏髓蘸镶瓤矗，。、；‘’“”【】·；？！"/>
 <!--New things-->
-		<string key="leader_name_gen_masks" value="fs fsp x xh ypx"/>
-        <string key="leader_name_gen_groups" value="f: 赵 钱 孙 李 周 吴 郑 王 冯 陈 褚 卫 蒋 沈 韩 杨 朱 秦 尤 许 何 吕 施 张 孔 曹 严 华 金 魏 陶 姜 戚 谢 邹 喻 柏 水 窦 章 云 苏 潘 葛 奚 范 彭 郎 鲁 韦 昌 马 苗 凤 花 方 俞 任 袁 柳 酆 鲍 史 唐 费 廉 岑 薛 雷 贺 倪 汤 滕 殷 罗 毕 郝 邬 安 常 乐 于 时 傅 皮 卞 齐 康 伍 余 元 卜 顾 孟 平 黄 和 穆 萧 尹 姚 邵 湛 汪 祁 毛 禹 狄 米 贝 明 臧 计 伏 成 戴 谈 宋 茅 庞 熊 纪 舒 屈 项 祝 董 梁 杜 阮 蓝 闵 席 季 麻 强 贾 路 娄 危 江 童 颜 郭 梅 盛 林 刁 钟 丘 徐 邱 骆 高 夏 蔡 田 樊 胡 凌 霍 虞 万 支 柯 昝 管 卢 莫 经 房 裘 缪 干 解 应 宗 丁 宣 贲 邓 单 杭 洪 包 诸 左 石 崔 吉 钮 龚 程 嵇 邢 滑 裴 陆 荣 翁 荀 羊 於 惠 甄 曲 家 封 #s: 明 永 健 世 广 志 义 兴 良 海 山 仁 波 宁 贵 福 生 龙 元 全 国 胜 学 祥 才 发 武 新 利 清 飞 彬 富 顺 信 子 杰 涛 昌 成 康 星 光 席 季 麻 强 贾 路 娄 危 江 童 颜 郭 轩 辕 圣 省 升 剑 语 余 欲 域 鱼 浴 宇 博 波 伯 仲 叔 济 季 皓 #p: 轩 辕 圣 省 升 剑 语 余 欲 域 鱼 浴 宇 博 波 伯 仲 叔 济 季 皓 明 永 健 世 广 志 义 兴 良 海 山 仁 波 宁 贵 福 生 龙 元 全 国 胜 学 祥 才 发 武 新 利 清 飞 彬 富 顺 信 子 杰 涛 昌 成 康 星 光 席 季 麻 强 贾 路 娄 危 江 童 颜 郭 #x: 希拉克略 君士坦丁 玛利亚 特蕾莎 威廉 腓特烈 菲利普 腓力 查理 理查德 玛丽 约翰 杰克 米罗斯拉夫 吉娜 布莱诺 波拿巴 拿破仑 亚当 艾伦 亚历山大 阿尔瓦 阿曼达 巴里 #h: 一世 二世 三世 四世 五世 六世 七世 八世 九世 十世 十一 十二 十三 十四 十五 十六 十七 十八 十九 二十 #y: 德 冯 唐 #p:·"/>
+		<string key="leader_name_gen_masks" value="fs"/>
+        <string key="leader_name_gen_groups" value="f: 亚历山大 威廉 爱德华 亨利 理查 詹姆斯 查尔斯 约翰 彼得 保罗 乔治 弗雷德里克 路易 约瑟夫 安德烈 尼古拉 米哈伊尔 维克多 奥斯卡 莱昂 卢卡斯 菲利普 托马斯 罗伯特 丹尼尔 马修 安东尼 艾琳 艾玛 伊莎贝拉 卡洛琳 维多利亚 玛格丽特 凯瑟琳 索菲亚 安娜 玛丽 伊丽莎白 夏洛特 艾米丽 奥利维亚 格蕾丝 露西 克莱尔 #s: 沃尔夫 斯图尔特 卡特 班尼特 汉密尔顿 米勒 沃森 洛克 艾略特 泰勒 布朗 格林 莫顿 霍华德 柯林斯 贝内特 奥斯汀 哈里斯 洛根 弗莱明 帕克 沃克 金 怀特 马丁 汤普森 罗宾逊 克拉克 罗德里格斯 刘易斯 霍尔 艾伦 斯科特 贝克 亚当斯 纳尔逊 希尔 坎贝尔 米切尔 罗伯茨 菲利普斯 埃文斯 特纳 爱德华兹 莫里斯 墨菲 库克 罗杰斯"/>
 		<string key="giant" value="巨大"/>
 		<string key="world" value="世界"/>
 		<string key="download" value="下载"/>
@@ -546,8 +573,8 @@
 
         <string key="game_saved" value="已保存"/>
         <string key="restart_app" value="重启游戏"/>
-        <string key="city_name_gen_masks" value="pd ko mo ao ku mu au amo c p cu pu kaoh aoh kh"/> <!-- Same as english -->
-        <string key="city_name_gen_groups" value="k: 阿 波 茨 德 俄 佛 格 荷 机 克 勒 莫 尼 #m: 格 兰 尼 斯 拉 #a: 阿 蒙 克 拉 力 斯 诺 #o: 西亚 尼亚 兰德 顿 兰 亚 #p:张家 王家 李家 赵家 孙家 钱家 贾家 #d: 村 镇 堡 店 屯 #c: 秦 楚 齐 燕 赵 魏 韩 卫 宋 明 清 元 唐 晋 吴 越 壮 湘 赣 #u: 国 堡 城 #h: 联合王国 公国 王国 帝国 共和国 联邦 共主邦联 邦联 合众国 神权国 系 军 义军"/>
+        <string key="city_name_gen_masks" value="r"/> <!-- Same as english -->
+        <string key="city_name_gen_groups" value="r: 阿卡迪亚 诺曼尼亚 维斯特兰 奥斯提亚 赫尔维格 卡洛尼亚 瓦伦蒂亚 艾登尼亚 凯尔文尼亚 洛瑟兰 费尔海文 格兰维尔 哈里斯顿 伊斯特兰 诺森兰 索瑟姆 布莱克伍德 阿尔比恩 卡米洛特 阿瓦隆 奥伯龙 米兰达 特里斯坦 兰斯洛特 罗兰 珀西瓦尔 加拉哈德 贝德维尔 高文 埃克托 卡利斯托 欧律狄刻 珀耳塞福涅 雅典娜 赫拉克勒斯 阿喀琉斯 奥德修斯 阿伽门农 忒修斯 珀尔修斯 伊阿宋 埃涅阿斯 罗慕路斯 奥古斯都 图拉真 哈德良 君士坦丁 查士丁尼 希拉克略 利奥 巴西尔 迈克尔 罗曼努斯 阿莱克修斯 曼努埃尔 伊萨克 狄奥多尔 阿斯加德 米德加德 约顿海姆 尼福尔海姆 穆斯贝尔海姆 亚尔夫海姆 瓦纳海姆 赫尔海姆 瓦尔哈拉 斯瓦塔尔夫海姆 亚特兰蒂斯 列穆里亚 埃尔多拉多 香格里拉 乌托邦 伊甸 奥林匹斯 帕尔纳索斯 赫利孔 埃特纳 维苏威 奥林匹亚 德尔斐 特洛伊 克里特 塞浦路斯 罗得 萨摩斯 莱斯博斯 希俄斯 提洛 纳克索斯 帕罗斯 米科诺斯 雅典 斯巴达 底比斯 科林斯 阿尔戈斯 迈锡尼 埃皮达鲁斯 马其顿 色萨利 伊庇鲁斯 阿提卡 波奥提亚 拉科尼亚 美塞尼亚 阿戈利斯 埃托利亚 阿卡纳尼亚 福基斯 洛克里斯 多利斯 优卑亚 伯罗奔尼撒 拜占庭 安条克 以弗所 士麦那 帕加马 比提尼亚 本都 卡帕多西亚 加拉太 吕底亚 弗里吉亚 色雷斯 伊利里亚 达尔马提亚 潘诺尼亚 达契亚 萨尔马提亚 斯基泰 迦太基 巴比伦 尼尼微 乌尔 埃兰 米底 帕提亚 塞琉古 亚历山德里亚 孟菲斯 昔兰尼 撒马尔罕 巴克特里亚 索格狄亚那 花剌子模 大夏 大宛 康居 月氏 乌孙 贵霜 安息 帕尔米拉 佩特拉 法兰克 萨克森 诺曼底 布列塔尼 洛林 勃艮第 安茹 阿基坦 普罗旺斯 萨伏依 伦巴第 托斯卡纳 威尼斯 那不勒斯 西西里 撒丁 加泰罗尼亚 阿拉贡 卡斯蒂利亚 安达卢西亚 加利西亚 纳瓦拉 波尔图 里斯本 塞维利亚 托莱多 萨拉戈萨 巴伦西亚 马赛 里昂 波尔多 图卢兹 南特 雷恩 鲁昂 兰斯 斯特拉斯堡 梅斯 南锡 第戎 贝桑松 格勒诺布尔 蒙彼利埃 尼斯 阿维尼翁 图尔 奥尔良 普瓦捷 利摩日 克莱蒙 特鲁瓦 里尔 亚眠 加来 敦刻尔克 阿尔萨斯 香槟 皮卡第 奥弗涅 朗格多克 鲁西永 科西嘉 巴伐利亚 图林根 黑森 符腾堡 巴登 威斯特法伦 波美拉尼亚 西里西亚 勃兰登堡 汉诺威 荷尔斯泰因 梅克伦堡 蒂罗尔 施蒂利亚 卡林西亚 萨尔茨堡 维也纳 波希米亚 摩拉维亚 斯堪的纳维亚 凯尔特 高卢 伊比利亚 卢西塔尼亚 贝提卡 塔拉科 莱茵兰 施瓦本 法兰克尼亚 阿勒曼尼 汪达尔 哥特 苏维汇 敦煌 河西 陇西 河套 云中 雁门 辽东 幽燕 燕云 河东 关中 汉中 巴蜀 益州 荆州 扬州 交州 岭南 南越 夜郎 滇国 哀牢 牂牁 越巂 永昌 武威 张掖 酒泉 金城 天水 安定 朔方 五原 上郡 上党 太原 常山 中山 会稽 吴郡 豫章 长沙 桂阳 零陵 苍梧 合浦 九真 日南 扶桑 高句丽 百济 新罗 伽倻 渤海 邪马台 出云 大和 甲斐 信浓 陆奥 出羽 越后 近江 美浓 伊势 伊贺 山城 摄津 丹波 播磨 备前 周防 长门 纪伊 淡路 阿波 赞岐 伊予 土佐 筑前 丰前 肥前 萨摩 对马 马韩 辰韩 弁韩 沃沮 扶南 真腊 暹罗 爪哇 苏门答腊 婆罗洲 麻六甲 三佛齐 满者伯夷 占城 安南 交趾 高棉 蒲甘 勃固 阿瑜陀耶 素可泰 清迈 万象 琅勃拉邦 锡兰 天竺 身毒 摩揭陀 孔雀 笈多 健驮罗 迦湿弥罗 信度 旁遮普 孟加拉 德干 拘萨罗 摩腊婆 苏剌佗 伐腊毗 迦尸 憍赏弥 瞻波 吠舍离 波斯 萨珊 亚述 迦勒底 腓尼基 推罗 西顿 迦南 犹大 撒玛利亚 非利士 以东 摩押 亚扪 大马士革 纳巴泰 示巴 马里卜 萨巴 希木叶尔 哈德拉毛 迪尔蒙 粟特 埃什努纳 拉尔萨 伊辛 基什 拉加什 乌玛 舒鲁帕克 尼普尔 乌鲁克 埃及 努比亚 库施 麦罗埃 阿克苏姆 努米底亚 毛里塔尼亚 廷巴克图 加奥 杰内 马里 桑海 加纳 突尼斯 凯鲁万 非斯 马拉喀什 的黎波里 阿特拉斯 阿比西尼亚 君士坦丁堡 基辅 诺夫哥罗德 弗拉基米尔 苏兹达尔 特维尔 梁赞 普斯科夫 斯摩棱斯克 波洛茨克 沃里尼亚 切尔尼戈夫 佩列亚斯拉夫尔 库尔兰 利沃尼亚 特兰西瓦尼亚 瓦拉几亚 摩尔达维亚 昆仑 蓬莱 方丈 瀛洲 归墟 不周 流沙 忘川 九幽 太虚 弱水 炎洲 长洲 玄洲 生洲 祖洲 凤麟洲 聚窟洲 云梦 苍岚 星落 霜原 月影 风语 赤炎 玄冰 紫宸 青云 碧波 金乌 玉衡 天枢 瑶光 北辰 南冥 沧海 扶摇 九霄 幽谷 雪域 大漠 林海 荒原 星海 月湾 风谷 雷泽 云泽 雾都 冰原 熔岩 断崖 天穹 星河 幻境 秘境 灵域 圣域 魔域 龙域 银月 金辉 碧落 青冥 绛雪 玄霜 晨曦 暮光 凛冬 盛夏 春晖 秋泓 烟波 竹海 梅岭 松涛 兰若 芙蓉 蔷薇 琥珀 琉璃 珊瑚 明珠 星辰 苍穹 阿诺瑞亚 贝拉贡 卡兰铎 洛瑞恩 阿萨伦 米斯兰 塔尔贡 帕兰铎 埃瑞达 瓦尔米拉 泽菲尔 奥克萨 泰拉贡 索伦德 艾拉贡 卡斯特兰 韦尔贡 尼斯托 拉文德 格罗姆 塞德兰 奥瑞恩 卢米纳 卡莫拉 希尔德 杜恩 法尔贡 伊瑟琳 凯尔维 诺尔兰 塞拉姆 塔利昂 维兰德 奥恩 伊希尔 卢西恩 埃德兰 莫罗 卡尔贡 达尔贡 维鲁姆 索雷斯 埃兰提尔 凯尔兰 米尔丹 奥斯坦 维伦 卡尔达 索瓦 艾顿 巴尔兰 奥丁格 斯卡拉 诺维斯 洛达尔 费恩 哈根 伊格 奥瑟 德兰 秦 晋 齐 鲁 燕 赵 魏 韩 楚 吴 越 宋 卫 郑 陈 蔡 曹 许 杞 滕 薛 莒 邾 纪 邢 梁 虞 虢 申 吕 息 邓 黄 江 随 唐 莱 谭 遂 宿 任 郯 鄫 郜 霍 冀 黎 邘 应 蒋 茅 胙 祭 焦 杨 钟离 巢 舒 庸 六 蓼 英 弦 道 柏 罗 清河 河间 真定 广平 巨鹿 信都 淮阳 济阴 山阳 东平 泗水 广陵 六安 衡山 淮南 江都 临淄 胶东 胶西 淄川 城阳 琅琊 东海 丹阳 武陵 九江 庐江 东郡 颍川 汝南 南阳 南郡 江夏 河内 弘农 京兆 左冯翊 右扶风 西河 北地 代郡 上谷 渔阳 右北平 辽西 玄菟 乐浪 带方 郁林 定襄"/>
 
         <!-- Info -->
         <string key="info_back" value="返回"/>
@@ -994,6 +1021,11 @@
         <string key="debt" value="欠款"/>
         <string key="some_units_can_move" value="一些单位可移动"/>
         <string key="text_size" value="文字大小"/>
+        <string key="map_name" value="地图名称"/>
+        <string key="author" value="作者"/>
+        <string key="create_time" value="创建时间"/>
+        <string key="description" value="介绍"/>
+        <string key="details" value="详细"/>
     </language>
        
 
@@ -1003,6 +1035,17 @@
 
 
     <language name="ru_RU" title="Russian" author="yiotro">
+        <string key="dynamic_province_titles" value="Динамические титулы провинций"/>
+        <string key="title_city" value="Город"/>
+        <string key="title_county" value="Графство"/>
+        <string key="title_marquis" value="Маркиз"/>
+        <string key="title_duchy" value="Герцогство"/>
+        <string key="title_kingdom" value="Королевство"/>
+        <string key="title_empire" value="Империя"/>
+        <string key="map_type_islands" value="Острова"/>
+        <string key="map_type" value="Тип карты"/>
+        <string key="map_type_default" value="По умолчанию"/>
+        <string key="map_type_continental" value="Континент"/>
 
         <string key="label_editor" value="Редактор метки"/>
         <string key="label_text" value="Текст метки: %s"/>
@@ -1029,8 +1072,8 @@
         <string key="lang_characters" value="йцукенгшщзхъёфывапролджэячсмитьбюЙЦУКЕНГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮ"/>
 		
 		<!--New things-->
-		<string key="leader_name_gen_masks" value="f s n"/>
-        <string key="leader_name_gen_groups" value="f: Steven Tom Jack Slavia Don Hack King Julia Flosia Harry Frank Franklin John Peter #s: Smith Williams Brown Taylor Olivia Ivans Thomas #n: 'Killer' 'Knight' 'Rat' 'Spearman' 'Farmer' 'Emperor' 'Luckyman' #p: -"/>
+		<string key="leader_name_gen_masks" value="fs"/>
+        <string key="leader_name_gen_groups" value="f: Александр Дмитрий Максим Иван Артём Михаил Кирилл Андрей Сергей Алексей Николай Владимир Павел Егор #s: Иванов Петров Сидоров Смирнов Кузнецов Попов Соколов Лебедев Козлов Новиков Морозов Волков Соловьёв Васильев Зайцев Павлов"/>
 		<string key="giant" value="giant"/>
 		<string key="world" value="world"/>
 		<string key="download" value="Download"/>
@@ -1457,6 +1500,11 @@
         <string key="debt" value="Долг"/>
         <string key="some_units_can_move" value="Юниты ещё могут ходить"/>
 
+            <string key="map_name" value="Название карты"/>
+            <string key="author" value="Автор"/>
+            <string key="create_time" value="Создано"/>
+            <string key="description" value="Описание"/>
+            <string key="details" value="Подробнее"/>
     </language>
 
 
@@ -1481,6 +1529,17 @@
 
 
     <language name="uk_UA" title="Ukrainian" author="yiotro">
+        <string key="dynamic_province_titles" value="Динамічні титули провінцій"/>
+        <string key="title_city" value="Місто"/>
+        <string key="title_county" value="Графство"/>
+        <string key="title_marquis" value="Маркіз"/>
+        <string key="title_duchy" value="Герцогство"/>
+        <string key="title_kingdom" value="Королівство"/>
+        <string key="title_empire" value="Імперія"/>
+        <string key="map_type_islands" value="Острови"/>
+        <string key="map_type" value="Тип карти"/>
+        <string key="map_type_default" value="За замовчуванням"/>
+        <string key="map_type_continental" value="Континент"/>
 
         <string key="label_editor" value="Редактор мітки"/>
         <string key="label_text" value="Текст мітки: %s"/>
@@ -1513,8 +1572,8 @@
 
 
 <!--New things-->
-		<string key="leader_name_gen_masks" value="f s n"/>
-        <string key="leader_name_gen_groups" value="f: Steven Tom Jack Slavia Don Hack King Julia Flosia Harry Frank Franklin John Peter #s: Smith Williams Brown Taylor Olivia Ivans Thomas #n: 'Killer' 'Knight' 'Rat' 'Spearman' 'Farmer' 'Emperor' 'Luckyman' #p: -"/>
+		<string key="leader_name_gen_masks" value="fs"/>
+        <string key="leader_name_gen_groups" value="f: Олександр Дмитро Максим Іван Артем Михайло Андрій Сергій Олексій Микола Володимир Павло Богдан Тарас #s: Шевченко Бондаренко Коваленко Бойко Ткаченко Кравченко Мельник Шевчук Ковальчук Лисенко Мороз Гончаренко Руденко Петренко Савченко"/>
 		<string key="giant" value="giant"/>
 		<string key="world" value="world"/>
 		<string key="download" value="Download"/>
@@ -1936,6 +1995,11 @@
         <string key="debt" value="Борг"/>
         <string key="some_units_can_move" value="Юніти ще можуть ходити"/>
 
+            <string key="map_name" value="Назва карти"/>
+            <string key="author" value="Автор"/>
+            <string key="create_time" value="Створено"/>
+            <string key="description" value="Опис"/>
+            <string key="details" value="Деталі"/>
     </language>
 
 
@@ -1961,6 +2025,17 @@
 
 
     <language name="de_DE" title="German" author="Rebecca Nöll">
+        <string key="dynamic_province_titles" value="Dynamische Provinztitel"/>
+        <string key="title_city" value="Stadt"/>
+        <string key="title_county" value="Grafschaft"/>
+        <string key="title_marquis" value="Marquis"/>
+        <string key="title_duchy" value="Herzogtum"/>
+        <string key="title_kingdom" value="Königreich"/>
+        <string key="title_empire" value="Imperium"/>
+        <string key="map_type_islands" value="Inseln"/>
+        <string key="map_type" value="Kartentyp"/>
+        <string key="map_type_default" value="standard"/>
+        <string key="map_type_continental" value="Kontinent"/>
 
         <string key="label_editor" value="Beschriftungseditor"/>
         <string key="label_text" value="Beschriftungstext: %s"/>
@@ -1986,8 +2061,8 @@
         <!-- All characters -->
         <string key="lang_characters" value="ÄÜÖäüöß"/>
 <!--New things-->
-		<string key="leader_name_gen_masks" value="f s n"/>
-        <string key="leader_name_gen_groups" value="f: Steven Tom Jack Slavia Don Hack King Julia Flosia Harry Frank Franklin John Peter #s: Smith Williams Brown Taylor Olivia Ivans Thomas #n: 'Killer' 'Knight' 'Rat' 'Spearman' 'Farmer' 'Emperor' 'Luckyman' #p: -"/>
+		<string key="leader_name_gen_masks" value="fs"/>
+        <string key="leader_name_gen_groups" value="f: Alexander Maximilian Lukas Leon Paul Felix David Jonas Julian Niklas Finn Jakob Moritz Tim Luca Elias #s: Müller Schmidt Schneider Fischer Weber Meyer Wagner Becker Schulz Hoffmann Schäfer Koch Richter Klein Wolf Neumann"/>
 		<string key="giant" value="giant"/>
 		<string key="world" value="world"/>
 		<string key="download" value="Download"/>
@@ -2465,6 +2540,11 @@
         <string key="hide" value="verstecken"/>
         <string key="debt" value="Schulden"/>
         <string key="some_units_can_move" value="Einige Einheiten können sich bewegen"/>
+            <string key="map_name" value="Kartenname"/>
+            <string key="author" value="Autor"/>
+            <string key="create_time" value="Erstellt"/>
+            <string key="description" value="Beschreibung"/>
+            <string key="details" value="Details"/>
     </language>
 
 
@@ -2487,6 +2567,17 @@
 
 
     <language name="cs_CZ" title="Czech" author="Jirka Justra, Ted Hendrych">
+        <string key="dynamic_province_titles" value="Dynamické tituly provincií"/>
+        <string key="title_city" value="Město"/>
+        <string key="title_county" value="Hrabství"/>
+        <string key="title_marquis" value="Markýz"/>
+        <string key="title_duchy" value="Vévodství"/>
+        <string key="title_kingdom" value="Království"/>
+        <string key="title_empire" value="Říše"/>
+        <string key="map_type_islands" value="Ostrovy"/>
+        <string key="map_type" value="Typ mapy"/>
+        <string key="map_type_default" value="Výchozí"/>
+        <string key="map_type_continental" value="Kontinent"/>
 
         <string key="label_editor" value="Editor popisků"/>
         <string key="label_text" value="Text popisku: %s"/>
@@ -2512,8 +2603,8 @@
         <!-- All characters -->
         <string key="lang_characters" value="öěščřžýáíéůúňťďóĚŠČŘŽÝÁÍÉŮÚŇŤĎÓ"/>
 <!--New things-->
-		<string key="leader_name_gen_masks" value="f s n"/>
-        <string key="leader_name_gen_groups" value="f: Steven Tom Jack Slavia Don Hack King Julia Flosia Harry Frank Franklin John Peter #s: Smith Williams Brown Taylor Olivia Ivans Thomas #n: 'Killer' 'Knight' 'Rat' 'Spearman' 'Farmer' 'Emperor' 'Luckyman' #p: -"/>
+		<string key="leader_name_gen_masks" value="fs"/>
+        <string key="leader_name_gen_groups" value="f: Jakub Jan Tomáš Petr Martin Pavel Josef Lukáš Ondřej Vojtěch Filip Adam Michal Marek David #s: Novák Svoboda Novotný Dvořák Černý Procházka Kučera Veselý Horák Němec Pospíšil Jirásek Pokorný Král Jelínek"/>
 		<string key="giant" value="giant"/>
 		<string key="world" value="world"/>
 		<string key="download" value="Download"/>
@@ -2978,6 +3069,11 @@
         <string key="hide" value="Schovat"/>
         <string key="debt" value="Debt"/>
         <string key="some_units_can_move" value="Some units can move"/>
+            <string key="map_name" value="Název mapy"/>
+            <string key="author" value="Autor"/>
+            <string key="create_time" value="Vytvořeno"/>
+            <string key="description" value="Popis"/>
+            <string key="details" value="Podrobnosti"/>
     </language>
 
 
@@ -3002,6 +3098,17 @@
 
 
     <language name="fr_FR" title="French" author="Louis Philibert-Morrissette">
+        <string key="dynamic_province_titles" value="Titres de province dynamiques"/>
+        <string key="title_city" value="Cité"/>
+        <string key="title_county" value="Comté"/>
+        <string key="title_marquis" value="Marquis"/>
+        <string key="title_duchy" value="Duché"/>
+        <string key="title_kingdom" value="Royaume"/>
+        <string key="title_empire" value="Empire"/>
+        <string key="map_type_islands" value="Îles"/>
+        <string key="map_type" value="Type de carte"/>
+        <string key="map_type_default" value="default"/>
+        <string key="map_type_continental" value="Continental"/>
 
         <string key="label_editor" value="Éditeur d'étiquette"/>
         <string key="label_text" value="Texte de l'étiquette : %s"/>
@@ -3027,8 +3134,8 @@
         <!-- All characters -->
         <string key="lang_characters" value="öéè'àùïôû"/>
 <!--New things-->
-		<string key="leader_name_gen_masks" value="f s n"/>
-        <string key="leader_name_gen_groups" value="f: Steven Tom Jack Slavia Don Hack King Julia Flosia Harry Frank Franklin John Peter #s: Smith Williams Brown Taylor Olivia Ivans Thomas #n: 'Killer' 'Knight' 'Rat' 'Spearman' 'Farmer' 'Emperor' 'Luckyman' #p: -"/>
+		<string key="leader_name_gen_masks" value="fs"/>
+        <string key="leader_name_gen_groups" value="f: Jean Pierre Michel André Nicolas Louis Julien Antoine François Philippe Laurent Marc Paul Luc Thomas Hugo #s: Martin Bernard Dubois Thomas Robert Richard Petit Durand Leroy Moreau Simon Laurent Lefebvre Michel Garcia David Bertrand"/>
 		<string key="giant" value="giant"/>
 		<string key="world" value="world"/>
 		<string key="download" value="Download"/>
@@ -3497,6 +3604,11 @@
         <string key="hide" value="Hide"/>
         <string key="debt" value="Debt"/>
         <string key="some_units_can_move" value="Some units can move"/>
+            <string key="map_name" value="Nom de la carte"/>
+            <string key="author" value="Auteur"/>
+            <string key="create_time" value="Créée"/>
+            <string key="description" value="Description"/>
+            <string key="details" value="Détails"/>
     </language>
 
 
@@ -3518,6 +3630,17 @@
 
 
     <language name="pl_PL" title="Polish" author="Aleksander Jabłoński">
+        <string key="dynamic_province_titles" value="Dynamiczne tytuły prowincji"/>
+        <string key="title_city" value="Miasto"/>
+        <string key="title_county" value="Hrabstwo"/>
+        <string key="title_marquis" value="Markiz"/>
+        <string key="title_duchy" value="Księstwo"/>
+        <string key="title_kingdom" value="Królestwo"/>
+        <string key="title_empire" value="Imperium"/>
+        <string key="map_type_islands" value="Wyspy"/>
+        <string key="map_type" value="Typ mapy"/>
+        <string key="map_type_default" value="default"/>
+        <string key="map_type_continental" value="Kontynent"/>
 
         <string key="label_editor" value="Edytor etykiety"/>
         <string key="label_text" value="Tekst etykiety: %s"/>
@@ -3543,8 +3666,8 @@
         <!-- All characters -->
         <string key="lang_characters" value="ĄąĆćĘęŁłŃńŚśÓóŻżŹźö"/>
 <!--New things-->
-		<string key="leader_name_gen_masks" value="f s n"/>
-        <string key="leader_name_gen_groups" value="f: Steven Tom Jack Slavia Don Hack King Julia Flosia Harry Frank Franklin John Peter #s: Smith Williams Brown Taylor Olivia Ivans Thomas #n: 'Killer' 'Knight' 'Rat' 'Spearman' 'Farmer' 'Emperor' 'Luckyman' #p: -"/>
+		<string key="leader_name_gen_masks" value="fs"/>
+        <string key="leader_name_gen_groups" value="f: Jakub Jan Piotr Andrzej Krzysztof Stanisław Tomasz Paweł Michał Marek Adam Marcin Łukasz Mateusz Kamil #s: Nowak Kowalski Wiśniewski Wójcik Kowalczyk Kamiński Lewandowski Zieliński Szymański Woźniak Dąbrowski Kozłowski Jankowski Mazur Kwiatkowski"/>
 		<string key="giant" value="giant"/>
 		<string key="world" value="world"/>
 		<string key="download" value="Download"/>
@@ -4019,6 +4142,11 @@
         <string key="hide" value="Hide"/>
         <string key="debt" value="Debt"/>
         <string key="some_units_can_move" value="Some units can move"/>
+            <string key="map_name" value="Nazwa mapy"/>
+            <string key="author" value="Autor"/>
+            <string key="create_time" value="Utworzono"/>
+            <string key="description" value="Opis"/>
+            <string key="details" value="Szczegóły"/>
     </language>
 
 
@@ -4042,6 +4170,17 @@
 
 
     <language name="it_IT" title="Italian" author="Andrea Rinaldi / Ivano Rocco">
+        <string key="dynamic_province_titles" value="Titoli di provincia dinamici"/>
+        <string key="title_city" value="Città"/>
+        <string key="title_county" value="Contea"/>
+        <string key="title_marquis" value="Marchese"/>
+        <string key="title_duchy" value="Ducato"/>
+        <string key="title_kingdom" value="Regno"/>
+        <string key="title_empire" value="Impero"/>
+        <string key="map_type_islands" value="Isole"/>
+        <string key="map_type" value="Tipo di mappa"/>
+        <string key="map_type_default" value="predefinito"/>
+        <string key="map_type_continental" value="Continente"/>
 
         <string key="label_editor" value="Editor etichetta"/>
         <string key="label_text" value="Testo etichetta: %s"/>
@@ -4067,8 +4206,8 @@
         <!-- All characters -->
         <string key="lang_characters" value="àèéìòùÈ"/>
 <!--New things-->
-		<string key="leader_name_gen_masks" value="f s n"/>
-        <string key="leader_name_gen_groups" value="f: Steven Tom Jack Slavia Don Hack King Julia Flosia Harry Frank Franklin John Peter #s: Smith Williams Brown Taylor Olivia Ivans Thomas #n: 'Killer' 'Knight' 'Rat' 'Spearman' 'Farmer' 'Emperor' 'Luckyman' #p: -"/>
+		<string key="leader_name_gen_masks" value="fs"/>
+        <string key="leader_name_gen_groups" value="f: Alessandro Marco Luca Giuseppe Antonio Giovanni Francesco Mario Luigi Paolo Andrea Matteo Stefano Simone Roberto #s: Rossi Russo Ferrari Esposito Bianchi Romano Colombo Ricci Marino Greco Bruno Gallo Conti De Luca Mancini Costa"/>
 		<string key="giant" value="giant"/>
 		<string key="world" value="world"/>
 		<string key="download" value="Download"/>
@@ -4497,6 +4636,11 @@
         <string key="hide" value="Nascondi"/>
         <string key="debt" value="Debt"/>
         <string key="some_units_can_move" value="Some units can move"/>
+            <string key="map_name" value="Nome mappa"/>
+            <string key="author" value="Autore"/>
+            <string key="create_time" value="Creata"/>
+            <string key="description" value="Descrizione"/>
+            <string key="details" value="Dettagli"/>
     </language>
 
 
@@ -4517,6 +4661,17 @@
 
 
     <language name="es_MX" title="Spanish" author="Hilda Julieta Lacaze" second_name="es_ES">
+        <string key="dynamic_province_titles" value="Títulos de provincia dinámicos"/>
+        <string key="title_city" value="Ciudad"/>
+        <string key="title_county" value="Condado"/>
+        <string key="title_marquis" value="Marqués"/>
+        <string key="title_duchy" value="Ducado"/>
+        <string key="title_kingdom" value="Reino"/>
+        <string key="title_empire" value="Imperio"/>
+        <string key="map_type_islands" value="Islas"/>
+        <string key="map_type" value="Tipo de mapa"/>
+        <string key="map_type_default" value="default"/>
+        <string key="map_type_continental" value="Continente"/>
 
         <string key="label_editor" value="Editor de etiqueta"/>
         <string key="label_text" value="Texto de la etiqueta: %s"/>
@@ -4548,8 +4703,8 @@
         <!-- All characters -->
         <string key="lang_characters" value="Ááéíóúñö¿"/>
 <!--New things-->
-		<string key="leader_name_gen_masks" value="f s n"/>
-        <string key="leader_name_gen_groups" value="f: Steven Tom Jack Slavia Don Hack King Julia Flosia Harry Frank Franklin John Peter #s: Smith Williams Brown Taylor Olivia Ivans Thomas #n: 'Killer' 'Knight' 'Rat' 'Spearman' 'Farmer' 'Emperor' 'Luckyman' #p: -"/>
+		<string key="leader_name_gen_masks" value="fs"/>
+        <string key="leader_name_gen_groups" value="f: Juan José Luis Carlos Miguel Ángel Francisco Javier Antonio Pedro Manuel Jesús Andrés Alejandro Jorge Fernando #s: García Rodríguez Martínez Hernández López González Pérez Sánchez Ramírez Torres Flores Rivera Gómez Díaz Reyes Morales Cruz Ortiz"/>
 		<string key="giant" value="giant"/>
 		<string key="world" value="world"/>
 		<string key="download" value="Download"/>
@@ -5014,6 +5169,11 @@
         <string key="hide" value="Hide"/>
         <string key="debt" value="Debt"/>
         <string key="some_units_can_move" value="Some units can move"/>
+            <string key="map_name" value="Nombre del mapa"/>
+            <string key="author" value="Autor"/>
+            <string key="create_time" value="Creada"/>
+            <string key="description" value="Descripción"/>
+            <string key="details" value="Detalles"/>
     </language>
 
 
@@ -5036,6 +5196,17 @@
 
 
     <language name="sk_SK" title="Slovak" author="neviemaky">
+        <string key="dynamic_province_titles" value="Dynamické tituly provincií"/>
+        <string key="title_city" value="Mesto"/>
+        <string key="title_county" value="Grófstvo"/>
+        <string key="title_marquis" value="Markíz"/>
+        <string key="title_duchy" value="Vojvodstvo"/>
+        <string key="title_kingdom" value="Kráľovstvo"/>
+        <string key="title_empire" value="Ríša"/>
+        <string key="map_type_islands" value="Ostrovy"/>
+        <string key="map_type" value="Typ mapy"/>
+        <string key="map_type_default" value="default"/>
+        <string key="map_type_continental" value="Kontinent"/>
 
         <string key="label_editor" value="Editor popisov"/>
         <string key="label_text" value="Text popisu: %s"/>
@@ -5066,8 +5237,8 @@
         <string key="main_menu_exit" value="Koniec"/>
         <string key="main_menu_something" value="Prázdny text o ničom"/>
 <!--New things-->
-		<string key="leader_name_gen_masks" value="f s n"/>
-        <string key="leader_name_gen_groups" value="f: Steven Tom Jack Slavia Don Hack King Julia Flosia Harry Frank Franklin John Peter #s: Smith Williams Brown Taylor Olivia Ivans Thomas #n: 'Killer' 'Knight' 'Rat' 'Spearman' 'Farmer' 'Emperor' 'Luckyman' #p: -"/>
+		<string key="leader_name_gen_masks" value="fs"/>
+        <string key="leader_name_gen_groups" value="f: Ján Peter Martin Tomáš Michal Marek Lukáš Jakub Adam Filip Samuel Oliver Šimon Matej Daniel #s: Horváth Kováč Varga Tóth Nagy Baláž Szabó Molnár Lukáč Novák Hruška Krajčovič Šimko Marček"/>
 		<string key="giant" value="giant"/>
 		<string key="world" value="world"/>
 		<string key="download" value="Download"/>
@@ -5526,12 +5697,28 @@
         <string key="hide" value="Hide"/>
         <string key="debt" value="Debt"/>
         <string key="some_units_can_move" value="Some units can move"/>
+            <string key="map_name" value="Názov mapy"/>
+            <string key="author" value="Autor"/>
+            <string key="create_time" value="Vytvorené"/>
+            <string key="description" value="Popis"/>
+            <string key="details" value="Podrobnosti"/>
     </language>
 
 
 
 
     <language name="tr_TR" title="Turkish" author="Kaan Aydeniz">
+        <string key="dynamic_province_titles" value="Dinamik eyalet unvanları"/>
+        <string key="title_city" value="Şehir"/>
+        <string key="title_county" value="Kontluk"/>
+        <string key="title_marquis" value="Marki"/>
+        <string key="title_duchy" value="Dükalık"/>
+        <string key="title_kingdom" value="Krallık"/>
+        <string key="title_empire" value="İmparatorluk"/>
+        <string key="map_type_islands" value="Adalar"/>
+        <string key="map_type" value="Harita türü"/>
+        <string key="map_type_default" value="default"/>
+        <string key="map_type_continental" value="Kıta"/>
 
         <string key="label_editor" value="Etiket düzenleyici"/>
         <string key="label_text" value="Etiket metni: %s"/>
@@ -5557,8 +5744,8 @@
         <!-- All characters -->
         <string key="lang_characters" value="ğĞıüÜşŞİöÖçÇ"/>
 <!--New things-->
-		<string key="leader_name_gen_masks" value="f s n"/>
-        <string key="leader_name_gen_groups" value="f: Steven Tom Jack Slavia Don Hack King Julia Flosia Harry Frank Franklin John Peter #s: Smith Williams Brown Taylor Olivia Ivans Thomas #n: 'Killer' 'Knight' 'Rat' 'Spearman' 'Farmer' 'Emperor' 'Luckyman' #p: -"/>
+		<string key="leader_name_gen_masks" value="fs"/>
+        <string key="leader_name_gen_groups" value="f: Mehmet Mustafa Ahmet Ali Hüseyin Hasan İbrahim İsmail Osman Yusuf Murat Emre Burak Can #s: Yılmaz Kaya Demir Çelik Şahin Yıldız Yıldırım Öztürk Aydın Duman Arslan Doğan Kılıç Aslan Çetin"/>
 		<string key="giant" value="giant"/>
 		<string key="world" value="world"/>
 		<string key="download" value="Download"/>
@@ -6028,6 +6215,11 @@
         <string key="hide" value="Hide"/>
         <string key="debt" value="Debt"/>
         <string key="some_units_can_move" value="Some units can move"/>
+            <string key="map_name" value="Harita adı"/>
+            <string key="author" value="Yazar"/>
+            <string key="create_time" value="Oluşturuldu"/>
+            <string key="description" value="Açıklama"/>
+            <string key="details" value="Ayrıntılar"/>
     </language>
 
 
@@ -6061,6 +6253,17 @@
 
 
     <language name="bg_BG" title="Bulgarian" author="Vassil Antonov">
+        <string key="dynamic_province_titles" value="Динамични титли на провинциите"/>
+        <string key="title_city" value="Град"/>
+        <string key="title_county" value="Графство"/>
+        <string key="title_marquis" value="Маркиз"/>
+        <string key="title_duchy" value="Херцогство"/>
+        <string key="title_kingdom" value="Кралство"/>
+        <string key="title_empire" value="Империя"/>
+        <string key="map_type_islands" value="Острови"/>
+        <string key="map_type" value="Тип карта"/>
+        <string key="map_type_default" value="default"/>
+        <string key="map_type_continental" value="Континент"/>
 
         <string key="label_editor" value="Редактор на етикет"/>
         <string key="label_text" value="Текст на етикета: %s"/>
@@ -6086,8 +6289,8 @@
         <!-- All characters -->
         <string key="lang_characters" value="йцукенгшщзхъёфывапролджэячсмитьбюЙЦУКЕНГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮö"/>
 <!--New things-->
-		<string key="leader_name_gen_masks" value="f s n"/>
-        <string key="leader_name_gen_groups" value="f: Steven Tom Jack Slavia Don Hack King Julia Flosia Harry Frank Franklin John Peter #s: Smith Williams Brown Taylor Olivia Ivans Thomas #n: 'Killer' 'Knight' 'Rat' 'Spearman' 'Farmer' 'Emperor' 'Luckyman' #p: -"/>
+		<string key="leader_name_gen_masks" value="fs"/>
+        <string key="leader_name_gen_groups" value="f: Георги Иван Димитър Николай Петър Стоян Александър Христо Тодор Борис Васил #s: Иванов Георгиев Димитров Петров Николов Стоянов Тодоров Маринов Христов Илиев Василев Попов Дончев"/>
 		<string key="giant" value="giant"/>
 		<string key="world" value="world"/>
 		<string key="download" value="Download"/>
@@ -6558,6 +6761,11 @@
         <string key="debt" value="Debt"/>
         <string key="some_units_can_move" value="Some units can move"/>
 
+            <string key="map_name" value="Име на картата"/>
+            <string key="author" value="Автор"/>
+            <string key="create_time" value="Създадена"/>
+            <string key="description" value="Описание"/>
+            <string key="details" value="Подробности"/>
     </language>
 
 
@@ -6597,6 +6805,17 @@
 
 
     <language name="pt_BR" title="Portuguese (BR)" author="Matheus Kote" second_name="pt_PT">
+        <string key="dynamic_province_titles" value="Títulos dinâmicos de província"/>
+        <string key="title_city" value="Cidade"/>
+        <string key="title_county" value="Condado"/>
+        <string key="title_marquis" value="Marquês"/>
+        <string key="title_duchy" value="Ducado"/>
+        <string key="title_kingdom" value="Reino"/>
+        <string key="title_empire" value="Império"/>
+        <string key="map_type_islands" value="Ilhas"/>
+        <string key="map_type" value="Tipo de mapa"/>
+        <string key="map_type_default" value="default"/>
+        <string key="map_type_continental" value="Continente"/>
 
         <string key="label_editor" value="Editor de rótulo"/>
         <string key="label_text" value="Texto do rótulo: %s"/>
@@ -6622,8 +6841,8 @@
         <!-- All characters -->
         <string key="lang_characters" value="áâãàçéêíóôõúÁÂÃÀÇÉÊÍÓÔÕÚ"/>
 <!--New things-->
-		<string key="leader_name_gen_masks" value="f s n"/>
-        <string key="leader_name_gen_groups" value="f: Steven Tom Jack Slavia Don Hack King Julia Flosia Harry Frank Franklin John Peter #s: Smith Williams Brown Taylor Olivia Ivans Thomas #n: 'Killer' 'Knight' 'Rat' 'Spearman' 'Farmer' 'Emperor' 'Luckyman' #p: -"/>
+		<string key="leader_name_gen_masks" value="fs"/>
+        <string key="leader_name_gen_groups" value="f: João José Antônio Carlos Francisco Paulo Pedro Luiz Miguel Gabriel Rafael Matheus Lucas Gustavo #s: Silva Santos Oliveira Souza Pereira Costa Rodrigues Almeida Nascimento Lima Araújo Fernandes Carvalho Gomes Martins"/>
 		<string key="giant" value="giant"/>
 		<string key="world" value="world"/>
 		<string key="download" value="Download"/>
@@ -7059,6 +7278,11 @@
         <string key="some_units_can_move" value="Some units can move"/>
 
 
+            <string key="map_name" value="Nome do mapa"/>
+            <string key="author" value="Autor"/>
+            <string key="create_time" value="Criada"/>
+            <string key="description" value="Descrição"/>
+            <string key="details" value="Detalhes"/>
     </language>
 
 
@@ -7096,6 +7320,17 @@
 
 
     <language name="nl_NL" title="Dutch" author="Kees Prutsaer">
+        <string key="dynamic_province_titles" value="Dynamische provincietitels"/>
+        <string key="title_city" value="Stad"/>
+        <string key="title_county" value="Graafschap"/>
+        <string key="title_marquis" value="Markies"/>
+        <string key="title_duchy" value="Hertogdom"/>
+        <string key="title_kingdom" value="Koninkrijk"/>
+        <string key="title_empire" value="Rijk"/>
+        <string key="map_type_islands" value="Eilanden"/>
+        <string key="map_type" value="Kaarttype"/>
+        <string key="map_type_default" value="default"/>
+        <string key="map_type_continental" value="Continent"/>
 
         <string key="label_editor" value="Label-editor"/>
         <string key="label_text" value="Labeltekst: %s"/>
@@ -7121,8 +7356,8 @@
         <!-- All characters -->
         <string key="lang_characters" value="éë"/>
 <!--New things-->
-		<string key="leader_name_gen_masks" value="f s n"/>
-        <string key="leader_name_gen_groups" value="f: Steven Tom Jack Slavia Don Hack King Julia Flosia Harry Frank Franklin John Peter #s: Smith Williams Brown Taylor Olivia Ivans Thomas #n: 'Killer' 'Knight' 'Rat' 'Spearman' 'Farmer' 'Emperor' 'Luckyman' #p: -"/>
+		<string key="leader_name_gen_masks" value="fs"/>
+        <string key="leader_name_gen_groups" value="f: Jan Pieter Willem Hendrik Johannes Cornelis Gerrit Dirk Arie Johan Peter Mark Thomas Daan #s: de Jong Jansen de Vries van den Berg van Dijk Bakker Visser Smit Meijer Mulder de Boer Bos Vos Peters"/>
 		<string key="giant" value="giant"/>
 		<string key="world" value="world"/>
 		<string key="download" value="Download"/>
@@ -7558,6 +7793,11 @@
         <string key="some_units_can_move" value="Some units can move"/>
 
 
+            <string key="map_name" value="Kaartnaam"/>
+            <string key="author" value="Auteur"/>
+            <string key="create_time" value="Aangemaakt"/>
+            <string key="description" value="Beschrijving"/>
+            <string key="details" value="Details"/>
     </language>
 
 
@@ -7606,6 +7846,17 @@
 
 
     <language name="hu_HU" title="Hungarian" author="David Berki">
+        <string key="dynamic_province_titles" value="Dinamikus tartományi címek"/>
+        <string key="title_city" value="Város"/>
+        <string key="title_county" value="Grófság"/>
+        <string key="title_marquis" value="Őrgróf"/>
+        <string key="title_duchy" value="Hercegség"/>
+        <string key="title_kingdom" value="Királyság"/>
+        <string key="title_empire" value="Birodalom"/>
+        <string key="map_type_islands" value="Szigetek"/>
+        <string key="map_type" value="Térkép típusa"/>
+        <string key="map_type_default" value="default"/>
+        <string key="map_type_continental" value="Kontinens"/>
 
         <string key="label_editor" value="Címke szerkesztő"/>
         <string key="label_text" value="Címke szövege: %s"/>
@@ -7631,8 +7882,8 @@
         <!-- All characters -->
         <string key="lang_characters" value="áéíúüűóÓöőÁÉÍÚÜŰÖŐ"/>
 <!--New things-->
-		<string key="leader_name_gen_masks" value="f s n"/>
-        <string key="leader_name_gen_groups" value="f: Steven Tom Jack Slavia Don Hack King Julia Flosia Harry Frank Franklin John Peter #s: Smith Williams Brown Taylor Olivia Ivans Thomas #n: 'Killer' 'Knight' 'Rat' 'Spearman' 'Farmer' 'Emperor' 'Luckyman' #p: -"/>
+		<string key="leader_name_gen_masks" value="fs"/>
+        <string key="leader_name_gen_groups" value="f: István József László Gábor Zoltán Péter Tamás András Attila Ferenc Sándor Balázs Márk Bence #s: Nagy Kovács Tóth Szabó Horváth Varga Kiss Molnár Németh Farkas Balogh Papp Takács Juhász Lakatos"/>
 		<string key="giant" value="giant"/>
 		<string key="world" value="world"/>
 		<string key="download" value="Download"/>
@@ -8103,6 +8354,11 @@
         <string key="some_units_can_move" value="Some units can move"/>
 
 
+            <string key="map_name" value="Térkép neve"/>
+            <string key="author" value="Szerző"/>
+            <string key="create_time" value="Létrehozva"/>
+            <string key="description" value="Leírás"/>
+            <string key="details" value="Részletek"/>
     </language>
 
 
@@ -8149,6 +8405,17 @@
 
 
     <language name="by_BY" title="Belarusian (official)" author="Hieorhi">
+        <string key="dynamic_province_titles" value="Дынамічныя тытулы правінцый"/>
+        <string key="title_city" value="Горад"/>
+        <string key="title_county" value="Графства"/>
+        <string key="title_marquis" value="Маркіз"/>
+        <string key="title_duchy" value="Герцагства"/>
+        <string key="title_kingdom" value="Каралеўства"/>
+        <string key="title_empire" value="Імперыя"/>
+        <string key="map_type_islands" value="Астравы"/>
+        <string key="map_type" value="Тып карты"/>
+        <string key="map_type_default" value="як звычайна"/>
+        <string key="map_type_continental" value="Кантынент"/>
 
         <string key="label_editor" value="Рэдактар меткі"/>
         <string key="label_text" value="Тэкст меткі: %s"/>
@@ -8174,8 +8441,8 @@
         <!-- All characters -->
         <string key="lang_characters" value="йцукенгшўзх'ёфывапролджэячсмітьбюЙЦУКЕНГШЎЗХ'ФЫВАПРОЛДЖЭЯЧСМІТЬБЮö"/>
 <!--New things-->
-		<string key="leader_name_gen_masks" value="f s n"/>
-        <string key="leader_name_gen_groups" value="f: Steven Tom Jack Slavia Don Hack King Julia Flosia Harry Frank Franklin John Peter #s: Smith Williams Brown Taylor Olivia Ivans Thomas #n: 'Killer' 'Knight' 'Rat' 'Spearman' 'Farmer' 'Emperor' 'Luckyman' #p: -"/>
+		<string key="leader_name_gen_masks" value="fs"/>
+        <string key="leader_name_gen_groups" value="f: Аляксандр Дзмітрый Максім Іван Міхаіл Андрэй Сяргей Аляксей Мікалай Уладзімір Павел Арцём #s: Іваноў Пятроў Сідараў Смірноў Кузняцоў Папоў Сакалоў Лебедзеў Кавалёў Новікаў Марозаў Волкаў Васільеў Зайцаў"/>
 		<string key="giant" value="giant"/>
 		<string key="world" value="world"/>
 		<string key="download" value="Download"/>
@@ -8600,6 +8867,11 @@
         <string key="hide" value="Схаваць"/>
         <string key="debt" value="Доўг"/>
         <string key="some_units_can_move" value="Некаторыя юніты яшчэ могуць хадзіць"/>
+            <string key="map_name" value="Назва карты"/>
+            <string key="author" value="Аўтар"/>
+            <string key="create_time" value="Створана"/>
+            <string key="description" value="Апісанне"/>
+            <string key="details" value="Падрабязнасці"/>
     </language>
 
 
@@ -8628,6 +8900,17 @@
 
 
     <language name="id_ID" title="Indonesian" author="Jawad Yuwono">
+        <string key="dynamic_province_titles" value="Gelar provinsi dinamis"/>
+        <string key="title_city" value="Kota"/>
+        <string key="title_county" value="County"/>
+        <string key="title_marquis" value="Marquis"/>
+        <string key="title_duchy" value="Kadipaten"/>
+        <string key="title_kingdom" value="Kerajaan"/>
+        <string key="title_empire" value="Kekaisaran"/>
+        <string key="map_type_islands" value="Kepulauan"/>
+        <string key="map_type" value="Tipe peta"/>
+        <string key="map_type_default" value="default"/>
+        <string key="map_type_continental" value="Benua"/>
 
         <string key="label_editor" value="Editor label"/>
         <string key="label_text" value="Teks label: %s"/>
@@ -8653,8 +8936,8 @@
         <!-- All characters -->
         <string key="lang_characters" value="é"/>
 <!--New things-->
-		<string key="leader_name_gen_masks" value="f s n"/>
-        <string key="leader_name_gen_groups" value="f: Steven Tom Jack Slavia Don Hack King Julia Flosia Harry Frank Franklin John Peter #s: Smith Williams Brown Taylor Olivia Ivans Thomas #n: 'Killer' 'Knight' 'Rat' 'Spearman' 'Farmer' 'Emperor' 'Luckyman' #p: -"/>
+		<string key="leader_name_gen_masks" value="fs"/>
+        <string key="leader_name_gen_groups" value="f: Muhammad Ahmad Budi Agus Dedi Andi Rudi Bambang Hendra Joko Eko Wawan Yanto #s: Santoso Wijaya Suryadi Nugroho Hidayat Susanto Setiawan Saputra Wibowo Putra Pratama Ramadhan Firmansyah Hartono"/>
 		<string key="giant" value="giant"/>
 		<string key="world" value="world"/>
 		<string key="download" value="Download"/>
@@ -9092,6 +9375,11 @@
 
 
 
+            <string key="map_name" value="Nama peta"/>
+            <string key="author" value="Penulis"/>
+            <string key="create_time" value="Dibuat"/>
+            <string key="description" value="Deskripsi"/>
+            <string key="details" value="Detail"/>
     </language>
 
 
@@ -9118,6 +9406,17 @@
 
 
     <language name="el_GR" title="Greek" author="Nikos Loxas">
+        <string key="dynamic_province_titles" value="Δυναμικοί τίτλοι επαρχιών"/>
+        <string key="title_city" value="Πόλη"/>
+        <string key="title_county" value="Κομητεία"/>
+        <string key="title_marquis" value="Μαρκήσιος"/>
+        <string key="title_duchy" value="Δουκάτο"/>
+        <string key="title_kingdom" value="Βασίλειο"/>
+        <string key="title_empire" value="Αυτοκρατορία"/>
+        <string key="map_type_islands" value="Νησιά"/>
+        <string key="map_type" value="Τύπος χάρτη"/>
+        <string key="map_type_default" value="default"/>
+        <string key="map_type_continental" value="Ήπειρος"/>
 
         <string key="label_editor" value="Επεξεργαστής ετικέτας"/>
         <string key="label_text" value="Κείμενο ετικέτας: %s"/>
@@ -9143,8 +9442,8 @@
         <!-- All characters -->
         <string key="lang_characters" value="αβγδεζηθικλμνξοπρστυφχψωΑΒΓΔΕΖΗΤΘΙΚΛΜΝΞΟΠΡΣΤΥΦΧΨΩάέήίόύώΆΈΉΊΌΎΏς;"/>
 <!--New things-->
-		<string key="leader_name_gen_masks" value="f s n"/>
-        <string key="leader_name_gen_groups" value="f: Steven Tom Jack Slavia Don Hack King Julia Flosia Harry Frank Franklin John Peter #s: Smith Williams Brown Taylor Olivia Ivans Thomas #n: 'Killer' 'Knight' 'Rat' 'Spearman' 'Farmer' 'Emperor' 'Luckyman' #p: -"/>
+		<string key="leader_name_gen_masks" value="fs"/>
+        <string key="leader_name_gen_groups" value="f: Γιώργος Δημήτρης Νίκος Κώστας Γιάννης Παναγιώτης Βασίλης Χρήστος Αντώνης Στέφανος Αλέξανδρος Μιχάλης #s: Παπαδόπουλος Παπαγεωργίου Καραγιάννης Οικονόμου Δημητρίου Παππάς Μακρής Αλεξίου Νικολάου Γεωργίου Βασιλείου Σταύρου Κωνσταντίνου"/>
 		<string key="giant" value="giant"/>
 		<string key="world" value="world"/>
 		<string key="download" value="Download"/>
@@ -9582,6 +9881,11 @@
 
 
 
+            <string key="map_name" value="Όνομα χάρτη"/>
+            <string key="author" value="Συγγραφέας"/>
+            <string key="create_time" value="Δημιουργήθηκε"/>
+            <string key="description" value="Περιγραφή"/>
+            <string key="details" value="Λεπτομέρειες"/>
     </language>
 
 
@@ -9617,6 +9921,17 @@
 
 
     <language name="no_NO" title="Norwegian Bokmal" author="Toby W-M">
+        <string key="dynamic_province_titles" value="Dynamiske provinstitler"/>
+        <string key="title_city" value="By"/>
+        <string key="title_county" value="Grevskap"/>
+        <string key="title_marquis" value="Markis"/>
+        <string key="title_duchy" value="Hertugdømme"/>
+        <string key="title_kingdom" value="Kongedømme"/>
+        <string key="title_empire" value="Imperium"/>
+        <string key="map_type_islands" value="Øyer"/>
+        <string key="map_type" value="Karttype"/>
+        <string key="map_type_default" value="standard"/>
+        <string key="map_type_continental" value="Kontinent"/>
 
         <string key="label_editor" value="Etikettredigerer"/>
         <string key="label_text" value="Etiketttekst: %s"/>
@@ -9642,8 +9957,8 @@
         <!-- All characters -->
         <string key="lang_characters" value="öåæø"/>
 <!--New things-->
-		<string key="leader_name_gen_masks" value="f s n"/>
-        <string key="leader_name_gen_groups" value="f: Steven Tom Jack Slavia Don Hack King Julia Flosia Harry Frank Franklin John Peter #s: Smith Williams Brown Taylor Olivia Ivans Thomas #n: 'Killer' 'Knight' 'Rat' 'Spearman' 'Farmer' 'Emperor' 'Luckyman' #p: -"/>
+		<string key="leader_name_gen_masks" value="fs"/>
+        <string key="leader_name_gen_groups" value="f: Ole Per Hans Bjørn Lars Erik Anders Magnus Martin Jonas Kristian Thomas Sander #s: Hansen Johansen Olsen Larsen Andersen Pedersen Nilsen Kristiansen Jensen Karlsen Johnsen Pettersen Eriksen Berg Haugen"/>
 		<string key="giant" value="giant"/>
 		<string key="world" value="world"/>
 		<string key="download" value="Download"/>
@@ -10079,6 +10394,11 @@
         <string key="debt" value="Debt"/>
         <string key="some_units_can_move" value="Some units can move"/>
 
+            <string key="map_name" value="Kartnavn"/>
+            <string key="author" value="Forfatter"/>
+            <string key="create_time" value="Opprettet"/>
+            <string key="description" value="Beskrivelse"/>
+            <string key="details" value="Detaljer"/>
     </language>
 
 
@@ -10118,6 +10438,17 @@
 
 
     <language name="sr_RS" title="Serbian" author="Nikola Radovanovic">
+        <string key="dynamic_province_titles" value="Динамичке титуле провинција"/>
+        <string key="title_city" value="Град"/>
+        <string key="title_county" value="Грофовија"/>
+        <string key="title_marquis" value="Маркиз"/>
+        <string key="title_duchy" value="Војводство"/>
+        <string key="title_kingdom" value="Краљевина"/>
+        <string key="title_empire" value="Империја"/>
+        <string key="map_type_islands" value="Острва"/>
+        <string key="map_type" value="Тип мапе"/>
+        <string key="map_type_default" value="default"/>
+        <string key="map_type_continental" value="Континент"/>
 
         <string key="label_editor" value="Уређивач ознаке"/>
         <string key="label_text" value="Текст ознаке: %s"/>
@@ -10143,8 +10474,8 @@
         <!-- All characters -->
         <string key="lang_characters" value="абвгдђежзијклљмнњопрстћуфхцчџшАБВГДЂЕЖЗИЈКЛЉМНЊОПРСТЋУФХЦЧЏШ"/>
 <!--New things-->
-		<string key="leader_name_gen_masks" value="f s n"/>
-        <string key="leader_name_gen_groups" value="f: Steven Tom Jack Slavia Don Hack King Julia Flosia Harry Frank Franklin John Peter #s: Smith Williams Brown Taylor Olivia Ivans Thomas #n: 'Killer' 'Knight' 'Rat' 'Spearman' 'Farmer' 'Emperor' 'Luckyman' #p: -"/>
+		<string key="leader_name_gen_masks" value="fs"/>
+        <string key="leader_name_gen_groups" value="f: Никола Марко Јован Петар Милан Александар Душан Стефан Ненад Дејан #s: Јовановић Петровић Николић Марковић Ђорђевић Поповић Павловић Милошевић Стојановић Илић Ковачевић Радовић"/>
 		<string key="giant" value="giant"/>
 		<string key="world" value="world"/>
 		<string key="download" value="Download"/>
@@ -10579,6 +10910,11 @@
         <string key="hide" value="Hide"/>
         <string key="debt" value="Debt"/>
         <string key="some_units_can_move" value="Some units can move"/>
+            <string key="map_name" value="Назив мапе"/>
+            <string key="author" value="Аутор"/>
+            <string key="create_time" value="Направљено"/>
+            <string key="description" value="Опис"/>
+            <string key="details" value="Детаљи"/>
     </language>
 
 
@@ -10617,6 +10953,17 @@
 
 
     <language name="lt_LT" title="Lithuanian" author="Ernestas Karalius">
+        <string key="dynamic_province_titles" value="Dinamiški provincijų titulai"/>
+        <string key="title_city" value="Miestas"/>
+        <string key="title_county" value="Grafystė"/>
+        <string key="title_marquis" value="Markizas"/>
+        <string key="title_duchy" value="Kunigaikštystė"/>
+        <string key="title_kingdom" value="Karalystė"/>
+        <string key="title_empire" value="Imperija"/>
+        <string key="map_type_islands" value="Salos"/>
+        <string key="map_type" value="Žemėlapio tipas"/>
+        <string key="map_type_default" value="numatyta"/>
+        <string key="map_type_continental" value="Žemynas"/>
 
         <string key="label_editor" value="Etiketės redaktorius"/>
         <string key="label_text" value="Etiketės tekstas: %s"/>
@@ -10642,8 +10989,8 @@
         <!-- All characters -->
         <string key="lang_characters" value="ąčęėįšųūžĄČĘĖĮŠŲŪŽ„“ö"/>
 <!--New things-->
-		<string key="leader_name_gen_masks" value="f s n"/>
-        <string key="leader_name_gen_groups" value="f: Steven Tom Jack Slavia Don Hack King Julia Flosia Harry Frank Franklin John Peter #s: Smith Williams Brown Taylor Olivia Ivans Thomas #n: 'Killer' 'Knight' 'Rat' 'Spearman' 'Farmer' 'Emperor' 'Luckyman' #p: -"/>
+		<string key="leader_name_gen_masks" value="fs"/>
+        <string key="leader_name_gen_groups" value="f: Jonas Tomas Andrius Mantas Vytautas Mindaugas Paulius Lukas Marius Rokas #s: Kazlauskas Petrauskas Jankauskas Stankevičius Vasiliauskas Butkus Paulauskas Urbonas Kavaliauskas Žukauskas Baranauskas"/>
 		<string key="giant" value="giant"/>
 		<string key="world" value="world"/>
 		<string key="download" value="Download"/>
@@ -11075,6 +11422,11 @@
         <string key="debt" value="Skola"/>
         <string key="some_units_can_move" value="Kai kurie vienetai dar gali judėti"/>
 
+            <string key="map_name" value="Žemėlapio pavadinimas"/>
+            <string key="author" value="Autorius"/>
+            <string key="create_time" value="Sukurta"/>
+            <string key="description" value="Aprašymas"/>
+            <string key="details" value="Išsamiau"/>
     </language>
 
 
@@ -11103,6 +11455,17 @@
 
 
     <language name="hr_hr" title="Croatian" author="John Deed">
+        <string key="dynamic_province_titles" value="Dinamičke titule provincija"/>
+        <string key="title_city" value="Grad"/>
+        <string key="title_county" value="Grofovija"/>
+        <string key="title_marquis" value="Markiz"/>
+        <string key="title_duchy" value="Vojvodstvo"/>
+        <string key="title_kingdom" value="Kraljevina"/>
+        <string key="title_empire" value="Carstvo"/>
+        <string key="map_type_islands" value="Otoci"/>
+        <string key="map_type" value="Vrsta karte"/>
+        <string key="map_type_default" value="Zadano"/>
+        <string key="map_type_continental" value="Kontinent"/>
 
         <string key="label_editor" value="Uređivač oznake"/>
         <string key="label_text" value="Tekst oznake: %s"/>
@@ -11128,8 +11491,8 @@
         <!-- All characters -->
         <string key="lang_characters" value="čćđšžČĆĐŠŽ"/>
 <!--New things-->
-		<string key="leader_name_gen_masks" value="f s n"/>
-        <string key="leader_name_gen_groups" value="f: Steven Tom Jack Slavia Don Hack King Julia Flosia Harry Frank Franklin John Peter #s: Smith Williams Brown Taylor Olivia Ivans Thomas #n: 'Killer' 'Knight' 'Rat' 'Spearman' 'Farmer' 'Emperor' 'Luckyman' #p: -"/>
+		<string key="leader_name_gen_masks" value="fs"/>
+        <string key="leader_name_gen_groups" value="f: Ivan Marko Luka Petar Ante Josip Matej Filip Dominik Nikola #s: Horvat Kovačević Babić Marić Jurić Kovačić Pavlović Božić Galić Milić Novak"/>
 		<string key="giant" value="giant"/>
 		<string key="world" value="world"/>
 		<string key="download" value="Download"/>
@@ -11565,6 +11928,11 @@
         <string key="hide" value="Sakrij"/>
         <string key="debt" value="Debt"/>
         <string key="some_units_can_move" value="Neki vojnici se mogu pomaknuti"/>
+            <string key="map_name" value="Naziv karte"/>
+            <string key="author" value="Autor"/>
+            <string key="create_time" value="Stvoreno"/>
+            <string key="description" value="Opis"/>
+            <string key="details" value="Pojedinosti"/>
     </language>
 
 
@@ -11592,6 +11960,17 @@
 
 
     <language name="ca_ES" title="Catalan" author="Feliu Cabanyes">
+        <string key="dynamic_province_titles" value="Títols de província dinàmics"/>
+        <string key="title_city" value="Ciutat"/>
+        <string key="title_county" value="Comtat"/>
+        <string key="title_marquis" value="Marquès"/>
+        <string key="title_duchy" value="Ducat"/>
+        <string key="title_kingdom" value="Regne"/>
+        <string key="title_empire" value="Imperi"/>
+        <string key="map_type_islands" value="Illes"/>
+        <string key="map_type" value="Tipus de mapa"/>
+        <string key="map_type_default" value="per defecte"/>
+        <string key="map_type_continental" value="Continent"/>
 
         <string key="label_editor" value="Editor d'etiqueta"/>
         <string key="label_text" value="Text de l'etiqueta: %s"/>
@@ -11617,8 +11996,8 @@
         <!-- All characters -->
         <string key="lang_characters" value="èéàòóíçüïú"/>
 <!--New things-->
-		<string key="leader_name_gen_masks" value="f s n"/>
-        <string key="leader_name_gen_groups" value="f: Steven Tom Jack Slavia Don Hack King Julia Flosia Harry Frank Franklin John Peter #s: Smith Williams Brown Taylor Olivia Ivans Thomas #n: 'Killer' 'Knight' 'Rat' 'Spearman' 'Farmer' 'Emperor' 'Luckyman' #p: -"/>
+		<string key="leader_name_gen_masks" value="fs"/>
+        <string key="leader_name_gen_groups" value="f: Jordi Marc Oriol Albert Joan Josep Carles Xavier David Sergi Pau #s: Garcia Martínez López Sánchez Puig Serra Soler Roca Ferrer Gil Casas Vidal"/>
 		<string key="giant" value="giant"/>
 		<string key="world" value="world"/>
 		<string key="download" value="Download"/>
@@ -12053,6 +12432,11 @@
         <string key="debt" value="Deute"/>
         <string key="some_units_can_move" value="Algunes unitats encara es poden moure"/>
 
+            <string key="map_name" value="Nom del mapa"/>
+            <string key="author" value="Autor"/>
+            <string key="create_time" value="Creada"/>
+            <string key="description" value="Descripció"/>
+            <string key="details" value="Detalls"/>
     </language>
 
 
@@ -12084,6 +12468,17 @@
 
 
     <language name="lv_LV" title="Latviesu" author="Jānis Valdmanis">
+        <string key="dynamic_province_titles" value="Dinamiskie provinču tituli"/>
+        <string key="title_city" value="Pilsēta"/>
+        <string key="title_county" value="Grāfiste"/>
+        <string key="title_marquis" value="Markīzs"/>
+        <string key="title_duchy" value="Hercogiste"/>
+        <string key="title_kingdom" value="Karaliste"/>
+        <string key="title_empire" value="Impērija"/>
+        <string key="map_type_islands" value="Salas"/>
+        <string key="map_type" value="Kartes veids"/>
+        <string key="map_type_default" value="Pēc noklusējuma"/>
+        <string key="map_type_continental" value="Kontinents"/>
 
         <string key="label_editor" value="Etiķetes redaktors"/>
         <string key="label_text" value="Etiķetes teksts: %s"/>
@@ -12109,8 +12504,8 @@
         <!-- All characters -->
         <string key="lang_characters" value="AĀBCČDEĒFGĢIĪJKĶLĻMNŅOPRSŠTUŪVZŽaābcčdeēfgģhiījkķlļmnņoprsštuūvzž"/>
 <!--New things-->
-		<string key="leader_name_gen_masks" value="f s n"/>
-        <string key="leader_name_gen_groups" value="f: Steven Tom Jack Slavia Don Hack King Julia Flosia Harry Frank Franklin John Peter #s: Smith Williams Brown Taylor Olivia Ivans Thomas #n: 'Killer' 'Knight' 'Rat' 'Spearman' 'Farmer' 'Emperor' 'Luckyman' #p: -"/>
+		<string key="leader_name_gen_masks" value="fs"/>
+        <string key="leader_name_gen_groups" value="f: Jānis Pēteris Andris Māris Juris Ivars Artūrs Rihards Roberts #s: Bērziņš Kalniņš Ozoliņš Jansons Ozols Liepiņš Zariņš Krastiņš Siliņš Briedis"/>
 		<string key="giant" value="giant"/>
 		<string key="world" value="world"/>
 		<string key="download" value="Download"/>
@@ -12537,6 +12932,11 @@
         <string key="debt" value="Parāds"/>
         <string key="some_units_can_move" value="Kareivji vēl var iet"/>
 
+            <string key="map_name" value="Kartes nosaukums"/>
+            <string key="author" value="Autors"/>
+            <string key="create_time" value="Izveidota"/>
+            <string key="description" value="Apraksts"/>
+            <string key="details" value="Detaļas"/>
     </language>
 
 

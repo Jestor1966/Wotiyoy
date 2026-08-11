@@ -45,29 +45,29 @@ public class AiFactory {
         switch (difficulty) {
             default:
             case Difficulty.EASY:
-                aiList.add(getMasterAi(fraction));
+                aiList.add(getEasyAi(fraction));
                 break;
             case Difficulty.NORMAL:
-                aiList.add(getMasterAi(fraction));
+                aiList.add(getNormalAi(fraction));
                 break;
             case Difficulty.HARD:
-                aiList.add(getMasterAi(fraction));
+                aiList.add(getHardAi(fraction));
                 break;
             case Difficulty.EXPERT:
-                aiList.add(getMasterAi(fraction));
+                aiList.add(getExpertAi(fraction));
                 break;
             case Difficulty.BALANCER:
                 aiList.add(getBalancerAi(fraction));
                 break;
             case Difficulty.MASTER:
-                aiList.add(getMasterAi(fraction));
+                aiList.add(getMasterAi(Difficulty.MASTER, fraction));
                 break;
         }
     }
 
 
-    private AbstractAi getMasterAi(int fraction) {
-        return new AiMaster(gameController, fraction);
+    private AbstractAi getMasterAi(int difficulty, int fraction) {
+        return new AiMaster(gameController, fraction, difficulty);
     }
 
 
@@ -77,12 +77,12 @@ public class AiFactory {
 
 
     private ArtificialIntelligence getExpertAi(int fraction) {
-        return new AiBalancerGenericRules(gameController, fraction);
+        return new AiExpertGenericRules(gameController, fraction);
     }
 
 
     private ArtificialIntelligence getHardAi(int fraction) {
-        return new AiBalancerGenericRules(gameController, fraction);
+        return new AiHardGenericRules(gameController, fraction);
     }
 
 
@@ -92,7 +92,7 @@ public class AiFactory {
 
 
     private ArtificialIntelligence getEasyAi(int fraction) {
-        return new AiBalancerGenericRules(gameController, fraction);
+        return new AiEasy(gameController, fraction);
     }
 
 }

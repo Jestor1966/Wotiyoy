@@ -11,6 +11,7 @@ public class NameGenerator {
     ArrayList<String> masks;
     Random defRandom, random;
     boolean capitalize;
+    String separator;
 
 
     public NameGenerator() {
@@ -18,6 +19,7 @@ public class NameGenerator {
         masks = new ArrayList<>();
         defRandom = new Random();
         capitalize = true;
+        separator = "";
     }
 
 
@@ -31,9 +33,14 @@ public class NameGenerator {
         StringBuffer stringBuffer = new StringBuffer();
 
         String mask = getRandomMask();
+        boolean firstSymbol = true;
         for (int i = 0; i < mask.length(); i++) {
             String key = "" + mask.charAt(i);
             String group = getGroup(key);
+            if (!firstSymbol) {
+                stringBuffer.append(separator);
+            }
+            firstSymbol = false;
             if (group == null) {
                 stringBuffer.append(key);
                 continue;
@@ -78,6 +85,11 @@ public class NameGenerator {
 
     public void setCapitalize(boolean capitalize) {
         this.capitalize = capitalize;
+    }
+
+
+    public void setSeparator(String separator) {
+        this.separator = separator;
     }
 
 

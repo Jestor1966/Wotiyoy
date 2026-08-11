@@ -9,11 +9,13 @@ public abstract class PropagationCaster {
 
     AbstractAi abstractAi;
     ArrayList<Hex> propagationList;
+    ArrayList<Hex> touchedHexes;
 
 
     public PropagationCaster(AbstractAi abstractAi) {
         this.abstractAi = abstractAi;
         propagationList = new ArrayList<>();
+        touchedHexes = new ArrayList<>();
     }
 
 
@@ -25,7 +27,9 @@ public abstract class PropagationCaster {
 
     public void perform(Hex start, int depth) {
         resetFlags();
+        propagationList.clear();
 
+        touchedHexes.add(start);
         propagationList.add(start);
         start.aiData.propCastValue = depth;
 
@@ -35,9 +39,11 @@ public abstract class PropagationCaster {
 
     public void perform(ArrayList<Hex> launchList, int depth) {
         resetFlags();
+        propagationList.clear();
 
         propagationList.addAll(launchList);
         for (Hex hex : launchList) {
+            touchedHexes.add(hex);
             hex.aiData.propCastValue = depth;
         }
 
@@ -46,9 +52,11 @@ public abstract class PropagationCaster {
 
 
     private void applyMainCycle() {
-        while (propagationList.size() > 0) {
-            Hex hex = propagationList.get(0);
-            propagationList.remove(0);
+        int index = 0;
+        while (index < propagationList.size()) {
+            Hex hex = propagationList.get(index);
+            index++;
+            touchedHexes.add(hex);
             if (hex.aiData.propCastValue == 0) continue;
 
             for (int dir = 0; dir < 6; dir++) {
@@ -59,6 +67,7 @@ public abstract class PropagationCaster {
                 if (adjacentHex.aiData.propCastValue != -1) continue;
                 if (!isPropagationAllowed(hex, adjacentHex)) continue;
                 propagationList.add(adjacentHex);
+                touchedHexes.add(adjacentHex);
                 adjacentHex.aiData.propCastValue = hex.aiData.propCastValue - 1;
                 onHexReached(hex, adjacentHex);
             }
@@ -67,8 +76,9 @@ public abstract class PropagationCaster {
 
 
     private void resetFlags() {
-        for (Hex activeHex : abstractAi.gameController.fieldManager.activeHexes) {
-            activeHex.aiData.propCastValue = -1;
+        for (Hex hex : touchedHexes) {
+            hex.aiData.propCastValue = -1;
         }
+        touchedHexes.clear();
     }
 }

@@ -167,6 +167,10 @@ public class LevelEditorManager {
             checkToTurnIntoFarm(focusedHex);
             gameController.addAnimHex(focusedHex);
         }
+        else if (inputObject == Obj.PORT) { // port
+            addSolidObject(focusedHex, lastObject);
+            gameController.addAnimHex(focusedHex);
+        }
 
         else { // units
             tryToAddUnitToFocusedHex(focusedHex, unitStrength);
@@ -236,6 +240,7 @@ public class LevelEditorManager {
                     return true;
                 case Obj.CITY:
                 case Obj.FORT:
+                case Obj.PORT:
                     return true;
             }
         }

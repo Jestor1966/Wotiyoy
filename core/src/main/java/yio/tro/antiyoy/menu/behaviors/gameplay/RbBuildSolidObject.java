@@ -16,6 +16,7 @@ public class RbBuildSolidObject extends Reaction {
     public RbBuildSolidObject() {
         chain = new int[]{
                 SelectionTipType.FARM,
+                SelectionTipType.PORT,
                 SelectionTipType.TOWER,
                 SelectionTipType.STRONG_TOWER,
         };
@@ -49,7 +50,31 @@ public class RbBuildSolidObject extends Reaction {
             getGameController(buttonYio).selectionManager.awakeTip(tipType);
             if (tipType == SelectionTipType.FARM) {
                 getGameController(buttonYio).detectAndShowMoveZoneForFarm();
+            } else if (tipType == SelectionTipType.PORT) {
+                getGameController(buttonYio).detectAndShowMoveZoneForPort();
             }
+
+            updateButtonTexture(buttonYio, tipType);
         }
+    }
+
+
+    private void updateButtonTexture(ButtonYio buttonYio, int tipType) {
+        String texturePath;
+        switch (tipType) {
+            default:
+                texturePath = "field_elements/farm_low.png";
+                break;
+            case SelectionTipType.PORT:
+                texturePath = "field_elements/port_low.png";
+                break;
+            case SelectionTipType.TOWER:
+                texturePath = "field_elements/tower_low.png";
+                break;
+            case SelectionTipType.STRONG_TOWER:
+                texturePath = "field_elements/strong_tower_low.png";
+                break;
+        }
+        buttonYio.menuControllerYio.loadButtonOnce(buttonYio, texturePath);
     }
 }

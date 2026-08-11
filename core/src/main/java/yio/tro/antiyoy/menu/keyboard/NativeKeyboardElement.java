@@ -165,6 +165,16 @@ public class NativeKeyboardElement extends InterfaceElement {
     }
 
 
+    public void pasteFromClipboard() {
+        String clipboardText = Gdx.app.getClipboard().getContents();
+        if (clipboardText == null) return;
+
+        String filtered = getFilteredResult(clipboardText);
+        if (filtered.length() == 0) return;
+        textField.setText(textField.getText() + filtered);
+    }
+
+
     private String getResultTextFromTextField() {
         String text = textField.getText();
         if (text.length() < 2) return text;

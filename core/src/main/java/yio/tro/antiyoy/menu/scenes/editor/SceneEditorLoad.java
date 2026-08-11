@@ -19,6 +19,7 @@ import yio.tro.antiyoy.menu.scenes.Scenes;
 import yio.tro.antiyoy.menu.scrollable_list.ListBehaviorYio;
 import yio.tro.antiyoy.menu.scrollable_list.ListItemYio;
 import yio.tro.antiyoy.menu.scrollable_list.ScrollableListYio;
+import yio.tro.antiyoy.stuff.LanguagesManager;
 import yio.tro.antiyoy.stuff.Yio;
 
 import java.util.ArrayList;
@@ -74,7 +75,29 @@ public class SceneEditorLoad extends AbstractScene{
         scrollableListYio.setTitle(getString("editor"));
         scrollableListYio.setListBehavior(getListBehavior());
         scrollableListYio.setEditable(true);
+        scrollableListYio.setLongTapReaction(new Reaction() {
+            @Override
+            public void perform(ButtonYio buttonYio) {
+                onLongTap(scrollableListYio.longTappedItem);
+            }
+        });
         menuControllerYio.addElementToScene(scrollableListYio);
+    }
+
+
+    private void onLongTap(final ListItemYio item) {
+        if (item == null) return;
+
+        Scenes.sceneContextListMenu.create();
+        Scenes.sceneContextListMenu.contextListMenuElement.setEditableItem(item);
+        Scenes.sceneContextListMenu.contextListMenuElement.setRenameEnabled(false);
+        Scenes.sceneContextListMenu.contextListMenuElement.enableDetailsItem(new Reaction() {
+            @Override
+            public void perform(ButtonYio buttonYio) {
+                Scenes.sceneSlotDetails.setSlotKey(item.key);
+                Scenes.sceneSlotDetails.create();
+            }
+        });
     }
 
 
@@ -181,10 +204,13 @@ public class SceneEditorLoad extends AbstractScene{
                     preview = EditorPreviewManager.decodePreview(savedPreviewString);
                 }
 
+                String author = preferences.getString(key + ":author", "Anonymous");
+                if (author.length() == 0) author = "Anonymous";
+
                 SaveSlotInfo saveSlotInfo = new SaveSlotInfo();
                 saveSlotInfo.key = key;
                 saveSlotInfo.name = name;
-                saveSlotInfo.description = " ";
+                saveSlotInfo.description = LanguagesManager.getInstance().getString("author") + ": " + author;
                 saveSlotInfo.preview = preview;
                 tempList.add(saveSlotInfo);
             }
@@ -197,6 +223,12 @@ public class SceneEditorLoad extends AbstractScene{
             SaveSlotInfo saveSlotInfo = tempList.get(i);
             scrollableListYio.addItem(saveSlotInfo.key, saveSlotInfo.name, saveSlotInfo.description, saveSlotInfo.preview);
         }
+    }
+
+
+    public void reloadValues() {
+        if (scrollableListYio == null) return;
+        loadValues();
     }
 
 

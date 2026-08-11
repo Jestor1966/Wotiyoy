@@ -23,6 +23,8 @@ public class RenderInsideProvinceBorder extends GameRender {
     private HashMap<Hex, Province> hexToProvince;
     private int updateTimer;
     private int cachedHash;
+    private long cachedFingerprint;
+    private boolean mapBuilt;
 
 
     public RenderInsideProvinceBorder(GameRendersList gameRendersList) {
@@ -40,7 +42,7 @@ public class RenderInsideProvinceBorder extends GameRender {
     public void render() {
         if (!GameRules.keepDifferentProvinceNames) return;
 
-        rebuildHexToProvince();
+        rebuildHexToProvinceIfNeeded();
         renderBorders();
     }
 
@@ -52,8 +54,15 @@ public class RenderInsideProvinceBorder extends GameRender {
 
 
     // hex -> province mapping must always be up to date, because provinces
-    // get replaced by new objects on split/merge; rebuilding it every frame is cheap
-    private void rebuildHexToProvince() {
+    // get replaced by new objects on split/merge; the fingerprint check avoids
+    // allocating a new map every frame while the field hasn't changed
+    private void rebuildHexToProvinceIfNeeded() {
+        long fingerprint = computeFingerprint();
+        if (mapBuilt && fingerprint == cachedFingerprint) return;
+
+        cachedFingerprint = fingerprint;
+        mapBuilt = true;
+
         if (hexToProvince == null) {
             hexToProvince = new HashMap<>();
         }
@@ -63,6 +72,18 @@ public class RenderInsideProvinceBorder extends GameRender {
                 hexToProvince.put(hex, province);
             }
         }
+    }
+
+
+    private long computeFingerprint() {
+        long fingerprint = 0;
+        for (Province province : gameController.fieldManager.provinces) {
+            fingerprint = fingerprint * 31 + System.identityHashCode(province);
+            for (Hex hex : province.hexList) {
+                fingerprint = fingerprint * 31 + System.identityHashCode(hex);
+            }
+        }
+        return fingerprint;
     }
 
 
@@ -144,6 +165,7 @@ public class RenderInsideProvinceBorder extends GameRender {
     private void renderBorders() {
         for (Province province : gameController.fieldManager.provinces) {
             for (Hex hex : province.hexList) {
+                if (!isPosInViewFrame(hex.getPos(), 2 * hexViewSize)) continue;
                 for (int dir = 0; dir < 6; dir++) {
                     Hex adj = hex.getAdjacentHex(dir);
                     if (adj == null || adj.isNullHex()) continue;

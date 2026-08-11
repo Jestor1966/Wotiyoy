@@ -45,6 +45,7 @@ public class TutorialScriptGenericRules extends TutorialScript{
     int currentStep;
     LanguagesManager languagesManager;
     boolean waitingBeforeNextStep;
+    boolean initialIgnoresApplied;
     long timeToCheck, timeForNextStep;
 
 
@@ -64,12 +65,25 @@ public class TutorialScriptGenericRules extends TutorialScript{
         instance.difficulty = 0;
         instance.colorOffset = 0;
         instance.slayRules = false;
-        LoadingManager.getInstance().startGame(instance);
 
-        menuControllerYio = gameController.yioGdxGame.menuControllerYio;
-        languagesManager = LanguagesManager.getInstance();
+        // the game loads asynchronously, keep the script idle until it is ready
         currentStep = -1;
         waitingBeforeNextStep = true;
+        tipIsCurrentlyShown = true;
+
+        LoadingManager.getInstance().startGame(instance, new Runnable() {
+            @Override
+            public void run() {
+                onTutorialGameLoaded();
+            }
+        });
+    }
+
+
+    private void onTutorialGameLoaded() {
+        menuControllerYio = gameController.yioGdxGame.menuControllerYio;
+        languagesManager = LanguagesManager.getInstance();
+        initialIgnoresApplied = false;
         ignoreAll();
         showTutorialTip("gen_greetings");
         changeThreeDotsReaction();
@@ -77,7 +91,10 @@ public class TutorialScriptGenericRules extends TutorialScript{
 
 
     private void changeThreeDotsReaction() {
-        menuControllerYio.getButtonById(30).setReaction(new Reaction() {
+        ButtonYio threeDotsButton = menuControllerYio.getButtonById(30);
+        if (threeDotsButton == null) return;
+
+        threeDotsButton.setReaction(new Reaction() {
             @Override
             public void perform(ButtonYio buttonYio) {
                 Scenes.sceneNotification.hideNotification();
@@ -444,7 +461,9 @@ public class TutorialScriptGenericRules extends TutorialScript{
             if (buttonYio == null) continue;
             buttonYio.setTouchable(false);
         }
-        Scenes.sceneGameOverlay.endTurnButtonElement.setTouchable(false);
+        if (Scenes.sceneGameOverlay.endTurnButtonElement != null) {
+            Scenes.sceneGameOverlay.endTurnButtonElement.setTouchable(false);
+        }
     }
 
 
@@ -476,6 +495,8 @@ public class TutorialScriptGenericRules extends TutorialScript{
 
     @Override
     public void move() {
+        checkToReapplyInitialIgnores();
+
         if (waitingBeforeNextStep) {
             if (gameController.currentTime > timeForNextStep && !tipIsCurrentlyShown) {
                 waitingBeforeNextStep = false;
@@ -497,6 +518,14 @@ public class TutorialScriptGenericRules extends TutorialScript{
                 }
             }
         }
+    }
+
+
+    private void checkToReapplyInitialIgnores() {
+        if (initialIgnoresApplied) return;
+        if (Scenes.sceneGameOverlay.endTurnButtonElement == null) return;
+        initialIgnoresApplied = true;
+        allButtonsIgnoreTouches();
     }
 
 }

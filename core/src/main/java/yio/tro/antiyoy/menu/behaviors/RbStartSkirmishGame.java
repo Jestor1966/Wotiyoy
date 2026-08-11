@@ -25,6 +25,7 @@ public class RbStartSkirmishGame extends Reaction {
 
         Scenes.sceneSkirmishMenu.saveValues();
         Scenes.sceneMoreSkirmishOptions.create(); // to load more skirmish options
+        Scenes.sceneMoreSkirmishOptions.saveValues(); // persist current selections
 
         menuControllerYio.getButtonById(80).setTouchable(false);
 
@@ -41,6 +42,7 @@ public class RbStartSkirmishGame extends Reaction {
         instance.diplomacy = Scenes.sceneMoreSkirmishOptions.chkDiplomacy.isChecked();
         instance.genProvinces = getGenProvinces();
         instance.treesPercentageIndex = getTreesPercentageIndex();
+        instance.mapType = Scenes.sceneMoreSkirmishOptions.mapTypeElement.getValueIndex();
 
         LoadingManager.getInstance().startGame(instance);
 

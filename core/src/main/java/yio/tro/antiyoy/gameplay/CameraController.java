@@ -2,9 +2,10 @@ package yio.tro.antiyoy.gameplay;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import yio.tro.antiyoy.*;
+import yio.tro.antiyoy.*; 
 import yio.tro.antiyoy.gameplay.data_storage.EncodeableYio;
 import yio.tro.antiyoy.gameplay.rules.GameRules;
+import yio.tro.antiyoy.factor_yio.FactorYio;
 import yio.tro.antiyoy.stuff.GraphicsYio;
 import yio.tro.antiyoy.stuff.PointYio;
 import yio.tro.antiyoy.stuff.RectangleYio;
@@ -266,18 +267,19 @@ public class CameraController implements EncodeableYio{
 
     private void moveKinetics() {
         if (!kineticsEnabled) return;
+        float k = (float) FactorYio.getDtFactor();
 
         if (Yio.distance(0, 0, kinetics.x, kinetics.y) < 0.5 * kineticsSpeed) {
             kineticsEnabled = false;
         }
 
-        position.x += kinetics.x;
-        position.y += kinetics.y;
+        position.x += kinetics.x * k;
+        position.y += kinetics.y * k;
 
         applyBoundsToPosition();
 
-        kinetics.x *= 0.85;
-        kinetics.y *= 0.85;
+        kinetics.x *= Math.pow(0.85, k);
+        kinetics.y *= Math.pow(0.85, k);
     }
 
 
@@ -303,7 +305,7 @@ public class CameraController implements EncodeableYio{
 
 
     private void moveZoom() {
-        camDz = 0.2f * (targetZoomLevel - viewZoomLevel);
+        camDz = 0.2f * (targetZoomLevel - viewZoomLevel) * (float) FactorYio.getDtFactor();
         if (Math.abs(targetZoomLevel - viewZoomLevel) < ZOOM_CATCH_DISTANCE) return;
 
         yioGdxGame.gameView.orthoCam.zoom += camDz;
@@ -343,8 +345,9 @@ public class CameraController implements EncodeableYio{
 
 
     void moveDrag() {
-        camDx = 0.5f * (position.x - viewPosition.x);
-        camDy = 0.5f * (position.y - viewPosition.y);
+        float k = (float) FactorYio.getDtFactor();
+        camDx = 0.5f * (position.x - viewPosition.x) * k;
+        camDy = 0.5f * (position.y - viewPosition.y) * k;
 
         viewPosition.x += camDx;
         viewPosition.y += camDy;

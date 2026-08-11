@@ -27,10 +27,9 @@ public class RenderSolidObjects extends GameRender{
 
     @Override
     public void render() {
-        if (!YioGdxGame.isScreenVerySmall()) return;
-
         for (Hex activeHex : gameController.fieldManager.activeHexes) {
             if (!activeHex.containsObject()) continue;
+            if (!isPosInViewFrame(activeHex.getPos(), hexViewSize)) continue;
 
             renderSolidObject(batchMovable, activeHex.getPos(), activeHex);
         }
@@ -83,6 +82,8 @@ public class RenderSolidObjects extends GameRender{
                 return gameView.texturesManager.hillTexture.getTexture(quality);
             case Obj.FORT:
                 return gameView.texturesManager.fortTexture.getTexture(quality);
+            case Obj.PORT:
+                return gameView.texturesManager.portTexture.getTexture(quality);
             case Obj.REVOLT:
                 return gameView.texturesManager.revoltTexture.getTexture(quality);
             case Obj.CITY:

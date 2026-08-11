@@ -27,6 +27,12 @@ public class AiBalancerSlayRules extends AiExpertSlayRules implements Comparator
 
     @Override
     void decideAboutUnit(Unit unit, ArrayList<Hex> moveZone, Province province) {
+        // 海上单位交给海上远征逻辑：沿最短海路前往最近的非己方大陆
+        if (unit.currentHex.isSea()) {
+            moveAfkUnit(province, unit);
+            return;
+        }
+
         // cleaning palms has highest priority
         if (unit.strength <= 2 && checkToCleanSomePalms(unit, moveZone, province)) return;
 
@@ -151,7 +157,9 @@ public class AiBalancerSlayRules extends AiExpertSlayRules implements Comparator
         for (int i = 1; i <= 4; i++) {
             if (!province.canAiAffordUnit(i, 5)) break;
             while (canProvinceBuildUnit(province, i)) {
+                int moneyBefore = province.money;
                 if (!tryToAttackWithStrength(province, i)) break;
+                if (province.money == moneyBefore) break;
             }
         }
 

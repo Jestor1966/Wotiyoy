@@ -37,7 +37,9 @@ public class AiNormalSlayRules extends ArtificialIntelligence {
         for (int i = 1; i <= 4; i++) {
             if (!province.canAiAffordUnit(i)) break;
             while (canProvinceBuildUnit(province, i)) {
+                int moneyBefore = province.money;
                 if (!tryToBuiltUnitInsideProvince(province, i)) break;
+                if (province.money == moneyBefore) break;
             }
         }
 
